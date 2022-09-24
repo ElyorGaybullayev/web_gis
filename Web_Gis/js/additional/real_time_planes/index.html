@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/real_time_planes/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:58 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>Real-Time Plane Tracks</title>
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.css"/>
+    <script src="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.js"></script>
+    <script src="../../../../npmcdn.com/%40turf/turf%406.5.0/turf.min.js"></script>
+    <script src="../../../../ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+var map = L.map('map').setView([48.8567, 2.3508], 9);
+var layer = L.layerGroup().addTo(map);
+
+L.tileLayer('../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png', {
+	maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+var position = [];
+
+// Data example ('value')
+// "["a2e26a","","United States",1516341163,1516341402,-122.7645,34.1972,11269.98,false,259.28,89.77,0.33,null,11590.02,null,false,0]"
+
+// Events layer
+function update() {
+
+    $.getJSON("https://opensky-network.org/api/states/all", function(data) {
+        //layer.clearLayers();
+        $.each(data.states, function(key, value) {
+            
+            // Select 'France'
+            if(value[2] == "France") {
+            
+                if(value[6] != undefined && value[5] != undefined) {
+                    
+                    // Add circle on current position
+                    latlon = [value[6], value[5]];
+                    m = L.circleMarker(latlon, {radius: 3, color: "grey"}).addTo(map);
+                    
+                    // Add circle according to expected next position
+                    pnt = turf.point([value[5], value[6]]);
+                    distance = value[9] * 10 
+                    destination = turf.rhumbDestination(pnt, distance * 0.001, value[10], {units: "kilometers"})
+                    L.circle(latlon, {radius: distance}).addTo(layer);
+                    
+                    // Add line according to expected next position
+                    pointA = new L.latLng(latlon);
+                    pointB = new L.latLng(destination.geometry.coordinates[1], destination.geometry.coordinates[0]);
+                    pointList = [pointA, pointB];
+                    L.polyline(pointList, {color: "red"}).addTo(layer);
+                    
+                    // If >1 observation connect with lines
+                    if(position[value[0]] != undefined) {
+                        pointA = new L.latLng(position[value[0]]);
+                        pointB = new L.latLng(latlon);
+                        pointList = [pointA, pointB];
+                        L.polyline(pointList, {color: "grey"}).addTo(map);
+                    }
+                    
+                    // Keep current plane position
+                    position[value[0]] = latlon;
+                }
+            }
+        })
+    });
+
+    // Refresh every 5 seconds
+    setTimeout(update, 5000);
+
+};
+
+// Other ideas:
+// Add popups with plane information...
+// Plane icon & rotated...
+// Arrow instead of line...
+// Select country from menu...
+// Show planes listing in side panel...
+// Change circle distance radius...
+
+update();
+	</script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/real_time_planes/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:58 GMT -->
+</html>
+

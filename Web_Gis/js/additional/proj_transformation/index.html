@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/proj_transformation/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:55 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Projection transformations</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.6.0/dist/leaflet.css">
+    <script src="../../../../unpkg.com/leaflet%401.6.0/dist/leaflet.js"></script>
+    <script src="../../../../cdnjs.cloudflare.com/ajax/libs/proj4js/2.6.1/proj4.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+// Create variable to hold map element, give initial settings to map
+let map = L.map("map", {center: [31.262218, 34.801472], zoom: 8});
+
+// Add OpenStreetMap tile layer to map element
+L.tileLayer(
+    "../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", 
+    {attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'}
+).addTo(map);
+
+var firstProjection = 'GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]]';
+var secondProjection = 'PROJCS["WGS 84 / UTM zone 36N",GEOGCS["WGS 84",DATUM["WGS_1984",SPHEROID["WGS 84",6378137,298.257223563,AUTHORITY["EPSG","7030"]],AUTHORITY["EPSG","6326"]],PRIMEM["Greenwich",0,AUTHORITY["EPSG","8901"]],UNIT["degree",0.0174532925199433,AUTHORITY["EPSG","9122"]],AUTHORITY["EPSG","4326"]],PROJECTION["Transverse_Mercator"],PARAMETER["latitude_of_origin",0],PARAMETER["central_meridian",33],PARAMETER["scale_factor",0.9996],PARAMETER["false_easting",500000],PARAMETER["false_northing",0],UNIT["metre",1,AUTHORITY["EPSG","9001"]],AXIS["Easting",EAST],AXIS["Northing",NORTH],AUTHORITY["EPSG","32636"]]';
+
+let p = L.popup();
+let coords;
+map.addEventListener("click", function(e) {
+    coords = proj4(firstProjection,secondProjection,[e.latlng.lng, e.latlng.lat]);
+    console.log(coords);
+    p.setLatLng(e.latlng).setContent(coords[0] + "<br>" + coords[1]).openOn(map);
+});
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/proj_transformation/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:04 GMT -->
+</html>

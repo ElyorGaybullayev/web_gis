@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-07-04.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Loading remote GeoJSON</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+let map = L.map("map").setView([0, 0], 2);
+
+L.tileLayer("../../../cartodb-basemaps-%7bs%7d.global.ssl.fastly.net/light_nolabels/%7bz%7d/%7bx%7d/%7by%7d.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
+    subdomains: "abcd",
+    maxZoom: 19
+}).addTo(map);
+
+// Load GeoJSON from an external file
+let url = 
+    "https://earthquake.usgs.gov/earthquakes/feed/v1.0/" + 
+    "summary/4.5_week.geojson";
+fetch(url)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {  // Add GeoJSON layer to the map once the file is loaded
+        L.geoJSON(data).addTo(map);
+    });
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-07-04.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+</html>
+

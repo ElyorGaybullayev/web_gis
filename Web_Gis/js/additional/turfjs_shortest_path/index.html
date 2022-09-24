@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/turfjs_shortest_path/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:09 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>Shortest path</title>
+	<link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <script src="js/turf.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+    
+// Bounds
+var bounds = [34.26801, 29.49708, 35.90094, 33.36403];
+    
+// Initialize map
+var map = L.map("map").fitBounds([[bounds[1], bounds[0]], [bounds[3], bounds[2]]]);
+L.tileLayer("../../../../%7bs%7d.tile.osm.org/%7bz%7d/%7bx%7d/%7by%7d.png", {attribution: "© OpenStreetMap"}).addTo(map);
+
+// Polygons
+pol = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[34.73602294921875,31.99875937194732],[35.123291015625,31.99875937194732],[35.123291015625,32.43561304116276],[34.73602294921875,32.43561304116276],[34.73602294921875,31.99875937194732]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[34.365234375,31.55981453201843],[35.595703125,31.55981453201843],[35.595703125,31.83089906339438],[34.365234375,31.83089906339438],[34.365234375,31.55981453201843]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[35.0244140625,30.90693797089463],[35.6451416015625,30.90693797089463],[35.6451416015625,31.245681880715527],[35.0244140625,31.245681880715527],[35.0244140625,30.90693797089463]]]}},{"type":"Feature","properties":{},"geometry":{"type":"Polygon","coordinates":[[[34.134521484375,30.24957724046765],[35.1837158203125,30.24957724046765],[35.1837158203125,30.859794872560766],[34.134521484375,30.859794872560766],[34.134521484375,30.24957724046765]]]}}]};
+
+// Points
+pnt1 = [35.419921875,33.04090311724091];
+pnt2 = [34.573974609375,29.816816857649936]
+
+// Add points & polygons
+L.geoJSON(pol, {style: {color: "red", fillColor: "red"}}).addTo(map);
+L.marker([pnt1[1], pnt1[0]]).addTo(map);
+L.marker([pnt2[1], pnt2[0]]).addTo(map);
+
+// Shortest path
+var path = turf.shortestPath(pnt1, pnt2, {obstacles: pol});
+
+// Add path
+L.geoJSON(path).addTo(map);
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/turfjs_shortest_path/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:11 GMT -->
+</html>

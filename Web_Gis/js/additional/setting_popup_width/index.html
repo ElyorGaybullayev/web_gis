@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/setting_popup_width/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.css"/>
+    <script src="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+// Create variable to hold map element, give initial settings to map
+var map = L.map("map", {center: [31.262218, 34.801472], zoom: 17});
+
+// Add OpenStreetMap tile layer to map element
+L.tileLayer("../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", {attribution: "© OpenStreetMap"}).addTo(map);
+
+// Add point
+var pnt = L.marker([31.262218, 34.801472]).addTo(map);
+
+// Add popup
+text = "This is the path from <b>our department</b> to the <b>library</b>, and some more text which makes the popup very, very, very wide";
+opts = {maxWidth : 800};
+pnt.bindPopup(text, opts).openPopup();
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/setting_popup_width/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+</html>

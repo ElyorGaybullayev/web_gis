@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/3D_extrusion/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:31 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset='utf-8' />
+    <title></title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='../../../../api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <link href='../../../../api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
+</head>
+<body>
+
+<div id='map'>
+</div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJjaXZwY2U0Z2IwMDF0MnRwOHF5MHYzeHM0In0.UdcEo0k-jS29ebI_fhIpMw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [35, 32],
+    zoom: 8,
+    pitch: 40,
+    bearing: 20
+});
+
+map.on('load', function() {
+
+    map.addLayer({
+        'id': 'towns',
+        'type': 'fill-extrusion',
+        'source': {
+            // Geojson Data source used in vector tiles, documented at
+            // https://gist.github.com/ryanbaumann/a7d970386ce59d11c16278b90dde094d
+            'type': 'geojson',
+            'data': 'towns2.geojson'
+        },
+        'paint': {
+            // See the Mapbox Style Spec for details on property functions
+            // https://www.mapbox.com/mapbox-gl-style-spec/#types-function
+            'fill-extrusion-color': {
+                'property': 'density',
+                'stops': [
+                  [1, 'white'],
+                  [25, 'orange'],
+                  [1000, 'firebrick']
+                ]
+              },
+            'fill-extrusion-height': {
+                // Get fill-extrusion-height from the source 'height' property.
+                'property': 'density',
+                'type': 'identity'
+            },
+            // Make extrusions slightly opaque for see through indoor walls.
+            'fill-extrusion-opacity': 0.9,
+            'fill-extrusion-base': 0
+        }
+    });
+    
+});
+</script>
+
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/3D_extrusion/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:38 GMT -->
+</html>

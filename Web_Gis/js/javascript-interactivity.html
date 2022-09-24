@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+
+<!-- Mirrored from 132.72.155.230:3838/js/javascript-interactivity.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:32:36 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 JavaScript Interactivity | Introduction to Web Mapping</title>
+  <meta name="description" content="Chapter 4 JavaScript Interactivity | Introduction to Web Mapping" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 JavaScript Interactivity | Introduction to Web Mapping" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 4 JavaScript Interactivity | Introduction to Web Mapping" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 JavaScript Interactivity | Introduction to Web Mapping" />
+  
+  <meta name="twitter:description" content="Chapter 4 JavaScript Interactivity | Introduction to Web Mapping" />
+  
+
+<meta name="author" content="Michael Dorman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="javascript-basics.html"/>
+<link rel="next" href="web-servers-1.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134641614-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134641614-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="index.html"><img width="90%" style="margin: 5% 5% 0% 5%" src="images/BGUsig3E.svg"></a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-web-mapping"><i class="fa fa-check"></i><b>0.1</b> What is web mapping?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#what-is-javascript"><i class="fa fa-check"></i><b>0.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#why-use-javascript-for-web-mapping"><i class="fa fa-check"></i><b>0.3</b> Why use JavaScript for web mapping?</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.4</b> Learning objectives</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>0.5</b> Software</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#background-knowledge"><i class="fa fa-check"></i><b>0.6</b> Background knowledge</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#online-version"><i class="fa fa-check"></i><b>0.7</b> Online version</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.8</b> Acknowledgments</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to Web Technologies</b></span></li>
+<li class="chapter" data-level="1" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>1</b> HTML</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="html.html"><a href="html.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="html.html"><a href="html.html#how-do-people-access-the-web"><i class="fa fa-check"></i><b>1.2</b> How do people access the web?</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="html.html"><a href="html.html#web-browsers"><i class="fa fa-check"></i><b>1.2.1</b> Web browsers</a></li>
+<li class="chapter" data-level="1.2.2" data-path="html.html"><a href="html.html#web-servers"><i class="fa fa-check"></i><b>1.2.2</b> Web servers</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="html.html"><a href="html.html#web-pages"><i class="fa fa-check"></i><b>1.3</b> Web pages</a></li>
+<li class="chapter" data-level="1.4" data-path="html.html"><a href="html.html#text-editors"><i class="fa fa-check"></i><b>1.4</b> Text editors</a></li>
+<li class="chapter" data-level="1.5" data-path="html.html"><a href="html.html#what-is-html"><i class="fa fa-check"></i><b>1.5</b> What is HTML?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="html.html"><a href="html.html#overview-html"><i class="fa fa-check"></i><b>1.5.1</b> Overview</a></li>
+<li class="chapter" data-level="1.5.2" data-path="html.html"><a href="html.html#html-comments"><i class="fa fa-check"></i><b>1.5.2</b> HTML comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="html.html"><a href="html.html#block-vs-inline"><i class="fa fa-check"></i><b>1.5.3</b> Block vs. inline</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="html.html"><a href="html.html#common-html-elements"><i class="fa fa-check"></i><b>1.6</b> Common HTML elements</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="html.html"><a href="html.html#html-element-types"><i class="fa fa-check"></i><b>1.6.1</b> HTML element types</a></li>
+<li class="chapter" data-level="1.6.2" data-path="html.html"><a href="html.html#html-structure"><i class="fa fa-check"></i><b>1.6.2</b> Structure</a></li>
+<li class="chapter" data-level="1.6.3" data-path="html.html"><a href="html.html#title-and-metadata"><i class="fa fa-check"></i><b>1.6.3</b> Title and metadata</a></li>
+<li class="chapter" data-level="1.6.4" data-path="html.html"><a href="html.html#styling-and-scripts"><i class="fa fa-check"></i><b>1.6.4</b> Styling and scripts</a></li>
+<li class="chapter" data-level="1.6.5" data-path="html.html"><a href="html.html#headings-and-paragraphs"><i class="fa fa-check"></i><b>1.6.5</b> Headings and paragraphs</a></li>
+<li class="chapter" data-level="1.6.6" data-path="html.html"><a href="html.html#font-formatting"><i class="fa fa-check"></i><b>1.6.6</b> Font formatting</a></li>
+<li class="chapter" data-level="1.6.7" data-path="html.html"><a href="html.html#spacing"><i class="fa fa-check"></i><b>1.6.7</b> Spacing</a></li>
+<li class="chapter" data-level="1.6.8" data-path="html.html"><a href="html.html#html-lists"><i class="fa fa-check"></i><b>1.6.8</b> Lists</a></li>
+<li class="chapter" data-level="1.6.9" data-path="html.html"><a href="html.html#html-links"><i class="fa fa-check"></i><b>1.6.9</b> Links</a></li>
+<li class="chapter" data-level="1.6.10" data-path="html.html"><a href="html.html#images"><i class="fa fa-check"></i><b>1.6.10</b> Images</a></li>
+<li class="chapter" data-level="1.6.11" data-path="html.html"><a href="html.html#tables"><i class="fa fa-check"></i><b>1.6.11</b> Tables</a></li>
+<li class="chapter" data-level="1.6.12" data-path="html.html"><a href="html.html#grouping"><i class="fa fa-check"></i><b>1.6.12</b> Grouping</a></li>
+<li class="chapter" data-level="1.6.13" data-path="html.html"><a href="html.html#input-elements"><i class="fa fa-check"></i><b>1.6.13</b> Input elements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="html.html"><a href="html.html#id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7</b> <code>id</code>, <code>class</code>, and <code>style</code> attributes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="html.html"><a href="html.html#overview-id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7.1</b> Overview</a></li>
+<li class="chapter" data-level="1.7.2" data-path="html.html"><a href="html.html#id"><i class="fa fa-check"></i><b>1.7.2</b> <code>id</code></a></li>
+<li class="chapter" data-level="1.7.3" data-path="html.html"><a href="html.html#html-class"><i class="fa fa-check"></i><b>1.7.3</b> <code>class</code></a></li>
+<li class="chapter" data-level="1.7.4" data-path="html.html"><a href="html.html#style-2"><i class="fa fa-check"></i><b>1.7.4</b> <code>style</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="html.html"><a href="html.html#code-layout"><i class="fa fa-check"></i><b>1.8</b> Code layout</a></li>
+<li class="chapter" data-level="1.9" data-path="html.html"><a href="html.html#inspecting-elements"><i class="fa fa-check"></i><b>1.9</b> Inspecting elements</a></li>
+<li class="chapter" data-level="1.10" data-path="html.html"><a href="html.html#exercise"><i class="fa fa-check"></i><b>1.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>2</b> CSS</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="css.html"><a href="css.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="css.html"><a href="css.html#what-is-css"><i class="fa fa-check"></i><b>2.2</b> What is CSS?</a></li>
+<li class="chapter" data-level="2.3" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>2.3</b> CSS rules</a></li>
+<li class="chapter" data-level="2.4" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i><b>2.4</b> CSS selectors</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="css.html"><a href="css.html#overview-css-selectors"><i class="fa fa-check"></i><b>2.4.1</b> Overview</a></li>
+<li class="chapter" data-level="2.4.2" data-path="css.html"><a href="css.html#type-selector"><i class="fa fa-check"></i><b>2.4.2</b> Type selector</a></li>
+<li class="chapter" data-level="2.4.3" data-path="css.html"><a href="css.html#class-selector"><i class="fa fa-check"></i><b>2.4.3</b> Class selector</a></li>
+<li class="chapter" data-level="2.4.4" data-path="css.html"><a href="css.html#id-selector"><i class="fa fa-check"></i><b>2.4.4</b> ID selector</a></li>
+<li class="chapter" data-level="2.4.5" data-path="css.html"><a href="css.html#descendant-selector"><i class="fa fa-check"></i><b>2.4.5</b> Descendant selector</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="css.html"><a href="css.html#css-conflicts"><i class="fa fa-check"></i><b>2.5</b> CSS conflicts</a></li>
+<li class="chapter" data-level="2.6" data-path="css.html"><a href="css.html#css-inheritance"><i class="fa fa-check"></i><b>2.6</b> CSS inheritance</a></li>
+<li class="chapter" data-level="2.7" data-path="css.html"><a href="css.html#linking-css-to-html"><i class="fa fa-check"></i><b>2.7</b> Linking CSS to HTML</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="css.html"><a href="css.html#methods-for-linking-css"><i class="fa fa-check"></i><b>2.7.1</b> Methods for linking CSS</a></li>
+<li class="chapter" data-level="2.7.2" data-path="css.html"><a href="css.html#inline-css"><i class="fa fa-check"></i><b>2.7.2</b> Inline CSS</a></li>
+<li class="chapter" data-level="2.7.3" data-path="css.html"><a href="css.html#embedded-css"><i class="fa fa-check"></i><b>2.7.3</b> Embedded CSS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="css.html"><a href="css.html#external-css"><i class="fa fa-check"></i><b>2.7.4</b> External CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i><b>2.8</b> CSS properties</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="css.html"><a href="css.html#overview-css-properties"><i class="fa fa-check"></i><b>2.8.1</b> Overview</a></li>
+<li class="chapter" data-level="2.8.2" data-path="css.html"><a href="css.html#color"><i class="fa fa-check"></i><b>2.8.2</b> Color</a></li>
+<li class="chapter" data-level="2.8.3" data-path="css.html"><a href="css.html#text"><i class="fa fa-check"></i><b>2.8.3</b> Text</a></li>
+<li class="chapter" data-level="2.8.4" data-path="css.html"><a href="css.html#boxes"><i class="fa fa-check"></i><b>2.8.4</b> Boxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="css.html"><a href="css.html#hurricane-scale"><i class="fa fa-check"></i><b>2.9</b> Hurricane scale example</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="css.html"><a href="css.html#html-contents"><i class="fa fa-check"></i><b>2.9.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.9.2" data-path="css.html"><a href="css.html#css-styling"><i class="fa fa-check"></i><b>2.9.2</b> CSS styling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="css.html"><a href="css.html#example-map-description"><i class="fa fa-check"></i><b>2.10</b> Map description example</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="css.html"><a href="css.html#html-contents-1"><i class="fa fa-check"></i><b>2.10.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.10.2" data-path="css.html"><a href="css.html#example-map-description-box-position"><i class="fa fa-check"></i><b>2.10.2</b> CSS styling: box position</a></li>
+<li class="chapter" data-level="2.10.3" data-path="css.html"><a href="css.html#css-styling-final-touches"><i class="fa fa-check"></i><b>2.10.3</b> CSS styling: final touches</a></li>
+<li class="chapter" data-level="2.10.4" data-path="css.html"><a href="css.html#adding-map-in-the-background"><i class="fa fa-check"></i><b>2.10.4</b> Adding map in the background</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="css.html"><a href="css.html#exercise-1"><i class="fa fa-check"></i><b>2.11</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="javascript-basics.html"><a href="javascript-basics.html"><i class="fa fa-check"></i><b>3</b> JavaScript Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="javascript-basics.html"><a href="javascript-basics.html#introduction-2"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-javascript-1"><i class="fa fa-check"></i><b>3.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="3.3" data-path="javascript-basics.html"><a href="javascript-basics.html#client-side-vs.-server-side"><i class="fa fa-check"></i><b>3.3</b> Client-side vs. server-side</a></li>
+<li class="chapter" data-level="3.4" data-path="javascript-basics.html"><a href="javascript-basics.html#the-javascript-console"><i class="fa fa-check"></i><b>3.4</b> The JavaScript console</a></li>
+<li class="chapter" data-level="3.5" data-path="javascript-basics.html"><a href="javascript-basics.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
+<li class="chapter" data-level="3.6" data-path="javascript-basics.html"><a href="javascript-basics.html#data-types"><i class="fa fa-check"></i><b>3.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="javascript-basics.html"><a href="javascript-basics.html#overview-data-types"><i class="fa fa-check"></i><b>3.6.1</b> Overview</a></li>
+<li class="chapter" data-level="3.6.2" data-path="javascript-basics.html"><a href="javascript-basics.html#primitive-data-types"><i class="fa fa-check"></i><b>3.6.2</b> Primitive data types</a></li>
+<li class="chapter" data-level="3.6.3" data-path="javascript-basics.html"><a href="javascript-basics.html#objects-data-type"><i class="fa fa-check"></i><b>3.6.3</b> Objects</a></li>
+<li class="chapter" data-level="3.6.4" data-path="javascript-basics.html"><a href="javascript-basics.html#checking-type-of-variables"><i class="fa fa-check"></i><b>3.6.4</b> Checking type of variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="javascript-basics.html"><a href="javascript-basics.html#functions"><i class="fa fa-check"></i><b>3.7</b> Functions</a></li>
+<li class="chapter" data-level="3.8" data-path="javascript-basics.html"><a href="javascript-basics.html#methods"><i class="fa fa-check"></i><b>3.8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-are-methods"><i class="fa fa-check"></i><b>3.8.1</b> What are methods?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="javascript-basics.html"><a href="javascript-basics.html#array-methods"><i class="fa fa-check"></i><b>3.8.2</b> Array methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="javascript-basics.html"><a href="javascript-basics.html#scope"><i class="fa fa-check"></i><b>3.9</b> Scope</a></li>
+<li class="chapter" data-level="3.10" data-path="javascript-basics.html"><a href="javascript-basics.html#flow-control"><i class="fa fa-check"></i><b>3.10</b> Flow control</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-flow-control"><i class="fa fa-check"></i><b>3.10.1</b> What is flow control?</a></li>
+<li class="chapter" data-level="3.10.2" data-path="javascript-basics.html"><a href="javascript-basics.html#conditionals"><i class="fa fa-check"></i><b>3.10.2</b> Conditionals</a></li>
+<li class="chapter" data-level="3.10.3" data-path="javascript-basics.html"><a href="javascript-basics.html#loops"><i class="fa fa-check"></i><b>3.10.3</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-object-notation-json"><i class="fa fa-check"></i><b>3.11</b> JavaScript Object Notation (JSON)</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-json"><i class="fa fa-check"></i><b>3.11.1</b> JSON</a></li>
+<li class="chapter" data-level="3.11.2" data-path="javascript-basics.html"><a href="javascript-basics.html#geojson"><i class="fa fa-check"></i><b>3.11.2</b> GeoJSON</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="javascript-basics.html"><a href="javascript-basics.html#exercise-2"><i class="fa fa-check"></i><b>3.12</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html"><i class="fa fa-check"></i><b>4</b> JavaScript Interactivity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-document-object-model"><i class="fa fa-check"></i><b>4.2</b> The Document Object Model (DOM)</a></li>
+<li class="chapter" data-level="4.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-and-modifying-elements"><i class="fa fa-check"></i><b>4.3</b> Accessing and modifying elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#overview-accessing-and_modifying"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accessing elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-element-properties"><i class="fa fa-check"></i><b>4.3.3</b> Getting element properties</a></li>
+<li class="chapter" data-level="4.3.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-elements"><i class="fa fa-check"></i><b>4.3.4</b> Modifying elements</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-listeners"><i class="fa fa-check"></i><b>4.4</b> Event listeners</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-types"><i class="fa fa-check"></i><b>4.4.1</b> Event types</a></li>
+<li class="chapter" data-level="4.4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#binding-event-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Binding event listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#hello-example"><i class="fa fa-check"></i><b>4.5</b> Hello example</a></li>
+<li class="chapter" data-level="4.6" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#poles-example"><i class="fa fa-check"></i><b>4.6</b> Poles example</a></li>
+<li class="chapter" data-level="4.7" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#operating-on-selection"><i class="fa fa-check"></i><b>4.7</b> Operating on multiple selections</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#example-page"><i class="fa fa-check"></i><b>4.7.1</b> Example page</a></li>
+<li class="chapter" data-level="4.7.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#making-multiple-selections"><i class="fa fa-check"></i><b>4.7.2</b> Making multiple selections</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-and-setting-input-values"><i class="fa fa-check"></i><b>4.8</b> Getting and setting input values</a></li>
+<li class="chapter" data-level="4.9" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#multiple-event-listeners"><i class="fa fa-check"></i><b>4.9</b> Multiple event listeners</a></li>
+<li class="chapter" data-level="4.10" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-event-object"><i class="fa fa-check"></i><b>4.10</b> The event object</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-object-properties"><i class="fa fa-check"></i><b>4.10.1</b> Event object properties</a></li>
+<li class="chapter" data-level="4.10.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-target"><i class="fa fa-check"></i><b>4.10.2</b> The <code>.target</code> property</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-page-based-on-data"><i class="fa fa-check"></i><b>4.11</b> Modifying page based on data</a></li>
+<li class="chapter" data-level="4.12" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#working-with-user-input"><i class="fa fa-check"></i><b>4.12</b> Calculator example</a></li>
+<li class="chapter" data-level="4.13" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#exercise-3"><i class="fa fa-check"></i><b>4.13</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="web-servers-1.html"><a href="web-servers-1.html"><i class="fa fa-check"></i><b>5</b> Web Servers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#web-servers-2"><i class="fa fa-check"></i><b>5.2</b> Web servers</a></li>
+<li class="chapter" data-level="5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#communicating-through-http"><i class="fa fa-check"></i><b>5.3</b> Communicating through HTTP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="web-servers-1.html"><a href="web-servers-1.html#web-protocols-and-http"><i class="fa fa-check"></i><b>5.3.1</b> Web protocols and HTTP</a></li>
+<li class="chapter" data-level="5.3.2" data-path="web-servers-1.html"><a href="web-servers-1.html#http-methods"><i class="fa fa-check"></i><b>5.3.2</b> HTTP methods</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#static-vs-dynamic-servers"><i class="fa fa-check"></i><b>5.4</b> Static vs. dynamic servers</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview"><i class="fa fa-check"></i><b>5.4.1</b> Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="web-servers-1.html"><a href="web-servers-1.html#static-servers"><i class="fa fa-check"></i><b>5.4.2</b> Static servers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="web-servers-1.html"><a href="web-servers-1.html#dynamic-servers"><i class="fa fa-check"></i><b>5.4.3</b> Dynamic servers</a></li>
+<li class="chapter" data-level="5.4.4" data-path="web-servers-1.html"><a href="web-servers-1.html#software-1"><i class="fa fa-check"></i><b>5.4.4</b> Software</a></li>
+<li class="chapter" data-level="5.4.5" data-path="web-servers-1.html"><a href="web-servers-1.html#practical-considerations"><i class="fa fa-check"></i><b>5.4.5</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-file-structure"><i class="fa fa-check"></i><b>5.5</b> URLs and file structure</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-index-html"><i class="fa fa-check"></i><b>5.5.1</b> URLs and <code>index.html</code></a></li>
+<li class="chapter" data-level="5.5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#file-structure"><i class="fa fa-check"></i><b>5.5.2</b> File structure</a></li>
+<li class="chapter" data-level="5.5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#relative-paths"><i class="fa fa-check"></i><b>5.5.3</b> Relative paths</a></li>
+<li class="chapter" data-level="5.5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#css-and-javasccript"><i class="fa fa-check"></i><b>5.5.4</b> CSS and JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="web-servers-1.html"><a href="web-servers-1.html#running-a-static-server"><i class="fa fa-check"></i><b>5.6</b> Running a static server</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview-running-static-server"><i class="fa fa-check"></i><b>5.6.1</b> Overview</a></li>
+<li class="chapter" data-level="5.6.2" data-path="web-servers-1.html"><a href="web-servers-1.html#local-with-python"><i class="fa fa-check"></i><b>5.6.2</b> Local with Python</a></li>
+<li class="chapter" data-level="5.6.3" data-path="web-servers-1.html"><a href="web-servers-1.html#remote-with-github-pages"><i class="fa fa-check"></i><b>5.6.3</b> Remote with GitHub Pages</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Web Mapping with Leaflet</b></span></li>
+<li class="chapter" data-level="6" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>6</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leaflet.html"><a href="leaflet.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="leaflet.html"><a href="leaflet.html#what-is-web-map"><i class="fa fa-check"></i><b>6.2</b> What is a web map?</a></li>
+<li class="chapter" data-level="6.3" data-path="leaflet.html"><a href="leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>6.3</b> What is Leaflet?</a></li>
+<li class="chapter" data-level="6.4" data-path="leaflet.html"><a href="leaflet.html#alternatives-to-leaflet"><i class="fa fa-check"></i><b>6.4</b> Alternatives to Leaflet</a></li>
+<li class="chapter" data-level="6.5" data-path="leaflet.html"><a href="leaflet.html#creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5</b> Creating a basic web map</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="leaflet.html"><a href="leaflet.html#overview-creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5.1</b> Overview</a></li>
+<li class="chapter" data-level="6.5.2" data-path="leaflet.html"><a href="leaflet.html#web-page-setup"><i class="fa fa-check"></i><b>6.5.2</b> Web page setup</a></li>
+<li class="chapter" data-level="6.5.3" data-path="leaflet.html"><a href="leaflet.html#javascript-libraries"><i class="fa fa-check"></i><b>6.5.3</b> JavaScript libraries</a></li>
+<li class="chapter" data-level="6.5.4" data-path="leaflet.html"><a href="leaflet.html#including-a-library"><i class="fa fa-check"></i><b>6.5.4</b> Including a library</a></li>
+<li class="chapter" data-level="6.5.5" data-path="leaflet.html"><a href="leaflet.html#loading-a-local-script"><i class="fa fa-check"></i><b>6.5.5</b> Loading a local script</a></li>
+<li class="chapter" data-level="6.5.6" data-path="leaflet.html"><a href="leaflet.html#loading-a-remote-script"><i class="fa fa-check"></i><b>6.5.6</b> Loading a remote script</a></li>
+<li class="chapter" data-level="6.5.7" data-path="leaflet.html"><a href="leaflet.html#including-leaflet-css-js"><i class="fa fa-check"></i><b>6.5.7</b> Including Leaflet CSS and JavaScript</a></li>
+<li class="chapter" data-level="6.5.8" data-path="leaflet.html"><a href="leaflet.html#adding-map-div"><i class="fa fa-check"></i><b>6.5.8</b> Adding map <code>&lt;div&gt;</code></a></li>
+<li class="chapter" data-level="6.5.9" data-path="leaflet.html"><a href="leaflet.html#creating-map-object"><i class="fa fa-check"></i><b>6.5.9</b> Creating a map object</a></li>
+<li class="chapter" data-level="6.5.10" data-path="leaflet.html"><a href="leaflet.html#what-are-tile-layers"><i class="fa fa-check"></i><b>6.5.10</b> What are tile layers?</a></li>
+<li class="chapter" data-level="6.5.11" data-path="leaflet.html"><a href="leaflet.html#adding-a-tile-layer"><i class="fa fa-check"></i><b>6.5.11</b> Adding a tile layer</a></li>
+<li class="chapter" data-level="6.5.12" data-path="leaflet.html"><a href="leaflet.html#tile-layer-providers"><i class="fa fa-check"></i><b>6.5.12</b> Tile layer providers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="leaflet.html"><a href="leaflet.html#adding-vector-layers"><i class="fa fa-check"></i><b>6.6</b> Adding vector layers</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="leaflet.html"><a href="leaflet.html#overview-adding-vector-layers"><i class="fa fa-check"></i><b>6.6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.6.2" data-path="leaflet.html"><a href="leaflet.html#adding-markers"><i class="fa fa-check"></i><b>6.6.2</b> Adding markers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="leaflet.html"><a href="leaflet.html#adding-lines"><i class="fa fa-check"></i><b>6.6.3</b> Adding lines</a></li>
+<li class="chapter" data-level="6.6.4" data-path="leaflet.html"><a href="leaflet.html#adding-polygons"><i class="fa fa-check"></i><b>6.6.4</b> Adding polygons</a></li>
+<li class="chapter" data-level="6.6.5" data-path="leaflet.html"><a href="leaflet.html#other-layer-types"><i class="fa fa-check"></i><b>6.6.5</b> Other layer types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="leaflet.html"><a href="leaflet.html#adding-popups"><i class="fa fa-check"></i><b>6.7</b> Adding popups</a></li>
+<li class="chapter" data-level="6.8" data-path="leaflet.html"><a href="leaflet.html#adding-a-description"><i class="fa fa-check"></i><b>6.8</b> Adding a description</a></li>
+<li class="chapter" data-level="6.9" data-path="leaflet.html"><a href="leaflet.html#introducing-map-events"><i class="fa fa-check"></i><b>6.9</b> Introducing map events</a></li>
+<li class="chapter" data-level="6.10" data-path="leaflet.html"><a href="leaflet.html#exercise-06"><i class="fa fa-check"></i><b>6.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="geojson-1.html"><a href="geojson-1.html"><i class="fa fa-check"></i><b>7</b> GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="geojson-1.html"><a href="geojson-1.html#introduction-6"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="geojson-1.html"><a href="geojson-1.html#what-is-geojson"><i class="fa fa-check"></i><b>7.2</b> What is GeoJSON?</a></li>
+<li class="chapter" data-level="7.3" data-path="geojson-1.html"><a href="geojson-1.html#geojson-structure"><i class="fa fa-check"></i><b>7.3</b> GeoJSON structure</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-geojson"><i class="fa fa-check"></i><b>7.3.1</b> Overview</a></li>
+<li class="chapter" data-level="7.3.2" data-path="geojson-1.html"><a href="geojson-1.html#geometries"><i class="fa fa-check"></i><b>7.3.2</b> Geometries</a></li>
+<li class="chapter" data-level="7.3.3" data-path="geojson-1.html"><a href="geojson-1.html#features"><i class="fa fa-check"></i><b>7.3.3</b> Features</a></li>
+<li class="chapter" data-level="7.3.4" data-path="geojson-1.html"><a href="geojson-1.html#feature-collections"><i class="fa fa-check"></i><b>7.3.4</b> Feature collections</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="geojson-1.html"><a href="geojson-1.html#editing-geojson"><i class="fa fa-check"></i><b>7.4</b> Editing GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="geojson-1.html"><a href="geojson-1.html#geojson-io"><i class="fa fa-check"></i><b>7.4.1</b> geojson.io</a></li>
+<li class="chapter" data-level="7.4.2" data-path="geojson-1.html"><a href="geojson-1.html#mapshaper"><i class="fa fa-check"></i><b>7.4.2</b> mapshaper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="geojson-1.html"><a href="geojson-1.html#adding-geojson-to-leaflet-map"><i class="fa fa-check"></i><b>7.5</b> Adding GeoJSON to Leaflet map</a></li>
+<li class="chapter" data-level="7.6" data-path="geojson-1.html"><a href="geojson-1.html#geojson-viewer"><i class="fa fa-check"></i><b>7.6</b> GeoJSON viewer example</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="geojson-1.html"><a href="geojson-1.html#viewer-structure"><i class="fa fa-check"></i><b>7.6.1</b> Viewer structure</a></li>
+<li class="chapter" data-level="7.6.2" data-path="geojson-1.html"><a href="geojson-1.html#viewer-html-and-css"><i class="fa fa-check"></i><b>7.6.2</b> HTML and CSS</a></li>
+<li class="chapter" data-level="7.6.3" data-path="geojson-1.html"><a href="geojson-1.html#base-map"><i class="fa fa-check"></i><b>7.6.3</b> Base map</a></li>
+<li class="chapter" data-level="7.6.4" data-path="geojson-1.html"><a href="geojson-1.html#adding-an-event-listener"><i class="fa fa-check"></i><b>7.6.4</b> Adding an event listener</a></li>
+<li class="chapter" data-level="7.6.5" data-path="geojson-1.html"><a href="geojson-1.html#using-layer-groups"><i class="fa fa-check"></i><b>7.6.5</b> Using layer groups</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="geojson-1.html"><a href="geojson-1.html#ajax"><i class="fa fa-check"></i><b>7.7</b> Ajax and the <code>fetch</code> API</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-ajax"><i class="fa fa-check"></i><b>7.7.1</b> What is Ajax?</a></li>
+<li class="chapter" data-level="7.7.2" data-path="geojson-1.html"><a href="geojson-1.html#ajax-examples"><i class="fa fa-check"></i><b>7.7.2</b> Ajax examples</a></li>
+<li class="chapter" data-level="7.7.3" data-path="geojson-1.html"><a href="geojson-1.html#making-ajax-requests-with-fetch"><i class="fa fa-check"></i><b>7.7.3</b> The <code>fetch</code> API</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="geojson-1.html"><a href="geojson-1.html#loading-geojson-files"><i class="fa fa-check"></i><b>7.8</b> Loading GeoJSON files</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="geojson-1.html"><a href="geojson-1.html#loading-local-files"><i class="fa fa-check"></i><b>7.8.1</b> Loading local files</a></li>
+<li class="chapter" data-level="7.8.2" data-path="geojson-1.html"><a href="geojson-1.html#loading-remote-files"><i class="fa fa-check"></i><b>7.8.2</b> Loading remote files</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="geojson-1.html"><a href="geojson-1.html#exercise-4"><i class="fa fa-check"></i><b>7.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html"><i class="fa fa-check"></i><b>8</b> Symbology and Interactivity</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#introduction-7"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#l-geojson-options"><i class="fa fa-check"></i><b>8.2</b> <code>L.geoJSON</code> options</a></li>
+<li class="chapter" data-level="8.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constant-style"><i class="fa fa-check"></i><b>8.3</b> Constant style</a></li>
+<li class="chapter" data-level="8.4" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#varying-style"><i class="fa fa-check"></i><b>8.4</b> Varying style</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-varying-style"><i class="fa fa-check"></i><b>8.4.1</b> Setting varying style</a></li>
+<li class="chapter" data-level="8.4.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#states-example"><i class="fa fa-check"></i><b>8.4.2</b> States example</a></li>
+<li class="chapter" data-level="8.4.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#towns-example"><i class="fa fa-check"></i><b>8.4.3</b> Towns example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constructing-popups-from-data"><i class="fa fa-check"></i><b>8.5</b> Constructing popups from data</a></li>
+<li class="chapter" data-level="8.6" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#adding-a-legend"><i class="fa fa-check"></i><b>8.6</b> Adding a legend</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-legend-contents-with-l.control"><i class="fa fa-check"></i><b>8.6.1</b> Setting legend contents with <code>L.control</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#using-css-to-style-the-legend"><i class="fa fa-check"></i><b>8.6.2</b> Using CSS to style the legend</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-style"><i class="fa fa-check"></i><b>8.7</b> Dynamic style</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#styling-in-response-to-events"><i class="fa fa-check"></i><b>8.7.1</b> Styling in response to events</a></li>
+<li class="chapter" data-level="8.7.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-control-contents"><i class="fa fa-check"></i><b>8.7.2</b> Dynamic control contents</a></li>
+<li class="chapter" data-level="8.7.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#linked-views"><i class="fa fa-check"></i><b>8.7.3</b> Linked views</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#exercise-08"><i class="fa fa-check"></i><b>8.8</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>III Databases</b></span></li>
+<li class="chapter" data-level="9" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>9</b> Databases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="databases.html"><a href="databases.html#introduction-databases"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="databases.html"><a href="databases.html#what-is-carto"><i class="fa fa-check"></i><b>9.2</b> What is CARTO?</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="databases.html"><a href="databases.html#the-carto-platform"><i class="fa fa-check"></i><b>9.2.1</b> The CARTO platform</a></li>
+<li class="chapter" data-level="9.2.2" data-path="databases.html"><a href="databases.html#alternatives-to-carto"><i class="fa fa-check"></i><b>9.2.2</b> Alternatives to CARTO</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="databases.html"><a href="databases.html#databases-1"><i class="fa fa-check"></i><b>9.3</b> Databases</a></li>
+<li class="chapter" data-level="9.4" data-path="databases.html"><a href="databases.html#spatial-databases"><i class="fa fa-check"></i><b>9.4</b> Spatial databases</a></li>
+<li class="chapter" data-level="9.5" data-path="databases.html"><a href="databases.html#what-is-postgis"><i class="fa fa-check"></i><b>9.5</b> What is PostGIS?</a></li>
+<li class="chapter" data-level="9.6" data-path="databases.html"><a href="databases.html#what-is-sql"><i class="fa fa-check"></i><b>9.6</b> What is SQL?</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="databases.html"><a href="databases.html#overview-sql"><i class="fa fa-check"></i><b>9.6.1</b> Overview</a></li>
+<li class="chapter" data-level="9.6.2" data-path="databases.html"><a href="databases.html#non-spatial-queries"><i class="fa fa-check"></i><b>9.6.2</b> Non-spatial queries</a></li>
+<li class="chapter" data-level="9.6.3" data-path="databases.html"><a href="databases.html#the-geometry-column"><i class="fa fa-check"></i><b>9.6.3</b> The geometry column</a></li>
+<li class="chapter" data-level="9.6.4" data-path="databases.html"><a href="databases.html#spatial-queries"><i class="fa fa-check"></i><b>9.6.4</b> Spatial queries</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="databases.html"><a href="databases.html#the-carto-sql-api"><i class="fa fa-check"></i><b>9.7</b> The CARTO SQL API</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="databases.html"><a href="databases.html#api-usage"><i class="fa fa-check"></i><b>9.7.1</b> API usage</a></li>
+<li class="chapter" data-level="9.7.2" data-path="databases.html"><a href="databases.html#query-example"><i class="fa fa-check"></i><b>9.7.2</b> Query example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="databases.html"><a href="databases.html#uploading-your-data"><i class="fa fa-check"></i><b>9.7.3</b> Uploading your data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="databases.html"><a href="databases.html#carto-and-leaflet"><i class="fa fa-check"></i><b>9.8</b> CARTO and Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="databases.html"><a href="databases.html#exercise-09"><i class="fa fa-check"></i><b>9.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html"><i class="fa fa-check"></i><b>10</b> Non-spatial Queries</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#introduction-8"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#subsetting-with-sql"><i class="fa fa-check"></i><b>10.2</b> Subsetting with SQL</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#filtering-based-on-attributes"><i class="fa fa-check"></i><b>10.2.1</b> Filtering based on attributes</a></li>
+<li class="chapter" data-level="10.2.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#displaying-on-a-map"><i class="fa fa-check"></i><b>10.2.2</b> Displaying on a map</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#creating-a-dropdown-menu"><i class="fa fa-check"></i><b>10.3</b> Creating a dropdown menu</a></li>
+<li class="chapter" data-level="10.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#populating-dropdown-options"><i class="fa fa-check"></i><b>10.4</b> Populating dropdown options</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#how-many-species-do-we-have"><i class="fa fa-check"></i><b>10.4.1</b> How many species do we have?</a></li>
+<li class="chapter" data-level="10.4.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#dropdown-menu-placeholder"><i class="fa fa-check"></i><b>10.4.2</b> Dropdown menu placeholder</a></li>
+<li class="chapter" data-level="10.4.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#finding-unique-values"><i class="fa fa-check"></i><b>10.4.3</b> Finding unique values</a></li>
+<li class="chapter" data-level="10.4.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#adding-options"><i class="fa fa-check"></i><b>10.4.4</b> Adding the options</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#updating-the-map"><i class="fa fa-check"></i><b>10.5</b> Updating the map</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#overview-updating-map"><i class="fa fa-check"></i><b>10.5.1</b> Overview</a></li>
+<li class="chapter" data-level="10.5.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#manual-example"><i class="fa fa-check"></i><b>10.5.2</b> Manual example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#automatic-updating"><i class="fa fa-check"></i><b>10.5.3</b> Automatic updating</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#rearranging-the-code"><i class="fa fa-check"></i><b>10.6</b> Refactoring the code</a></li>
+<li class="chapter" data-level="10.7" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#exercise-10"><i class="fa fa-check"></i><b>10.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html"><i class="fa fa-check"></i><b>11</b> Spatial Queries</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-marker-on-click"><i class="fa fa-check"></i><b>11.2</b> Adding markers on click</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#getting-click-coordinates"><i class="fa fa-check"></i><b>11.2.1</b> Getting click coordinates</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-custom-marker"><i class="fa fa-check"></i><b>11.2.2</b> Adding a custom marker</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#spatial-postgis-operators"><i class="fa fa-check"></i><b>11.3</b> Spatial PostGIS operators</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#overview-postgis-operators"><i class="fa fa-check"></i><b>11.3.1</b> Overview</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#geographical-distance"><i class="fa fa-check"></i><b>11.3.2</b> Geographical distance</a></li>
+<li class="chapter" data-level="11.3.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#sphere-vs-spheroid"><i class="fa fa-check"></i><b>11.3.3</b> Sphere vs. spheroid</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-nearest-points-to-map"><i class="fa fa-check"></i><b>11.4</b> Adding nearest points to map</a></li>
+<li class="chapter" data-level="11.5" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#drawing-line-connectors"><i class="fa fa-check"></i><b>11.5</b> Drawing line connectors</a></li>
+<li class="chapter" data-level="11.6" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#exercise-5"><i class="fa fa-check"></i><b>11.6</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>IV Advanced Topics</b></span></li>
+<li class="chapter" data-level="12" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html"><i class="fa fa-check"></i><b>12</b> Client-side Geoprocessing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#introduction-10"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#geoprocessing-with-turfjs"><i class="fa fa-check"></i><b>12.2</b> Geoprocessing with Turf.js</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-turfjs"><i class="fa fa-check"></i><b>12.2.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#including-the-turf-js-library"><i class="fa fa-check"></i><b>12.2.2</b> Including the Turf.js library</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#great-circle-line"><i class="fa fa-check"></i><b>12.3</b> Great Circle line</a></li>
+<li class="chapter" data-level="12.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuously-updated-tin"><i class="fa fa-check"></i><b>12.4</b> Continuously updated TIN</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-continuous-tin"><i class="fa fa-check"></i><b>12.4.1</b> Overview</a></li>
+<li class="chapter" data-level="12.4.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#generating-random-points"><i class="fa fa-check"></i><b>12.4.2</b> Generating random points</a></li>
+<li class="chapter" data-level="12.4.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-tin-layer"><i class="fa fa-check"></i><b>12.4.3</b> Adding a TIN layer</a></li>
+<li class="chapter" data-level="12.4.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#draggable-circle-markers"><i class="fa fa-check"></i><b>12.4.4</b> Draggable circle markers</a></li>
+<li class="chapter" data-level="12.4.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuous-updating"><i class="fa fa-check"></i><b>12.4.5</b> Continuous updating</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#clustering"><i class="fa fa-check"></i><b>12.5</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-clustering"><i class="fa fa-check"></i><b>12.5.1</b> Overview</a></li>
+<li class="chapter" data-level="12.5.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#processing-sets-of-features"><i class="fa fa-check"></i><b>12.5.2</b> Processing sets of features</a></li>
+<li class="chapter" data-level="12.5.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-convex-hull"><i class="fa fa-check"></i><b>12.5.3</b> Adding a Convex Hull</a></li>
+<li class="chapter" data-level="12.5.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#dbscan-clustering"><i class="fa fa-check"></i><b>12.5.4</b> DBSCAN clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#heatmaps-with-leafletheat"><i class="fa fa-check"></i><b>12.6</b> Heatmaps with Leaflet.heat</a></li>
+<li class="chapter" data-level="12.7" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#exercise-6"><i class="fa fa-check"></i><b>12.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html"><i class="fa fa-check"></i><b>13</b> Collaborative Mapping</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#introduction-11"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#crowdsourcing"><i class="fa fa-check"></i><b>13.2</b> Crowdsourcing</a></li>
+<li class="chapter" data-level="13.3" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#the-drawing-control"><i class="fa fa-check"></i><b>13.3</b> The drawing control</a></li>
+<li class="chapter" data-level="13.4" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#working-with-drawn-items"><i class="fa fa-check"></i><b>13.4</b> Working with drawn items</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#printing-drawn-items-geojson"><i class="fa fa-check"></i><b>13.4.1</b> Printing drawn items GeoJSON</a></li>
+<li class="chapter" data-level="13.4.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#expanded-geojson-viewer"><i class="fa fa-check"></i><b>13.4.2</b> Expanded GeoJSON viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#submission-form"><i class="fa fa-check"></i><b>13.5</b> Submission form</a></li>
+<li class="chapter" data-level="13.6" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#sending-features-to-the-database"><i class="fa fa-check"></i><b>13.6</b> Sending features to the database</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#setting-database-permissions"><i class="fa fa-check"></i><b>13.6.1</b> Setting database permissions</a></li>
+<li class="chapter" data-level="13.6.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#adding-draw-control"><i class="fa fa-check"></i><b>13.6.2</b> Adding the drawing control</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#exercise-7"><i class="fa fa-check"></i><b>13.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="associated-files.html"><a href="associated-files.html"><i class="fa fa-check"></i><b>A</b> Associated Files</a></li>
+<li class="chapter" data-level="B" data-path="list-of-examples.html"><a href="list-of-examples.html"><i class="fa fa-check"></i><b>B</b> List of Examples</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="list-of-examples.html"><a href="list-of-examples.html#main"><i class="fa fa-check"></i><b>B.1</b> Main</a></li>
+<li class="chapter" data-level="B.2" data-path="list-of-examples.html"><a href="list-of-examples.html#additional"><i class="fa fa-check"></i><b>B.2</b> Additional</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="list-of-examples.html"><a href="list-of-examples.html#html-and-css"><i class="fa fa-check"></i><b>B.2.1</b> HTML and CSS</a></li>
+<li class="chapter" data-level="B.2.2" data-path="list-of-examples.html"><a href="list-of-examples.html#javascript"><i class="fa fa-check"></i><b>B.2.2</b> JavaScript</a></li>
+<li class="chapter" data-level="B.2.3" data-path="list-of-examples.html"><a href="list-of-examples.html#leaflet-1"><i class="fa fa-check"></i><b>B.2.3</b> Leaflet</a></li>
+<li class="chapter" data-level="B.2.4" data-path="list-of-examples.html"><a href="list-of-examples.html#geo-processing"><i class="fa fa-check"></i><b>B.2.4</b> Geo-processing</a></li>
+<li class="chapter" data-level="B.2.5" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps"><i class="fa fa-check"></i><b>B.2.5</b> 2.5D Maps</a></li>
+<li class="chapter" data-level="B.2.6" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps-1"><i class="fa fa-check"></i><b>B.2.6</b> 3D maps</a></li>
+<li class="chapter" data-level="B.2.7" data-path="list-of-examples.html"><a href="list-of-examples.html#animation"><i class="fa fa-check"></i><b>B.2.7</b> Animation</a></li>
+<li class="chapter" data-level="B.2.8" data-path="list-of-examples.html"><a href="list-of-examples.html#real-time-data"><i class="fa fa-check"></i><b>B.2.8</b> Real-time data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="list-of-exercise-solutions.html"><a href="list-of-exercise-solutions.html"><i class="fa fa-check"></i><b>C</b> List of Exercise Solutions</a></li>
+<li class="chapter" data-level="D" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html"><i class="fa fa-check"></i><b>D</b> BGU course 2021</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#place-and-time"><i class="fa fa-check"></i><b>D.1</b> Place and Time</a></li>
+<li class="chapter" data-level="D.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#lecture-plan"><i class="fa fa-check"></i><b>D.2</b> Lecture plan</a></li>
+<li class="chapter" data-level="D.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#project-submission-dates"><i class="fa fa-check"></i><b>D.3</b> Project submission dates</a></li>
+<li class="chapter" data-level="D.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#additional-resources"><i class="fa fa-check"></i><b>D.4</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#html-css"><i class="fa fa-check"></i><b>D.4.1</b> HTML &amp; CSS</a></li>
+<li class="chapter" data-level="D.4.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#javascript-1"><i class="fa fa-check"></i><b>D.4.2</b> JavaScript</a></li>
+<li class="chapter" data-level="D.4.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#web-mapping"><i class="fa fa-check"></i><b>D.4.3</b> Web mapping</a></li>
+<li class="chapter" data-level="D.4.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#postgis"><i class="fa fa-check"></i><b>D.4.4</b> PostGIS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="projects.html"><a href="projects.html"><i class="fa fa-check"></i><b>E</b> Projects</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="projects.html"><a href="projects.html#overview-3"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="projects.html"><a href="projects.html#carto-account"><i class="fa fa-check"></i><b>E.2</b> CARTO Account</a></li>
+<li class="chapter" data-level="E.3" data-path="projects.html"><a href="projects.html#data"><i class="fa fa-check"></i><b>E.3</b> Data</a></li>
+<li class="chapter" data-level="E.4" data-path="projects.html"><a href="projects.html#project-requirements"><i class="fa fa-check"></i><b>E.4</b> Project requirements</a>
+<ul>
+<li class="chapter" data-level="E.4.1" data-path="projects.html"><a href="projects.html#project-01"><i class="fa fa-check"></i><b>E.4.1</b> Project 01</a></li>
+<li class="chapter" data-level="E.4.2" data-path="projects.html"><a href="projects.html#project-02"><i class="fa fa-check"></i><b>E.4.2</b> Project 02</a></li>
+<li class="chapter" data-level="E.4.3" data-path="projects.html"><a href="projects.html#project-03"><i class="fa fa-check"></i><b>E.4.3</b> Project 03</a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="projects.html"><a href="projects.html#submission"><i class="fa fa-check"></i><b>E.5</b> Submission</a></li>
+<li class="chapter" data-level="E.6" data-path="projects.html"><a href="projects.html#grading"><i class="fa fa-check"></i><b>E.6</b> Grading</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>F</b> Exam</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="exam.html"><a href="exam.html#topics"><i class="fa fa-check"></i><b>F.1</b> Topics</a></li>
+<li class="chapter" data-level="F.2" data-path="exam.html"><a href="exam.html#sample-questions"><i class="fa fa-check"></i><b>F.2</b> Sample questions</a>
+<ul>
+<li class="chapter" data-level="F.2.1" data-path="exam.html"><a href="exam.html#question-1"><i class="fa fa-check"></i><b>F.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="F.2.3" data-path="exam.html"><a href="exam.html#question-3"><i class="fa fa-check"></i><b>F.2.3</b> Question 3</a></li>
+<li class="chapter" data-level="F.2.4" data-path="exam.html"><a href="exam.html#question-4"><i class="fa fa-check"></i><b>F.2.4</b> Question 4</a></li>
+<li class="chapter" data-level="F.2.5" data-path="exam.html"><a href="exam.html#question-5"><i class="fa fa-check"></i><b>F.2.5</b> Question 5</a></li>
+<li class="chapter" data-level="F.2.6" data-path="exam.html"><a href="exam.html#question-6"><i class="fa fa-check"></i><b>F.2.6</b> Question 6</a></li>
+<li class="chapter" data-level="F.2.7" data-path="exam.html"><a href="exam.html#question-7"><i class="fa fa-check"></i><b>F.2.7</b> Question 7</a></li>
+<li class="chapter" data-level="F.2.8" data-path="exam.html"><a href="exam.html#question-8"><i class="fa fa-check"></i><b>F.2.8</b> Question 8</a></li>
+<li class="chapter" data-level="F.2.9" data-path="exam.html"><a href="exam.html#question-9"><i class="fa fa-check"></i><b>F.2.9</b> Question 9</a></li>
+<li class="chapter" data-level="F.2.10" data-path="exam.html"><a href="exam.html#question-10"><i class="fa fa-check"></i><b>F.2.10</b> Question 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="additional-questions.html"><a href="additional-questions.html"><i class="fa fa-check"></i><b>G</b> Additional Questions</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="additional-questions.html"><a href="additional-questions.html#chapter-3"><i class="fa fa-check"></i><b>G.1</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="G.1.1" data-path="additional-questions.html"><a href="additional-questions.html#modifying-global-variable"><i class="fa fa-check"></i><b>G.1.1</b> Modifying global variable</a></li>
+<li class="chapter" data-level="G.1.2" data-path="additional-questions.html"><a href="additional-questions.html#insertingremoving-array-element"><i class="fa fa-check"></i><b>G.1.2</b> Inserting/removing array element</a></li>
+<li class="chapter" data-level="G.1.3" data-path="additional-questions.html"><a href="additional-questions.html#object-oriented-language"><i class="fa fa-check"></i><b>G.1.3</b> Object Oriented language</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="additional-questions.html"><a href="additional-questions.html#chapter-4"><i class="fa fa-check"></i><b>G.2</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="G.2.1" data-path="additional-questions.html"><a href="additional-questions.html#removing-collection-of-html-elements"><i class="fa fa-check"></i><b>G.2.1</b> Removing collection of HTML elements</a></li>
+<li class="chapter" data-level="G.2.2" data-path="additional-questions.html"><a href="additional-questions.html#constraining-event-listener-frequency"><i class="fa fa-check"></i><b>G.2.2</b> Constraining event listener frequency</a></li>
+<li class="chapter" data-level="G.2.3" data-path="additional-questions.html"><a href="additional-questions.html#saving-.getelementbyid-method-in-variable"><i class="fa fa-check"></i><b>G.2.3</b> Saving <code>.getElementById</code> method in variable</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="additional-questions.html"><a href="additional-questions.html#chapter-6"><i class="fa fa-check"></i><b>G.3</b> Chapter 6</a>
+<ul>
+<li class="chapter" data-level="G.3.1" data-path="additional-questions.html"><a href="additional-questions.html#routing"><i class="fa fa-check"></i><b>G.3.1</b> Routing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html"><i class="fa fa-check"></i><b>H</b> Setting up an SQL API</a>
+<ul>
+<li class="chapter" data-level="H.1" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#introduction-12"><i class="fa fa-check"></i><b>H.1</b> Introduction</a></li>
+<li class="chapter" data-level="H.2" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#computer-with-fixed-ip-address"><i class="fa fa-check"></i><b>H.2</b> Computer with fixed IP address</a></li>
+<li class="chapter" data-level="H.3" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-postgresql-postgis"><i class="fa fa-check"></i><b>H.3</b> Installing PostgreSQL and PostGIS</a></li>
+<li class="chapter" data-level="H.4" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#loading-data-into-the-database"><i class="fa fa-check"></i><b>H.4</b> Loading data into the database</a></li>
+<li class="chapter" data-level="H.5" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#adding-read-only-database-user"><i class="fa fa-check"></i><b>H.5</b> Adding a read-only database user</a></li>
+<li class="chapter" data-level="H.6" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-nodejs-and-required-modules"><i class="fa fa-check"></i><b>H.6</b> Installing Node.js and required modules</a></li>
+<li class="chapter" data-level="H.7" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#creating-a-service"><i class="fa fa-check"></i><b>H.7</b> Creating a service</a></li>
+<li class="chapter" data-level="H.8" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#testing-the-sql-api"><i class="fa fa-check"></i><b>H.8</b> Testing the SQL API</a></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html"><i class="fa fa-check"></i><b>I</b> Setting up a static server using R</a>
+<ul>
+<li class="chapter" data-level="I.1" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#introduction-13"><i class="fa fa-check"></i><b>I.1</b> Introduction</a></li>
+<li class="chapter" data-level="I.2" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-r"><i class="fa fa-check"></i><b>I.2</b> Installing R</a></li>
+<li class="chapter" data-level="I.3" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-the-servr-package"><i class="fa fa-check"></i><b>I.3</b> Installing the <code>servr</code> package</a></li>
+<li class="chapter" data-level="I.4" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#starting-the-server"><i class="fa fa-check"></i><b>I.4</b> Starting the server</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="index-2.html">Introduction to Web Mapping</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="javascript-interactivity" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> JavaScript Interactivity</h1>
+<p><i>Last updated: 2021-08-24 14:54:58 </i></p>
+<div id="introduction-3" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Introduction</h2>
+<p>In Chapters <a href="html.html#html">1</a>–<a href="css.html#css">2</a>, we mentioned that JavaScript is primarily used to control the interactive behavior of web pages. However, in Chapter <a href="javascript-basics.html#javascript-basics">3</a> we introduced the JavaScript language “in isolation”: none of the JavaScript expressions we executed in the console had any effect on the contents of the web page where they were run. Indeed, how can we link JavaScript code with page contents, to interactively modify the web page? This is precisely the subject of the current chapter—employing JavaScript to query and modify web page content. As we will see, the mechanism which makes the link possible is the <strong>Document Object Model (DOM)</strong>.</p>
+</div>
+<div id="the-document-object-model" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> The Document Object Model (DOM)</h2>
+<p>When a web browser loads an HTML document, it displays (renders) the contents of that document on the screen, possibly styled according to CSS styling rules. But that’s not all the web browser does with the tags, attributes, and text contents of the HTML document. The browser also creates and memorizes a “model” of that page’s HTML (Figure <a href="javascript-interactivity.html#fig:dom">4.1</a>). In other words, the browser remembers the HTML tags, their attributes, and the order in which they appear in the file. This representation of the page is called the <a href="https://en.wikipedia.org/wiki/Document_Object_Model"><strong>Document Object Model (DOM)</strong></a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:dom"></span>
+<img src="images/dom2.png" alt="The Document Object Model (DOM) is a representation of an HTML document, constructed by the browser on page load\index{Document Object Model (DOM)}" width="100%" />
+<p class="caption">
+FIGURE 4.1: The Document Object Model (DOM) is a representation of an HTML document, constructed by the browser on page load
+</p>
+</div>
+<p>The DOM is sometimes referred to as an <a href="https://en.wikipedia.org/wiki/Application_programming_interface"><strong>Application Programming Interface (API)</strong></a> for accessing HTML documents with JavaScript. An API is a general term for methods of communication between software components. The DOM can be considered an API, since it bridges between JavaScript code and page contents displayed in the browser. The DOM basically provides the information and tools necessary to navigate through, or make changes or additions, to the HTML on the page. The DOM itself isn’t actually JavaScript—it’s a standard from the <a href="https://www.w3.org/DOM/">World Wide Web Consortium (W3C)</a> that most browser manufacturers have adopted and added to their browsers. </p>
+</div>
+<div id="accessing-and-modifying-elements" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Accessing and modifying elements</h2>
+<div id="overview-accessing-and_modifying" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Overview</h3>
+<p>All of the properties and methods of the DOM, available for manipulating web pages, are organized into objects which are accessible through JavaScript code. Two of the most important objects are: </p>
+<ul>
+<li>The <code>window</code> object, which represents the browser <strong>window</strong>, i.e., the global environment</li>
+<li>The <code>document</code> object, which represents the <strong>document</strong> itself<a href="#fn39" class="footnote-ref" id="fnref39"><sup>39</sup></a></li>
+</ul>
+<p>Using the properties and methods of the <code>window</code> and <code>document</code> objects, we are able to access document element contents or their display settings, and also dynamically adjust them. For example, the <code>document</code> object has a property named <code>title</code>, referring to the text within the <code>&lt;title&gt;</code> element—the page title (Section <a href="html.html#html-title">1.6.3.1</a>). We can access <code>document.title</code>, to get a string with page title, or modify page title, by assigning a new string to <code>document.title</code>. </p>
+<blockquote>
+<ul>
+<li>Open the browser and browse to any web page you like.</li>
+<li>Open the JavaScript console (Section <a href="javascript-basics.html#the-javascript-console">3.4</a>) and try typing <code>document.title</code> and <code>window.location.href</code>.</li>
+<li>Check the type of returned values, using the <code>typeof</code> operator (Section <a href="javascript-basics.html#checking-type-of-variables">3.6.4</a>).</li>
+<li>Try assigning a new string into <code>document.title</code>. The new title should appear on top of the browser window!</li>
+<li>Go to any page (other than <a href="https://www.google.com/" class="uri">https://www.google.com</a>) and type <code>window.location.href="https://www.google.com"</code> into the console. What do you think will happen?</li>
+</ul>
+</blockquote>
+</div>
+<div id="accessing-elements" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Accessing elements</h3>
+<p>The <code>document.title</code> property was just an example, referring to the specific <code>&lt;title&gt;</code> element. We need a more general method if we want to be able to locate, and modify, <em>any</em> element in our document. The <code>document</code> object indeed contains several methods for finding elements in the DOM. These methods are called DOM <strong>selectors</strong>, or DOM queries. The following expressions are examples of DOM selectors: </p>
+<div class="sourceCode" id="cb156"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb156-1"><a href="javascript-interactivity.html#cb156-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;firstParagraph&quot;</span>)<span class="op">;</span></span>
+<span id="cb156-2"><a href="javascript-interactivity.html#cb156-2" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByClassName</span>(<span class="st">&quot;important&quot;</span>)<span class="op">;</span></span>
+<span id="cb156-3"><a href="javascript-interactivity.html#cb156-3" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&quot;p&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>These three expressions employ methods of the <code>document</code> object: </p>
+<ul>
+<li>The <em>first</em> selector uses the <code>.getElementById</code> method to select an individual element with a specific ID, <code>id="firstParagraph"</code>.</li>
+<li>The <em>second</em> selector uses the <code>.getElementsByClassName</code> method to select <em>all</em> elements with a specific class, <code>class="important"</code>.</li>
+<li>The <em>third</em> selector uses the <code>.getElementsByTagName</code> method to select <em>all</em> elements with a specific type, <code>&lt;p&gt;</code> (i.e., all paragraphs)<a href="#fn40" class="footnote-ref" id="fnref40"><sup>40</sup></a>.</li>
+</ul>
+<p>Note that the first method returns an <em>individual</em> element reference. The second and third methods, however, returns an array-like <em>collection</em> of multiple references, even if there is just one element with the particular class or type (more on that in Section <a href="javascript-interactivity.html#making-multiple-selections">4.7.2</a>). We are going to see just one example of working with a collection of DOM references in Section <a href="javascript-interactivity.html#making-multiple-selections">4.7.2</a>. Selecting one element at a time, using <code>.getElementById</code>, is going to be sufficient for all of the examples in this chapter and throughout most of the book.</p>
+<blockquote>
+<ul>
+<li>Open the console in <code>example-02-01.html</code> (Figure <a href="css.html#fig:example-02-01">2.2</a>), and type the following expressions:
+<ul>
+<li><code>document.getElementById("intro");</code></li>
+<li><code>document.getElementsByTagName("p");</code></li>
+</ul></li>
+<li>Which element(s) does each of the resulting references represent?</li>
+</ul>
+</blockquote>
+</div>
+<div id="getting-element-properties" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Getting element properties</h3>
+<p>The result of a DOM query (Section <a href="javascript-interactivity.html#accessing-elements">4.3.2</a>) is a <strong>reference</strong> to an element, or to a collection of elements, in the DOM. That reference can be used to query or to modify (Section <a href="javascript-interactivity.html#modifying-elements">4.3.4</a>) the contents or behavior of the element(s). For example, the <code>innerHTML</code> property of a DOM element refers to the HTML code of that element. The following expression returns the HTML contents of the element that has <code>id="firstParagraph"</code>:</p>
+<div class="sourceCode" id="cb157"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb157-1"><a href="javascript-interactivity.html#cb157-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;firstParagraph&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Open the console in <code>example-02-01.html</code> (Figure <a href="css.html#fig:example-02-01">2.2</a>), and type the expression <code>document.getElementById("intro").innerHTML;</code>.
+<ul>
+<li>What does the returned data represent?</li>
+<li>What is the type of the returned data? Check using the <code>typeof</code> operator (Section <a href="javascript-basics.html#checking-type-of-variables">3.6.4</a>).</li>
+</ul></li>
+</ul>
+</blockquote>
+</div>
+<div id="modifying-elements" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Modifying elements</h3>
+<p>Element references can also be used to <em>modify</em> the contents and the behavior (Section <a href="javascript-interactivity.html#event-listeners">4.4</a>) of the respecive elements. For example, assignment of a string into the <code>.innerHTML</code> property replaces the HTML code of the given element. The following expression uses the <code>innerHTML</code> property to modify the HTML content of the element which has <code>id="firstParagraph"</code>, replacing any previous HTML code inside that element with <code>Hello &lt;b&gt;world&lt;/b&gt;!</code>: </p>
+<div class="sourceCode" id="cb158"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb158-1"><a href="javascript-interactivity.html#cb158-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;firstParagraph&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;Hello &lt;b&gt;world&lt;/b&gt;!&quot;</span><span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Open the console in <code>example-02-01.html</code> (Figure <a href="css.html#fig:example-02-01">2.2</a>) once again, and then:
+<ul>
+<li>Type an expression which changes the contents of the paragraph that has <code>id="intro"</code> into the console.</li>
+<li>Include an internal HTML element, such as <code>&lt;b&gt;</code> or <code>&lt;i&gt;</code>, in the new text contents of the paragraph.</li>
+</ul></li>
+</ul>
+</blockquote>
+<p>It is important to understand that the HTML <strong>source code</strong> and the <strong>DOM</strong> are two separate entities. While the HTML source code sent to the browser is constant, the DOM, which is initially constructed from the HTML source code (Figure <a href="javascript-interactivity.html#fig:dom">4.1</a>), can be dynamically altered using JavaScript code. As long as no JavaScript code that modifies the DOM is being run, the DOM and the HTML source code are identical. However, when JavaScript code <em>does</em> modify the DOM, the DOM changes and the displayed content in the browser window changes accordingly.</p>
+<p>The current DOM state can be examined, for example, using the <strong>Elements</strong> tab of the <strong>developer tools</strong> (in Chrome). The HTML source code can be shown with <strong>Ctrl+U</strong> (in Chrome), as we have already discussed in Section <a href="html.html#web-pages">1.3</a>. Again, the source code remains exactly the same as initially sent from the server, no matter what happens on the page, while the DOM may be modified by JavaScript code and thus may change. This means that the HTML source code does not necessarily match the DOM once any JavaScript code was executed. </p>
+<blockquote>
+<ul>
+<li>While running the examples in this chapter, you can compare the HTML source code and the DOM to see how the DOM changes in response to executed JavaScript code, while the HTML source code remains the same as initially loaded.</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="event-listeners" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Event listeners</h2>
+<div id="event-types" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Event types</h3>
+<p>Sometimes we want to change the DOM at once, for example on page load (Section <a href="javascript-interactivity.html#modifying-page-based-on-data">4.11</a>). In other cases, however, we want to change the DOM <em>dynamically</em>, in response to user actions on the page, such as clicking on a button. This is where the DOM <strong>events</strong> come into play. Each and every thing that happens to a web page is called an event. Web browsers are programmed to recognize various events, including user actions such as: </p>
+<ul>
+<li>Mouse movement and clicks</li>
+<li>Pressing on the keyboard</li>
+<li>Re-sizing the browser window</li>
+</ul>
+<p>An event represents the precise moment when something happens inside the browser. This is sometimes referred to as the event being <em>fired</em>. There are different types of events, depending on the type of action taking place. For example, when you click a mouse, at the precise moment you release the mouse button the web browser signals that a <code>"click"</code> event has just occurred. In fact, web browsers fire several separate events whenever you click the mouse button. First, as soon as you press the mouse button, the <code>"mousedown"</code> event fires; then, when you let go of the button, the <code>"mouseup"</code> event fires; and finally, the <code>"click"</code> event fires. </p>
+<p>To make your web page interactive, you need to write code that runs and does something useful in response to the appropriate type of event occurring on the appropriate element(s). This type of binded code is known as an <strong>event listener</strong>, or an event handler. For example, we may wish to set an event listener which responds to user click on an interactive map by adding a marker in the clicked location (Section <a href="spatial-queries-1.html#adding-custom-marker">11.2.2</a>). In such case, we need to bind an event listener: </p>
+<ul>
+<li>to the interactive map object,</li>
+<li>with a function for adding a marker,</li>
+<li>which is executed in response to a mouse <code>"click"</code> event.</li>
+</ul>
+<p>A mouse click is just one example, out of many predefined event types that the browser can detect. Table <a href="javascript-interactivity.html#tab:event-types">4.1</a> lists some commonly used event types. </p>
+<table>
+<caption><span id="tab:event-types">TABLE 4.1: </span> Commonly used browser event types</caption>
+<thead>
+<tr class="header">
+<th>Type</th>
+<th>Event</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mouse</td>
+<td><code>"click"</code></td>
+<td>Click</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"dblclick"</code></td>
+<td>Double-click</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"mousedown"</code></td>
+<td>Mouse button pressed</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"mouseup"</code></td>
+<td>Mouse button released</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"mouseover"</code></td>
+<td>Mouse cursor moves into element</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"mouseout"</code></td>
+<td>Mouse cursor leaves element</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"mousemove"</code></td>
+<td>Mouse moved</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"drag"</code></td>
+<td>Element being dragged</td>
+</tr>
+<tr class="odd">
+<td>Keyboard</td>
+<td><code>"keydown"</code></td>
+<td>Key pressed</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"keypress"</code></td>
+<td>Key pressed (character keys only)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"keyup"</code></td>
+<td>Key released</td>
+</tr>
+<tr class="even">
+<td>Focus and Blur</td>
+<td><code>"focus"</code></td>
+<td>Element gains focus (e.g., typing inside <code>&lt;input&gt;</code>)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"blur"</code></td>
+<td>Element loses focus</td>
+</tr>
+<tr class="even">
+<td>Forms</td>
+<td><code>"submit"</code></td>
+<td>Form submitted</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"change"</code></td>
+<td>Value changed</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"input"</code></td>
+<td>User input</td>
+</tr>
+<tr class="odd">
+<td>Document/Window</td>
+<td><code>"load"</code></td>
+<td>Page finished loading</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"unload"</code></td>
+<td>Page unloading (new page requested)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"error"</code></td>
+<td>JavaScript error encountered</td>
+</tr>
+<tr class="even">
+<td></td>
+<td><code>"resize"</code></td>
+<td>Browser window resized</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><code>"scroll"</code></td>
+<td>User scrolls the page</td>
+</tr>
+</tbody>
+</table>
+<p>In this book, we will mostly use the <code>"click"</code>, <code>"mouseover"</code>, <code>"mouseout"</code>, and <code>"drag"</code> events, all from the Mouse events category, as well as <code>"change"</code> from the Forms category (Table <a href="javascript-interactivity.html#tab:event-types">4.1</a>). However, it is important to be aware of the other possibilities, such as events related to window resize or scrolling, or keyboard key presses. </p>
+</div>
+<div id="binding-event-listeners" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Binding event listeners</h3>
+<p>DOM element reference objects contain the <code>.addEventListener</code> method, which can be used to add event listeners to the respective element. The <code>.addEventListener</code> method accepts two arguments:</p>
+<ul>
+<li>A specification of the event <strong>type</strong> (Table <a href="javascript-interactivity.html#tab:event-types">4.1</a>) that are being listened to, such as <code>"click"</code></li>
+<li>A <strong>function</strong>, which is executed each time the event fires</li>
+</ul>
+<p>For example, to bind a <code>"click"</code> event listener to a paragraph that has <code>id="important"</code> on the page, you can use the following expression:</p>
+<div class="sourceCode" id="cb159"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb159-1"><a href="javascript-interactivity.html#cb159-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb159-2"><a href="javascript-interactivity.html#cb159-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;important&quot;</span>)</span>
+<span id="cb159-3"><a href="javascript-interactivity.html#cb159-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> myFunction)<span class="op">;</span></span></code></pre></div>
+<p>where <code>myFunction</code> is a function that defines <em>what</em> should happen each time the user clicks on that paragraph.</p>
+<p>The function we pass to the event listener does not necessarily need to be a predefined named function, such as <code>myFunction</code>. You can also use an anonymous function (Section <a href="javascript-basics.html#methods">3.8</a>). For example, here is another version of the above event listener definition, this time using an anonymous function:</p>
+<div class="sourceCode" id="cb160"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb160-1"><a href="javascript-interactivity.html#cb160-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb160-2"><a href="javascript-interactivity.html#cb160-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;important&quot;</span>)</span>
+<span id="cb160-3"><a href="javascript-interactivity.html#cb160-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb160-4"><a href="javascript-interactivity.html#cb160-4" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Code goes here</span></span>
+<span id="cb160-5"><a href="javascript-interactivity.html#cb160-5" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+</div>
+</div>
+<div id="hello-example" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Hello example</h2>
+<p>The following two examples (Sections <a href="javascript-interactivity.html#hello-example">4.5</a>–<a href="javascript-interactivity.html#poles-example">4.6</a>) demonstrate the ideas and techniques presented so far in this chapter: accessing and modifying elements (Section <a href="javascript-interactivity.html#accessing-and-modifying-elements">4.3</a>) and using event listeners (Section <a href="javascript-interactivity.html#event-listeners">4.4</a>), in JavaScript.</p>
+<p>Consider the following HTML code of <code>example-04-01.html</code>:</p>
+<div class="sourceCode" id="cb161"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb161-1"><a href="javascript-interactivity.html#cb161-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb161-2"><a href="javascript-interactivity.html#cb161-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb161-3"><a href="javascript-interactivity.html#cb161-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb161-4"><a href="javascript-interactivity.html#cb161-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Hello JavaScript<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb161-5"><a href="javascript-interactivity.html#cb161-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb161-6"><a href="javascript-interactivity.html#cb161-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb161-7"><a href="javascript-interactivity.html#cb161-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>JavaScript<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb161-8"><a href="javascript-interactivity.html#cb161-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;demo&quot;</span><span class="kw">&gt;</span>What can JavaScript do?<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb161-9"><a href="javascript-interactivity.html#cb161-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;Click Me!&quot;</span><span class="ot"> id=</span><span class="st">&quot;change_text&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb161-10"><a href="javascript-interactivity.html#cb161-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script&gt;</span></span>
+<span id="cb161-11"><a href="javascript-interactivity.html#cb161-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">function</span> <span class="fu">hello</span>() {</span>
+<span id="cb161-12"><a href="javascript-interactivity.html#cb161-12" aria-hidden="true" tabindex="-1"></a>                <span class="bu">document</span></span>
+<span id="cb161-13"><a href="javascript-interactivity.html#cb161-13" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)</span>
+<span id="cb161-14"><a href="javascript-interactivity.html#cb161-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> </span>
+<span id="cb161-15"><a href="javascript-interactivity.html#cb161-15" aria-hidden="true" tabindex="-1"></a>                        <span class="st">&quot;JavaScript can change page contents!&quot;</span><span class="op">;</span></span>
+<span id="cb161-16"><a href="javascript-interactivity.html#cb161-16" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb161-17"><a href="javascript-interactivity.html#cb161-17" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span></span>
+<span id="cb161-18"><a href="javascript-interactivity.html#cb161-18" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;change_text&quot;</span>)</span>
+<span id="cb161-19"><a href="javascript-interactivity.html#cb161-19" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> hello)<span class="op">;</span></span>
+<span id="cb161-20"><a href="javascript-interactivity.html#cb161-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/script&gt;</span></span>
+<span id="cb161-21"><a href="javascript-interactivity.html#cb161-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb161-22"><a href="javascript-interactivity.html#cb161-22" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>In this example, we have a web page with an <code>&lt;h2&gt;</code> heading (<em>without</em> an ID), as well as two other elements <em>with</em> an ID:</p>
+<ul>
+<li>A <code>&lt;p&gt;</code> element with <code>id="demo"</code></li>
+<li>An <code>&lt;input&gt;</code> button element with <code>id="change_text"</code></li>
+</ul>
+<p>In the end of the <code>&lt;body&gt;</code>, we have a <code>&lt;script&gt;</code> element containing JavaScript code (Section <a href="html.html#styling-and-scripts">1.6.4</a>). Since the <code>&lt;script&gt;</code> element is in the end of the <code>&lt;body&gt;</code>, it will be executed by the browser <em>after</em> the HTML code is loaded and processed. Let’s look at the last line in the JavaScript code:</p>
+<div class="sourceCode" id="cb162"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb162-1"><a href="javascript-interactivity.html#cb162-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;change_text&quot;</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> hello)<span class="op">;</span></span></code></pre></div>
+<p>The above expression does several things:</p>
+<ul>
+<li><strong>Selects</strong> the element which has <code>id="change_text"</code> (the <em>button</em>), using the <code>document.getElementById</code> method (Section <a href="javascript-interactivity.html#accessing-elements">4.3.2</a>)</li>
+<li><strong>Binds</strong> an event listener to it, using the <code>.addEventListener</code> method (Section <a href="javascript-interactivity.html#binding-event-listeners">4.4.2</a>)</li>
+<li>The event listener specifies that when the element is clicked (i.e., the <code>"click"</code> event is fired), the <code>hello</code> function will be executed</li>
+</ul>
+<p>What does the <code>hello</code> function do? According to its definition at the beginning of the <code>&lt;script&gt;</code>, we see that it has no parameters and just one expression:</p>
+<div class="sourceCode" id="cb163"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb163-1"><a href="javascript-interactivity.html#cb163-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">hello</span>() {</span>
+<span id="cb163-2"><a href="javascript-interactivity.html#cb163-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">document</span></span>
+<span id="cb163-3"><a href="javascript-interactivity.html#cb163-3" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;demo&quot;</span>)</span>
+<span id="cb163-4"><a href="javascript-interactivity.html#cb163-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;JavaScript can change page contents!&quot;</span><span class="op">;</span></span>
+<span id="cb163-5"><a href="javascript-interactivity.html#cb163-5" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>What the <code>hello</code> function does is:</p>
+<ul>
+<li><strong>Selects</strong> the element with <code>id="demo"</code> (the <em>paragraph</em>), again using the <code>document.getElementById</code> method</li>
+<li><strong>Replaces</strong> its HTML contents with <code>"JavaScript can change page contents!"</code>, by assigning the new contents into the <code>innerHTML</code> property (Section <a href="javascript-interactivity.html#modifying-elements">4.3.4</a>)</li>
+</ul>
+<p>Note that in this example the expression inside the <code>hello</code> function is incidentally split into several (three) lines, to fit on the page. However, new-line symbols and repeated spaces are ignored by the JavaScript interpreter. You can imagine the characters being merged back into a long single-line expression, then executed. In other words, the computer still sees a single expression here, where we assign a string into the <code>.innerHTML</code> property of an element selected using <code>document.getElementById</code>. </p>
+<p>The way that <code>example-04-01.html</code> appears in the browser is shown in Figure <a href="javascript-interactivity.html#fig:example-04-01">4.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-01"></span>
+<iframe src="examples/example-04-01.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.2: <code>example-04-01.html</code> <a href="examples/example-04-01.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Open <code>example-04-01.html</code> in the browser, then open the <strong>Elements</strong> tab in the developer tools.</li>
+<li>Click the button that says “Click me!” (Figure <a href="javascript-interactivity.html#fig:example-04-01">4.2</a>), and observe how the paragraph contents are being modified.</li>
+<li>Note how the affected part of the DOM is momentarily highlighted each time the button is pressed.</li>
+</ul>
+</blockquote>
+</div>
+<div id="poles-example" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Poles example</h2>
+<p>The second example <code>example-04-02.html</code> is slightly more complex, but the principle is exactly the same as in <code>example-04-01.html</code>:</p>
+<div class="sourceCode" id="cb164"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb164-1"><a href="javascript-interactivity.html#cb164-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb164-2"><a href="javascript-interactivity.html#cb164-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb164-3"><a href="javascript-interactivity.html#cb164-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb164-4"><a href="javascript-interactivity.html#cb164-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Earth poles<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb164-5"><a href="javascript-interactivity.html#cb164-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb164-6"><a href="javascript-interactivity.html#cb164-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb164-7"><a href="javascript-interactivity.html#cb164-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>Earth Poles Viewer<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb164-8"><a href="javascript-interactivity.html#cb164-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;img</span><span class="ot"> id=</span><span class="st">&quot;myImage&quot;</span><span class="ot"> src=</span><span class="st">&quot;images/north.svg&quot;</span><span class="kw">&gt;&lt;br&gt;</span></span>
+<span id="cb164-9"><a href="javascript-interactivity.html#cb164-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;North Pole&quot;</span><span class="ot"> id=</span><span class="st">&quot;north&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb164-10"><a href="javascript-interactivity.html#cb164-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> value=</span><span class="st">&quot;South Pole&quot;</span><span class="ot"> id=</span><span class="st">&quot;south&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb164-11"><a href="javascript-interactivity.html#cb164-11" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script&gt;</span></span>
+<span id="cb164-12"><a href="javascript-interactivity.html#cb164-12" aria-hidden="true" tabindex="-1"></a>            <span class="kw">function</span> <span class="fu">showNorth</span>() {</span>
+<span id="cb164-13"><a href="javascript-interactivity.html#cb164-13" aria-hidden="true" tabindex="-1"></a>                <span class="bu">document</span></span>
+<span id="cb164-14"><a href="javascript-interactivity.html#cb164-14" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myImage&quot;</span>)</span>
+<span id="cb164-15"><a href="javascript-interactivity.html#cb164-15" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="at">src</span> <span class="op">=</span> <span class="st">&quot;images/north.svg&quot;</span><span class="op">;</span></span>
+<span id="cb164-16"><a href="javascript-interactivity.html#cb164-16" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb164-17"><a href="javascript-interactivity.html#cb164-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">function</span> <span class="fu">showSouth</span>() {</span>
+<span id="cb164-18"><a href="javascript-interactivity.html#cb164-18" aria-hidden="true" tabindex="-1"></a>                <span class="bu">document</span></span>
+<span id="cb164-19"><a href="javascript-interactivity.html#cb164-19" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;myImage&quot;</span>)</span>
+<span id="cb164-20"><a href="javascript-interactivity.html#cb164-20" aria-hidden="true" tabindex="-1"></a>                    <span class="op">.</span><span class="at">src</span> <span class="op">=</span> <span class="st">&quot;images/south.svg&quot;</span><span class="op">;</span></span>
+<span id="cb164-21"><a href="javascript-interactivity.html#cb164-21" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb164-22"><a href="javascript-interactivity.html#cb164-22" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span></span>
+<span id="cb164-23"><a href="javascript-interactivity.html#cb164-23" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;north&quot;</span>)</span>
+<span id="cb164-24"><a href="javascript-interactivity.html#cb164-24" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> showNorth)<span class="op">;</span></span>
+<span id="cb164-25"><a href="javascript-interactivity.html#cb164-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span></span>
+<span id="cb164-26"><a href="javascript-interactivity.html#cb164-26" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;south&quot;</span>)</span>
+<span id="cb164-27"><a href="javascript-interactivity.html#cb164-27" aria-hidden="true" tabindex="-1"></a>                <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> showSouth)<span class="op">;</span></span>
+<span id="cb164-28"><a href="javascript-interactivity.html#cb164-28" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/script&gt;</span></span>
+<span id="cb164-29"><a href="javascript-interactivity.html#cb164-29" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb164-30"><a href="javascript-interactivity.html#cb164-30" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>In this example, we have two buttons, and we add two event listeners: one for the North pole button and one for the South pole button (Figure <a href="javascript-interactivity.html#fig:example-04-02">4.3</a>). Both event listeners change the <code>src</code> attribute of the <code>&lt;img&gt;</code> element (Section <a href="html.html#html-img">1.6.10.1</a>) on the web page. The North pole button sets <code>src="images/north.svg"</code>, while the South pole button sets <code>src="images/south.svg"</code>. The resulting effect is that the displayed globe is switched from viewing the North pole or the South pole<a href="#fn41" class="footnote-ref" id="fnref41"><sup>41</sup></a>.</p>
+<p>Note that the images loaded in this example—<code>north.svg</code> and <code>south.svg</code>—are in a format called <a href="https://en.wikipedia.org/wiki/Scalable_Vector_Graphics"><strong>Scalable Vector Graphics (SVG)</strong></a>, having the <code>.svg</code> file extension. SVG is an open standard <em>vector</em> image format. It is well supported by web browsers and commonly used to display vector graphics on web pages.</p>
+<p>The result of <code>example-04-02.html</code> is shown in Figure <a href="javascript-interactivity.html#fig:example-04-02">4.3</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-02"></span>
+<iframe src="examples/example-04-02.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.3: <code>example-04-02.html</code> <a href="examples/example-04-02.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="operating-on-selection" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Operating on multiple selections</h2>
+<div id="example-page" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Example page</h3>
+<p>The following small web page (<code>example-04-03.html</code>) will be used to demonstrate selecting and acting on multiple elements (Section <a href="javascript-interactivity.html#making-multiple-selections">4.7.2</a>), accessing input values (Section <a href="javascript-interactivity.html#getting-and-setting-input-values">4.8</a>) and working with the event target (Section <a href="javascript-interactivity.html#event-target">4.10.2</a>).</p>
+<div class="sourceCode" id="cb165"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb165-1"><a href="javascript-interactivity.html#cb165-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb165-2"><a href="javascript-interactivity.html#cb165-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb165-3"><a href="javascript-interactivity.html#cb165-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb165-4"><a href="javascript-interactivity.html#cb165-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Operating on multiple selections<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb165-5"><a href="javascript-interactivity.html#cb165-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb165-6"><a href="javascript-interactivity.html#cb165-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb165-7"><a href="javascript-interactivity.html#cb165-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h1</span><span class="ot"> id=</span><span class="st">&quot;header&quot;</span><span class="kw">&gt;</span>List<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb165-8"><a href="javascript-interactivity.html#cb165-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>Buy groceries<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb165-9"><a href="javascript-interactivity.html#cb165-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;ul&gt;</span></span>
+<span id="cb165-10"><a href="javascript-interactivity.html#cb165-10" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;one&quot;</span><span class="ot"> class=</span><span class="st">&quot;hot&quot;</span><span class="kw">&gt;</span>fresh figs<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb165-11"><a href="javascript-interactivity.html#cb165-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;two&quot;</span><span class="ot"> class=</span><span class="st">&quot;hot&quot;</span><span class="kw">&gt;</span>pine nuts<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb165-12"><a href="javascript-interactivity.html#cb165-12" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;three&quot;</span><span class="ot"> class=</span><span class="st">&quot;hot&quot;</span><span class="kw">&gt;</span>honey<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb165-13"><a href="javascript-interactivity.html#cb165-13" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;li</span><span class="ot"> id=</span><span class="st">&quot;four&quot;</span><span class="kw">&gt;</span>balsamic vinegar<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb165-14"><a href="javascript-interactivity.html#cb165-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/ul&gt;</span></span>
+<span id="cb165-15"><a href="javascript-interactivity.html#cb165-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;h2&gt;</span>Comments<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb165-16"><a href="javascript-interactivity.html#cb165-16" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;test3&quot;</span><span class="ot"> value=</span><span class="st">&quot;Mickey Mouse&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb165-17"><a href="javascript-interactivity.html#cb165-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb165-18"><a href="javascript-interactivity.html#cb165-18" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>Figure <a href="javascript-interactivity.html#fig:example-04-03">4.4</a> shows how <code>example-04-03.html</code> appears in the browser.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-03"></span>
+<iframe src="examples/example-04-03.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.4: <code>example-04-03.html</code> <a href="examples/example-04-03.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<p>You can open <code>example-04-03.html</code> in the browser and run the expressions shown in Sections <a href="javascript-interactivity.html#making-multiple-selections">4.7.2</a> and <a href="javascript-interactivity.html#getting-and-setting-input-values">4.8</a> (below) in the console, to experiment with their immediate effect.</p>
+</div>
+<div id="making-multiple-selections" class="section level3" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Making multiple selections</h3>
+<p>So far, we used the <code>document.getElementById</code> method to make a selection of an individual element. Recall that the <code>id</code> attribute is unique (Section <a href="html.html#id">1.7.2</a>), thus by definition the selection contains one element. For example, you can run the following command in the console where <code>example-04-03.html</code> is loaded:</p>
+<div class="sourceCode" id="cb166"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb166-1"><a href="javascript-interactivity.html#cb166-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;one&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span></span></code></pre></div>
+<p>to get the HTML contents of the element that has <code>id="one"</code>. The following output should be printed in the console:</p>
+<div class="sourceCode" id="cb167"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb167-1"><a href="javascript-interactivity.html#cb167-1" aria-hidden="true" tabindex="-1"></a>fresh figs</span></code></pre></div>
+<p>We can also modify the HTML contents of an element, as follows:</p>
+<div class="sourceCode" id="cb168"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb168-1"><a href="javascript-interactivity.html#cb168-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;one&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;&lt;i&gt;Not very fresh&lt;/i&gt; figs&quot;</span><span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Open <code>example-04-03.html</code> and run the above expression for changing the contents of the first <code>&lt;li&gt;</code> element in the console.</li>
+<li>Compare the HTML source code (<strong>Ctrl+U</strong>) and the DOM (<strong>Elements</strong> tab in the <strong>developer tools</strong>).</li>
+<li>Which one reflects the above change and why? (Hint: see Section <a href="javascript-interactivity.html#modifying-elements">4.3.4</a>.)</li>
+</ul>
+</blockquote>
+<p>The <code>document</code> object contains other methods for making DOM selections, potentially returning more than one element. For example:</p>
+<ul>
+<li><code>getElementsByClassName</code>—Get all elements sharing the specified <code>class</code></li>
+<li><code>getElementsByTagName</code>—Get all elements of the specified HTML type<a href="#fn42" class="footnote-ref" id="fnref42"><sup>42</sup></a></li>
+</ul>
+<p>For example, the following expression uses the <code>getElementsByTagName</code> method to get a reference to all <code>&lt;li&gt;</code> elements in the document:</p>
+<div class="sourceCode" id="cb169"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb169-1"><a href="javascript-interactivity.html#cb169-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nodes <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&quot;li&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>The returned object is a <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLCollection">collection</a> of references to HTML elements in the DOM. The collection is an array-like object. For example, we can check its <code>length</code> (Section <a href="javascript-basics.html#array-methods">3.8.2</a>):</p>
+<div class="sourceCode" id="cb170"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb170-1"><a href="javascript-interactivity.html#cb170-1" aria-hidden="true" tabindex="-1"></a>nodes<span class="op">.</span><span class="at">length</span><span class="op">;</span>  <span class="co">// Returns 4</span></span></code></pre></div>
+<p>or select an individual element from the collection using an index (Section <a href="javascript-basics.html#js-array">3.6.3.1</a>):</p>
+<div class="sourceCode" id="cb171"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb171-1"><a href="javascript-interactivity.html#cb171-1" aria-hidden="true" tabindex="-1"></a>nodes[<span class="dv">0</span>]<span class="op">.</span><span class="at">innerHTML</span><span class="op">;</span>  <span class="co">// Returns &quot;fresh figs&quot;</span></span></code></pre></div>
+<p>How can we do something with all of the elements in the collection? For example, how can we print the HTML contents of all of the <code>&lt;li&gt;</code> elements? Unfortunately, the collection does not have a <code>.forEach</code> method (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>). Therefore, to iterate over the collection we need to use the standard <code>for</code> loop syntax (Section <a href="javascript-basics.html#standard-for-loop-syntax">3.10.3.1</a>):</p>
+<div class="sourceCode" id="cb172"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb172-1"><a href="javascript-interactivity.html#cb172-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nodes<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb172-2"><a href="javascript-interactivity.html#cb172-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(nodes[i]<span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span></span>
+<span id="cb172-3"><a href="javascript-interactivity.html#cb172-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<blockquote>
+<p>Try to modify the code of the <code>for</code> loop to append an exclamation mark (“!”) at the end of each list item, so that “fresh figs” becomes “fresh figs!” etc.</p>
+</blockquote>
+<p>Using loops, we can therefore work with multiple selections, one element at a time. In this book, we will rarely need to use multiple selection JavaScript techniques, since we will mostly be working with individual selections (using <code>getElementById</code>). However, working with multiple selections is often necessary so it is important to be familiar with this possibility.</p>
+</div>
+</div>
+<div id="getting-and-setting-input-values" class="section level2" number="4.8">
+<h2><span class="header-section-number">4.8</span> Getting and setting input values</h2>
+<p>The <code>.value</code> property of a reference to an input element—such as <code>&lt;input&gt;</code> or <code>&lt;select&gt;</code> (Section <a href="html.html#input-elements">1.6.13</a>)—can be used to get or set its current <em>value</em>. This is conceptually similar to the way that the <code>.innerHTML</code> property is used to get or set HTML contents (Sections <a href="javascript-interactivity.html#accessing-elements">4.3.2</a>–<a href="javascript-interactivity.html#modifying-elements">4.3.4</a>) and the <code>.src</code> property is used to get or set the <code>.src</code> attribute (Section <a href="javascript-interactivity.html#poles-example">4.6</a>).</p>
+<p>For example, the web page we are experimenting with (<code>example-04-03.html</code>) contains the following <code>&lt;input&gt;</code> element (Figure <a href="javascript-interactivity.html#fig:example-04-03">4.4</a>):</p>
+<div class="sourceCode" id="cb173"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb173-1"><a href="javascript-interactivity.html#cb173-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;text&quot;</span><span class="ot"> id=</span><span class="st">&quot;test3&quot;</span><span class="ot"> value=</span><span class="st">&quot;Mickey Mouse&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>The following expression gets the current value of that element, which is equal to <code>"Mickey Mouse"</code> unless the user interacted with the text area and typed something else:</p>
+<div class="sourceCode" id="cb174"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb174-1"><a href="javascript-interactivity.html#cb174-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;test3&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span>  <span class="co">// Returns &quot;Mickey Mouse&quot;</span></span></code></pre></div>
+<p>If you manually modify the contents of the text input area, and run the above expression again, you will see the new, <em>currently</em> entered text. The DOM, on the other hand, will still show the original <code>value="Mickey Mouse"</code> attribute.</p>
+<p>You may already have guessed that assigning a new value to the <code>.value</code> property modifies the current input value. The following expression sets the input value to <code>"Donald Duck"</code>, replacing the previous value of <code>"Mickey Mouse"</code>, or whatever else that was typed into the text area, with the new value <code>"Donald Duck"</code>:</p>
+<div class="sourceCode" id="cb175"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb175-1"><a href="javascript-interactivity.html#cb175-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;test3&quot;</span>)<span class="op">.</span><span class="at">value</span> <span class="op">=</span> <span class="st">&quot;Donald Duck&quot;</span><span class="op">;</span></span></code></pre></div>
+<p>Note that the <code>.value</code> property refers to the real-time value, including user changes such as currently entered text in a text box. These changes are not reflected in the <code>value</code> <em>attribute</em>, which retains the initial value set on page load. Compare the <code>value</code> attribute of the modified <code>&lt;input&gt;</code> (through the DOM inspector in the developer tools) with the <code>.value</code> property string to see this for yourself.</p>
+<p>We will get back to another practical example using <code>.value</code> and <code>&lt;input&gt;</code> elements in Section <a href="javascript-interactivity.html#working-with-user-input">4.12</a>.</p>
+<blockquote>
+<ul>
+<li>Create a small web page with:
+<ul>
+<li>A slider input, i.e., <code>&lt;input type="range"&gt;</code> (Section <a href="html.html#range-input">1.6.13.3</a>)</li>
+<li>A paragraph</li>
+</ul></li>
+<li>The paragraph should display the up-to-date value of the slider, whether the initial value or a new value selected by the user.</li>
+<li>Hints:
+<ul>
+<li>Bind an event listener to the slider, with function that updates paragraph contents with the current value of the slider.</li>
+<li>Use the <code>.value</code> property to obtain the current value of the slider.</li>
+<li>Set the event listener to respond to the <code>"input"</code> event type (Section <a href="javascript-interactivity.html#event-listeners">4.4</a>), so that the function is executed every time the slider is scrolled (i.e., gets any user <em>input</em>).</li>
+</ul></li>
+</ul>
+</blockquote>
+</div>
+<div id="multiple-event-listeners" class="section level2" number="4.9">
+<h2><span class="header-section-number">4.9</span> Multiple event listeners</h2>
+<p>It is often convenient to add multiple event listeners to the same element selection, in order to trigger different responses for different events. In our next example (<code>example-04-04.html</code>), two event listeners<a href="#fn43" class="footnote-ref" id="fnref43"><sup>43</sup></a> are binded to the <code>id="p1"</code> paragraph. The first event listener responds to the <code>"mouseover"</code> event (mouse cursor entering the element), printing <code>"You entered p1!"</code> in the console. The second event listener responds to the <code>"mouseout"</code> event (mouse cursor leaving the element), printing <code>"You left p1!"</code> in the console. </p>
+<div class="sourceCode" id="cb176"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb176-1"><a href="javascript-interactivity.html#cb176-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> el <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;p1&quot;</span>)<span class="op">;</span></span>
+<span id="cb176-2"><a href="javascript-interactivity.html#cb176-2" aria-hidden="true" tabindex="-1"></a>el<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;mouseover&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb176-3"><a href="javascript-interactivity.html#cb176-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;You entered p1!&quot;</span>)<span class="op">;</span></span>
+<span id="cb176-4"><a href="javascript-interactivity.html#cb176-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb176-5"><a href="javascript-interactivity.html#cb176-5" aria-hidden="true" tabindex="-1"></a>el<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;mouseout&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb176-6"><a href="javascript-interactivity.html#cb176-6" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(<span class="st">&quot;You left p1!&quot;</span>)<span class="op">;</span></span>
+<span id="cb176-7"><a href="javascript-interactivity.html#cb176-7" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>As a result, the phrases the <code>"You entered p1!"</code> or <code>"You left p1!"</code> are interchangeably printed in the console whenever the user moves the mouse into the paragraph or out of the paragraph. The small web page implementing the above pair of event listeners (<code>example-04-04.html</code>) is shown in Figure <a href="javascript-interactivity.html#fig:example-04-04">4.5</a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-04"></span>
+<iframe src="examples/example-04-04.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.5: <code>example-04-04.html</code> <a href="examples/example-04-04.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Open <code>example-04-04.html</code> in the browser, and open the JavaScript console.</li>
+<li>Move the mouse cursor over the paragraph and check out the messages being printed in the console (Figure <a href="javascript-interactivity.html#fig:example-04-04">4.5</a>).</li>
+<li>Try modifying the source code of this example so that the messages are displayed on the web page itself, instead of the console. (Hint: add another paragraph for the messages in the HTML code, and use the <code>.innerHTML</code> property to update the paragraph contents in response to the events.)</li>
+</ul>
+</blockquote>
+<p>At this stage you may note our code starts to have a lot of nested brackets of both types, <code>(</code> and <code>{</code>. This is typical of JavaScript code, and a common source of errors while learning the language. Make sure you keep track of opening and closing brackets. Most plain text editors, such as Visual Studio Code or Notepad++, automatically highlight the matching opening/closing bracket when placing the cursor on the other one. This can help with code structuring and avoiding errors due to unmatched brackets. </p>
+</div>
+<div id="the-event-object" class="section level2" number="4.10">
+<h2><span class="header-section-number">4.10</span> The event object</h2>
+<div id="event-object-properties" class="section level3" number="4.10.1">
+<h3><span class="header-section-number">4.10.1</span> Event object properties</h3>
+<p>So far (Sections <a href="javascript-interactivity.html#event-listeners">4.4</a>–<a href="javascript-interactivity.html#multiple-event-listeners">4.9</a>), the functions which we passed to an event listener did not use any information regarding the event itself, other than the fact the event has <em>happened</em>. Sometimes, however, we may be interested in functions that have a variable effect, depending on event properties: such as <em>where</em> and <em>when</em> the event happened. </p>
+<p>In fact, every time an event happens, an <strong>event object</strong> is passed to any event listener function responding to the event. We can use the event object to construct functions with variable effects depending on event properties. The event object has methods and properties related to the event that occurred. For example<a href="#fn44" class="footnote-ref" id="fnref44"><sup>44</sup></a>: </p>
+<ul>
+<li><code>.type</code>—Type of event (<code>"click"</code>, <code>"mouseover"</code>, etc.)</li>
+<li><code>.key</code>—Button or key that was pressed</li>
+<li><code>.pageX</code>, <code>.pageY</code>—Mouse position</li>
+<li><code>.timeStamp</code>—Time in milliseconds, from when the document was opened</li>
+<li><code>.target</code>—The element that triggered the event (see Section <a href="symbology-and-interactivity.html#styling-in-response-to-events">8.7.1</a>)</li>
+</ul>
+<p>Every function that responds to an event can take the event object as its parameter. That way, we can use the event object properties in the function body, to trigger a specific action according to the properties of the event.</p>
+<p>The following small page <code>example-04-05.html</code> uses the <code>.pageX</code> and <code>.pageY</code> properties of the <code>"mousemove"</code> event to display up-to-date mouse coordinates every time the mouse moves on screen. Note how the event object—conventionally named <code>e</code>, but you can choose another name—is now a parameter of the event listener function. Also note that we are binding the event listener to the entire <code>document</code>, rather than to an individual element, since we want to “listen to” mouse movement over the entire document:</p>
+<div class="sourceCode" id="cb177"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb177-1"><a href="javascript-interactivity.html#cb177-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb177-2"><a href="javascript-interactivity.html#cb177-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb177-3"><a href="javascript-interactivity.html#cb177-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb177-4"><a href="javascript-interactivity.html#cb177-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Event object<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb177-5"><a href="javascript-interactivity.html#cb177-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb177-6"><a href="javascript-interactivity.html#cb177-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb177-7"><a href="javascript-interactivity.html#cb177-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;position&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span>
+<span id="cb177-8"><a href="javascript-interactivity.html#cb177-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script&gt;</span></span>
+<span id="cb177-9"><a href="javascript-interactivity.html#cb177-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> el <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;position&quot;</span>)<span class="op">;</span></span>
+<span id="cb177-10"><a href="javascript-interactivity.html#cb177-10" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span><span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;mousemove&quot;</span><span class="op">,</span> <span class="kw">function</span>(e) {</span>
+<span id="cb177-11"><a href="javascript-interactivity.html#cb177-11" aria-hidden="true" tabindex="-1"></a>                el<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> e<span class="op">.</span><span class="at">pageX</span> <span class="op">+</span> <span class="st">&quot; &quot;</span> <span class="op">+</span> e<span class="op">.</span><span class="at">pageY</span><span class="op">;</span></span>
+<span id="cb177-12"><a href="javascript-interactivity.html#cb177-12" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb177-13"><a href="javascript-interactivity.html#cb177-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/script&gt;</span></span>
+<span id="cb177-14"><a href="javascript-interactivity.html#cb177-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb177-15"><a href="javascript-interactivity.html#cb177-15" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>The result is shown in Figure <a href="javascript-interactivity.html#fig:example-04-05">4.6</a>. The current mouse coordinates are displayed in the top-left corner of the screen. Every time the mouse is moved, the coordinates are updated.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-05"></span>
+<iframe src="examples/example-04-05.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.6: <code>example-04-05.html</code> <a href="examples/example-04-05.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<p>What do you think will happen if the string <code>"mouseover"</code> will be replaced with <code>"click"</code>, in the code of <code>example-04-05.html</code>? Edit the code file and open the modified copy to check your answer!</p>
+</blockquote>
+<p>Different types of events are associated with different event object properties. Moreover, <em>custom</em> event types and event properties can be defined in JavaScript libraries. For example, later on in the book we will use the <strong>map click</strong> event to detect the clicked coordinates on an interactive map, then to trigger specific actions regarding that location. This is made possible by the fact that the <code>"click"</code> event on a map contains a custom property named <code>.latlng</code>, which can be accessed by the event listener function. We will see how this technique can be used for several purposes, such as:</p>
+<ul>
+<li>Displaying the clicked coordinates (Section <a href="leaflet.html#introducing-map-events">6.9</a>)</li>
+<li>Adding a marker in the clicked location on the map (Section <a href="spatial-queries-1.html#adding-marker-on-click">11.2</a>)</li>
+<li>Making a database query based on proximity to the clicked location (Section <a href="spatial-queries-1.html#adding-nearest-points-to-map">11.4</a>)</li>
+</ul>
+<p>In Chapter <a href="collaborative-mapping.html#collaborative-mapping">13</a>, we will see another group of custom events referring to <em>drawing</em> and <em>editing</em> shapes on the map, such as <code>"draw:created"</code>, which is fired when a new shape is drawn on the map.</p>
+</div>
+<div id="event-target" class="section level3" number="4.10.2">
+<h3><span class="header-section-number">4.10.2</span> The <code>.target</code> property</h3>
+<p>One of the most useful properties of the event object is the event <code>target</code>. The <code>target</code> property provides a reference to the element that <em>triggered</em> the event. Naturally, this is most useful in cases when the same event listener is being binded to numerous elements and our function need to be responsive to the particular properties of the element that triggered the event.</p>
+<p>For example, the following code section uses the <code>getElementsByTagName</code> method (Section <a href="javascript-interactivity.html#making-multiple-selections">4.7.2</a>) to get a collection of references to all <code>&lt;li&gt;</code> elements in the document. Then, a <code>for</code> loop goes over all elements and binds a <code>"click"</code> event listener to each one. The event listener function uses <code>e.target</code> to obtain the HTML contents of the particular <code>&lt;li&gt;</code> element that was clicked:</p>
+<div class="sourceCode" id="cb178"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb178-1"><a href="javascript-interactivity.html#cb178-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> nodes <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementsByTagName</span>(<span class="st">&quot;li&quot;</span>)<span class="op">;</span></span>
+<span id="cb178-2"><a href="javascript-interactivity.html#cb178-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(<span class="kw">let</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> nodes<span class="op">.</span><span class="at">length</span><span class="op">;</span> i<span class="op">++</span>) {</span>
+<span id="cb178-3"><a href="javascript-interactivity.html#cb178-3" aria-hidden="true" tabindex="-1"></a>  nodes[i]<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>(e) {</span>
+<span id="cb178-4"><a href="javascript-interactivity.html#cb178-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(e<span class="op">.</span><span class="at">target</span><span class="op">.</span><span class="at">innerHTML</span>)<span class="op">;</span></span>
+<span id="cb178-5"><a href="javascript-interactivity.html#cb178-5" aria-hidden="true" tabindex="-1"></a>  })<span class="op">;</span></span>
+<span id="cb178-6"><a href="javascript-interactivity.html#cb178-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>We are going to use a similar technique later on, for example to influence the style or display the properties of a particular polygon that is being hovered with the mouse in a web map (Figure <a href="symbology-and-interactivity.html#fig:example-08-07">8.9</a>).</p>
+</div>
+</div>
+<div id="modifying-page-based-on-data" class="section level2" number="4.11">
+<h2><span class="header-section-number">4.11</span> Modifying page based on data</h2>
+<p>One of the most important use cases of JavaScript is dynamically generating page contents based on <em>data</em>. The data we wish to display on the page can come from various sources, such as an object in the JavaScript environment, a file, or a database. JavaScript code can be used to process the data into HTML elements, which can then be added to the DOM (Section <a href="javascript-interactivity.html#operating-on-selection">4.7</a>) and consequently displayed in the browser. Modifying page contents based on data is also a use case where iteration (Sections <a href="javascript-basics.html#iterative-for-loop-syntax">3.10.3.2</a>–<a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>) turns out to be very useful.</p>
+<p>Our next example is a simple and small web page, containing just two paragraphs and one unordered list (Figure <a href="javascript-interactivity.html#fig:example-04-06">4.7</a>). We already know how to write the necessary HTML code for such a web page (Chapter <a href="html.html#html">1</a>). The novel part in <code>example-04-06.html</code> is that we are going to generate some of the HTML code based on data and using JavaScript, rather than have the entire HTML contents predefined. </p>
+<p>Let’s assume we need to dynamically create a list of items on our page, and we have an array with the contents that should go into each list item. We will use the <code>.forEach</code> array method (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>) for iterating over the array and preparing the HTML contents that goes into the <code>&lt;ul&gt;</code> element on the page. For example, suppose we have the following array named <code>data</code>, including the Latin names of eight Oncocyclus <em>Iris</em> <a href="https://en.wikipedia.org/wiki/Iris_subg._Iris#Oncocyclus">species</a> found in Israel: </p>
+<div class="sourceCode" id="cb179"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb179-1"><a href="javascript-interactivity.html#cb179-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> data <span class="op">=</span> [</span>
+<span id="cb179-2"><a href="javascript-interactivity.html#cb179-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris atrofusca&quot;</span><span class="op">,</span></span>
+<span id="cb179-3"><a href="javascript-interactivity.html#cb179-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris atropurpurea&quot;</span><span class="op">,</span></span>
+<span id="cb179-4"><a href="javascript-interactivity.html#cb179-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris bismarckiana&quot;</span><span class="op">,</span></span>
+<span id="cb179-5"><a href="javascript-interactivity.html#cb179-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris haynei&quot;</span><span class="op">,</span></span>
+<span id="cb179-6"><a href="javascript-interactivity.html#cb179-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris hermona&quot;</span><span class="op">,</span></span>
+<span id="cb179-7"><a href="javascript-interactivity.html#cb179-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris lortetii&quot;</span><span class="op">,</span></span>
+<span id="cb179-8"><a href="javascript-interactivity.html#cb179-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris mariae&quot;</span><span class="op">,</span></span>
+<span id="cb179-9"><a href="javascript-interactivity.html#cb179-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;Iris petrana&quot;</span></span>
+<span id="cb179-10"><a href="javascript-interactivity.html#cb179-10" aria-hidden="true" tabindex="-1"></a>]<span class="op">;</span></span></code></pre></div>
+<p>In the HTML code, we may initially have an empty <code>&lt;ul&gt;</code> <em>placeholder</em>:</p>
+<div class="sourceCode" id="cb180"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb180-1"><a href="javascript-interactivity.html#cb180-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;&lt;/ul&gt;</span></span></code></pre></div>
+<p>which we would like to fill with the <code>&lt;li&gt;</code> HTML elements (Section <a href="html.html#html-ul-ol-li">1.6.8.1</a>) based on the above array of species names<a href="#fn45" class="footnote-ref" id="fnref45"><sup>45</sup></a>, as follows: </p>
+<div class="sourceCode" id="cb181"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb181-1"><a href="javascript-interactivity.html#cb181-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb181-2"><a href="javascript-interactivity.html#cb181-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris atrofusca<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-3"><a href="javascript-interactivity.html#cb181-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris atropurpurea<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-4"><a href="javascript-interactivity.html#cb181-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris bismarckiana<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-5"><a href="javascript-interactivity.html#cb181-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris haynei<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-6"><a href="javascript-interactivity.html#cb181-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris hermona<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-7"><a href="javascript-interactivity.html#cb181-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris lortetii<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-8"><a href="javascript-interactivity.html#cb181-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris mariae<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-9"><a href="javascript-interactivity.html#cb181-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;li&gt;&lt;i&gt;</span>Iris petrana<span class="kw">&lt;/i&gt;&lt;/li&gt;</span></span>
+<span id="cb181-10"><a href="javascript-interactivity.html#cb181-10" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
+<p>Why not embed the above HTML code directly into the HTML document, instead of constructing it with JavaScript? Two reasons why the former may not always be a good idea:</p>
+<ul>
+<li>The contents can be much longer, e.g., tens or hundreds of elements, which means it is less convenient to type the HTML by hand. We could use tools such as <a href="https://pandoc.org/"><strong>Pandoc</strong></a> to programmatically convert text plus markup to HTML, thus reducing the need to manually type all of the HTML tags, but then it is probably more flexible to do the same with JavaScript anyway.</li>
+<li>We may want to build page content based on <em>real-time</em> data, loaded each time the user accesses the website, and/or make it responsive to user input. For example, a list of headlines in a news website can be based on a real-time news stories database and/or customized according to user preferences.</li>
+</ul>
+<p>To build the above HTML code <em>programmatically</em>, based on the <code>data</code> array, we can use <em>iteration</em>, such as a <code>for</code> loop (Section <a href="javascript-basics.html#standard-for-loop-syntax">3.10.3.1</a>–<a href="javascript-basics.html#iterative-for-loop-syntax">3.10.3.2</a>) or the <code>.forEach</code> array method (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>). In the following example, we will use <code>.forEach</code>.</p>
+<p>First, recall that <code>.forEach</code> accepts a function that can do something with the current <code>element</code> the array, subsequently applied on <em>all</em> elements. For example, here is how we can sequentially print all array elements in the console:</p>
+<div class="sourceCode" id="cb182"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb182-1"><a href="javascript-interactivity.html#cb182-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb182-2"><a href="javascript-interactivity.html#cb182-2" aria-hidden="true" tabindex="-1"></a>    <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(element)<span class="op">;</span></span>
+<span id="cb182-3"><a href="javascript-interactivity.html#cb182-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>As a result, the following output is printed in the console:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb183-1"><a href="javascript-interactivity.html#cb183-1" aria-hidden="true" tabindex="-1"></a>Iris atrofusca</span>
+<span id="cb183-2"><a href="javascript-interactivity.html#cb183-2" aria-hidden="true" tabindex="-1"></a>Iris atropurpurea</span>
+<span id="cb183-3"><a href="javascript-interactivity.html#cb183-3" aria-hidden="true" tabindex="-1"></a>Iris bismarckiana</span>
+<span id="cb183-4"><a href="javascript-interactivity.html#cb183-4" aria-hidden="true" tabindex="-1"></a>Iris haynei</span>
+<span id="cb183-5"><a href="javascript-interactivity.html#cb183-5" aria-hidden="true" tabindex="-1"></a>Iris hermona</span>
+<span id="cb183-6"><a href="javascript-interactivity.html#cb183-6" aria-hidden="true" tabindex="-1"></a>Iris lortetii</span>
+<span id="cb183-7"><a href="javascript-interactivity.html#cb183-7" aria-hidden="true" tabindex="-1"></a>Iris mariae</span>
+<span id="cb183-8"><a href="javascript-interactivity.html#cb183-8" aria-hidden="true" tabindex="-1"></a>Iris petrana</span></code></pre></div>
+<p>Now that we know how to iterate over our array <code>data</code>, we just need to modify the function that is being applied. Instead of just printing the array contents in the console, we want the function to create eight new <code>&lt;li&gt;</code> elements in the DOM. Additionally, we need to create the empty <code>&lt;ul&gt;</code> placeholder element in our document (using HTML) that the <code>&lt;li&gt;</code> elements will be appended to, as shown above.</p>
+<p>To create an empty <code>&lt;ul&gt;</code> element, we can add the following HTML code inside the <code>&lt;body&gt;</code>:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb184-1"><a href="javascript-interactivity.html#cb184-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;&lt;/ul&gt;</span></span></code></pre></div>
+<p>Note that we are using an ID to identify the particular <code>&lt;ul&gt;</code> element, in this case <code>id="species"</code>. This is very important since we need to identify the particular element which our JavaScript code will operate on! </p>
+<p>Next, to add the a new <code>&lt;li&gt;</code> element inside the <code>&lt;ul&gt;</code> element, we can:</p>
+<ul>
+<li>Start with an empty string</li>
+<li>Append new HTML code with an <code>&lt;li&gt;</code> element per each element in <code>data</code>, using the <code>.forEach</code> iteration, to the string</li>
+<li>Assign the string, now containing eigth <code>&lt;li&gt;</code> elements, to the <code>.innerHTML</code> property of the <code>&lt;ul&gt;</code> element</li>
+</ul>
+<p>Here is how we accomplish those steps. The first part, creating the empty string named <code>html</code> is as follows:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb185-1"><a href="javascript-interactivity.html#cb185-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> html <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span></code></pre></div>
+<p>Second, the <code>.forEach</code> iteration “pastes” the element contents (species name) with the start and end HTML tags, appending it to the <code>html</code> string:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb186-1"><a href="javascript-interactivity.html#cb186-1" aria-hidden="true" tabindex="-1"></a>data<span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb186-2"><a href="javascript-interactivity.html#cb186-2" aria-hidden="true" tabindex="-1"></a>    html <span class="op">+=</span> <span class="st">&quot;&lt;li&gt;&lt;i&gt;&quot;</span> <span class="op">+</span> element <span class="op">+</span> <span class="st">&quot;&lt;/i&gt;&lt;/li&gt;&quot;</span><span class="op">;</span></span>
+<span id="cb186-3"><a href="javascript-interactivity.html#cb186-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Finally, the complete string is assigned to the <code>.innerHTML</code> property of the <code>&lt;ul&gt;</code> element:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb187-1"><a href="javascript-interactivity.html#cb187-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> html<span class="op">;</span></span></code></pre></div>
+<p>The complete code for dynamic construction of the list looks like this:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb188-1"><a href="javascript-interactivity.html#cb188-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> html <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb188-2"><a href="javascript-interactivity.html#cb188-2" aria-hidden="true" tabindex="-1"></a>data<span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb188-3"><a href="javascript-interactivity.html#cb188-3" aria-hidden="true" tabindex="-1"></a>    html <span class="op">+=</span> <span class="st">&quot;&lt;li&gt;&lt;i&gt;&quot;</span> <span class="op">+</span> element <span class="op">+</span> <span class="st">&quot;&lt;/i&gt;&lt;/li&gt;&quot;</span><span class="op">;</span></span>
+<span id="cb188-4"><a href="javascript-interactivity.html#cb188-4" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span>
+<span id="cb188-5"><a href="javascript-interactivity.html#cb188-5" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> html<span class="op">;</span></span></code></pre></div>
+<p>And here is the complete code of the small web page <code>example-04-06.html</code>, implementing the dynamic creation of an unordered list using JavaScript: </p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb189-1"><a href="javascript-interactivity.html#cb189-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb189-2"><a href="javascript-interactivity.html#cb189-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb189-3"><a href="javascript-interactivity.html#cb189-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb189-4"><a href="javascript-interactivity.html#cb189-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Populating list<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb189-5"><a href="javascript-interactivity.html#cb189-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb189-6"><a href="javascript-interactivity.html#cb189-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb189-7"><a href="javascript-interactivity.html#cb189-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>List of rare <span class="kw">&lt;i&gt;</span>Iris<span class="kw">&lt;/i&gt;</span> species in Israel:<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb189-8"><a href="javascript-interactivity.html#cb189-8" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;ul</span><span class="ot"> id=</span><span class="st">&quot;species&quot;</span><span class="kw">&gt;&lt;/ul&gt;</span></span>
+<span id="cb189-9"><a href="javascript-interactivity.html#cb189-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>It was created dynamically using JavaScript.<span class="kw">&lt;/p&gt;</span></span>
+<span id="cb189-10"><a href="javascript-interactivity.html#cb189-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script&gt;</span></span>
+<span id="cb189-11"><a href="javascript-interactivity.html#cb189-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> data <span class="op">=</span> [</span>
+<span id="cb189-12"><a href="javascript-interactivity.html#cb189-12" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris atrofusca&quot;</span><span class="op">,</span></span>
+<span id="cb189-13"><a href="javascript-interactivity.html#cb189-13" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris atropurpurea&quot;</span><span class="op">,</span></span>
+<span id="cb189-14"><a href="javascript-interactivity.html#cb189-14" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris bismarckiana&quot;</span><span class="op">,</span></span>
+<span id="cb189-15"><a href="javascript-interactivity.html#cb189-15" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris haynei&quot;</span><span class="op">,</span></span>
+<span id="cb189-16"><a href="javascript-interactivity.html#cb189-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris hermona&quot;</span><span class="op">,</span></span>
+<span id="cb189-17"><a href="javascript-interactivity.html#cb189-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris lortetii&quot;</span><span class="op">,</span></span>
+<span id="cb189-18"><a href="javascript-interactivity.html#cb189-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris mariae&quot;</span><span class="op">,</span></span>
+<span id="cb189-19"><a href="javascript-interactivity.html#cb189-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">&quot;Iris petrana&quot;</span></span>
+<span id="cb189-20"><a href="javascript-interactivity.html#cb189-20" aria-hidden="true" tabindex="-1"></a>            ]<span class="op">;</span></span>
+<span id="cb189-21"><a href="javascript-interactivity.html#cb189-21" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> html <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb189-22"><a href="javascript-interactivity.html#cb189-22" aria-hidden="true" tabindex="-1"></a>            data<span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb189-23"><a href="javascript-interactivity.html#cb189-23" aria-hidden="true" tabindex="-1"></a>                html <span class="op">+=</span> <span class="st">&quot;&lt;li&gt;&lt;i&gt;&quot;</span> <span class="op">+</span> element <span class="op">+</span> <span class="st">&quot;&lt;/i&gt;&lt;/li&gt;&quot;</span><span class="op">;</span></span>
+<span id="cb189-24"><a href="javascript-interactivity.html#cb189-24" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb189-25"><a href="javascript-interactivity.html#cb189-25" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> html<span class="op">;</span></span>
+<span id="cb189-26"><a href="javascript-interactivity.html#cb189-26" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/script&gt;</span></span>
+<span id="cb189-27"><a href="javascript-interactivity.html#cb189-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb189-28"><a href="javascript-interactivity.html#cb189-28" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>The result is shown in Figure <a href="javascript-interactivity.html#fig:example-04-06">4.7</a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-06"></span>
+<iframe src="examples/example-04-06.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.7: <code>example-04-06.html</code> <a href="examples/example-04-06.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<p>Again, in this small example the advantage of generating the list with JavaScript, rather than writing the HTML code by hand, may not be evident. However, this technique is very powerful in more realistic settings, such as when our data is much larger and/or needs to be constantly updated. For example, later on we will use this technique to dynamically generate a dropdown list with dozens of plant species names, according to real-time data coming from a database (Section <a href="non-spatial-queries-1.html#adding-options">10.4.4</a>). </p>
+</div>
+<div id="working-with-user-input" class="section level2" number="4.12">
+<h2><span class="header-section-number">4.12</span> Calculator example</h2>
+<p>Our last example in this chapter concerns dynamic responses to user input (Section <a href="html.html#input-elements">1.6.13</a>) on the page. In <code>example-04-07.html</code>, we will build a simple calculator app where clicking on a button multiplies two numbers the user entered, and prints the result on screen (Figure <a href="javascript-interactivity.html#fig:example-04-07">4.8</a>). In fact, we already covered everything we need to know to write the code for such an application, so <code>example-04-07.html</code> is just to summarize and practice the material one more time.</p>
+<p>As usual, we start with HTML code. Importantly, our code contains three <code>&lt;input&gt;</code> elements of <code>type="number"</code> (Section <a href="html.html#numeric-input">1.6.13.2</a>) and <code>type="button"</code> (Section <a href="html.html#buttons">1.6.13.9</a>):</p>
+<ul>
+<li>The first number (<code>type="number"</code>)</li>
+<li>The second number (<code>type="number"</code>)</li>
+<li>The “Multiply!” button (<code>type="button"</code>)</li>
+</ul>
+<p>Here is the HTML code for just those three <code>&lt;input&gt;</code> elements:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb190-1"><a href="javascript-interactivity.html#cb190-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;number&quot;</span><span class="ot"> id=</span><span class="st">&quot;num1&quot;</span><span class="ot"> min=</span><span class="st">&quot;0&quot;</span><span class="ot"> max=</span><span class="st">&quot;100&quot;</span><span class="ot"> value=</span><span class="st">&quot;5&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb190-2"><a href="javascript-interactivity.html#cb190-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;number&quot;</span><span class="ot"> id=</span><span class="st">&quot;num2&quot;</span><span class="ot"> min=</span><span class="st">&quot;0&quot;</span><span class="ot"> max=</span><span class="st">&quot;100&quot;</span><span class="ot"> value=</span><span class="st">&quot;5&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb190-3"><a href="javascript-interactivity.html#cb190-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> id=</span><span class="st">&quot;multiply&quot;</span><span class="ot"> value=</span><span class="st">&quot;Multiply!&quot;</span><span class="kw">&gt;</span></span></code></pre></div>
+<p>Note that all input elements are associated with IDs: <code>num1</code>, <code>num2</code>, and <code>multiply</code>. We need the IDs for referring to the particular elements in our JavaScript code. Below the <code>&lt;input&gt;</code> elements, we have an empty <code>&lt;p&gt;</code> element with <code>id="result"</code>. This paragraph will hold the multiplication result. Initially, the paragraph is empty, but it will be filled with content using JavaScript code:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb191-1"><a href="javascript-interactivity.html#cb191-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;result&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span></code></pre></div>
+<p>The only scenario where the contents of the page change is when the user clicks on the “Multiply!” button. Therefore, our <code>&lt;script&gt;</code> is mainly composed of an event listener, responding to <code>"click"</code> events on the <code>id="multiply"</code> button:</p>
+<div class="sourceCode" id="cb192"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb192-1"><a href="javascript-interactivity.html#cb192-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;multiply&quot;</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>() {<span class="op">...</span>})<span class="op">;</span></span></code></pre></div>
+<p>The function being passed to the event listener modifies the text contents of the <code>&lt;p&gt;</code> element (<code>result</code>). The inserted text is the multiplication result of the <code>.value</code> properties of both input numbers (<code>num1</code> and <code>num2</code>). For convenience, we may want to keep the three element references (<code>"num1"</code>, <code>"num2"</code>, and <code>"result"</code>) in predefined variables <code>num1</code>, <code>num2</code>, and <code>result</code>:</p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb193-1"><a href="javascript-interactivity.html#cb193-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num1 <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;num1&quot;</span>)<span class="op">;</span></span>
+<span id="cb193-2"><a href="javascript-interactivity.html#cb193-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> num2 <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;num2&quot;</span>)<span class="op">;</span></span>
+<span id="cb193-3"><a href="javascript-interactivity.html#cb193-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> result <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;result&quot;</span>)<span class="op">;</span></span>
+<span id="cb193-4"><a href="javascript-interactivity.html#cb193-4" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;multiply&quot;</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb193-5"><a href="javascript-interactivity.html#cb193-5" aria-hidden="true" tabindex="-1"></a>    result<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;The result is: &quot;</span> <span class="op">+</span> num1<span class="op">.</span><span class="at">value</span> <span class="op">*</span> num2<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb193-6"><a href="javascript-interactivity.html#cb193-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>It is important to note that all input values are returned as text <em>strings</em>, even when we are talking about numeric <code>&lt;input&gt;</code> elements. You can see this by opening <code>example-04-07.html</code> and typing <code>document.getElementById("num1").value</code> in the console. However, when using the multiplication operator <code>*</code> strings are automatically converted to numbers, which is why multiplication still works<a href="#fn46" class="footnote-ref" id="fnref46"><sup>46</sup></a>. Here is the complete code of our arithmetic web application, given in <code>example-04-07.html</code>:</p>
+<div class="sourceCode" id="cb194"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb194-1"><a href="javascript-interactivity.html#cb194-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;!DOCTYPE </span>html<span class="dt">&gt;</span></span>
+<span id="cb194-2"><a href="javascript-interactivity.html#cb194-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;html&gt;</span></span>
+<span id="cb194-3"><a href="javascript-interactivity.html#cb194-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;head&gt;</span></span>
+<span id="cb194-4"><a href="javascript-interactivity.html#cb194-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;title&gt;</span>Working with user input<span class="kw">&lt;/title&gt;</span></span>
+<span id="cb194-5"><a href="javascript-interactivity.html#cb194-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/head&gt;</span></span>
+<span id="cb194-6"><a href="javascript-interactivity.html#cb194-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;body&gt;</span></span>
+<span id="cb194-7"><a href="javascript-interactivity.html#cb194-7" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>First number </span>
+<span id="cb194-8"><a href="javascript-interactivity.html#cb194-8" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;number&quot;</span><span class="ot"> id=</span><span class="st">&quot;num1&quot;</span><span class="ot"> min=</span><span class="st">&quot;0&quot;</span><span class="ot"> max=</span><span class="st">&quot;100&quot;</span><span class="ot"> value=</span><span class="st">&quot;5&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb194-9"><a href="javascript-interactivity.html#cb194-9" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb194-10"><a href="javascript-interactivity.html#cb194-10" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p&gt;</span>Second number </span>
+<span id="cb194-11"><a href="javascript-interactivity.html#cb194-11" aria-hidden="true" tabindex="-1"></a>            <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;number&quot;</span><span class="ot"> id=</span><span class="st">&quot;num2&quot;</span><span class="ot"> min=</span><span class="st">&quot;0&quot;</span><span class="ot"> max=</span><span class="st">&quot;100&quot;</span><span class="ot"> value=</span><span class="st">&quot;5&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb194-12"><a href="javascript-interactivity.html#cb194-12" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/p&gt;</span></span>
+<span id="cb194-13"><a href="javascript-interactivity.html#cb194-13" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;input</span><span class="ot"> type=</span><span class="st">&quot;button&quot;</span><span class="ot"> id=</span><span class="st">&quot;multiply&quot;</span><span class="ot"> value=</span><span class="st">&quot;Multiply!&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb194-14"><a href="javascript-interactivity.html#cb194-14" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;p</span><span class="ot"> id=</span><span class="st">&quot;result&quot;</span><span class="kw">&gt;&lt;/p&gt;</span></span>
+<span id="cb194-15"><a href="javascript-interactivity.html#cb194-15" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;script&gt;</span></span>
+<span id="cb194-16"><a href="javascript-interactivity.html#cb194-16" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> num1 <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;num1&quot;</span>)<span class="op">;</span></span>
+<span id="cb194-17"><a href="javascript-interactivity.html#cb194-17" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> num2 <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;num2&quot;</span>)<span class="op">;</span></span>
+<span id="cb194-18"><a href="javascript-interactivity.html#cb194-18" aria-hidden="true" tabindex="-1"></a>            <span class="kw">let</span> result <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;result&quot;</span>)<span class="op">;</span></span>
+<span id="cb194-19"><a href="javascript-interactivity.html#cb194-19" aria-hidden="true" tabindex="-1"></a>            <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;multiply&quot;</span>)<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;click&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb194-20"><a href="javascript-interactivity.html#cb194-20" aria-hidden="true" tabindex="-1"></a>                result<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&quot;The result is: &quot;</span> <span class="op">+</span> num1<span class="op">.</span><span class="at">value</span> <span class="op">*</span> num2<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb194-21"><a href="javascript-interactivity.html#cb194-21" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb194-22"><a href="javascript-interactivity.html#cb194-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">&lt;/script&gt;</span></span>
+<span id="cb194-23"><a href="javascript-interactivity.html#cb194-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;/body&gt;</span></span>
+<span id="cb194-24"><a href="javascript-interactivity.html#cb194-24" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/html&gt;</span></span></code></pre></div>
+<p>The result is shown in Figure <a href="javascript-interactivity.html#fig:example-04-07">4.8</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-04-07"></span>
+<iframe src="examples/example-04-07.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.8: <code>example-04-07.html</code> <a href="examples/example-04-07.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="exercise-3" class="section level2" number="4.13">
+<h2><span class="header-section-number">4.13</span> Exercise</h2>
+<ul>
+<li>Modify <code>example-04-07.html</code> by adding the following functionality:
+<ul>
+<li>Make calculator history append at the bottom, to keep track of the previous calculations. For example, if the user multiplied 5 by 5, then <code>5 * 5 = 25</code> will be added at the bottom of all other history items. If the user made another calculation, it will be added below the previous one, and so on (Figure <a href="javascript-interactivity.html#fig:solution-04">4.9</a>).</li>
+<li>Add a second button for making <em>division</em> of the two entered numbers.</li>
+<li>Add a third button for <em>clearing</em> all previous history from screen. (Hint: you can use <code>.innerHTML=""</code> to clear the contents of an HTML element.)</li>
+</ul></li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:solution-04"></span>
+<iframe src="examples/solution-04.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 4.9: <code>solution-04.html</code> <a href="examples/solution-04.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="39">
+<li id="fn39"><p>The <code>document</code> object, like all other global objects, is in fact a property of the <code>window</code> object. That is, <code>document</code> is a shortcut for <code>window.document</code>.<a href="javascript-interactivity.html#fnref39" class="footnote-back">↩︎</a></p></li>
+<li id="fn40"><p>Note the letter <code>s</code> in <code>.getElementsByClassName</code> and in <code>.getElementsByTagName</code> (element<strong>s</strong> = plural), as opposed to <code>.getElementById</code> (element = singular).<a href="javascript-interactivity.html#fnref40" class="footnote-back">↩︎</a></p></li>
+<li id="fn41"><p>We will come back to the subject of specifying file paths in Section <a href="web-servers-1.html#urls-and-file-structure">5.5</a>.<a href="javascript-interactivity.html#fnref41" class="footnote-back">↩︎</a></p></li>
+<li id="fn42"><p>Other commonly used selectors include <code>querySelectorAll</code>, which gets all elements matching the given CSS selector, and <code>querySelector</code>, which gets the just the <em>first</em> element matching the given CSS selector.<a href="javascript-interactivity.html#fnref42" class="footnote-back">↩︎</a></p></li>
+<li id="fn43"><p>It is possible to bind two (or more) event listeners to the same selection in the <em>same expression</em>, thanks to the fact that the <code>.on</code> method returns the original selection.<a href="javascript-interactivity.html#fnref43" class="footnote-back">↩︎</a></p></li>
+<li id="fn44"><p>A list of all standard event object properties can be found in the <em>HTML DOM Events</em> (<a href="https://www.w3schools.com/jsref/dom_obj_event.asp" class="uri">https://www.w3schools.com/jsref/dom_obj_event.asp</a>) reference by W3Schools.<a href="javascript-interactivity.html#fnref44" class="footnote-back">↩︎</a></p></li>
+<li id="fn45"><p>Note that we are also using the <code>&lt;i&gt;</code> element (Section <a href="html.html#html-i">1.6.6.3</a>) to display species in <em>italics</em>.<a href="javascript-interactivity.html#fnref45" class="footnote-back">↩︎</a></p></li>
+<li id="fn46"><p>Try typing <code>"5" * "5"</code> in the console to see this behavior in action.<a href="javascript-interactivity.html#fnref46" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="javascript-basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="web-servers-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toc_depth": 2,
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "../../mathjax.rstudio.com/2.7.2/MathJaxb198.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+
+<!-- Mirrored from 132.72.155.230:3838/js/javascript-interactivity.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:32:42 GMT -->
+</html>

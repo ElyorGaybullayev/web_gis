@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+
+<!-- Mirrored from 132.72.155.230:3838/js/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:29:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Introduction to Web Mapping</title>
+  <meta name="description" content="Introduction to Web Mapping" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Introduction to Web Mapping" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Introduction to Web Mapping" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Introduction to Web Mapping" />
+  
+  <meta name="twitter:description" content="Introduction to Web Mapping" />
+  
+
+<meta name="author" content="Michael Dorman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+
+<link rel="next" href="html.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134641614-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134641614-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="index.html"><img width="90%" style="margin: 5% 5% 0% 5%" src="images/BGUsig3E.svg"></a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-web-mapping"><i class="fa fa-check"></i><b>0.1</b> What is web mapping?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#what-is-javascript"><i class="fa fa-check"></i><b>0.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#why-use-javascript-for-web-mapping"><i class="fa fa-check"></i><b>0.3</b> Why use JavaScript for web mapping?</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.4</b> Learning objectives</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>0.5</b> Software</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#background-knowledge"><i class="fa fa-check"></i><b>0.6</b> Background knowledge</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#online-version"><i class="fa fa-check"></i><b>0.7</b> Online version</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.8</b> Acknowledgments</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to Web Technologies</b></span></li>
+<li class="chapter" data-level="1" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>1</b> HTML</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="html.html"><a href="html.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="html.html"><a href="html.html#how-do-people-access-the-web"><i class="fa fa-check"></i><b>1.2</b> How do people access the web?</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="html.html"><a href="html.html#web-browsers"><i class="fa fa-check"></i><b>1.2.1</b> Web browsers</a></li>
+<li class="chapter" data-level="1.2.2" data-path="html.html"><a href="html.html#web-servers"><i class="fa fa-check"></i><b>1.2.2</b> Web servers</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="html.html"><a href="html.html#web-pages"><i class="fa fa-check"></i><b>1.3</b> Web pages</a></li>
+<li class="chapter" data-level="1.4" data-path="html.html"><a href="html.html#text-editors"><i class="fa fa-check"></i><b>1.4</b> Text editors</a></li>
+<li class="chapter" data-level="1.5" data-path="html.html"><a href="html.html#what-is-html"><i class="fa fa-check"></i><b>1.5</b> What is HTML?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="html.html"><a href="html.html#overview-html"><i class="fa fa-check"></i><b>1.5.1</b> Overview</a></li>
+<li class="chapter" data-level="1.5.2" data-path="html.html"><a href="html.html#html-comments"><i class="fa fa-check"></i><b>1.5.2</b> HTML comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="html.html"><a href="html.html#block-vs-inline"><i class="fa fa-check"></i><b>1.5.3</b> Block vs. inline</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="html.html"><a href="html.html#common-html-elements"><i class="fa fa-check"></i><b>1.6</b> Common HTML elements</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="html.html"><a href="html.html#html-element-types"><i class="fa fa-check"></i><b>1.6.1</b> HTML element types</a></li>
+<li class="chapter" data-level="1.6.2" data-path="html.html"><a href="html.html#html-structure"><i class="fa fa-check"></i><b>1.6.2</b> Structure</a></li>
+<li class="chapter" data-level="1.6.3" data-path="html.html"><a href="html.html#title-and-metadata"><i class="fa fa-check"></i><b>1.6.3</b> Title and metadata</a></li>
+<li class="chapter" data-level="1.6.4" data-path="html.html"><a href="html.html#styling-and-scripts"><i class="fa fa-check"></i><b>1.6.4</b> Styling and scripts</a></li>
+<li class="chapter" data-level="1.6.5" data-path="html.html"><a href="html.html#headings-and-paragraphs"><i class="fa fa-check"></i><b>1.6.5</b> Headings and paragraphs</a></li>
+<li class="chapter" data-level="1.6.6" data-path="html.html"><a href="html.html#font-formatting"><i class="fa fa-check"></i><b>1.6.6</b> Font formatting</a></li>
+<li class="chapter" data-level="1.6.7" data-path="html.html"><a href="html.html#spacing"><i class="fa fa-check"></i><b>1.6.7</b> Spacing</a></li>
+<li class="chapter" data-level="1.6.8" data-path="html.html"><a href="html.html#html-lists"><i class="fa fa-check"></i><b>1.6.8</b> Lists</a></li>
+<li class="chapter" data-level="1.6.9" data-path="html.html"><a href="html.html#html-links"><i class="fa fa-check"></i><b>1.6.9</b> Links</a></li>
+<li class="chapter" data-level="1.6.10" data-path="html.html"><a href="html.html#images"><i class="fa fa-check"></i><b>1.6.10</b> Images</a></li>
+<li class="chapter" data-level="1.6.11" data-path="html.html"><a href="html.html#tables"><i class="fa fa-check"></i><b>1.6.11</b> Tables</a></li>
+<li class="chapter" data-level="1.6.12" data-path="html.html"><a href="html.html#grouping"><i class="fa fa-check"></i><b>1.6.12</b> Grouping</a></li>
+<li class="chapter" data-level="1.6.13" data-path="html.html"><a href="html.html#input-elements"><i class="fa fa-check"></i><b>1.6.13</b> Input elements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="html.html"><a href="html.html#id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7</b> <code>id</code>, <code>class</code>, and <code>style</code> attributes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="html.html"><a href="html.html#overview-id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7.1</b> Overview</a></li>
+<li class="chapter" data-level="1.7.2" data-path="html.html"><a href="html.html#id"><i class="fa fa-check"></i><b>1.7.2</b> <code>id</code></a></li>
+<li class="chapter" data-level="1.7.3" data-path="html.html"><a href="html.html#html-class"><i class="fa fa-check"></i><b>1.7.3</b> <code>class</code></a></li>
+<li class="chapter" data-level="1.7.4" data-path="html.html"><a href="html.html#style-2"><i class="fa fa-check"></i><b>1.7.4</b> <code>style</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="html.html"><a href="html.html#code-layout"><i class="fa fa-check"></i><b>1.8</b> Code layout</a></li>
+<li class="chapter" data-level="1.9" data-path="html.html"><a href="html.html#inspecting-elements"><i class="fa fa-check"></i><b>1.9</b> Inspecting elements</a></li>
+<li class="chapter" data-level="1.10" data-path="html.html"><a href="html.html#exercise"><i class="fa fa-check"></i><b>1.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>2</b> CSS</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="css.html"><a href="css.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="css.html"><a href="css.html#what-is-css"><i class="fa fa-check"></i><b>2.2</b> What is CSS?</a></li>
+<li class="chapter" data-level="2.3" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>2.3</b> CSS rules</a></li>
+<li class="chapter" data-level="2.4" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i><b>2.4</b> CSS selectors</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="css.html"><a href="css.html#overview-css-selectors"><i class="fa fa-check"></i><b>2.4.1</b> Overview</a></li>
+<li class="chapter" data-level="2.4.2" data-path="css.html"><a href="css.html#type-selector"><i class="fa fa-check"></i><b>2.4.2</b> Type selector</a></li>
+<li class="chapter" data-level="2.4.3" data-path="css.html"><a href="css.html#class-selector"><i class="fa fa-check"></i><b>2.4.3</b> Class selector</a></li>
+<li class="chapter" data-level="2.4.4" data-path="css.html"><a href="css.html#id-selector"><i class="fa fa-check"></i><b>2.4.4</b> ID selector</a></li>
+<li class="chapter" data-level="2.4.5" data-path="css.html"><a href="css.html#descendant-selector"><i class="fa fa-check"></i><b>2.4.5</b> Descendant selector</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="css.html"><a href="css.html#css-conflicts"><i class="fa fa-check"></i><b>2.5</b> CSS conflicts</a></li>
+<li class="chapter" data-level="2.6" data-path="css.html"><a href="css.html#css-inheritance"><i class="fa fa-check"></i><b>2.6</b> CSS inheritance</a></li>
+<li class="chapter" data-level="2.7" data-path="css.html"><a href="css.html#linking-css-to-html"><i class="fa fa-check"></i><b>2.7</b> Linking CSS to HTML</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="css.html"><a href="css.html#methods-for-linking-css"><i class="fa fa-check"></i><b>2.7.1</b> Methods for linking CSS</a></li>
+<li class="chapter" data-level="2.7.2" data-path="css.html"><a href="css.html#inline-css"><i class="fa fa-check"></i><b>2.7.2</b> Inline CSS</a></li>
+<li class="chapter" data-level="2.7.3" data-path="css.html"><a href="css.html#embedded-css"><i class="fa fa-check"></i><b>2.7.3</b> Embedded CSS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="css.html"><a href="css.html#external-css"><i class="fa fa-check"></i><b>2.7.4</b> External CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i><b>2.8</b> CSS properties</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="css.html"><a href="css.html#overview-css-properties"><i class="fa fa-check"></i><b>2.8.1</b> Overview</a></li>
+<li class="chapter" data-level="2.8.2" data-path="css.html"><a href="css.html#color"><i class="fa fa-check"></i><b>2.8.2</b> Color</a></li>
+<li class="chapter" data-level="2.8.3" data-path="css.html"><a href="css.html#text"><i class="fa fa-check"></i><b>2.8.3</b> Text</a></li>
+<li class="chapter" data-level="2.8.4" data-path="css.html"><a href="css.html#boxes"><i class="fa fa-check"></i><b>2.8.4</b> Boxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="css.html"><a href="css.html#hurricane-scale"><i class="fa fa-check"></i><b>2.9</b> Hurricane scale example</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="css.html"><a href="css.html#html-contents"><i class="fa fa-check"></i><b>2.9.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.9.2" data-path="css.html"><a href="css.html#css-styling"><i class="fa fa-check"></i><b>2.9.2</b> CSS styling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="css.html"><a href="css.html#example-map-description"><i class="fa fa-check"></i><b>2.10</b> Map description example</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="css.html"><a href="css.html#html-contents-1"><i class="fa fa-check"></i><b>2.10.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.10.2" data-path="css.html"><a href="css.html#example-map-description-box-position"><i class="fa fa-check"></i><b>2.10.2</b> CSS styling: box position</a></li>
+<li class="chapter" data-level="2.10.3" data-path="css.html"><a href="css.html#css-styling-final-touches"><i class="fa fa-check"></i><b>2.10.3</b> CSS styling: final touches</a></li>
+<li class="chapter" data-level="2.10.4" data-path="css.html"><a href="css.html#adding-map-in-the-background"><i class="fa fa-check"></i><b>2.10.4</b> Adding map in the background</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="css.html"><a href="css.html#exercise-1"><i class="fa fa-check"></i><b>2.11</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="javascript-basics.html"><a href="javascript-basics.html"><i class="fa fa-check"></i><b>3</b> JavaScript Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="javascript-basics.html"><a href="javascript-basics.html#introduction-2"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-javascript-1"><i class="fa fa-check"></i><b>3.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="3.3" data-path="javascript-basics.html"><a href="javascript-basics.html#client-side-vs.-server-side"><i class="fa fa-check"></i><b>3.3</b> Client-side vs. server-side</a></li>
+<li class="chapter" data-level="3.4" data-path="javascript-basics.html"><a href="javascript-basics.html#the-javascript-console"><i class="fa fa-check"></i><b>3.4</b> The JavaScript console</a></li>
+<li class="chapter" data-level="3.5" data-path="javascript-basics.html"><a href="javascript-basics.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
+<li class="chapter" data-level="3.6" data-path="javascript-basics.html"><a href="javascript-basics.html#data-types"><i class="fa fa-check"></i><b>3.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="javascript-basics.html"><a href="javascript-basics.html#overview-data-types"><i class="fa fa-check"></i><b>3.6.1</b> Overview</a></li>
+<li class="chapter" data-level="3.6.2" data-path="javascript-basics.html"><a href="javascript-basics.html#primitive-data-types"><i class="fa fa-check"></i><b>3.6.2</b> Primitive data types</a></li>
+<li class="chapter" data-level="3.6.3" data-path="javascript-basics.html"><a href="javascript-basics.html#objects-data-type"><i class="fa fa-check"></i><b>3.6.3</b> Objects</a></li>
+<li class="chapter" data-level="3.6.4" data-path="javascript-basics.html"><a href="javascript-basics.html#checking-type-of-variables"><i class="fa fa-check"></i><b>3.6.4</b> Checking type of variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="javascript-basics.html"><a href="javascript-basics.html#functions"><i class="fa fa-check"></i><b>3.7</b> Functions</a></li>
+<li class="chapter" data-level="3.8" data-path="javascript-basics.html"><a href="javascript-basics.html#methods"><i class="fa fa-check"></i><b>3.8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-are-methods"><i class="fa fa-check"></i><b>3.8.1</b> What are methods?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="javascript-basics.html"><a href="javascript-basics.html#array-methods"><i class="fa fa-check"></i><b>3.8.2</b> Array methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="javascript-basics.html"><a href="javascript-basics.html#scope"><i class="fa fa-check"></i><b>3.9</b> Scope</a></li>
+<li class="chapter" data-level="3.10" data-path="javascript-basics.html"><a href="javascript-basics.html#flow-control"><i class="fa fa-check"></i><b>3.10</b> Flow control</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-flow-control"><i class="fa fa-check"></i><b>3.10.1</b> What is flow control?</a></li>
+<li class="chapter" data-level="3.10.2" data-path="javascript-basics.html"><a href="javascript-basics.html#conditionals"><i class="fa fa-check"></i><b>3.10.2</b> Conditionals</a></li>
+<li class="chapter" data-level="3.10.3" data-path="javascript-basics.html"><a href="javascript-basics.html#loops"><i class="fa fa-check"></i><b>3.10.3</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-object-notation-json"><i class="fa fa-check"></i><b>3.11</b> JavaScript Object Notation (JSON)</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-json"><i class="fa fa-check"></i><b>3.11.1</b> JSON</a></li>
+<li class="chapter" data-level="3.11.2" data-path="javascript-basics.html"><a href="javascript-basics.html#geojson"><i class="fa fa-check"></i><b>3.11.2</b> GeoJSON</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="javascript-basics.html"><a href="javascript-basics.html#exercise-2"><i class="fa fa-check"></i><b>3.12</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html"><i class="fa fa-check"></i><b>4</b> JavaScript Interactivity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-document-object-model"><i class="fa fa-check"></i><b>4.2</b> The Document Object Model (DOM)</a></li>
+<li class="chapter" data-level="4.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-and-modifying-elements"><i class="fa fa-check"></i><b>4.3</b> Accessing and modifying elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#overview-accessing-and_modifying"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accessing elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-element-properties"><i class="fa fa-check"></i><b>4.3.3</b> Getting element properties</a></li>
+<li class="chapter" data-level="4.3.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-elements"><i class="fa fa-check"></i><b>4.3.4</b> Modifying elements</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-listeners"><i class="fa fa-check"></i><b>4.4</b> Event listeners</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-types"><i class="fa fa-check"></i><b>4.4.1</b> Event types</a></li>
+<li class="chapter" data-level="4.4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#binding-event-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Binding event listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#hello-example"><i class="fa fa-check"></i><b>4.5</b> Hello example</a></li>
+<li class="chapter" data-level="4.6" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#poles-example"><i class="fa fa-check"></i><b>4.6</b> Poles example</a></li>
+<li class="chapter" data-level="4.7" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#operating-on-selection"><i class="fa fa-check"></i><b>4.7</b> Operating on multiple selections</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#example-page"><i class="fa fa-check"></i><b>4.7.1</b> Example page</a></li>
+<li class="chapter" data-level="4.7.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#making-multiple-selections"><i class="fa fa-check"></i><b>4.7.2</b> Making multiple selections</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-and-setting-input-values"><i class="fa fa-check"></i><b>4.8</b> Getting and setting input values</a></li>
+<li class="chapter" data-level="4.9" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#multiple-event-listeners"><i class="fa fa-check"></i><b>4.9</b> Multiple event listeners</a></li>
+<li class="chapter" data-level="4.10" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-event-object"><i class="fa fa-check"></i><b>4.10</b> The event object</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-object-properties"><i class="fa fa-check"></i><b>4.10.1</b> Event object properties</a></li>
+<li class="chapter" data-level="4.10.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-target"><i class="fa fa-check"></i><b>4.10.2</b> The <code>.target</code> property</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-page-based-on-data"><i class="fa fa-check"></i><b>4.11</b> Modifying page based on data</a></li>
+<li class="chapter" data-level="4.12" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#working-with-user-input"><i class="fa fa-check"></i><b>4.12</b> Calculator example</a></li>
+<li class="chapter" data-level="4.13" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#exercise-3"><i class="fa fa-check"></i><b>4.13</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="web-servers-1.html"><a href="web-servers-1.html"><i class="fa fa-check"></i><b>5</b> Web Servers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#web-servers-2"><i class="fa fa-check"></i><b>5.2</b> Web servers</a></li>
+<li class="chapter" data-level="5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#communicating-through-http"><i class="fa fa-check"></i><b>5.3</b> Communicating through HTTP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="web-servers-1.html"><a href="web-servers-1.html#web-protocols-and-http"><i class="fa fa-check"></i><b>5.3.1</b> Web protocols and HTTP</a></li>
+<li class="chapter" data-level="5.3.2" data-path="web-servers-1.html"><a href="web-servers-1.html#http-methods"><i class="fa fa-check"></i><b>5.3.2</b> HTTP methods</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#static-vs-dynamic-servers"><i class="fa fa-check"></i><b>5.4</b> Static vs. dynamic servers</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview"><i class="fa fa-check"></i><b>5.4.1</b> Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="web-servers-1.html"><a href="web-servers-1.html#static-servers"><i class="fa fa-check"></i><b>5.4.2</b> Static servers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="web-servers-1.html"><a href="web-servers-1.html#dynamic-servers"><i class="fa fa-check"></i><b>5.4.3</b> Dynamic servers</a></li>
+<li class="chapter" data-level="5.4.4" data-path="web-servers-1.html"><a href="web-servers-1.html#software-1"><i class="fa fa-check"></i><b>5.4.4</b> Software</a></li>
+<li class="chapter" data-level="5.4.5" data-path="web-servers-1.html"><a href="web-servers-1.html#practical-considerations"><i class="fa fa-check"></i><b>5.4.5</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-file-structure"><i class="fa fa-check"></i><b>5.5</b> URLs and file structure</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-index-html"><i class="fa fa-check"></i><b>5.5.1</b> URLs and <code>index.html</code></a></li>
+<li class="chapter" data-level="5.5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#file-structure"><i class="fa fa-check"></i><b>5.5.2</b> File structure</a></li>
+<li class="chapter" data-level="5.5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#relative-paths"><i class="fa fa-check"></i><b>5.5.3</b> Relative paths</a></li>
+<li class="chapter" data-level="5.5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#css-and-javasccript"><i class="fa fa-check"></i><b>5.5.4</b> CSS and JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="web-servers-1.html"><a href="web-servers-1.html#running-a-static-server"><i class="fa fa-check"></i><b>5.6</b> Running a static server</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview-running-static-server"><i class="fa fa-check"></i><b>5.6.1</b> Overview</a></li>
+<li class="chapter" data-level="5.6.2" data-path="web-servers-1.html"><a href="web-servers-1.html#local-with-python"><i class="fa fa-check"></i><b>5.6.2</b> Local with Python</a></li>
+<li class="chapter" data-level="5.6.3" data-path="web-servers-1.html"><a href="web-servers-1.html#remote-with-github-pages"><i class="fa fa-check"></i><b>5.6.3</b> Remote with GitHub Pages</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Web Mapping with Leaflet</b></span></li>
+<li class="chapter" data-level="6" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>6</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leaflet.html"><a href="leaflet.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="leaflet.html"><a href="leaflet.html#what-is-web-map"><i class="fa fa-check"></i><b>6.2</b> What is a web map?</a></li>
+<li class="chapter" data-level="6.3" data-path="leaflet.html"><a href="leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>6.3</b> What is Leaflet?</a></li>
+<li class="chapter" data-level="6.4" data-path="leaflet.html"><a href="leaflet.html#alternatives-to-leaflet"><i class="fa fa-check"></i><b>6.4</b> Alternatives to Leaflet</a></li>
+<li class="chapter" data-level="6.5" data-path="leaflet.html"><a href="leaflet.html#creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5</b> Creating a basic web map</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="leaflet.html"><a href="leaflet.html#overview-creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5.1</b> Overview</a></li>
+<li class="chapter" data-level="6.5.2" data-path="leaflet.html"><a href="leaflet.html#web-page-setup"><i class="fa fa-check"></i><b>6.5.2</b> Web page setup</a></li>
+<li class="chapter" data-level="6.5.3" data-path="leaflet.html"><a href="leaflet.html#javascript-libraries"><i class="fa fa-check"></i><b>6.5.3</b> JavaScript libraries</a></li>
+<li class="chapter" data-level="6.5.4" data-path="leaflet.html"><a href="leaflet.html#including-a-library"><i class="fa fa-check"></i><b>6.5.4</b> Including a library</a></li>
+<li class="chapter" data-level="6.5.5" data-path="leaflet.html"><a href="leaflet.html#loading-a-local-script"><i class="fa fa-check"></i><b>6.5.5</b> Loading a local script</a></li>
+<li class="chapter" data-level="6.5.6" data-path="leaflet.html"><a href="leaflet.html#loading-a-remote-script"><i class="fa fa-check"></i><b>6.5.6</b> Loading a remote script</a></li>
+<li class="chapter" data-level="6.5.7" data-path="leaflet.html"><a href="leaflet.html#including-leaflet-css-js"><i class="fa fa-check"></i><b>6.5.7</b> Including Leaflet CSS and JavaScript</a></li>
+<li class="chapter" data-level="6.5.8" data-path="leaflet.html"><a href="leaflet.html#adding-map-div"><i class="fa fa-check"></i><b>6.5.8</b> Adding map <code>&lt;div&gt;</code></a></li>
+<li class="chapter" data-level="6.5.9" data-path="leaflet.html"><a href="leaflet.html#creating-map-object"><i class="fa fa-check"></i><b>6.5.9</b> Creating a map object</a></li>
+<li class="chapter" data-level="6.5.10" data-path="leaflet.html"><a href="leaflet.html#what-are-tile-layers"><i class="fa fa-check"></i><b>6.5.10</b> What are tile layers?</a></li>
+<li class="chapter" data-level="6.5.11" data-path="leaflet.html"><a href="leaflet.html#adding-a-tile-layer"><i class="fa fa-check"></i><b>6.5.11</b> Adding a tile layer</a></li>
+<li class="chapter" data-level="6.5.12" data-path="leaflet.html"><a href="leaflet.html#tile-layer-providers"><i class="fa fa-check"></i><b>6.5.12</b> Tile layer providers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="leaflet.html"><a href="leaflet.html#adding-vector-layers"><i class="fa fa-check"></i><b>6.6</b> Adding vector layers</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="leaflet.html"><a href="leaflet.html#overview-adding-vector-layers"><i class="fa fa-check"></i><b>6.6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.6.2" data-path="leaflet.html"><a href="leaflet.html#adding-markers"><i class="fa fa-check"></i><b>6.6.2</b> Adding markers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="leaflet.html"><a href="leaflet.html#adding-lines"><i class="fa fa-check"></i><b>6.6.3</b> Adding lines</a></li>
+<li class="chapter" data-level="6.6.4" data-path="leaflet.html"><a href="leaflet.html#adding-polygons"><i class="fa fa-check"></i><b>6.6.4</b> Adding polygons</a></li>
+<li class="chapter" data-level="6.6.5" data-path="leaflet.html"><a href="leaflet.html#other-layer-types"><i class="fa fa-check"></i><b>6.6.5</b> Other layer types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="leaflet.html"><a href="leaflet.html#adding-popups"><i class="fa fa-check"></i><b>6.7</b> Adding popups</a></li>
+<li class="chapter" data-level="6.8" data-path="leaflet.html"><a href="leaflet.html#adding-a-description"><i class="fa fa-check"></i><b>6.8</b> Adding a description</a></li>
+<li class="chapter" data-level="6.9" data-path="leaflet.html"><a href="leaflet.html#introducing-map-events"><i class="fa fa-check"></i><b>6.9</b> Introducing map events</a></li>
+<li class="chapter" data-level="6.10" data-path="leaflet.html"><a href="leaflet.html#exercise-06"><i class="fa fa-check"></i><b>6.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="geojson-1.html"><a href="geojson-1.html"><i class="fa fa-check"></i><b>7</b> GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="geojson-1.html"><a href="geojson-1.html#introduction-6"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="geojson-1.html"><a href="geojson-1.html#what-is-geojson"><i class="fa fa-check"></i><b>7.2</b> What is GeoJSON?</a></li>
+<li class="chapter" data-level="7.3" data-path="geojson-1.html"><a href="geojson-1.html#geojson-structure"><i class="fa fa-check"></i><b>7.3</b> GeoJSON structure</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-geojson"><i class="fa fa-check"></i><b>7.3.1</b> Overview</a></li>
+<li class="chapter" data-level="7.3.2" data-path="geojson-1.html"><a href="geojson-1.html#geometries"><i class="fa fa-check"></i><b>7.3.2</b> Geometries</a></li>
+<li class="chapter" data-level="7.3.3" data-path="geojson-1.html"><a href="geojson-1.html#features"><i class="fa fa-check"></i><b>7.3.3</b> Features</a></li>
+<li class="chapter" data-level="7.3.4" data-path="geojson-1.html"><a href="geojson-1.html#feature-collections"><i class="fa fa-check"></i><b>7.3.4</b> Feature collections</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="geojson-1.html"><a href="geojson-1.html#editing-geojson"><i class="fa fa-check"></i><b>7.4</b> Editing GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="geojson-1.html"><a href="geojson-1.html#geojson-io"><i class="fa fa-check"></i><b>7.4.1</b> geojson.io</a></li>
+<li class="chapter" data-level="7.4.2" data-path="geojson-1.html"><a href="geojson-1.html#mapshaper"><i class="fa fa-check"></i><b>7.4.2</b> mapshaper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="geojson-1.html"><a href="geojson-1.html#adding-geojson-to-leaflet-map"><i class="fa fa-check"></i><b>7.5</b> Adding GeoJSON to Leaflet map</a></li>
+<li class="chapter" data-level="7.6" data-path="geojson-1.html"><a href="geojson-1.html#geojson-viewer"><i class="fa fa-check"></i><b>7.6</b> GeoJSON viewer example</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="geojson-1.html"><a href="geojson-1.html#viewer-structure"><i class="fa fa-check"></i><b>7.6.1</b> Viewer structure</a></li>
+<li class="chapter" data-level="7.6.2" data-path="geojson-1.html"><a href="geojson-1.html#viewer-html-and-css"><i class="fa fa-check"></i><b>7.6.2</b> HTML and CSS</a></li>
+<li class="chapter" data-level="7.6.3" data-path="geojson-1.html"><a href="geojson-1.html#base-map"><i class="fa fa-check"></i><b>7.6.3</b> Base map</a></li>
+<li class="chapter" data-level="7.6.4" data-path="geojson-1.html"><a href="geojson-1.html#adding-an-event-listener"><i class="fa fa-check"></i><b>7.6.4</b> Adding an event listener</a></li>
+<li class="chapter" data-level="7.6.5" data-path="geojson-1.html"><a href="geojson-1.html#using-layer-groups"><i class="fa fa-check"></i><b>7.6.5</b> Using layer groups</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="geojson-1.html"><a href="geojson-1.html#ajax"><i class="fa fa-check"></i><b>7.7</b> Ajax and the <code>fetch</code> API</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-ajax"><i class="fa fa-check"></i><b>7.7.1</b> What is Ajax?</a></li>
+<li class="chapter" data-level="7.7.2" data-path="geojson-1.html"><a href="geojson-1.html#ajax-examples"><i class="fa fa-check"></i><b>7.7.2</b> Ajax examples</a></li>
+<li class="chapter" data-level="7.7.3" data-path="geojson-1.html"><a href="geojson-1.html#making-ajax-requests-with-fetch"><i class="fa fa-check"></i><b>7.7.3</b> The <code>fetch</code> API</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="geojson-1.html"><a href="geojson-1.html#loading-geojson-files"><i class="fa fa-check"></i><b>7.8</b> Loading GeoJSON files</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="geojson-1.html"><a href="geojson-1.html#loading-local-files"><i class="fa fa-check"></i><b>7.8.1</b> Loading local files</a></li>
+<li class="chapter" data-level="7.8.2" data-path="geojson-1.html"><a href="geojson-1.html#loading-remote-files"><i class="fa fa-check"></i><b>7.8.2</b> Loading remote files</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="geojson-1.html"><a href="geojson-1.html#exercise-4"><i class="fa fa-check"></i><b>7.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html"><i class="fa fa-check"></i><b>8</b> Symbology and Interactivity</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#introduction-7"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#l-geojson-options"><i class="fa fa-check"></i><b>8.2</b> <code>L.geoJSON</code> options</a></li>
+<li class="chapter" data-level="8.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constant-style"><i class="fa fa-check"></i><b>8.3</b> Constant style</a></li>
+<li class="chapter" data-level="8.4" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#varying-style"><i class="fa fa-check"></i><b>8.4</b> Varying style</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-varying-style"><i class="fa fa-check"></i><b>8.4.1</b> Setting varying style</a></li>
+<li class="chapter" data-level="8.4.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#states-example"><i class="fa fa-check"></i><b>8.4.2</b> States example</a></li>
+<li class="chapter" data-level="8.4.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#towns-example"><i class="fa fa-check"></i><b>8.4.3</b> Towns example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constructing-popups-from-data"><i class="fa fa-check"></i><b>8.5</b> Constructing popups from data</a></li>
+<li class="chapter" data-level="8.6" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#adding-a-legend"><i class="fa fa-check"></i><b>8.6</b> Adding a legend</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-legend-contents-with-l.control"><i class="fa fa-check"></i><b>8.6.1</b> Setting legend contents with <code>L.control</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#using-css-to-style-the-legend"><i class="fa fa-check"></i><b>8.6.2</b> Using CSS to style the legend</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-style"><i class="fa fa-check"></i><b>8.7</b> Dynamic style</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#styling-in-response-to-events"><i class="fa fa-check"></i><b>8.7.1</b> Styling in response to events</a></li>
+<li class="chapter" data-level="8.7.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-control-contents"><i class="fa fa-check"></i><b>8.7.2</b> Dynamic control contents</a></li>
+<li class="chapter" data-level="8.7.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#linked-views"><i class="fa fa-check"></i><b>8.7.3</b> Linked views</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#exercise-08"><i class="fa fa-check"></i><b>8.8</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>III Databases</b></span></li>
+<li class="chapter" data-level="9" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>9</b> Databases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="databases.html"><a href="databases.html#introduction-databases"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="databases.html"><a href="databases.html#what-is-carto"><i class="fa fa-check"></i><b>9.2</b> What is CARTO?</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="databases.html"><a href="databases.html#the-carto-platform"><i class="fa fa-check"></i><b>9.2.1</b> The CARTO platform</a></li>
+<li class="chapter" data-level="9.2.2" data-path="databases.html"><a href="databases.html#alternatives-to-carto"><i class="fa fa-check"></i><b>9.2.2</b> Alternatives to CARTO</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="databases.html"><a href="databases.html#databases-1"><i class="fa fa-check"></i><b>9.3</b> Databases</a></li>
+<li class="chapter" data-level="9.4" data-path="databases.html"><a href="databases.html#spatial-databases"><i class="fa fa-check"></i><b>9.4</b> Spatial databases</a></li>
+<li class="chapter" data-level="9.5" data-path="databases.html"><a href="databases.html#what-is-postgis"><i class="fa fa-check"></i><b>9.5</b> What is PostGIS?</a></li>
+<li class="chapter" data-level="9.6" data-path="databases.html"><a href="databases.html#what-is-sql"><i class="fa fa-check"></i><b>9.6</b> What is SQL?</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="databases.html"><a href="databases.html#overview-sql"><i class="fa fa-check"></i><b>9.6.1</b> Overview</a></li>
+<li class="chapter" data-level="9.6.2" data-path="databases.html"><a href="databases.html#non-spatial-queries"><i class="fa fa-check"></i><b>9.6.2</b> Non-spatial queries</a></li>
+<li class="chapter" data-level="9.6.3" data-path="databases.html"><a href="databases.html#the-geometry-column"><i class="fa fa-check"></i><b>9.6.3</b> The geometry column</a></li>
+<li class="chapter" data-level="9.6.4" data-path="databases.html"><a href="databases.html#spatial-queries"><i class="fa fa-check"></i><b>9.6.4</b> Spatial queries</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="databases.html"><a href="databases.html#the-carto-sql-api"><i class="fa fa-check"></i><b>9.7</b> The CARTO SQL API</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="databases.html"><a href="databases.html#api-usage"><i class="fa fa-check"></i><b>9.7.1</b> API usage</a></li>
+<li class="chapter" data-level="9.7.2" data-path="databases.html"><a href="databases.html#query-example"><i class="fa fa-check"></i><b>9.7.2</b> Query example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="databases.html"><a href="databases.html#uploading-your-data"><i class="fa fa-check"></i><b>9.7.3</b> Uploading your data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="databases.html"><a href="databases.html#carto-and-leaflet"><i class="fa fa-check"></i><b>9.8</b> CARTO and Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="databases.html"><a href="databases.html#exercise-09"><i class="fa fa-check"></i><b>9.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html"><i class="fa fa-check"></i><b>10</b> Non-spatial Queries</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#introduction-8"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#subsetting-with-sql"><i class="fa fa-check"></i><b>10.2</b> Subsetting with SQL</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#filtering-based-on-attributes"><i class="fa fa-check"></i><b>10.2.1</b> Filtering based on attributes</a></li>
+<li class="chapter" data-level="10.2.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#displaying-on-a-map"><i class="fa fa-check"></i><b>10.2.2</b> Displaying on a map</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#creating-a-dropdown-menu"><i class="fa fa-check"></i><b>10.3</b> Creating a dropdown menu</a></li>
+<li class="chapter" data-level="10.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#populating-dropdown-options"><i class="fa fa-check"></i><b>10.4</b> Populating dropdown options</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#how-many-species-do-we-have"><i class="fa fa-check"></i><b>10.4.1</b> How many species do we have?</a></li>
+<li class="chapter" data-level="10.4.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#dropdown-menu-placeholder"><i class="fa fa-check"></i><b>10.4.2</b> Dropdown menu placeholder</a></li>
+<li class="chapter" data-level="10.4.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#finding-unique-values"><i class="fa fa-check"></i><b>10.4.3</b> Finding unique values</a></li>
+<li class="chapter" data-level="10.4.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#adding-options"><i class="fa fa-check"></i><b>10.4.4</b> Adding the options</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#updating-the-map"><i class="fa fa-check"></i><b>10.5</b> Updating the map</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#overview-updating-map"><i class="fa fa-check"></i><b>10.5.1</b> Overview</a></li>
+<li class="chapter" data-level="10.5.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#manual-example"><i class="fa fa-check"></i><b>10.5.2</b> Manual example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#automatic-updating"><i class="fa fa-check"></i><b>10.5.3</b> Automatic updating</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#rearranging-the-code"><i class="fa fa-check"></i><b>10.6</b> Refactoring the code</a></li>
+<li class="chapter" data-level="10.7" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#exercise-10"><i class="fa fa-check"></i><b>10.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html"><i class="fa fa-check"></i><b>11</b> Spatial Queries</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-marker-on-click"><i class="fa fa-check"></i><b>11.2</b> Adding markers on click</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#getting-click-coordinates"><i class="fa fa-check"></i><b>11.2.1</b> Getting click coordinates</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-custom-marker"><i class="fa fa-check"></i><b>11.2.2</b> Adding a custom marker</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#spatial-postgis-operators"><i class="fa fa-check"></i><b>11.3</b> Spatial PostGIS operators</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#overview-postgis-operators"><i class="fa fa-check"></i><b>11.3.1</b> Overview</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#geographical-distance"><i class="fa fa-check"></i><b>11.3.2</b> Geographical distance</a></li>
+<li class="chapter" data-level="11.3.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#sphere-vs-spheroid"><i class="fa fa-check"></i><b>11.3.3</b> Sphere vs. spheroid</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-nearest-points-to-map"><i class="fa fa-check"></i><b>11.4</b> Adding nearest points to map</a></li>
+<li class="chapter" data-level="11.5" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#drawing-line-connectors"><i class="fa fa-check"></i><b>11.5</b> Drawing line connectors</a></li>
+<li class="chapter" data-level="11.6" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#exercise-5"><i class="fa fa-check"></i><b>11.6</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>IV Advanced Topics</b></span></li>
+<li class="chapter" data-level="12" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html"><i class="fa fa-check"></i><b>12</b> Client-side Geoprocessing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#introduction-10"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#geoprocessing-with-turfjs"><i class="fa fa-check"></i><b>12.2</b> Geoprocessing with Turf.js</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-turfjs"><i class="fa fa-check"></i><b>12.2.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#including-the-turf-js-library"><i class="fa fa-check"></i><b>12.2.2</b> Including the Turf.js library</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#great-circle-line"><i class="fa fa-check"></i><b>12.3</b> Great Circle line</a></li>
+<li class="chapter" data-level="12.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuously-updated-tin"><i class="fa fa-check"></i><b>12.4</b> Continuously updated TIN</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-continuous-tin"><i class="fa fa-check"></i><b>12.4.1</b> Overview</a></li>
+<li class="chapter" data-level="12.4.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#generating-random-points"><i class="fa fa-check"></i><b>12.4.2</b> Generating random points</a></li>
+<li class="chapter" data-level="12.4.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-tin-layer"><i class="fa fa-check"></i><b>12.4.3</b> Adding a TIN layer</a></li>
+<li class="chapter" data-level="12.4.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#draggable-circle-markers"><i class="fa fa-check"></i><b>12.4.4</b> Draggable circle markers</a></li>
+<li class="chapter" data-level="12.4.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuous-updating"><i class="fa fa-check"></i><b>12.4.5</b> Continuous updating</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#clustering"><i class="fa fa-check"></i><b>12.5</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-clustering"><i class="fa fa-check"></i><b>12.5.1</b> Overview</a></li>
+<li class="chapter" data-level="12.5.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#processing-sets-of-features"><i class="fa fa-check"></i><b>12.5.2</b> Processing sets of features</a></li>
+<li class="chapter" data-level="12.5.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-convex-hull"><i class="fa fa-check"></i><b>12.5.3</b> Adding a Convex Hull</a></li>
+<li class="chapter" data-level="12.5.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#dbscan-clustering"><i class="fa fa-check"></i><b>12.5.4</b> DBSCAN clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#heatmaps-with-leafletheat"><i class="fa fa-check"></i><b>12.6</b> Heatmaps with Leaflet.heat</a></li>
+<li class="chapter" data-level="12.7" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#exercise-6"><i class="fa fa-check"></i><b>12.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html"><i class="fa fa-check"></i><b>13</b> Collaborative Mapping</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#introduction-11"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#crowdsourcing"><i class="fa fa-check"></i><b>13.2</b> Crowdsourcing</a></li>
+<li class="chapter" data-level="13.3" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#the-drawing-control"><i class="fa fa-check"></i><b>13.3</b> The drawing control</a></li>
+<li class="chapter" data-level="13.4" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#working-with-drawn-items"><i class="fa fa-check"></i><b>13.4</b> Working with drawn items</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#printing-drawn-items-geojson"><i class="fa fa-check"></i><b>13.4.1</b> Printing drawn items GeoJSON</a></li>
+<li class="chapter" data-level="13.4.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#expanded-geojson-viewer"><i class="fa fa-check"></i><b>13.4.2</b> Expanded GeoJSON viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#submission-form"><i class="fa fa-check"></i><b>13.5</b> Submission form</a></li>
+<li class="chapter" data-level="13.6" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#sending-features-to-the-database"><i class="fa fa-check"></i><b>13.6</b> Sending features to the database</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#setting-database-permissions"><i class="fa fa-check"></i><b>13.6.1</b> Setting database permissions</a></li>
+<li class="chapter" data-level="13.6.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#adding-draw-control"><i class="fa fa-check"></i><b>13.6.2</b> Adding the drawing control</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#exercise-7"><i class="fa fa-check"></i><b>13.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="associated-files.html"><a href="associated-files.html"><i class="fa fa-check"></i><b>A</b> Associated Files</a></li>
+<li class="chapter" data-level="B" data-path="list-of-examples.html"><a href="list-of-examples.html"><i class="fa fa-check"></i><b>B</b> List of Examples</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="list-of-examples.html"><a href="list-of-examples.html#main"><i class="fa fa-check"></i><b>B.1</b> Main</a></li>
+<li class="chapter" data-level="B.2" data-path="list-of-examples.html"><a href="list-of-examples.html#additional"><i class="fa fa-check"></i><b>B.2</b> Additional</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="list-of-examples.html"><a href="list-of-examples.html#html-and-css"><i class="fa fa-check"></i><b>B.2.1</b> HTML and CSS</a></li>
+<li class="chapter" data-level="B.2.2" data-path="list-of-examples.html"><a href="list-of-examples.html#javascript"><i class="fa fa-check"></i><b>B.2.2</b> JavaScript</a></li>
+<li class="chapter" data-level="B.2.3" data-path="list-of-examples.html"><a href="list-of-examples.html#leaflet-1"><i class="fa fa-check"></i><b>B.2.3</b> Leaflet</a></li>
+<li class="chapter" data-level="B.2.4" data-path="list-of-examples.html"><a href="list-of-examples.html#geo-processing"><i class="fa fa-check"></i><b>B.2.4</b> Geo-processing</a></li>
+<li class="chapter" data-level="B.2.5" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps"><i class="fa fa-check"></i><b>B.2.5</b> 2.5D Maps</a></li>
+<li class="chapter" data-level="B.2.6" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps-1"><i class="fa fa-check"></i><b>B.2.6</b> 3D maps</a></li>
+<li class="chapter" data-level="B.2.7" data-path="list-of-examples.html"><a href="list-of-examples.html#animation"><i class="fa fa-check"></i><b>B.2.7</b> Animation</a></li>
+<li class="chapter" data-level="B.2.8" data-path="list-of-examples.html"><a href="list-of-examples.html#real-time-data"><i class="fa fa-check"></i><b>B.2.8</b> Real-time data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="list-of-exercise-solutions.html"><a href="list-of-exercise-solutions.html"><i class="fa fa-check"></i><b>C</b> List of Exercise Solutions</a></li>
+<li class="chapter" data-level="D" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html"><i class="fa fa-check"></i><b>D</b> BGU course 2021</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#place-and-time"><i class="fa fa-check"></i><b>D.1</b> Place and Time</a></li>
+<li class="chapter" data-level="D.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#lecture-plan"><i class="fa fa-check"></i><b>D.2</b> Lecture plan</a></li>
+<li class="chapter" data-level="D.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#project-submission-dates"><i class="fa fa-check"></i><b>D.3</b> Project submission dates</a></li>
+<li class="chapter" data-level="D.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#additional-resources"><i class="fa fa-check"></i><b>D.4</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#html-css"><i class="fa fa-check"></i><b>D.4.1</b> HTML &amp; CSS</a></li>
+<li class="chapter" data-level="D.4.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#javascript-1"><i class="fa fa-check"></i><b>D.4.2</b> JavaScript</a></li>
+<li class="chapter" data-level="D.4.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#web-mapping"><i class="fa fa-check"></i><b>D.4.3</b> Web mapping</a></li>
+<li class="chapter" data-level="D.4.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#postgis"><i class="fa fa-check"></i><b>D.4.4</b> PostGIS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="projects.html"><a href="projects.html"><i class="fa fa-check"></i><b>E</b> Projects</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="projects.html"><a href="projects.html#overview-3"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="projects.html"><a href="projects.html#carto-account"><i class="fa fa-check"></i><b>E.2</b> CARTO Account</a></li>
+<li class="chapter" data-level="E.3" data-path="projects.html"><a href="projects.html#data"><i class="fa fa-check"></i><b>E.3</b> Data</a></li>
+<li class="chapter" data-level="E.4" data-path="projects.html"><a href="projects.html#project-requirements"><i class="fa fa-check"></i><b>E.4</b> Project requirements</a>
+<ul>
+<li class="chapter" data-level="E.4.1" data-path="projects.html"><a href="projects.html#project-01"><i class="fa fa-check"></i><b>E.4.1</b> Project 01</a></li>
+<li class="chapter" data-level="E.4.2" data-path="projects.html"><a href="projects.html#project-02"><i class="fa fa-check"></i><b>E.4.2</b> Project 02</a></li>
+<li class="chapter" data-level="E.4.3" data-path="projects.html"><a href="projects.html#project-03"><i class="fa fa-check"></i><b>E.4.3</b> Project 03</a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="projects.html"><a href="projects.html#submission"><i class="fa fa-check"></i><b>E.5</b> Submission</a></li>
+<li class="chapter" data-level="E.6" data-path="projects.html"><a href="projects.html#grading"><i class="fa fa-check"></i><b>E.6</b> Grading</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>F</b> Exam</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="exam.html"><a href="exam.html#topics"><i class="fa fa-check"></i><b>F.1</b> Topics</a></li>
+<li class="chapter" data-level="F.2" data-path="exam.html"><a href="exam.html#sample-questions"><i class="fa fa-check"></i><b>F.2</b> Sample questions</a>
+<ul>
+<li class="chapter" data-level="F.2.1" data-path="exam.html"><a href="exam.html#question-1"><i class="fa fa-check"></i><b>F.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="F.2.3" data-path="exam.html"><a href="exam.html#question-3"><i class="fa fa-check"></i><b>F.2.3</b> Question 3</a></li>
+<li class="chapter" data-level="F.2.4" data-path="exam.html"><a href="exam.html#question-4"><i class="fa fa-check"></i><b>F.2.4</b> Question 4</a></li>
+<li class="chapter" data-level="F.2.5" data-path="exam.html"><a href="exam.html#question-5"><i class="fa fa-check"></i><b>F.2.5</b> Question 5</a></li>
+<li class="chapter" data-level="F.2.6" data-path="exam.html"><a href="exam.html#question-6"><i class="fa fa-check"></i><b>F.2.6</b> Question 6</a></li>
+<li class="chapter" data-level="F.2.7" data-path="exam.html"><a href="exam.html#question-7"><i class="fa fa-check"></i><b>F.2.7</b> Question 7</a></li>
+<li class="chapter" data-level="F.2.8" data-path="exam.html"><a href="exam.html#question-8"><i class="fa fa-check"></i><b>F.2.8</b> Question 8</a></li>
+<li class="chapter" data-level="F.2.9" data-path="exam.html"><a href="exam.html#question-9"><i class="fa fa-check"></i><b>F.2.9</b> Question 9</a></li>
+<li class="chapter" data-level="F.2.10" data-path="exam.html"><a href="exam.html#question-10"><i class="fa fa-check"></i><b>F.2.10</b> Question 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="additional-questions.html"><a href="additional-questions.html"><i class="fa fa-check"></i><b>G</b> Additional Questions</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="additional-questions.html"><a href="additional-questions.html#chapter-3"><i class="fa fa-check"></i><b>G.1</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="G.1.1" data-path="additional-questions.html"><a href="additional-questions.html#modifying-global-variable"><i class="fa fa-check"></i><b>G.1.1</b> Modifying global variable</a></li>
+<li class="chapter" data-level="G.1.2" data-path="additional-questions.html"><a href="additional-questions.html#insertingremoving-array-element"><i class="fa fa-check"></i><b>G.1.2</b> Inserting/removing array element</a></li>
+<li class="chapter" data-level="G.1.3" data-path="additional-questions.html"><a href="additional-questions.html#object-oriented-language"><i class="fa fa-check"></i><b>G.1.3</b> Object Oriented language</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="additional-questions.html"><a href="additional-questions.html#chapter-4"><i class="fa fa-check"></i><b>G.2</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="G.2.1" data-path="additional-questions.html"><a href="additional-questions.html#removing-collection-of-html-elements"><i class="fa fa-check"></i><b>G.2.1</b> Removing collection of HTML elements</a></li>
+<li class="chapter" data-level="G.2.2" data-path="additional-questions.html"><a href="additional-questions.html#constraining-event-listener-frequency"><i class="fa fa-check"></i><b>G.2.2</b> Constraining event listener frequency</a></li>
+<li class="chapter" data-level="G.2.3" data-path="additional-questions.html"><a href="additional-questions.html#saving-.getelementbyid-method-in-variable"><i class="fa fa-check"></i><b>G.2.3</b> Saving <code>.getElementById</code> method in variable</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="additional-questions.html"><a href="additional-questions.html#chapter-6"><i class="fa fa-check"></i><b>G.3</b> Chapter 6</a>
+<ul>
+<li class="chapter" data-level="G.3.1" data-path="additional-questions.html"><a href="additional-questions.html#routing"><i class="fa fa-check"></i><b>G.3.1</b> Routing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html"><i class="fa fa-check"></i><b>H</b> Setting up an SQL API</a>
+<ul>
+<li class="chapter" data-level="H.1" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#introduction-12"><i class="fa fa-check"></i><b>H.1</b> Introduction</a></li>
+<li class="chapter" data-level="H.2" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#computer-with-fixed-ip-address"><i class="fa fa-check"></i><b>H.2</b> Computer with fixed IP address</a></li>
+<li class="chapter" data-level="H.3" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-postgresql-postgis"><i class="fa fa-check"></i><b>H.3</b> Installing PostgreSQL and PostGIS</a></li>
+<li class="chapter" data-level="H.4" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#loading-data-into-the-database"><i class="fa fa-check"></i><b>H.4</b> Loading data into the database</a></li>
+<li class="chapter" data-level="H.5" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#adding-read-only-database-user"><i class="fa fa-check"></i><b>H.5</b> Adding a read-only database user</a></li>
+<li class="chapter" data-level="H.6" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-nodejs-and-required-modules"><i class="fa fa-check"></i><b>H.6</b> Installing Node.js and required modules</a></li>
+<li class="chapter" data-level="H.7" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#creating-a-service"><i class="fa fa-check"></i><b>H.7</b> Creating a service</a></li>
+<li class="chapter" data-level="H.8" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#testing-the-sql-api"><i class="fa fa-check"></i><b>H.8</b> Testing the SQL API</a></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html"><i class="fa fa-check"></i><b>I</b> Setting up a static server using R</a>
+<ul>
+<li class="chapter" data-level="I.1" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#introduction-13"><i class="fa fa-check"></i><b>I.1</b> Introduction</a></li>
+<li class="chapter" data-level="I.2" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-r"><i class="fa fa-check"></i><b>I.2</b> Installing R</a></li>
+<li class="chapter" data-level="I.3" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-the-servr-package"><i class="fa fa-check"></i><b>I.3</b> Installing the <code>servr</code> package</a></li>
+<li class="chapter" data-level="I.4" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#starting-the-server"><i class="fa fa-check"></i><b>I.4</b> Starting the server</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="index-2.html">Introduction to Web Mapping</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Introduction to Web Mapping</h1>
+<p class="author"><em>Michael Dorman</em></p>
+</div>
+<div id="preface" class="section level1 unnumbered">
+<h1>Preface</h1>
+<p><i>Last updated: 2021-08-24 14:54:57 </i></p>
+<div id="what-is-web-mapping" class="section level2" number="0.1">
+<h2><span class="header-section-number">0.1</span> What is web mapping?</h2>
+<p>A <a href="https://en.wikipedia.org/wiki/Web_mapping"><strong>web map</strong></a> is an interactive display of geographic information, in the form of a web page, that you can use to tell stories and answer questions. In the past, most digital geographic information was confined to specialized software on desktop PCs and could not be easily shared. With the advent of web mapping, geographical information can be shared, visualized, and edited in the browser. The most important advantage to this is accessibility: a web map, just like any website, can be reached by anyone from any device that has an internet browser and an internet connection.</p>
+<p>Web maps are <strong>interactive</strong>. The term interactive implies that the viewer can interact with the map. This can mean selecting different map data layers or features to view, zooming into a particular part of the map that you are interested in, inspecting feature properties, editing existing content, or submitting new content, and so on.</p>
+<p>Web maps are also said to be powered by the web, rather than just digital maps on the web. This means that the map is usually not self-contained; in other words, it depends on the internet. At least some of the content displayed on a web maps is usually loaded from other locations on the web, such as a tile server (Section <a href="leaflet.html#raster-tiles">6.5.10.2</a>).</p>
+<p>Web maps are useful for various purposes, such as data visualization in journalism (and elsewhere), displaying real-time spatial data, powering spatial queries in online catalogs and search tools, providing computational tools, reporting, and collaborative mapping. Some examples of web maps used for different purposes are given in Table <a href="index.html#tab:web-map-examples">0.1</a>.
+All of these are built with <strong>JavaScript</strong>.</p>
+<table>
+<caption><span id="tab:web-map-examples">TABLE 0.1: </span> Examples of web maps for different purposes</caption>
+<thead>
+<tr class="header">
+<th>Purpose</th>
+<th>Example</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Visualization and journalism</td>
+<td><a href="http://metrocosm.com/global-migration-map.html">Global Migration</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://www.shipmap.org/">Ship Traffic</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="http://mindthemap.info/mtm/">Israel Municipalities</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://zola.planning.nyc.gov/">NYC Planning</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Real-time information</td>
+<td><a href="https://earth.nullschool.net/">Earth Weather</a></td>
+<td>Figure <a href="index.html#fig:earth-nullschool">0.1</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://traze.app/">Real-Time Transport Location</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="https://www.flightradar24.com/">Real-Time Flight Locations</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="http://stuffin.space/">Stuff in Space</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="https://www.globalforestwatch.org/">Global Forest Watch</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://elections.kaplanopensource.co.il/">Israel 23rd Elections</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Catalog and search</td>
+<td><a href="https://search.earthdata.nasa.gov/">Earth Data Search</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Computational tools</td>
+<td><a href="https://www.google.com/maps">Google Maps</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="http://suncalc.net/">SunCalc</a></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="http://geojson.io/">geojson.io</a></td>
+<td>see Section <a href="geojson-1.html#geojson-io">7.4.1</a></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><a href="http://mapshaper.org/">mapshaper</a></td>
+<td>see Section <a href="geojson-1.html#mapshaper">7.4.2</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://www.outdooractive.com/en/routeplanner/">Route Planner</a></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>Reporting and collaboration</td>
+<td><a href="http://www.openstreetmap.org/">OpenStreetMap</a></td>
+<td>see Section <a href="collaborative-mapping.html#crowdsourcing">13.2</a></td>
+</tr>
+<tr class="even">
+<td></td>
+<td><a href="https://fallingfruit.org/">Falling Fruit</a></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<div class="figure" style="text-align: center"><span id="fig:earth-nullschool"></span>
+<img src="images/earth_nullschool.png" alt="Real-time earth weather visualization on &lt;a href=_https_/earth.nullschool.net__https_/earth.nullschool.net_/a__.html width="100%" />
+<p class="caption">
+FIGURE 0.1: Real-time earth weather visualization on <a href="https://earth.nullschool.net/">https://earth.nullschool.net</a>
+</p>
+</div>
+</div>
+<div id="what-is-javascript" class="section level2" number="0.2">
+<h2><span class="header-section-number">0.2</span> What is JavaScript?</h2>
+<p><strong>JavaScript</strong> is a programming language, primarily used to control interactive behavior in web pages. Alongside <strong>HTML</strong> and <strong>CSS</strong>, JavaScript is one of the three core technologies of the web. JavaScript is the only programming language that can run in the <strong>web browser</strong>, and it is used by ~95 percent of websites. The importance of the internet thus makes JavaScript one of the most popular programming<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> languages (Figure <a href="index.html#fig:stackoverflow-survey">0.2</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:stackoverflow-survey"></span>
+<img src="images/stackoverflow_survey.png" alt="Programming language popularity, based on the StackOverflow survey for 2018" width="100%" />
+<p class="caption">
+FIGURE 0.2: Programming language popularity, based on the StackOverflow survey for 2018
+</p>
+</div>
+<p>JavaScript and web development are huge topics. In this book, we are going to learn JavaScript from the specific point of view of web mapping.</p>
+</div>
+<div id="why-use-javascript-for-web-mapping" class="section level2" number="0.3">
+<h2><span class="header-section-number">0.3</span> Why use JavaScript for web mapping?</h2>
+<p>The availability of code-free, graphical interfaces for making sophisticated web maps remains an ongoing goal for the web-mapping community. Several platforms now provide straightforward interactive interfaces for building and publishing web maps and web-mapping applications, such as:</p>
+<ul>
+<li><a href="https://carto.com/builder/">CARTO Builder</a></li>
+<li><a href="https://www.mapbox.com/mapbox-studio/">Mapbox’s Studio</a></li>
+<li><a href="http://www.esri.com/software/configurable-apps">ESRI’s Configurable Apps</a></li>
+<li><a href="https://github.com/tomchadwin/qgis2web">qgis2web Plugin for QGIS</a></li>
+</ul>
+<p>A more customizable, programmatic approach for building web maps is available through scripting languages such as <strong>R</strong> and <strong>Python</strong>. Both languages have libraries that give the ability to build web maps, using few lines of code and incorporating data from the user environment:</p>
+<ul>
+<li><a href="https://rstudio.github.io/leaflet/"><code>leaflet</code></a> and <a href="https://r-spatial.github.io/mapview/"><code>mapview</code></a> (<strong>R</strong> packages)</li>
+<li><a href="http://python-visualization.github.io/folium/"><code>folium</code></a> (<strong>Python</strong> library)</li>
+</ul>
+<p>All of the above eventually build HTML, CSS, and JavaScript code, with varying degrees of flexibility and customization.</p>
+<p>Nevertheless, proficiency in the fundamental web technologies HTML, CSS, and JavaScript eventually allows web cartographers to control all low-level properties of the web map they are building. That way, the user experience of web maps can be enhanced and customized beyond what is provided by either of the above “indirect,” or high-level, approaches. For example, the <strong>Leaflet</strong> web mapping JavaScript library has a wide range of <a href="https://leafletjs.com/plugins.html">plugins and extensions</a>, mostly unavailable in external tools and libraries unless using it directly, through JavaScript coding (Sections <a href="collaborative-mapping.html#the-drawing-control">13.3</a> and <a href="client-side-geoprocessing.html#heatmaps-with-leafletheat">12.6</a>).</p>
+</div>
+<div id="learning-objectives" class="section level2" number="0.4">
+<h2><span class="header-section-number">0.4</span> Learning objectives</h2>
+<p>By the end of this book, you will be able to:</p>
+<ul>
+<li>Build and publish basic websites and web maps</li>
+<li>Use JavaScript to add interactive behavior in your maps</li>
+<li>Connect you web map to a database to display large amounts of data</li>
+<li>Include client-side geoprocessing functionality in your web map</li>
+<li>Gain an understanding on how the web works, and a starting point for learning more</li>
+</ul>
+</div>
+<div id="software" class="section level2" number="0.5">
+<h2><span class="header-section-number">0.5</span> Software</h2>
+<p>The field of web mapping, much like web development as a whole, is rapidly changing. The book thus intends to emphasize established technologies, libraries, and principles which are unlikely to go away soon. These include HTML, CSS, JavaScript, Leaflet, GeoJSON, Ajax, and PostGIS (Figure <a href="index.html#fig:timeline">0.3</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:timeline"></span>
+<img src="web_mapping_files/figure-html/timeline-1.png" alt="Initial release time of technologies and platforms used in the book (release year data from Wikipedia)" width="100%" />
+<p class="caption">
+FIGURE 0.3: Initial release time of technologies and platforms used in the book (release year data from Wikipedia)
+</p>
+</div>
+<p>Throughout the book, we are going to use the following software components, which are freely available on the web:</p>
+<ul>
+<li>A <strong>plain text editor</strong>, such as:
+<ul>
+<li><a href="https://notepad-plus-plus.org/">Notepad++</a></li>
+<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+<li><a href="https://www.sublimetext.com/">Sublime Text</a></li>
+<li><a href="https://atom.io/">Atom</a></li>
+<li><a href="http://brackets.io/">Brackets</a></li>
+</ul></li>
+<li>A <strong>modern web browser</strong><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>:
+<ul>
+<li><a href="https://www.google.com/chrome/">Chrome</a> is recommended, because its developer tools are demonstrated in the examples and figures throughout the book</li>
+<li><a href="https://www.mozilla.org/en-US/firefox/">Firefox</a> is also a good option</li>
+</ul></li>
+<li><strong>Web developer tools</strong> (built into Chrome and Firefox)</li>
+<li>A <strong>local web server</strong> (built into Python, other options are available)</li>
+</ul>
+<p>We will introduce and demonstrate five open-source JavaScript <strong>libraries</strong>, as listed on Table <a href="index.html#tab:javascript-libraries">0.2</a>. The newest versions of these libraries, at the time of writing (May 2019), are being used throughout the book. The online version of the book (Section <a href="index.html#online-version">0.7</a>) includes copies of those specific library versions, which you can download to make sure the examples from the book are reproducible, even if newer versions of the libraries will introduce conflicting changes in the future.</p>
+<table>
+<caption><span id="tab:javascript-libraries">TABLE 0.2: </span> JavaScript library versions used in the book</caption>
+<thead>
+<tr class="header">
+<th>Library</th>
+<th>Version</th>
+<th>Released</th>
+<th>URL</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Leaflet</td>
+<td>1.7.1</td>
+<td>2020-09-03</td>
+<td><a href="https://leafletjs.com/" class="uri">https://leafletjs.com/</a></td>
+</tr>
+<tr class="even">
+<td>Turf.js</td>
+<td>6.3.0</td>
+<td>2021-01-20</td>
+<td><a href="https://turfjs.org/" class="uri">https://turfjs.org/</a></td>
+</tr>
+<tr class="odd">
+<td>Leaflet.heat</td>
+<td>0.2.0</td>
+<td>2015-10-26</td>
+<td><a href="https://github.com/Leaflet/Leaflet.heat" class="uri">https://github.com/Leaflet/Leaflet.heat</a></td>
+</tr>
+<tr class="even">
+<td>Leaflet.draw</td>
+<td>1.0.4</td>
+<td>2018-10-24</td>
+<td><a href="https://github.com/Leaflet/Leaflet.draw" class="uri">https://github.com/Leaflet/Leaflet.draw</a></td>
+</tr>
+</tbody>
+</table>
+<p>While emphasizing open-source solutions, we will also demonstrate the commercial <strong>services</strong> <a href="https://github.com/">GitHub</a> and <a href="https://carto.com/">CARTO</a>, chosen for their simplicity. Free and open-source alternatives giving the same functionality will be mentioned for those willing to explore more complicated options. Several datasets from the book are also demonstrated using the <a href="https://qgis.org/">QGIS</a> software (Figures <a href="symbology-and-interactivity.html#fig:qgis-towns-style-quantiles">8.3</a>, <a href="databases.html#fig:qgis-geojson-query">9.3</a>), but it is not essential to be familiar with QGIS, or any other geographic information system (GIS) software, to follow the material.</p>
+</div>
+<div id="background-knowledge" class="section level2" number="0.6">
+<h2><span class="header-section-number">0.6</span> Background knowledge</h2>
+<p>The book can be used as primary text for a web-mapping course in geography departments, or by anyone who is interested in the topic. Each of the thirteen chapters is designed to be covered in a three-hour lecture, or through self-study. Short questions and exercises are given throughout the chapters to demonstrate the material from different angles and facilitate understanding. There are also concluding exercises with complete solutions (Appendix <a href="list-of-exercise-solutions.html#list-of-exercise-solutions">C</a>) at the end of Chapters <a href="javascript-basics.html#javascript-basics">3</a>–<a href="javascript-interactivity.html#javascript-interactivity">4</a> and <a href="leaflet.html#leaflet">6</a>–<a href="client-side-geoprocessing.html#client-side-geoprocessing">12</a>.</p>
+<p>Familiarity with basic concepts of geographic data and GIS (coordinate systems, projections, spatial layer file formats, etc.) is necessary for deeper understanding of some of the topics in the book. Readers who are not familiar with GIS can skip the theoretic considerations and still follow the material from the technical point of view.</p>
+<p>The book assumes no background knowledge in programming or web technologies (HTML, CSS, JavaScript), going through all necessary material from the beginning. Previous experience with programming (e.g., using Python or R) and using databases (SQL) is beneficial, but not required.</p>
+</div>
+<div id="online-version" class="section level2" number="0.7">
+<h2><span class="header-section-number">0.7</span> Online version</h2>
+<p>The online version of this book is freely available, with agreement from the publisher, at the following addresses:</p>
+<ul>
+<li><a href="http://geobgu.xyz/web-mapping/" class="uri">http://geobgu.xyz/web-mapping/</a></li>
+<li><a href="https://web-mapping.surge.sh/" class="uri">https://web-mapping.surge.sh/</a></li>
+</ul>
+<p>In addition to the content of the printed version, the online version includes live versions and downloadable code for all ninety-plus complete examples (Appendix <a href="list-of-examples.html#list-of-examples">B</a>) and exercise solutions (Appendix <a href="list-of-exercise-solutions.html#list-of-exercise-solutions">C</a>), as well as an additional appendix with instructions for setting up an SQL API (see Section <a href="databases.html#alternatives-to-carto">9.2.2</a>).</p>
+</div>
+<div id="acknowledgments" class="section level2" number="0.8">
+<h2><span class="header-section-number">0.8</span> Acknowledgments</h2>
+<p>I thank the creators and contributors of the open-source tools used in this book, namely Leaflet, Turf.js, Leaflet.heat, and Leaflet.draw (Table <a href="index.html#tab:javascript-libraries">0.2</a>). Vladimir Agafonkin, the creator of the Leaflet web-mapping library, deserves special mention here. Leaflet took open-source web mapping to a new level: for me to write this book, and for readers to enter the field of web mapping, would have been much more difficult without Leaflet. I am also grateful to Yihui Xie, whose <code>bookdown</code> <span class="citation">(<a href="#ref-bookdown1" role="doc-biblioref">Xie 2018</a>, <a href="#ref-bookdown2" role="doc-biblioref">2016</a>)</span> R package <span class="citation">(<a href="#ref-r" role="doc-biblioref">R Core Team 2018</a>)</span> greatly facilitated the technical process of writing the book.</p>
+<p>Figure <a href="leaflet.html#fig:EPSG-4326-3857">6.1</a> was prepared using R packages <code>sf</code> <span class="citation">(<a href="#ref-sf" role="doc-biblioref">Pebesma 2018</a>)</span> and <code>rworldmap</code> <span class="citation">(<a href="#ref-rworldmap" role="doc-biblioref">South 2011</a>)</span>. Figure <a href="geojson-1.html#fig:simple-feature-types">7.1</a> and the images inside Tables <a href="geojson-1.html#tab:geojson-single-part1">7.2</a>–<a href="geojson-1.html#tab:geojson-feature-collection1">7.6</a> were also prepared using package <code>sf</code>. Figure <a href="symbology-and-interactivity.html#fig:colorbrewer-colors-edited">8.4</a> was prepared using R package <code>RColorBrewer</code> <span class="citation">(<a href="#ref-rcolorbrewer" role="doc-biblioref">Neuwirth 2014</a>)</span>. Figures <a href="symbology-and-interactivity.html#fig:qgis-towns-style-quantiles">8.3</a> and <a href="databases.html#fig:qgis-geojson-query">9.3</a> were prepared using QGIS <span class="citation">(<a href="#ref-qgis_software" role="doc-biblioref">QGIS Development Team 2018</a>)</span>. The sample database shown in Figure <a href="databases.html#fig:relational-database-example">9.1</a> was prepared using data from R package <code>nycflights13</code> <span class="citation">(<a href="#ref-nycflights13" role="doc-biblioref">Wickham 2018</a>)</span>. Figures <a href="leaflet.html#fig:tile-zoom-levels">6.2</a> and <a href="leaflet.html#fig:individual-tile">6.3</a> display images of OpenStreetMap tiles (© OpenStreetMap contributors).</p>
+<p>I would like to thank Rob Calver and Lara Spieker from CRC Press for working with me and supporting this project, starting from a talk with Rob at a conference in Brussels in summer 2017, going through project initiation, the professional review process, and up to finalizing the manuscript and bringing it to press. I also thank Annie Sophia, Vaishali Singh and Jyotsna Jangra for the professional proofreading and production of the book. Shashi Kumar and John Kimmel from CRC are acknowledged for their assistance in technical issues.</p>
+<p>This book is based on the materials of the course <em>Introduction to JavaScript for Web Mapping</em>, given by the Department of Geography, Ben-Gurion University of the Negev, in Spring 2018 and 2019. I am grateful to Prof. Tal Svoray and Prof. Itai Kloog from the department for their guidance and encouragement during the development of course materials, and to the students for valuable feedback. I thank Shai Sussman and three anonymous reviewers for comments that greatly helped improve the manuscript.</p>
+<p>Several figures in the book include icons from external sources: “computer,” “web page,” and “car” icons by <a href="http://www.freepik.com/">Freepik</a>, “folder” and “database” icons by <a href="https://www.flaticon.com/authors/smashicons">Smashicons</a>, “gears” icon by <a href="https://www.flaticon.com/authors/good-ware">Good Ware</a>, from <a href="https://www.flaticon.com/" class="uri">https://www.flaticon.com/</a>, licensed by <a href="http://creativecommons.org/licenses/by/3.0/">CC 3.0 BY</a>.</p>
+
+</div>
+</div>
+
+
+
+<h3>References</h3>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-rcolorbrewer" class="csl-entry">
+Neuwirth, Erich. 2014. <em>RColorBrewer: ColorBrewer Palettes</em>. <a href="https://cran.r-project.org/package=RColorBrewer">https://CRAN.R-project.org/package=RColorBrewer</a>.
+</div>
+<div id="ref-sf" class="csl-entry">
+Pebesma, Edzer. 2018. <span>“<span class="nocase">Simple Features for R: Standardized Support for Spatial Vector Data</span>.”</span> <em><span>The R Journal</span></em> 10 (1): 439–46. <a href="https://journal.r-project.org/archive/2018/RJ-2018-009/index.html">https://journal.r-project.org/archive/2018/RJ-2018-009/index.html</a>.
+</div>
+<div id="ref-qgis_software" class="csl-entry">
+QGIS Development Team. 2018. <em>QGIS Geographic Information System</em>. Open Source Geospatial Foundation. <a href="http://qgis.osgeo.org/">http://qgis.osgeo.org</a>.
+</div>
+<div id="ref-r" class="csl-entry">
+R Core Team. 2018. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.r-project.org/">https://www.R-project.org/</a>.
+</div>
+<div id="ref-rworldmap" class="csl-entry">
+South, Andy. 2011. <span>“<span class="nocase">rworldmap: A New R package for Mapping Global Data</span>.”</span> <em>The R Journal</em> 3 (1): 35–43. <a href="http://journal.r-project.org/archive/2011-1/RJournal_2011-1_South.pdf">http://journal.r-project.org/archive/2011-1/RJournal_2011-1_South.pdf</a>.
+</div>
+<div id="ref-nycflights13" class="csl-entry">
+Wickham, Hadley. 2018. <em>Nycflights13: Flights That Departed NYC in 2013</em>. <a href="https://cran.r-project.org/package=nycflights13">https://CRAN.R-project.org/package=nycflights13</a>.
+</div>
+<div id="ref-bookdown2" class="csl-entry">
+Xie, Yihui. 2016. <em>Bookdown: Authoring Books and Technical Documents with <span>R</span> Markdown</em>. Boca Raton, FL, USA: Chapman; Hall/CRC. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
+</div>
+<div id="ref-bookdown1" class="csl-entry">
+———. 2018. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p>Based on the StackOverflow survey for 2018 (<a href="https://stackoverflow.blog/2018/05/30/public-data-release-of-stack-overflows-2018-developer-survey/" class="uri">https://stackoverflow.blog/2018/05/30/public-data-release-of-stack-overflows-2018-developer-survey/</a>).<a href="index.html#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>There is no clear definition of the term <em>modern web browser</em>, but older versions of Internet Explorer are, arguably, not considered as modern browsers and thus not recommended to illustrate web development (<a href="https://teamtreehouse.com/community/what-is-a-modern-browser" class="uri">https://teamtreehouse.com/community/what-is-a-modern-browser</a>).<a href="index.html#fnref2" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+<a href="html.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toc_depth": 2,
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "../../mathjax.rstudio.com/2.7.2/MathJaxb198.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+
+<!-- Mirrored from 132.72.155.230:3838/js/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:30:40 GMT -->
+</html>

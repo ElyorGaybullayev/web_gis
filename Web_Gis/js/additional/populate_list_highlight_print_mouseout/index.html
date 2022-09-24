@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/populate_list_highlight_print_mouseout/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:08 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <style>
+    .highlight {
+        background-color: yellow;
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <p>Here is our list:</p>
+    <ul id="choices"></ul>
+    <p>It was created dynamically using JavaScript.</p>
+    <p id="current"></p>
+    <script>
+        var data = [2, 5, 7, 22, 1];
+        var html = "";
+        data.forEach(function(element) {
+            html += ("<li>" + element + "</li>");
+        });
+        document.getElementById("choices").innerHTML = html;
+        var nodes = document.getElementsByTagName("li");
+        for(let i = 0; i < nodes.length; i++) {
+            nodes[i].addEventListener("mouseover", function(e) {
+                e.target.classList.add("highlight");
+                var value = e.target.innerHTML;
+                document.getElementById("current").innerHTML = "Currently selected value is: " + value;
+            })
+            nodes[i].addEventListener("mouseout", function(e) {
+                e.target.classList.remove("highlight");
+                document.getElementById("current").innerHTML = "";
+            });
+        }
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/populate_list_highlight_print_mouseout/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:08 GMT -->
+</html>

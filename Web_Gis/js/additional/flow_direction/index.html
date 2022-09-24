@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/flow_direction/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:38 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>Lines Flow Map</title>
+	<link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.css" />
+    <script src="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="../../../../cdn.jsdelivr.net/npm/leaflet-easybutton%402/src/easy-button.css">
+    <script src="../../../../cdn.jsdelivr.net/npm/leaflet-easybutton%402/src/easy-button.js"></script>
+    <script src="../../../../ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/leaflet-ant-path" type="text/javascript"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+        #description {
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            width: 280px;
+            margin: 20px auto;
+            padding: 0 15px;
+            background: rgba(256, 256, 256, .7);
+            border: 1px solid grey;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+	<div id="map"></div>
+	<div id="description">
+		<h3>Line Direction Editor</h3>
+		<p>Click on a line to change its direction.</p>
+		<p>Use the button to download the modified layer.</p>
+		<p>(Note that the layer only responds when clicking on the white "dashes")</p>
+	</div>
+	<script>
+
+var filename = "lines.geojson";
+    
+// Map object
+var map = L.map('map');
+
+// Fit bounds
+var corner1 = L.latLng(0.00025, 0.00035); 
+var corner2 = L.latLng(0.02105, 0.03225);
+var bounds = L.latLngBounds(corner2, corner1);
+map.fitBounds([
+    [0.00025, 0.00035],
+    [0.02105, 0.03225]
+]);
+
+// Download button
+L.easyButton('<span class="star">&dArr;</span>', function() {
+	geojson_rev = geojson;
+    $.each(geojson_rev.features, function(index, value) {
+      coords = value.geometry.coordinates;
+      $.each(coords, function(index, value) {value.reverse();})
+    });
+	download("lines3.geojson", JSON.stringify(geojson_rev));
+}).addTo(map);
+
+var line_layer = L.layerGroup().addTo(map);
+
+// Draw flow lines
+function draw_flow_lines(geojson) {
+  $.each(geojson.features, function(index, value) {
+    coords = value.geometry.coordinates;
+    layer = 
+      L
+      .polyline
+      .antPath(coords, {"delay": 2000, weight: 10, color: "blue"})
+      .addTo(line_layer)
+      .on("click", f);
+    layer.id = index;
+})
+}
+
+line_layer.on("click", function(e) {console.log(1)});
+
+// Reverse coordinates
+function f(e) {
+  id = e.target.id;
+  coords = geojson.features[id].geometry.coordinates;
+  coords.reverse();
+  geojson.features[id].geometry.coordinates = coords;
+  line_layer.clearLayers();
+  draw_flow_lines(geojson);
+}
+
+// Loading data and initializing map
+$.getJSON(filename, function(data) {
+    geojson = data;
+    $.each(geojson.features, function(index, value) {
+      coords = value.geometry.coordinates;
+      $.each(coords, function(index, value) {value.reverse();})
+    });
+    draw_flow_lines(geojson);
+  }
+);
+
+// Download function
+function download(filename, text) {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+	</script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/flow_direction/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:57 GMT -->
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/hide_and_show_description/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.css"/>
+    <script src="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.js"></script>
+    <script src="../../../../ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+        .legend {
+            font-size: 16px;
+	        line-height: 24px;
+	        color: #333333;
+	        font-family: 'Open Sans', Helvetica, sans-serif;
+	        padding: 10px 14px;
+	        background-color: rgba(245,245,220,0.8) ;
+	        box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	        border-radius: 5px;
+	        max-width: 250px;
+	        border: 1px solid grey;
+        }
+        .legend p {
+	        font-size: 16px;
+	        line-height: 24px;
+        }
+        .legend img {
+	        max-width: 200px;
+	        margin: auto;
+	        display: block;
+        }
+        #hide {
+            border-width: 1px;
+            border-color: grey;
+            border-radius: 5px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+// Create variable to hold map element, give initial settings to map
+var map = L.map("map", {center: [31.262218, 34.801472], zoom: 17});
+
+// Add OpenStreetMap tile layer to map element
+L.tileLayer("../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", {attribution: "© OpenStreetMap"}).addTo(map);
+
+// Add point
+var pnt = L.marker([31.262218, 34.801472]).addTo(map);
+
+// Add line
+var line = L.polyline(
+  [[31.262705, 34.800514], [31.262053, 34.800782]], 
+  {color: "red", weight: 10}
+).addTo(map);
+
+// Add polygon
+var pol = L.polygon(
+  [
+    [31.263127, 34.803668], 
+    [31.262503, 34.803089], 
+    [31.261733, 34.803561], 
+    [31.262448, 34.804752]
+  ], 
+  {color: "red", fillColor: "yellow", weight: 4}
+).addTo(map);
+
+// Add popup
+line.bindPopup("This is the path from <b>our department</b> to the <b>library</b>.");
+
+// Create Leaflet Control Object for Legend
+var legend = L.control({position: "bottomleft"});
+
+// Description contents
+var contents = "";
+contents += '<div id="description"><p><b>Simple shapes in Leaflet</b></p><hr>';
+contents += '<p>This map shows an example of adding shapes on a Leaflet map<p/>';
+contents += 'The following shapes were added:<br/>';
+contents += '<p><ul>';
+contents += '<li>A marker</li>';
+contents += '<li>A line</li>';
+contents += '<li>A polygon</li>';
+contents += '</ul></p>';
+contents += 'The line layer has a <b>popup</b>. Click on the line to see it!<hr>';
+contents += 'Created with the Leaflet library<br/>';
+contents += '<img src="leaflet.png"></div>';
+
+// Function that runs when legend is added to map
+legend.onAdd = function(map) {
+
+	// Create Div Element and Populate it with HTML
+	div = L.DomUtil.create('div', 'legend');
+    div.innerHTML = contents;
+    div.innerHTML += '<input type="button" value="hide" id="hide">';
+	
+	// Return the Legend div containing the HTML content
+	return div;
+
+};
+
+// Add Legend to Map
+legend.addTo(map);
+
+// 'Hide' button
+$("#hide").on("click", function() {
+    L.DomEvent.disableClickPropagation(this);
+    switch($("#hide").val()) {
+        case "hide": 
+            $("#description").slideUp();
+            $("#hide").val("show");
+            break;
+        case "show": 
+            $("#description").slideDown();
+            $("#hide").val("hide");
+            break;
+    }
+});
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/hide_and_show_description/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+</html>

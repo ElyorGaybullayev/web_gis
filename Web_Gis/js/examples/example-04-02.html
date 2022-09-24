@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-04-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:02:18 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <title>Earth poles</title>
+    </head>
+    <body>
+        <h2>Earth Poles Viewer</h2>
+        <img id="myImage" src="images/north.svg"><br>
+        <input type="button" value="North Pole" id="north">
+        <input type="button" value="South Pole" id="south">
+        <script>
+            function showNorth() {
+                document
+                    .getElementById("myImage")
+                    .src = "images/north.svg";
+            }
+            function showSouth() {
+                document
+                    .getElementById("myImage")
+                    .src = "images/south.svg";
+            }
+            document
+                .getElementById("north")
+                .addEventListener("click", showNorth);
+            document
+                .getElementById("south")
+                .addEventListener("click", showSouth);
+        </script>
+    </body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-04-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:02:24 GMT -->
+</html>
+

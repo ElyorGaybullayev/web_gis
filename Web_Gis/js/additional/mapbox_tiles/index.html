@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/mapbox_tiles/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <title>Leaflet Map</title>
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.css">
+    <script src="../../../../unpkg.com/leaflet%401.3.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+// Map
+var map = L.map("map", {center: [42.346512, -71.097234], maxZoom: 20, zoom: 20});
+
+// Tile layers
+var mapbox = L.tileLayer(
+    "https://api.mapbox.com/styles/v1/michaeldorman/cjgqhwuz200022rrr33ng3x38/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJjaXZwY2U0Z2IwMDF0MnRwOHF5MHYzeHM0In0.UdcEo0k-jS29ebI_fhIpMw", 
+    {maxZoom: 20, attribution: '<a href="https://www.mapbox.com/about/maps/" target="_blank">© Mapbox</a> <a href="http://www.openstreetmap.org/about/" target="_blank">© OpenStreetMap</a> <a class="mapbox-improve-map" href="https://www.mapbox.com/feedback/?owner=michaeldorman&amp;id=cjgqhwuz200022rrr33ng3x38&amp;access_token=pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJjaXZwY2U0Z2IwMDF0MnRwOHF5MHYzeHM0In0.UdcEo0k-jS29ebI_fhIpMw#/-118.4106/33.75001/13" target="_blank">Improve this map</a> <a href="https://www.digitalglobe.com/" target="_blank">© DigitalGlobe</a>'}
+);
+var esri = L.tileLayer(
+    "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", 
+    {attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'}
+);
+mapbox.addTo(map);
+
+// Layer control
+var baseLayers = {
+	"Mapbox Imagery": mapbox,
+	"ESRI Imagery": esri
+};
+L.control.layers(baseLayers, {}, {position: "topleft", collapsed: false}).addTo(map);
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/mapbox_tiles/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+</html>

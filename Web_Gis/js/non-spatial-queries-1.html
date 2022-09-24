@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+
+<!-- Mirrored from 132.72.155.230:3838/js/non-spatial-queries-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:40:35 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 10 Non-spatial Queries | Introduction to Web Mapping</title>
+  <meta name="description" content="Chapter 10 Non-spatial Queries | Introduction to Web Mapping" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 10 Non-spatial Queries | Introduction to Web Mapping" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 10 Non-spatial Queries | Introduction to Web Mapping" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 10 Non-spatial Queries | Introduction to Web Mapping" />
+  
+  <meta name="twitter:description" content="Chapter 10 Non-spatial Queries | Introduction to Web Mapping" />
+  
+
+<meta name="author" content="Michael Dorman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="databases.html"/>
+<link rel="next" href="spatial-queries-1.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134641614-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134641614-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="index.html"><img width="90%" style="margin: 5% 5% 0% 5%" src="images/BGUsig3E.svg"></a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-web-mapping"><i class="fa fa-check"></i><b>0.1</b> What is web mapping?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#what-is-javascript"><i class="fa fa-check"></i><b>0.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#why-use-javascript-for-web-mapping"><i class="fa fa-check"></i><b>0.3</b> Why use JavaScript for web mapping?</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.4</b> Learning objectives</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>0.5</b> Software</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#background-knowledge"><i class="fa fa-check"></i><b>0.6</b> Background knowledge</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#online-version"><i class="fa fa-check"></i><b>0.7</b> Online version</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.8</b> Acknowledgments</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to Web Technologies</b></span></li>
+<li class="chapter" data-level="1" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>1</b> HTML</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="html.html"><a href="html.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="html.html"><a href="html.html#how-do-people-access-the-web"><i class="fa fa-check"></i><b>1.2</b> How do people access the web?</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="html.html"><a href="html.html#web-browsers"><i class="fa fa-check"></i><b>1.2.1</b> Web browsers</a></li>
+<li class="chapter" data-level="1.2.2" data-path="html.html"><a href="html.html#web-servers"><i class="fa fa-check"></i><b>1.2.2</b> Web servers</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="html.html"><a href="html.html#web-pages"><i class="fa fa-check"></i><b>1.3</b> Web pages</a></li>
+<li class="chapter" data-level="1.4" data-path="html.html"><a href="html.html#text-editors"><i class="fa fa-check"></i><b>1.4</b> Text editors</a></li>
+<li class="chapter" data-level="1.5" data-path="html.html"><a href="html.html#what-is-html"><i class="fa fa-check"></i><b>1.5</b> What is HTML?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="html.html"><a href="html.html#overview-html"><i class="fa fa-check"></i><b>1.5.1</b> Overview</a></li>
+<li class="chapter" data-level="1.5.2" data-path="html.html"><a href="html.html#html-comments"><i class="fa fa-check"></i><b>1.5.2</b> HTML comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="html.html"><a href="html.html#block-vs-inline"><i class="fa fa-check"></i><b>1.5.3</b> Block vs. inline</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="html.html"><a href="html.html#common-html-elements"><i class="fa fa-check"></i><b>1.6</b> Common HTML elements</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="html.html"><a href="html.html#html-element-types"><i class="fa fa-check"></i><b>1.6.1</b> HTML element types</a></li>
+<li class="chapter" data-level="1.6.2" data-path="html.html"><a href="html.html#html-structure"><i class="fa fa-check"></i><b>1.6.2</b> Structure</a></li>
+<li class="chapter" data-level="1.6.3" data-path="html.html"><a href="html.html#title-and-metadata"><i class="fa fa-check"></i><b>1.6.3</b> Title and metadata</a></li>
+<li class="chapter" data-level="1.6.4" data-path="html.html"><a href="html.html#styling-and-scripts"><i class="fa fa-check"></i><b>1.6.4</b> Styling and scripts</a></li>
+<li class="chapter" data-level="1.6.5" data-path="html.html"><a href="html.html#headings-and-paragraphs"><i class="fa fa-check"></i><b>1.6.5</b> Headings and paragraphs</a></li>
+<li class="chapter" data-level="1.6.6" data-path="html.html"><a href="html.html#font-formatting"><i class="fa fa-check"></i><b>1.6.6</b> Font formatting</a></li>
+<li class="chapter" data-level="1.6.7" data-path="html.html"><a href="html.html#spacing"><i class="fa fa-check"></i><b>1.6.7</b> Spacing</a></li>
+<li class="chapter" data-level="1.6.8" data-path="html.html"><a href="html.html#html-lists"><i class="fa fa-check"></i><b>1.6.8</b> Lists</a></li>
+<li class="chapter" data-level="1.6.9" data-path="html.html"><a href="html.html#html-links"><i class="fa fa-check"></i><b>1.6.9</b> Links</a></li>
+<li class="chapter" data-level="1.6.10" data-path="html.html"><a href="html.html#images"><i class="fa fa-check"></i><b>1.6.10</b> Images</a></li>
+<li class="chapter" data-level="1.6.11" data-path="html.html"><a href="html.html#tables"><i class="fa fa-check"></i><b>1.6.11</b> Tables</a></li>
+<li class="chapter" data-level="1.6.12" data-path="html.html"><a href="html.html#grouping"><i class="fa fa-check"></i><b>1.6.12</b> Grouping</a></li>
+<li class="chapter" data-level="1.6.13" data-path="html.html"><a href="html.html#input-elements"><i class="fa fa-check"></i><b>1.6.13</b> Input elements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="html.html"><a href="html.html#id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7</b> <code>id</code>, <code>class</code>, and <code>style</code> attributes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="html.html"><a href="html.html#overview-id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7.1</b> Overview</a></li>
+<li class="chapter" data-level="1.7.2" data-path="html.html"><a href="html.html#id"><i class="fa fa-check"></i><b>1.7.2</b> <code>id</code></a></li>
+<li class="chapter" data-level="1.7.3" data-path="html.html"><a href="html.html#html-class"><i class="fa fa-check"></i><b>1.7.3</b> <code>class</code></a></li>
+<li class="chapter" data-level="1.7.4" data-path="html.html"><a href="html.html#style-2"><i class="fa fa-check"></i><b>1.7.4</b> <code>style</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="html.html"><a href="html.html#code-layout"><i class="fa fa-check"></i><b>1.8</b> Code layout</a></li>
+<li class="chapter" data-level="1.9" data-path="html.html"><a href="html.html#inspecting-elements"><i class="fa fa-check"></i><b>1.9</b> Inspecting elements</a></li>
+<li class="chapter" data-level="1.10" data-path="html.html"><a href="html.html#exercise"><i class="fa fa-check"></i><b>1.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>2</b> CSS</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="css.html"><a href="css.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="css.html"><a href="css.html#what-is-css"><i class="fa fa-check"></i><b>2.2</b> What is CSS?</a></li>
+<li class="chapter" data-level="2.3" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>2.3</b> CSS rules</a></li>
+<li class="chapter" data-level="2.4" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i><b>2.4</b> CSS selectors</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="css.html"><a href="css.html#overview-css-selectors"><i class="fa fa-check"></i><b>2.4.1</b> Overview</a></li>
+<li class="chapter" data-level="2.4.2" data-path="css.html"><a href="css.html#type-selector"><i class="fa fa-check"></i><b>2.4.2</b> Type selector</a></li>
+<li class="chapter" data-level="2.4.3" data-path="css.html"><a href="css.html#class-selector"><i class="fa fa-check"></i><b>2.4.3</b> Class selector</a></li>
+<li class="chapter" data-level="2.4.4" data-path="css.html"><a href="css.html#id-selector"><i class="fa fa-check"></i><b>2.4.4</b> ID selector</a></li>
+<li class="chapter" data-level="2.4.5" data-path="css.html"><a href="css.html#descendant-selector"><i class="fa fa-check"></i><b>2.4.5</b> Descendant selector</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="css.html"><a href="css.html#css-conflicts"><i class="fa fa-check"></i><b>2.5</b> CSS conflicts</a></li>
+<li class="chapter" data-level="2.6" data-path="css.html"><a href="css.html#css-inheritance"><i class="fa fa-check"></i><b>2.6</b> CSS inheritance</a></li>
+<li class="chapter" data-level="2.7" data-path="css.html"><a href="css.html#linking-css-to-html"><i class="fa fa-check"></i><b>2.7</b> Linking CSS to HTML</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="css.html"><a href="css.html#methods-for-linking-css"><i class="fa fa-check"></i><b>2.7.1</b> Methods for linking CSS</a></li>
+<li class="chapter" data-level="2.7.2" data-path="css.html"><a href="css.html#inline-css"><i class="fa fa-check"></i><b>2.7.2</b> Inline CSS</a></li>
+<li class="chapter" data-level="2.7.3" data-path="css.html"><a href="css.html#embedded-css"><i class="fa fa-check"></i><b>2.7.3</b> Embedded CSS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="css.html"><a href="css.html#external-css"><i class="fa fa-check"></i><b>2.7.4</b> External CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i><b>2.8</b> CSS properties</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="css.html"><a href="css.html#overview-css-properties"><i class="fa fa-check"></i><b>2.8.1</b> Overview</a></li>
+<li class="chapter" data-level="2.8.2" data-path="css.html"><a href="css.html#color"><i class="fa fa-check"></i><b>2.8.2</b> Color</a></li>
+<li class="chapter" data-level="2.8.3" data-path="css.html"><a href="css.html#text"><i class="fa fa-check"></i><b>2.8.3</b> Text</a></li>
+<li class="chapter" data-level="2.8.4" data-path="css.html"><a href="css.html#boxes"><i class="fa fa-check"></i><b>2.8.4</b> Boxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="css.html"><a href="css.html#hurricane-scale"><i class="fa fa-check"></i><b>2.9</b> Hurricane scale example</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="css.html"><a href="css.html#html-contents"><i class="fa fa-check"></i><b>2.9.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.9.2" data-path="css.html"><a href="css.html#css-styling"><i class="fa fa-check"></i><b>2.9.2</b> CSS styling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="css.html"><a href="css.html#example-map-description"><i class="fa fa-check"></i><b>2.10</b> Map description example</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="css.html"><a href="css.html#html-contents-1"><i class="fa fa-check"></i><b>2.10.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.10.2" data-path="css.html"><a href="css.html#example-map-description-box-position"><i class="fa fa-check"></i><b>2.10.2</b> CSS styling: box position</a></li>
+<li class="chapter" data-level="2.10.3" data-path="css.html"><a href="css.html#css-styling-final-touches"><i class="fa fa-check"></i><b>2.10.3</b> CSS styling: final touches</a></li>
+<li class="chapter" data-level="2.10.4" data-path="css.html"><a href="css.html#adding-map-in-the-background"><i class="fa fa-check"></i><b>2.10.4</b> Adding map in the background</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="css.html"><a href="css.html#exercise-1"><i class="fa fa-check"></i><b>2.11</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="javascript-basics.html"><a href="javascript-basics.html"><i class="fa fa-check"></i><b>3</b> JavaScript Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="javascript-basics.html"><a href="javascript-basics.html#introduction-2"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-javascript-1"><i class="fa fa-check"></i><b>3.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="3.3" data-path="javascript-basics.html"><a href="javascript-basics.html#client-side-vs.-server-side"><i class="fa fa-check"></i><b>3.3</b> Client-side vs. server-side</a></li>
+<li class="chapter" data-level="3.4" data-path="javascript-basics.html"><a href="javascript-basics.html#the-javascript-console"><i class="fa fa-check"></i><b>3.4</b> The JavaScript console</a></li>
+<li class="chapter" data-level="3.5" data-path="javascript-basics.html"><a href="javascript-basics.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
+<li class="chapter" data-level="3.6" data-path="javascript-basics.html"><a href="javascript-basics.html#data-types"><i class="fa fa-check"></i><b>3.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="javascript-basics.html"><a href="javascript-basics.html#overview-data-types"><i class="fa fa-check"></i><b>3.6.1</b> Overview</a></li>
+<li class="chapter" data-level="3.6.2" data-path="javascript-basics.html"><a href="javascript-basics.html#primitive-data-types"><i class="fa fa-check"></i><b>3.6.2</b> Primitive data types</a></li>
+<li class="chapter" data-level="3.6.3" data-path="javascript-basics.html"><a href="javascript-basics.html#objects-data-type"><i class="fa fa-check"></i><b>3.6.3</b> Objects</a></li>
+<li class="chapter" data-level="3.6.4" data-path="javascript-basics.html"><a href="javascript-basics.html#checking-type-of-variables"><i class="fa fa-check"></i><b>3.6.4</b> Checking type of variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="javascript-basics.html"><a href="javascript-basics.html#functions"><i class="fa fa-check"></i><b>3.7</b> Functions</a></li>
+<li class="chapter" data-level="3.8" data-path="javascript-basics.html"><a href="javascript-basics.html#methods"><i class="fa fa-check"></i><b>3.8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-are-methods"><i class="fa fa-check"></i><b>3.8.1</b> What are methods?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="javascript-basics.html"><a href="javascript-basics.html#array-methods"><i class="fa fa-check"></i><b>3.8.2</b> Array methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="javascript-basics.html"><a href="javascript-basics.html#scope"><i class="fa fa-check"></i><b>3.9</b> Scope</a></li>
+<li class="chapter" data-level="3.10" data-path="javascript-basics.html"><a href="javascript-basics.html#flow-control"><i class="fa fa-check"></i><b>3.10</b> Flow control</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-flow-control"><i class="fa fa-check"></i><b>3.10.1</b> What is flow control?</a></li>
+<li class="chapter" data-level="3.10.2" data-path="javascript-basics.html"><a href="javascript-basics.html#conditionals"><i class="fa fa-check"></i><b>3.10.2</b> Conditionals</a></li>
+<li class="chapter" data-level="3.10.3" data-path="javascript-basics.html"><a href="javascript-basics.html#loops"><i class="fa fa-check"></i><b>3.10.3</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-object-notation-json"><i class="fa fa-check"></i><b>3.11</b> JavaScript Object Notation (JSON)</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-json"><i class="fa fa-check"></i><b>3.11.1</b> JSON</a></li>
+<li class="chapter" data-level="3.11.2" data-path="javascript-basics.html"><a href="javascript-basics.html#geojson"><i class="fa fa-check"></i><b>3.11.2</b> GeoJSON</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="javascript-basics.html"><a href="javascript-basics.html#exercise-2"><i class="fa fa-check"></i><b>3.12</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html"><i class="fa fa-check"></i><b>4</b> JavaScript Interactivity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-document-object-model"><i class="fa fa-check"></i><b>4.2</b> The Document Object Model (DOM)</a></li>
+<li class="chapter" data-level="4.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-and-modifying-elements"><i class="fa fa-check"></i><b>4.3</b> Accessing and modifying elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#overview-accessing-and_modifying"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accessing elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-element-properties"><i class="fa fa-check"></i><b>4.3.3</b> Getting element properties</a></li>
+<li class="chapter" data-level="4.3.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-elements"><i class="fa fa-check"></i><b>4.3.4</b> Modifying elements</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-listeners"><i class="fa fa-check"></i><b>4.4</b> Event listeners</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-types"><i class="fa fa-check"></i><b>4.4.1</b> Event types</a></li>
+<li class="chapter" data-level="4.4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#binding-event-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Binding event listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#hello-example"><i class="fa fa-check"></i><b>4.5</b> Hello example</a></li>
+<li class="chapter" data-level="4.6" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#poles-example"><i class="fa fa-check"></i><b>4.6</b> Poles example</a></li>
+<li class="chapter" data-level="4.7" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#operating-on-selection"><i class="fa fa-check"></i><b>4.7</b> Operating on multiple selections</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#example-page"><i class="fa fa-check"></i><b>4.7.1</b> Example page</a></li>
+<li class="chapter" data-level="4.7.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#making-multiple-selections"><i class="fa fa-check"></i><b>4.7.2</b> Making multiple selections</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-and-setting-input-values"><i class="fa fa-check"></i><b>4.8</b> Getting and setting input values</a></li>
+<li class="chapter" data-level="4.9" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#multiple-event-listeners"><i class="fa fa-check"></i><b>4.9</b> Multiple event listeners</a></li>
+<li class="chapter" data-level="4.10" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-event-object"><i class="fa fa-check"></i><b>4.10</b> The event object</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-object-properties"><i class="fa fa-check"></i><b>4.10.1</b> Event object properties</a></li>
+<li class="chapter" data-level="4.10.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-target"><i class="fa fa-check"></i><b>4.10.2</b> The <code>.target</code> property</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-page-based-on-data"><i class="fa fa-check"></i><b>4.11</b> Modifying page based on data</a></li>
+<li class="chapter" data-level="4.12" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#working-with-user-input"><i class="fa fa-check"></i><b>4.12</b> Calculator example</a></li>
+<li class="chapter" data-level="4.13" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#exercise-3"><i class="fa fa-check"></i><b>4.13</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="web-servers-1.html"><a href="web-servers-1.html"><i class="fa fa-check"></i><b>5</b> Web Servers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#web-servers-2"><i class="fa fa-check"></i><b>5.2</b> Web servers</a></li>
+<li class="chapter" data-level="5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#communicating-through-http"><i class="fa fa-check"></i><b>5.3</b> Communicating through HTTP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="web-servers-1.html"><a href="web-servers-1.html#web-protocols-and-http"><i class="fa fa-check"></i><b>5.3.1</b> Web protocols and HTTP</a></li>
+<li class="chapter" data-level="5.3.2" data-path="web-servers-1.html"><a href="web-servers-1.html#http-methods"><i class="fa fa-check"></i><b>5.3.2</b> HTTP methods</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#static-vs-dynamic-servers"><i class="fa fa-check"></i><b>5.4</b> Static vs. dynamic servers</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview"><i class="fa fa-check"></i><b>5.4.1</b> Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="web-servers-1.html"><a href="web-servers-1.html#static-servers"><i class="fa fa-check"></i><b>5.4.2</b> Static servers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="web-servers-1.html"><a href="web-servers-1.html#dynamic-servers"><i class="fa fa-check"></i><b>5.4.3</b> Dynamic servers</a></li>
+<li class="chapter" data-level="5.4.4" data-path="web-servers-1.html"><a href="web-servers-1.html#software-1"><i class="fa fa-check"></i><b>5.4.4</b> Software</a></li>
+<li class="chapter" data-level="5.4.5" data-path="web-servers-1.html"><a href="web-servers-1.html#practical-considerations"><i class="fa fa-check"></i><b>5.4.5</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-file-structure"><i class="fa fa-check"></i><b>5.5</b> URLs and file structure</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-index-html"><i class="fa fa-check"></i><b>5.5.1</b> URLs and <code>index.html</code></a></li>
+<li class="chapter" data-level="5.5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#file-structure"><i class="fa fa-check"></i><b>5.5.2</b> File structure</a></li>
+<li class="chapter" data-level="5.5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#relative-paths"><i class="fa fa-check"></i><b>5.5.3</b> Relative paths</a></li>
+<li class="chapter" data-level="5.5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#css-and-javasccript"><i class="fa fa-check"></i><b>5.5.4</b> CSS and JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="web-servers-1.html"><a href="web-servers-1.html#running-a-static-server"><i class="fa fa-check"></i><b>5.6</b> Running a static server</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview-running-static-server"><i class="fa fa-check"></i><b>5.6.1</b> Overview</a></li>
+<li class="chapter" data-level="5.6.2" data-path="web-servers-1.html"><a href="web-servers-1.html#local-with-python"><i class="fa fa-check"></i><b>5.6.2</b> Local with Python</a></li>
+<li class="chapter" data-level="5.6.3" data-path="web-servers-1.html"><a href="web-servers-1.html#remote-with-github-pages"><i class="fa fa-check"></i><b>5.6.3</b> Remote with GitHub Pages</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Web Mapping with Leaflet</b></span></li>
+<li class="chapter" data-level="6" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>6</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leaflet.html"><a href="leaflet.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="leaflet.html"><a href="leaflet.html#what-is-web-map"><i class="fa fa-check"></i><b>6.2</b> What is a web map?</a></li>
+<li class="chapter" data-level="6.3" data-path="leaflet.html"><a href="leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>6.3</b> What is Leaflet?</a></li>
+<li class="chapter" data-level="6.4" data-path="leaflet.html"><a href="leaflet.html#alternatives-to-leaflet"><i class="fa fa-check"></i><b>6.4</b> Alternatives to Leaflet</a></li>
+<li class="chapter" data-level="6.5" data-path="leaflet.html"><a href="leaflet.html#creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5</b> Creating a basic web map</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="leaflet.html"><a href="leaflet.html#overview-creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5.1</b> Overview</a></li>
+<li class="chapter" data-level="6.5.2" data-path="leaflet.html"><a href="leaflet.html#web-page-setup"><i class="fa fa-check"></i><b>6.5.2</b> Web page setup</a></li>
+<li class="chapter" data-level="6.5.3" data-path="leaflet.html"><a href="leaflet.html#javascript-libraries"><i class="fa fa-check"></i><b>6.5.3</b> JavaScript libraries</a></li>
+<li class="chapter" data-level="6.5.4" data-path="leaflet.html"><a href="leaflet.html#including-a-library"><i class="fa fa-check"></i><b>6.5.4</b> Including a library</a></li>
+<li class="chapter" data-level="6.5.5" data-path="leaflet.html"><a href="leaflet.html#loading-a-local-script"><i class="fa fa-check"></i><b>6.5.5</b> Loading a local script</a></li>
+<li class="chapter" data-level="6.5.6" data-path="leaflet.html"><a href="leaflet.html#loading-a-remote-script"><i class="fa fa-check"></i><b>6.5.6</b> Loading a remote script</a></li>
+<li class="chapter" data-level="6.5.7" data-path="leaflet.html"><a href="leaflet.html#including-leaflet-css-js"><i class="fa fa-check"></i><b>6.5.7</b> Including Leaflet CSS and JavaScript</a></li>
+<li class="chapter" data-level="6.5.8" data-path="leaflet.html"><a href="leaflet.html#adding-map-div"><i class="fa fa-check"></i><b>6.5.8</b> Adding map <code>&lt;div&gt;</code></a></li>
+<li class="chapter" data-level="6.5.9" data-path="leaflet.html"><a href="leaflet.html#creating-map-object"><i class="fa fa-check"></i><b>6.5.9</b> Creating a map object</a></li>
+<li class="chapter" data-level="6.5.10" data-path="leaflet.html"><a href="leaflet.html#what-are-tile-layers"><i class="fa fa-check"></i><b>6.5.10</b> What are tile layers?</a></li>
+<li class="chapter" data-level="6.5.11" data-path="leaflet.html"><a href="leaflet.html#adding-a-tile-layer"><i class="fa fa-check"></i><b>6.5.11</b> Adding a tile layer</a></li>
+<li class="chapter" data-level="6.5.12" data-path="leaflet.html"><a href="leaflet.html#tile-layer-providers"><i class="fa fa-check"></i><b>6.5.12</b> Tile layer providers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="leaflet.html"><a href="leaflet.html#adding-vector-layers"><i class="fa fa-check"></i><b>6.6</b> Adding vector layers</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="leaflet.html"><a href="leaflet.html#overview-adding-vector-layers"><i class="fa fa-check"></i><b>6.6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.6.2" data-path="leaflet.html"><a href="leaflet.html#adding-markers"><i class="fa fa-check"></i><b>6.6.2</b> Adding markers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="leaflet.html"><a href="leaflet.html#adding-lines"><i class="fa fa-check"></i><b>6.6.3</b> Adding lines</a></li>
+<li class="chapter" data-level="6.6.4" data-path="leaflet.html"><a href="leaflet.html#adding-polygons"><i class="fa fa-check"></i><b>6.6.4</b> Adding polygons</a></li>
+<li class="chapter" data-level="6.6.5" data-path="leaflet.html"><a href="leaflet.html#other-layer-types"><i class="fa fa-check"></i><b>6.6.5</b> Other layer types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="leaflet.html"><a href="leaflet.html#adding-popups"><i class="fa fa-check"></i><b>6.7</b> Adding popups</a></li>
+<li class="chapter" data-level="6.8" data-path="leaflet.html"><a href="leaflet.html#adding-a-description"><i class="fa fa-check"></i><b>6.8</b> Adding a description</a></li>
+<li class="chapter" data-level="6.9" data-path="leaflet.html"><a href="leaflet.html#introducing-map-events"><i class="fa fa-check"></i><b>6.9</b> Introducing map events</a></li>
+<li class="chapter" data-level="6.10" data-path="leaflet.html"><a href="leaflet.html#exercise-06"><i class="fa fa-check"></i><b>6.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="geojson-1.html"><a href="geojson-1.html"><i class="fa fa-check"></i><b>7</b> GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="geojson-1.html"><a href="geojson-1.html#introduction-6"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="geojson-1.html"><a href="geojson-1.html#what-is-geojson"><i class="fa fa-check"></i><b>7.2</b> What is GeoJSON?</a></li>
+<li class="chapter" data-level="7.3" data-path="geojson-1.html"><a href="geojson-1.html#geojson-structure"><i class="fa fa-check"></i><b>7.3</b> GeoJSON structure</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-geojson"><i class="fa fa-check"></i><b>7.3.1</b> Overview</a></li>
+<li class="chapter" data-level="7.3.2" data-path="geojson-1.html"><a href="geojson-1.html#geometries"><i class="fa fa-check"></i><b>7.3.2</b> Geometries</a></li>
+<li class="chapter" data-level="7.3.3" data-path="geojson-1.html"><a href="geojson-1.html#features"><i class="fa fa-check"></i><b>7.3.3</b> Features</a></li>
+<li class="chapter" data-level="7.3.4" data-path="geojson-1.html"><a href="geojson-1.html#feature-collections"><i class="fa fa-check"></i><b>7.3.4</b> Feature collections</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="geojson-1.html"><a href="geojson-1.html#editing-geojson"><i class="fa fa-check"></i><b>7.4</b> Editing GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="geojson-1.html"><a href="geojson-1.html#geojson-io"><i class="fa fa-check"></i><b>7.4.1</b> geojson.io</a></li>
+<li class="chapter" data-level="7.4.2" data-path="geojson-1.html"><a href="geojson-1.html#mapshaper"><i class="fa fa-check"></i><b>7.4.2</b> mapshaper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="geojson-1.html"><a href="geojson-1.html#adding-geojson-to-leaflet-map"><i class="fa fa-check"></i><b>7.5</b> Adding GeoJSON to Leaflet map</a></li>
+<li class="chapter" data-level="7.6" data-path="geojson-1.html"><a href="geojson-1.html#geojson-viewer"><i class="fa fa-check"></i><b>7.6</b> GeoJSON viewer example</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="geojson-1.html"><a href="geojson-1.html#viewer-structure"><i class="fa fa-check"></i><b>7.6.1</b> Viewer structure</a></li>
+<li class="chapter" data-level="7.6.2" data-path="geojson-1.html"><a href="geojson-1.html#viewer-html-and-css"><i class="fa fa-check"></i><b>7.6.2</b> HTML and CSS</a></li>
+<li class="chapter" data-level="7.6.3" data-path="geojson-1.html"><a href="geojson-1.html#base-map"><i class="fa fa-check"></i><b>7.6.3</b> Base map</a></li>
+<li class="chapter" data-level="7.6.4" data-path="geojson-1.html"><a href="geojson-1.html#adding-an-event-listener"><i class="fa fa-check"></i><b>7.6.4</b> Adding an event listener</a></li>
+<li class="chapter" data-level="7.6.5" data-path="geojson-1.html"><a href="geojson-1.html#using-layer-groups"><i class="fa fa-check"></i><b>7.6.5</b> Using layer groups</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="geojson-1.html"><a href="geojson-1.html#ajax"><i class="fa fa-check"></i><b>7.7</b> Ajax and the <code>fetch</code> API</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-ajax"><i class="fa fa-check"></i><b>7.7.1</b> What is Ajax?</a></li>
+<li class="chapter" data-level="7.7.2" data-path="geojson-1.html"><a href="geojson-1.html#ajax-examples"><i class="fa fa-check"></i><b>7.7.2</b> Ajax examples</a></li>
+<li class="chapter" data-level="7.7.3" data-path="geojson-1.html"><a href="geojson-1.html#making-ajax-requests-with-fetch"><i class="fa fa-check"></i><b>7.7.3</b> The <code>fetch</code> API</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="geojson-1.html"><a href="geojson-1.html#loading-geojson-files"><i class="fa fa-check"></i><b>7.8</b> Loading GeoJSON files</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="geojson-1.html"><a href="geojson-1.html#loading-local-files"><i class="fa fa-check"></i><b>7.8.1</b> Loading local files</a></li>
+<li class="chapter" data-level="7.8.2" data-path="geojson-1.html"><a href="geojson-1.html#loading-remote-files"><i class="fa fa-check"></i><b>7.8.2</b> Loading remote files</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="geojson-1.html"><a href="geojson-1.html#exercise-4"><i class="fa fa-check"></i><b>7.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html"><i class="fa fa-check"></i><b>8</b> Symbology and Interactivity</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#introduction-7"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#l-geojson-options"><i class="fa fa-check"></i><b>8.2</b> <code>L.geoJSON</code> options</a></li>
+<li class="chapter" data-level="8.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constant-style"><i class="fa fa-check"></i><b>8.3</b> Constant style</a></li>
+<li class="chapter" data-level="8.4" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#varying-style"><i class="fa fa-check"></i><b>8.4</b> Varying style</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-varying-style"><i class="fa fa-check"></i><b>8.4.1</b> Setting varying style</a></li>
+<li class="chapter" data-level="8.4.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#states-example"><i class="fa fa-check"></i><b>8.4.2</b> States example</a></li>
+<li class="chapter" data-level="8.4.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#towns-example"><i class="fa fa-check"></i><b>8.4.3</b> Towns example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constructing-popups-from-data"><i class="fa fa-check"></i><b>8.5</b> Constructing popups from data</a></li>
+<li class="chapter" data-level="8.6" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#adding-a-legend"><i class="fa fa-check"></i><b>8.6</b> Adding a legend</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-legend-contents-with-l.control"><i class="fa fa-check"></i><b>8.6.1</b> Setting legend contents with <code>L.control</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#using-css-to-style-the-legend"><i class="fa fa-check"></i><b>8.6.2</b> Using CSS to style the legend</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-style"><i class="fa fa-check"></i><b>8.7</b> Dynamic style</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#styling-in-response-to-events"><i class="fa fa-check"></i><b>8.7.1</b> Styling in response to events</a></li>
+<li class="chapter" data-level="8.7.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-control-contents"><i class="fa fa-check"></i><b>8.7.2</b> Dynamic control contents</a></li>
+<li class="chapter" data-level="8.7.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#linked-views"><i class="fa fa-check"></i><b>8.7.3</b> Linked views</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#exercise-08"><i class="fa fa-check"></i><b>8.8</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>III Databases</b></span></li>
+<li class="chapter" data-level="9" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>9</b> Databases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="databases.html"><a href="databases.html#introduction-databases"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="databases.html"><a href="databases.html#what-is-carto"><i class="fa fa-check"></i><b>9.2</b> What is CARTO?</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="databases.html"><a href="databases.html#the-carto-platform"><i class="fa fa-check"></i><b>9.2.1</b> The CARTO platform</a></li>
+<li class="chapter" data-level="9.2.2" data-path="databases.html"><a href="databases.html#alternatives-to-carto"><i class="fa fa-check"></i><b>9.2.2</b> Alternatives to CARTO</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="databases.html"><a href="databases.html#databases-1"><i class="fa fa-check"></i><b>9.3</b> Databases</a></li>
+<li class="chapter" data-level="9.4" data-path="databases.html"><a href="databases.html#spatial-databases"><i class="fa fa-check"></i><b>9.4</b> Spatial databases</a></li>
+<li class="chapter" data-level="9.5" data-path="databases.html"><a href="databases.html#what-is-postgis"><i class="fa fa-check"></i><b>9.5</b> What is PostGIS?</a></li>
+<li class="chapter" data-level="9.6" data-path="databases.html"><a href="databases.html#what-is-sql"><i class="fa fa-check"></i><b>9.6</b> What is SQL?</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="databases.html"><a href="databases.html#overview-sql"><i class="fa fa-check"></i><b>9.6.1</b> Overview</a></li>
+<li class="chapter" data-level="9.6.2" data-path="databases.html"><a href="databases.html#non-spatial-queries"><i class="fa fa-check"></i><b>9.6.2</b> Non-spatial queries</a></li>
+<li class="chapter" data-level="9.6.3" data-path="databases.html"><a href="databases.html#the-geometry-column"><i class="fa fa-check"></i><b>9.6.3</b> The geometry column</a></li>
+<li class="chapter" data-level="9.6.4" data-path="databases.html"><a href="databases.html#spatial-queries"><i class="fa fa-check"></i><b>9.6.4</b> Spatial queries</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="databases.html"><a href="databases.html#the-carto-sql-api"><i class="fa fa-check"></i><b>9.7</b> The CARTO SQL API</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="databases.html"><a href="databases.html#api-usage"><i class="fa fa-check"></i><b>9.7.1</b> API usage</a></li>
+<li class="chapter" data-level="9.7.2" data-path="databases.html"><a href="databases.html#query-example"><i class="fa fa-check"></i><b>9.7.2</b> Query example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="databases.html"><a href="databases.html#uploading-your-data"><i class="fa fa-check"></i><b>9.7.3</b> Uploading your data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="databases.html"><a href="databases.html#carto-and-leaflet"><i class="fa fa-check"></i><b>9.8</b> CARTO and Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="databases.html"><a href="databases.html#exercise-09"><i class="fa fa-check"></i><b>9.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html"><i class="fa fa-check"></i><b>10</b> Non-spatial Queries</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#introduction-8"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#subsetting-with-sql"><i class="fa fa-check"></i><b>10.2</b> Subsetting with SQL</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#filtering-based-on-attributes"><i class="fa fa-check"></i><b>10.2.1</b> Filtering based on attributes</a></li>
+<li class="chapter" data-level="10.2.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#displaying-on-a-map"><i class="fa fa-check"></i><b>10.2.2</b> Displaying on a map</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#creating-a-dropdown-menu"><i class="fa fa-check"></i><b>10.3</b> Creating a dropdown menu</a></li>
+<li class="chapter" data-level="10.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#populating-dropdown-options"><i class="fa fa-check"></i><b>10.4</b> Populating dropdown options</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#how-many-species-do-we-have"><i class="fa fa-check"></i><b>10.4.1</b> How many species do we have?</a></li>
+<li class="chapter" data-level="10.4.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#dropdown-menu-placeholder"><i class="fa fa-check"></i><b>10.4.2</b> Dropdown menu placeholder</a></li>
+<li class="chapter" data-level="10.4.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#finding-unique-values"><i class="fa fa-check"></i><b>10.4.3</b> Finding unique values</a></li>
+<li class="chapter" data-level="10.4.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#adding-options"><i class="fa fa-check"></i><b>10.4.4</b> Adding the options</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#updating-the-map"><i class="fa fa-check"></i><b>10.5</b> Updating the map</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#overview-updating-map"><i class="fa fa-check"></i><b>10.5.1</b> Overview</a></li>
+<li class="chapter" data-level="10.5.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#manual-example"><i class="fa fa-check"></i><b>10.5.2</b> Manual example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#automatic-updating"><i class="fa fa-check"></i><b>10.5.3</b> Automatic updating</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#rearranging-the-code"><i class="fa fa-check"></i><b>10.6</b> Refactoring the code</a></li>
+<li class="chapter" data-level="10.7" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#exercise-10"><i class="fa fa-check"></i><b>10.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html"><i class="fa fa-check"></i><b>11</b> Spatial Queries</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-marker-on-click"><i class="fa fa-check"></i><b>11.2</b> Adding markers on click</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#getting-click-coordinates"><i class="fa fa-check"></i><b>11.2.1</b> Getting click coordinates</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-custom-marker"><i class="fa fa-check"></i><b>11.2.2</b> Adding a custom marker</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#spatial-postgis-operators"><i class="fa fa-check"></i><b>11.3</b> Spatial PostGIS operators</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#overview-postgis-operators"><i class="fa fa-check"></i><b>11.3.1</b> Overview</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#geographical-distance"><i class="fa fa-check"></i><b>11.3.2</b> Geographical distance</a></li>
+<li class="chapter" data-level="11.3.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#sphere-vs-spheroid"><i class="fa fa-check"></i><b>11.3.3</b> Sphere vs. spheroid</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-nearest-points-to-map"><i class="fa fa-check"></i><b>11.4</b> Adding nearest points to map</a></li>
+<li class="chapter" data-level="11.5" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#drawing-line-connectors"><i class="fa fa-check"></i><b>11.5</b> Drawing line connectors</a></li>
+<li class="chapter" data-level="11.6" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#exercise-5"><i class="fa fa-check"></i><b>11.6</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>IV Advanced Topics</b></span></li>
+<li class="chapter" data-level="12" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html"><i class="fa fa-check"></i><b>12</b> Client-side Geoprocessing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#introduction-10"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#geoprocessing-with-turfjs"><i class="fa fa-check"></i><b>12.2</b> Geoprocessing with Turf.js</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-turfjs"><i class="fa fa-check"></i><b>12.2.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#including-the-turf-js-library"><i class="fa fa-check"></i><b>12.2.2</b> Including the Turf.js library</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#great-circle-line"><i class="fa fa-check"></i><b>12.3</b> Great Circle line</a></li>
+<li class="chapter" data-level="12.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuously-updated-tin"><i class="fa fa-check"></i><b>12.4</b> Continuously updated TIN</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-continuous-tin"><i class="fa fa-check"></i><b>12.4.1</b> Overview</a></li>
+<li class="chapter" data-level="12.4.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#generating-random-points"><i class="fa fa-check"></i><b>12.4.2</b> Generating random points</a></li>
+<li class="chapter" data-level="12.4.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-tin-layer"><i class="fa fa-check"></i><b>12.4.3</b> Adding a TIN layer</a></li>
+<li class="chapter" data-level="12.4.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#draggable-circle-markers"><i class="fa fa-check"></i><b>12.4.4</b> Draggable circle markers</a></li>
+<li class="chapter" data-level="12.4.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuous-updating"><i class="fa fa-check"></i><b>12.4.5</b> Continuous updating</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#clustering"><i class="fa fa-check"></i><b>12.5</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-clustering"><i class="fa fa-check"></i><b>12.5.1</b> Overview</a></li>
+<li class="chapter" data-level="12.5.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#processing-sets-of-features"><i class="fa fa-check"></i><b>12.5.2</b> Processing sets of features</a></li>
+<li class="chapter" data-level="12.5.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-convex-hull"><i class="fa fa-check"></i><b>12.5.3</b> Adding a Convex Hull</a></li>
+<li class="chapter" data-level="12.5.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#dbscan-clustering"><i class="fa fa-check"></i><b>12.5.4</b> DBSCAN clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#heatmaps-with-leafletheat"><i class="fa fa-check"></i><b>12.6</b> Heatmaps with Leaflet.heat</a></li>
+<li class="chapter" data-level="12.7" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#exercise-6"><i class="fa fa-check"></i><b>12.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html"><i class="fa fa-check"></i><b>13</b> Collaborative Mapping</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#introduction-11"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#crowdsourcing"><i class="fa fa-check"></i><b>13.2</b> Crowdsourcing</a></li>
+<li class="chapter" data-level="13.3" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#the-drawing-control"><i class="fa fa-check"></i><b>13.3</b> The drawing control</a></li>
+<li class="chapter" data-level="13.4" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#working-with-drawn-items"><i class="fa fa-check"></i><b>13.4</b> Working with drawn items</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#printing-drawn-items-geojson"><i class="fa fa-check"></i><b>13.4.1</b> Printing drawn items GeoJSON</a></li>
+<li class="chapter" data-level="13.4.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#expanded-geojson-viewer"><i class="fa fa-check"></i><b>13.4.2</b> Expanded GeoJSON viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#submission-form"><i class="fa fa-check"></i><b>13.5</b> Submission form</a></li>
+<li class="chapter" data-level="13.6" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#sending-features-to-the-database"><i class="fa fa-check"></i><b>13.6</b> Sending features to the database</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#setting-database-permissions"><i class="fa fa-check"></i><b>13.6.1</b> Setting database permissions</a></li>
+<li class="chapter" data-level="13.6.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#adding-draw-control"><i class="fa fa-check"></i><b>13.6.2</b> Adding the drawing control</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#exercise-7"><i class="fa fa-check"></i><b>13.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="associated-files.html"><a href="associated-files.html"><i class="fa fa-check"></i><b>A</b> Associated Files</a></li>
+<li class="chapter" data-level="B" data-path="list-of-examples.html"><a href="list-of-examples.html"><i class="fa fa-check"></i><b>B</b> List of Examples</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="list-of-examples.html"><a href="list-of-examples.html#main"><i class="fa fa-check"></i><b>B.1</b> Main</a></li>
+<li class="chapter" data-level="B.2" data-path="list-of-examples.html"><a href="list-of-examples.html#additional"><i class="fa fa-check"></i><b>B.2</b> Additional</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="list-of-examples.html"><a href="list-of-examples.html#html-and-css"><i class="fa fa-check"></i><b>B.2.1</b> HTML and CSS</a></li>
+<li class="chapter" data-level="B.2.2" data-path="list-of-examples.html"><a href="list-of-examples.html#javascript"><i class="fa fa-check"></i><b>B.2.2</b> JavaScript</a></li>
+<li class="chapter" data-level="B.2.3" data-path="list-of-examples.html"><a href="list-of-examples.html#leaflet-1"><i class="fa fa-check"></i><b>B.2.3</b> Leaflet</a></li>
+<li class="chapter" data-level="B.2.4" data-path="list-of-examples.html"><a href="list-of-examples.html#geo-processing"><i class="fa fa-check"></i><b>B.2.4</b> Geo-processing</a></li>
+<li class="chapter" data-level="B.2.5" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps"><i class="fa fa-check"></i><b>B.2.5</b> 2.5D Maps</a></li>
+<li class="chapter" data-level="B.2.6" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps-1"><i class="fa fa-check"></i><b>B.2.6</b> 3D maps</a></li>
+<li class="chapter" data-level="B.2.7" data-path="list-of-examples.html"><a href="list-of-examples.html#animation"><i class="fa fa-check"></i><b>B.2.7</b> Animation</a></li>
+<li class="chapter" data-level="B.2.8" data-path="list-of-examples.html"><a href="list-of-examples.html#real-time-data"><i class="fa fa-check"></i><b>B.2.8</b> Real-time data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="list-of-exercise-solutions.html"><a href="list-of-exercise-solutions.html"><i class="fa fa-check"></i><b>C</b> List of Exercise Solutions</a></li>
+<li class="chapter" data-level="D" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html"><i class="fa fa-check"></i><b>D</b> BGU course 2021</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#place-and-time"><i class="fa fa-check"></i><b>D.1</b> Place and Time</a></li>
+<li class="chapter" data-level="D.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#lecture-plan"><i class="fa fa-check"></i><b>D.2</b> Lecture plan</a></li>
+<li class="chapter" data-level="D.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#project-submission-dates"><i class="fa fa-check"></i><b>D.3</b> Project submission dates</a></li>
+<li class="chapter" data-level="D.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#additional-resources"><i class="fa fa-check"></i><b>D.4</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#html-css"><i class="fa fa-check"></i><b>D.4.1</b> HTML &amp; CSS</a></li>
+<li class="chapter" data-level="D.4.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#javascript-1"><i class="fa fa-check"></i><b>D.4.2</b> JavaScript</a></li>
+<li class="chapter" data-level="D.4.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#web-mapping"><i class="fa fa-check"></i><b>D.4.3</b> Web mapping</a></li>
+<li class="chapter" data-level="D.4.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#postgis"><i class="fa fa-check"></i><b>D.4.4</b> PostGIS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="projects.html"><a href="projects.html"><i class="fa fa-check"></i><b>E</b> Projects</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="projects.html"><a href="projects.html#overview-3"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="projects.html"><a href="projects.html#carto-account"><i class="fa fa-check"></i><b>E.2</b> CARTO Account</a></li>
+<li class="chapter" data-level="E.3" data-path="projects.html"><a href="projects.html#data"><i class="fa fa-check"></i><b>E.3</b> Data</a></li>
+<li class="chapter" data-level="E.4" data-path="projects.html"><a href="projects.html#project-requirements"><i class="fa fa-check"></i><b>E.4</b> Project requirements</a>
+<ul>
+<li class="chapter" data-level="E.4.1" data-path="projects.html"><a href="projects.html#project-01"><i class="fa fa-check"></i><b>E.4.1</b> Project 01</a></li>
+<li class="chapter" data-level="E.4.2" data-path="projects.html"><a href="projects.html#project-02"><i class="fa fa-check"></i><b>E.4.2</b> Project 02</a></li>
+<li class="chapter" data-level="E.4.3" data-path="projects.html"><a href="projects.html#project-03"><i class="fa fa-check"></i><b>E.4.3</b> Project 03</a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="projects.html"><a href="projects.html#submission"><i class="fa fa-check"></i><b>E.5</b> Submission</a></li>
+<li class="chapter" data-level="E.6" data-path="projects.html"><a href="projects.html#grading"><i class="fa fa-check"></i><b>E.6</b> Grading</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>F</b> Exam</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="exam.html"><a href="exam.html#topics"><i class="fa fa-check"></i><b>F.1</b> Topics</a></li>
+<li class="chapter" data-level="F.2" data-path="exam.html"><a href="exam.html#sample-questions"><i class="fa fa-check"></i><b>F.2</b> Sample questions</a>
+<ul>
+<li class="chapter" data-level="F.2.1" data-path="exam.html"><a href="exam.html#question-1"><i class="fa fa-check"></i><b>F.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="F.2.3" data-path="exam.html"><a href="exam.html#question-3"><i class="fa fa-check"></i><b>F.2.3</b> Question 3</a></li>
+<li class="chapter" data-level="F.2.4" data-path="exam.html"><a href="exam.html#question-4"><i class="fa fa-check"></i><b>F.2.4</b> Question 4</a></li>
+<li class="chapter" data-level="F.2.5" data-path="exam.html"><a href="exam.html#question-5"><i class="fa fa-check"></i><b>F.2.5</b> Question 5</a></li>
+<li class="chapter" data-level="F.2.6" data-path="exam.html"><a href="exam.html#question-6"><i class="fa fa-check"></i><b>F.2.6</b> Question 6</a></li>
+<li class="chapter" data-level="F.2.7" data-path="exam.html"><a href="exam.html#question-7"><i class="fa fa-check"></i><b>F.2.7</b> Question 7</a></li>
+<li class="chapter" data-level="F.2.8" data-path="exam.html"><a href="exam.html#question-8"><i class="fa fa-check"></i><b>F.2.8</b> Question 8</a></li>
+<li class="chapter" data-level="F.2.9" data-path="exam.html"><a href="exam.html#question-9"><i class="fa fa-check"></i><b>F.2.9</b> Question 9</a></li>
+<li class="chapter" data-level="F.2.10" data-path="exam.html"><a href="exam.html#question-10"><i class="fa fa-check"></i><b>F.2.10</b> Question 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="additional-questions.html"><a href="additional-questions.html"><i class="fa fa-check"></i><b>G</b> Additional Questions</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="additional-questions.html"><a href="additional-questions.html#chapter-3"><i class="fa fa-check"></i><b>G.1</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="G.1.1" data-path="additional-questions.html"><a href="additional-questions.html#modifying-global-variable"><i class="fa fa-check"></i><b>G.1.1</b> Modifying global variable</a></li>
+<li class="chapter" data-level="G.1.2" data-path="additional-questions.html"><a href="additional-questions.html#insertingremoving-array-element"><i class="fa fa-check"></i><b>G.1.2</b> Inserting/removing array element</a></li>
+<li class="chapter" data-level="G.1.3" data-path="additional-questions.html"><a href="additional-questions.html#object-oriented-language"><i class="fa fa-check"></i><b>G.1.3</b> Object Oriented language</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="additional-questions.html"><a href="additional-questions.html#chapter-4"><i class="fa fa-check"></i><b>G.2</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="G.2.1" data-path="additional-questions.html"><a href="additional-questions.html#removing-collection-of-html-elements"><i class="fa fa-check"></i><b>G.2.1</b> Removing collection of HTML elements</a></li>
+<li class="chapter" data-level="G.2.2" data-path="additional-questions.html"><a href="additional-questions.html#constraining-event-listener-frequency"><i class="fa fa-check"></i><b>G.2.2</b> Constraining event listener frequency</a></li>
+<li class="chapter" data-level="G.2.3" data-path="additional-questions.html"><a href="additional-questions.html#saving-.getelementbyid-method-in-variable"><i class="fa fa-check"></i><b>G.2.3</b> Saving <code>.getElementById</code> method in variable</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="additional-questions.html"><a href="additional-questions.html#chapter-6"><i class="fa fa-check"></i><b>G.3</b> Chapter 6</a>
+<ul>
+<li class="chapter" data-level="G.3.1" data-path="additional-questions.html"><a href="additional-questions.html#routing"><i class="fa fa-check"></i><b>G.3.1</b> Routing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html"><i class="fa fa-check"></i><b>H</b> Setting up an SQL API</a>
+<ul>
+<li class="chapter" data-level="H.1" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#introduction-12"><i class="fa fa-check"></i><b>H.1</b> Introduction</a></li>
+<li class="chapter" data-level="H.2" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#computer-with-fixed-ip-address"><i class="fa fa-check"></i><b>H.2</b> Computer with fixed IP address</a></li>
+<li class="chapter" data-level="H.3" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-postgresql-postgis"><i class="fa fa-check"></i><b>H.3</b> Installing PostgreSQL and PostGIS</a></li>
+<li class="chapter" data-level="H.4" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#loading-data-into-the-database"><i class="fa fa-check"></i><b>H.4</b> Loading data into the database</a></li>
+<li class="chapter" data-level="H.5" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#adding-read-only-database-user"><i class="fa fa-check"></i><b>H.5</b> Adding a read-only database user</a></li>
+<li class="chapter" data-level="H.6" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-nodejs-and-required-modules"><i class="fa fa-check"></i><b>H.6</b> Installing Node.js and required modules</a></li>
+<li class="chapter" data-level="H.7" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#creating-a-service"><i class="fa fa-check"></i><b>H.7</b> Creating a service</a></li>
+<li class="chapter" data-level="H.8" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#testing-the-sql-api"><i class="fa fa-check"></i><b>H.8</b> Testing the SQL API</a></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html"><i class="fa fa-check"></i><b>I</b> Setting up a static server using R</a>
+<ul>
+<li class="chapter" data-level="I.1" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#introduction-13"><i class="fa fa-check"></i><b>I.1</b> Introduction</a></li>
+<li class="chapter" data-level="I.2" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-r"><i class="fa fa-check"></i><b>I.2</b> Installing R</a></li>
+<li class="chapter" data-level="I.3" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-the-servr-package"><i class="fa fa-check"></i><b>I.3</b> Installing the <code>servr</code> package</a></li>
+<li class="chapter" data-level="I.4" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#starting-the-server"><i class="fa fa-check"></i><b>I.4</b> Starting the server</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="index-2.html">Introduction to Web Mapping</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="non-spatial-queries-1" class="section level1" number="10">
+<h1><span class="header-section-number">Chapter 10</span> Non-spatial Queries</h1>
+<p><i>Last updated: 2021-08-24 14:54:59 </i></p>
+<div id="introduction-8" class="section level2" number="10.1">
+<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<p>In Chapter <a href="databases.html#databases">9</a>, we introduced the CARTO SQL API, and used it to display the result of a database query on a Leaflet map (Figure <a href="databases.html#fig:example-09-01">9.7</a>). The query we used was constant: the same observations—namely the first 25 records in the <code>plants</code> table—were always loaded. In this chapter, we are going to extend <code>example-09-01.html</code> by adding a <em>user interface</em>, where one can choose which subset of the data gets loaded and displayed on the map. Specifically, we will use an input element, where the user selects a plant species, which we will use to dynamically generate an SQL query for filtering the <code>plants</code> table and getting the observations for that particular species only. That way, the user is able to load all observations of any given plant species, one at a time.</p>
+<p>We will accomplish the above by going through several steps:</p>
+<ul>
+<li>Using SQL filtering based on column values (Section <a href="non-spatial-queries-1.html#filtering-based-on-attributes">10.2.1</a>)</li>
+<li>Loading a subset of records from a database onto a Leaflet map (Section <a href="non-spatial-queries-1.html#displaying-on-a-map">10.2.2</a>)</li>
+<li>Adding a <code>&lt;select&gt;</code> input for choosing a species (Section <a href="non-spatial-queries-1.html#creating-a-dropdown-menu">10.3</a>)</li>
+<li>Collecting all unique species names, also using SQL (Section <a href="non-spatial-queries-1.html#finding-unique-values">10.4.3</a>)</li>
+<li>Automatically adding all unique species names as <code>&lt;option&gt;</code> elements inside <code>&lt;select&gt;</code> (Section <a href="non-spatial-queries-1.html#adding-options">10.4.4</a>)</li>
+<li>Associating the list with the map, so that changing the species choice will load new observations on the map (Sections <a href="non-spatial-queries-1.html#updating-the-map">10.5</a>–<a href="non-spatial-queries-1.html#rearranging-the-code">10.6</a>)</li>
+</ul>
+<p>The final result we aim at is shown in Figure <a href="non-spatial-queries-1.html#fig:example-10-05">10.7</a>.</p>
+</div>
+<div id="subsetting-with-sql" class="section level2" number="10.2">
+<h2><span class="header-section-number">10.2</span> Subsetting with SQL</h2>
+<div id="filtering-based-on-attributes" class="section level3" number="10.2.1">
+<h3><span class="header-section-number">10.2.1</span> Filtering based on attributes</h3>
+<p>In Chapter <a href="databases.html#databases">9</a>, we used the following SQL query to load the first 25 records from the <code>plants</code> table on a Leaflet map (Figure <a href="databases.html#fig:example-09-01">9.7</a>). </p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb336-1"><a href="non-spatial-queries-1.html#cb336-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name_lat, the_geom</span>
+<span id="cb336-2"><a href="non-spatial-queries-1.html#cb336-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants </span>
+<span id="cb336-3"><a href="non-spatial-queries-1.html#cb336-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">LIMIT</span> <span class="dv">25</span>;</span></code></pre></div>
+<p>As mentioned in Section <a href="databases.html#non-spatial-queries">9.6.2</a>, using SQL we can also <em>filter</em> the returned data, using the <code>WHERE</code> keyword combined with one or more criteria. For example, the <code>name_lat</code> column specifies the Latin name of the observed species in the <code>plants</code> table. In case we want to select the observations of just one species, we can add the <code>WHERE name_lat = '...'</code> expression to our SQL query, where <code>...</code> is replaced with the species name of interest. For example, the following query returns all observations where <code>name_lat</code> is equal to <code>'Iris mariae'</code> (Figure <a href="non-spatial-queries-1.html#fig:iris-mariae">10.1</a>): </p>
+<div class="sourceCode" id="cb337"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb337-1"><a href="non-spatial-queries-1.html#cb337-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name_lat, the_geom</span>
+<span id="cb337-2"><a href="non-spatial-queries-1.html#cb337-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants </span>
+<span id="cb337-3"><a href="non-spatial-queries-1.html#cb337-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">WHERE</span> name_lat <span class="op">=</span> <span class="st">&#39;Iris mariae&#39;</span>;</span></code></pre></div>
+<p>For simplicity, let’s add <code>LIMIT 1</code> to examine just the first observation for <code>'Iris mariae'</code>: </p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb338-1"><a href="non-spatial-queries-1.html#cb338-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name_lat, the_geom</span>
+<span id="cb338-2"><a href="non-spatial-queries-1.html#cb338-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants </span>
+<span id="cb338-3"><a href="non-spatial-queries-1.html#cb338-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">WHERE</span> name_lat <span class="op">=</span> <span class="st">&#39;Iris mariae&#39;</span></span>
+<span id="cb338-4"><a href="non-spatial-queries-1.html#cb338-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">LIMIT</span> <span class="dv">1</span>;</span></code></pre></div>
+<p>When working with CARTO, we can execute this query with the corresponding SQL API call (Section <a href="databases.html#the-carto-sql-api">9.7</a>): </p>
+<pre class="text"><code>https://michaeldorman.carto.com/api/v2/sql?format=GeoJSON&amp;q=
+SELECT name_lat, the_geom FROM plants WHERE name_lat = &#39;Iris mariae&#39; LIMIT 1</code></pre>
+<p>Here is the returned GeoJSON string: </p>
+<div class="sourceCode" id="cb340"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb340-1"><a href="non-spatial-queries-1.html#cb340-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb340-2"><a href="non-spatial-queries-1.html#cb340-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;FeatureCollection&quot;</span><span class="fu">,</span></span>
+<span id="cb340-3"><a href="non-spatial-queries-1.html#cb340-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;features&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb340-4"><a href="non-spatial-queries-1.html#cb340-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
+<span id="cb340-5"><a href="non-spatial-queries-1.html#cb340-5" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Feature&quot;</span><span class="fu">,</span></span>
+<span id="cb340-6"><a href="non-spatial-queries-1.html#cb340-6" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;geometry&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb340-7"><a href="non-spatial-queries-1.html#cb340-7" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Point&quot;</span><span class="fu">,</span></span>
+<span id="cb340-8"><a href="non-spatial-queries-1.html#cb340-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;coordinates&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="fl">34.412502</span><span class="ot">,</span> <span class="fl">31.019879</span><span class="ot">]</span></span>
+<span id="cb340-9"><a href="non-spatial-queries-1.html#cb340-9" aria-hidden="true" tabindex="-1"></a>      <span class="fu">},</span></span>
+<span id="cb340-10"><a href="non-spatial-queries-1.html#cb340-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;properties&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb340-11"><a href="non-spatial-queries-1.html#cb340-11" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;name_lat&quot;</span><span class="fu">:</span> <span class="st">&quot;Iris mariae&quot;</span></span>
+<span id="cb340-12"><a href="non-spatial-queries-1.html#cb340-12" aria-hidden="true" tabindex="-1"></a>      <span class="fu">}</span></span>
+<span id="cb340-13"><a href="non-spatial-queries-1.html#cb340-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb340-14"><a href="non-spatial-queries-1.html#cb340-14" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb340-15"><a href="non-spatial-queries-1.html#cb340-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Indeed, this is a <code>"FeatureCollection"</code> (Section <a href="geojson-1.html#feature-collections">7.3.4</a>) with one feature and one non-spatial attribute (<code>name_lat</code>), representing a single record for <code>'Iris mariae'</code> as requested from the server.</p>
+<div class="figure" style="text-align: center"><span id="fig:iris-mariae"></span>
+<img src="images/iris_mariae.jpg" alt="&lt;i&gt;Iris mariae&lt;/i&gt;, a rare iris species found in Israel. The image was taken in an ecological greenhouse experiment at the Ben-Gurion University in 2008." width="75%" />
+<p class="caption">
+FIGURE 10.1: <i>Iris mariae</i>, a rare iris species found in Israel. The image was taken in an ecological greenhouse experiment at the Ben-Gurion University in 2008.
+</p>
+</div>
+</div>
+<div id="displaying-on-a-map" class="section level3" number="10.2.2">
+<h3><span class="header-section-number">10.2.2</span> Displaying on a map</h3>
+<p>For adding the observations of a single species on a Leaflet map, we can take <code>example-09-01.html</code> from Section <a href="databases.html#carto-and-leaflet">9.8</a> and modify the SQL query part. Instead of the query we used in <code>example-09-01.html</code>, we can use the new one that we have just constructed, where an individual species is being selected:</p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb341-1"><a href="non-spatial-queries-1.html#cb341-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> name_lat, the_geom</span>
+<span id="cb341-2"><a href="non-spatial-queries-1.html#cb341-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants </span>
+<span id="cb341-3"><a href="non-spatial-queries-1.html#cb341-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">WHERE</span> name_lat <span class="op">=</span> <span class="st">&#39;Iris mariae&#39;</span>;</span></code></pre></div>
+<p>After creating the <code>map</code> object and loading a tile layer, the following code can be inserted to load the observations for <code>'Iris mariae'</code> on the map<a href="#fn96" class="footnote-ref" id="fnref96"><sup>96</sup></a>:</p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb342-1"><a href="non-spatial-queries-1.html#cb342-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> urlGeoJSON <span class="op">=</span> <span class="st">&quot;https://michaeldorman.carto.com/api/v2/sql?&quot;</span> <span class="op">+</span> </span>
+<span id="cb342-2"><a href="non-spatial-queries-1.html#cb342-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;format=GeoJSON&amp;q=&quot;</span><span class="op">;</span></span>
+<span id="cb342-3"><a href="non-spatial-queries-1.html#cb342-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery1 <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom FROM plants &quot;</span> <span class="op">+</span> </span>
+<span id="cb342-4"><a href="non-spatial-queries-1.html#cb342-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;WHERE name_lat = &#39;Iris mariae&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb342-5"><a href="non-spatial-queries-1.html#cb342-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery1)</span>
+<span id="cb342-6"><a href="non-spatial-queries-1.html#cb342-6" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb342-7"><a href="non-spatial-queries-1.html#cb342-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb342-8"><a href="non-spatial-queries-1.html#cb342-8" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb342-9"><a href="non-spatial-queries-1.html#cb342-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb342-10"><a href="non-spatial-queries-1.html#cb342-10" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb342-11"><a href="non-spatial-queries-1.html#cb342-11" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>This code section uses the <code>fetch</code> function for loading GeoJSON with Ajax (Section <a href="geojson-1.html#making-ajax-requests-with-fetch">7.7.3</a>). As discussed in Section <a href="databases.html#carto-and-leaflet">9.8</a>, we are requesting the GeoJSON content from the CARTO SQL API, using a URL for a specific SQL query, specified in <code>sqlQuery1</code>.</p>
+<p>The resulting map (<code>example-10-01.html</code>), with marked <code>'Iris mariae'</code> observations, is shown in Figure <a href="non-spatial-queries-1.html#fig:example-10-01">10.2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-10-01"></span>
+<iframe src="examples/example-10-01.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.2: <code>example-10-01.html</code> <a href="examples/example-10-01.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+</div>
+<div id="creating-a-dropdown-menu" class="section level2" number="10.3">
+<h2><span class="header-section-number">10.3</span> Creating a dropdown menu</h2>
+<p>Our ultimate goal in this chapter is for the user to be able to <em>choose</em> a species he/she wants to display, rather than seeing a predefined species such as <code>'Iris mariae'</code> (Figure <a href="non-spatial-queries-1.html#fig:example-10-05">10.7</a>). Therefore, our next step is to add an input element for selecting a species to load on the map. Since there are several hundreds of species in the <code>plants</code> table<a href="#fn97" class="footnote-ref" id="fnref97"><sup>97</sup></a>, a bulleted list (Section <a href="html.html#html-lists">1.6.8</a>) or a set of radio buttons (Section <a href="html.html#radio-buttons">1.6.13.6</a>) will be too long to fit on screen and inconvenient to browse. A <strong>dropdown menu</strong> (Section <a href="html.html#dropdown-lists">1.6.13.8</a>) is a good choice in case there are a lot of options to choose from. A dropdown menu can be opened to browse the species list and automatically closed again when selection is made, thus only temporarily obstructing other content on the web page.</p>
+<p>As discussed in Section <a href="html.html#dropdown-lists">1.6.13.8</a>, a dropdown menu can be constructed using the <code>&lt;select&gt;</code> element, with an internal set of <code>&lt;option&gt;</code> elements for the various options. For example, suppose that we had just three plant species in the database, named <code>"Abutilon indicum"</code>, <code>"Acinos rotundifolius"</code>, and <code>"Adonis aestivalis"</code>. In such case, the dropdown menu could be defined with HTML code such as follows:</p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb343-1"><a href="non-spatial-queries-1.html#cb343-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span><span class="ot"> id=</span><span class="st">&quot;species_sel&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb343-2"><a href="non-spatial-queries-1.html#cb343-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;Abutilon indicum&quot;</span><span class="kw">&gt;</span>Abutilon indicum<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb343-3"><a href="non-spatial-queries-1.html#cb343-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;Acinos rotundifolius&quot;</span><span class="kw">&gt;</span>Acinos rotundifolius<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb343-4"><a href="non-spatial-queries-1.html#cb343-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option</span><span class="ot"> value=</span><span class="st">&quot;Adonis aestivalis&quot;</span><span class="kw">&gt;</span>Adonis aestivalis<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb343-5"><a href="non-spatial-queries-1.html#cb343-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/select&gt;</span></span></code></pre></div>
+<p>Each <code>&lt;option&gt;</code> element has a <code>value</code> attribute, as well as text contents. Recall from Section <a href="html.html#input-elements">1.6.13</a> that the <code>value</code> attribute specifies the ID sent to the server, or queried with the <code>.value</code> property (Section <a href="javascript-interactivity.html#getting-and-setting-input-values">4.8</a>), while the text contents between the opening and closing tags (<code>&lt;option&gt;...&lt;/option&gt;</code>) is actually displayed on screen. In this particular example, the <code>value</code> attribute and the text content are identical, but this does not necessarily have to be so (Section <a href="html.html#input-elements">1.6.13</a>). In fact, when the <code>value</code> attribute is missing, the element contents are <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option">treated as the values</a>. Therefore, when text contents and <code>value</code> are identical, the value can be omitted, as in <code>&lt;option&gt;Abutilon indicum&lt;/option&gt;</code>. The <code>&lt;select&gt;</code> element can thus be defined with more concise code, as follows:</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb344-1"><a href="non-spatial-queries-1.html#cb344-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;select</span><span class="ot"> id=</span><span class="st">&quot;species_sel&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb344-2"><a href="non-spatial-queries-1.html#cb344-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option&gt;</span>Abutilon indicum<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb344-3"><a href="non-spatial-queries-1.html#cb344-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option&gt;</span>Acinos rotundifolius<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb344-4"><a href="non-spatial-queries-1.html#cb344-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">&lt;option&gt;</span>Adonis aestivalis<span class="kw">&lt;/option&gt;</span></span>
+<span id="cb344-5"><a href="non-spatial-queries-1.html#cb344-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/select&gt;</span></span></code></pre></div>
+<p>To incorporate a dropdown menu—such as the one coded above—into our Leaflet map, we use the <code>L.control</code> function, which we already know how to use from Sections <a href="leaflet.html#adding-a-description">6.8</a>, <a href="symbology-and-interactivity.html#adding-a-legend">8.6</a>, and <a href="symbology-and-interactivity.html#dynamic-control-contents">8.7.2</a>. The following code can be added to our <code>&lt;script&gt;</code> to build the dropdown menu:</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb345-1"><a href="non-spatial-queries-1.html#cb345-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> dropdown <span class="op">=</span> L<span class="op">.</span><span class="fu">control</span>({<span class="dt">position</span><span class="op">:</span> <span class="st">&quot;topleft&quot;</span>})<span class="op">;</span></span>
+<span id="cb345-2"><a href="non-spatial-queries-1.html#cb345-2" aria-hidden="true" tabindex="-1"></a>dropdown<span class="op">.</span><span class="at">onAdd</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb345-3"><a href="non-spatial-queries-1.html#cb345-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> div <span class="op">=</span> L<span class="op">.</span><span class="at">DomUtil</span><span class="op">.</span><span class="fu">create</span>(<span class="st">&quot;div&quot;</span><span class="op">,</span> <span class="st">&quot;dropdown&quot;</span>)<span class="op">;</span></span>
+<span id="cb345-4"><a href="non-spatial-queries-1.html#cb345-4" aria-hidden="true" tabindex="-1"></a>    div<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> </span>
+<span id="cb345-5"><a href="non-spatial-queries-1.html#cb345-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;&lt;select id=&quot;species_sel&quot;&gt;&#39;</span> <span class="op">+</span></span>
+<span id="cb345-6"><a href="non-spatial-queries-1.html#cb345-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;&lt;option&gt;Abutilon indicum&lt;/option&gt;&#39;</span> <span class="op">+</span></span>
+<span id="cb345-7"><a href="non-spatial-queries-1.html#cb345-7" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;&lt;option&gt;Acinos rotundifolius&lt;/option&gt;&#39;</span> <span class="op">+</span></span>
+<span id="cb345-8"><a href="non-spatial-queries-1.html#cb345-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;&lt;option&gt;Adonis aestivalis&lt;/option&gt;&#39;</span> <span class="op">+</span></span>
+<span id="cb345-9"><a href="non-spatial-queries-1.html#cb345-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;&lt;/select&gt;&#39;</span><span class="op">;</span></span>
+<span id="cb345-10"><a href="non-spatial-queries-1.html#cb345-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> div<span class="op">;</span></span>
+<span id="cb345-11"><a href="non-spatial-queries-1.html#cb345-11" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb345-12"><a href="non-spatial-queries-1.html#cb345-12" aria-hidden="true" tabindex="-1"></a>dropdown<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>Like in previous examples of <code>L.control</code>, the above code is actually composed of three expressions:</p>
+<ul>
+<li><strong>Defining</strong> a map control object, named <code>dropdown</code>, using <code>L.control</code>.</li>
+<li><strong>Setting</strong> the contents of the control, assigning custom HTML code into the <code>.innterHTML</code> property. Note that the control itself is set as a <code>&lt;div&gt;</code> element with class <code>"dropdown"</code>, and the <code>&lt;select&gt;</code> element inside the <code>&lt;div&gt;</code> is set with an ID attribute of <code>"species_sel"</code>.</li>
+<li><strong>Adding</strong> the <code>dropdown</code> control to our map.</li>
+</ul>
+<p>Next, we probably want to improve the default styling of the dropdown menu, by adding some CSS rules applied to <code>#species_sel</code>, which refers to the <code>&lt;select&gt;</code> input element. For example, we can make the font slightly larger and add shadow effects around the input box. To do that, we add the following CSS code inside the <code>&lt;style&gt;</code> element within the <code>&lt;head&gt;</code>:</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode css"><code class="sourceCode css"><span id="cb346-1"><a href="non-spatial-queries-1.html#cb346-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#species_sel</span> {</span>
+<span id="cb346-2"><a href="non-spatial-queries-1.html#cb346-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">padding</span>: <span class="dv">6</span><span class="dt">px</span> <span class="dv">8</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb346-3"><a href="non-spatial-queries-1.html#cb346-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">font</span>: <span class="dv">14</span><span class="dt">px</span>/<span class="dv">16</span><span class="dt">px</span> Arial<span class="op">,</span> Helvetica<span class="op">,</span> <span class="dv">sans-serif</span><span class="op">;</span></span>
+<span id="cb346-4"><a href="non-spatial-queries-1.html#cb346-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">background-color</span>: <span class="fu">rgba(</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">255</span><span class="op">,</span><span class="dv">0.8</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb346-5"><a href="non-spatial-queries-1.html#cb346-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">box-shadow</span>: <span class="dv">0</span> <span class="dv">0</span> <span class="dv">15</span><span class="dt">px</span> <span class="fu">rgba(</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0</span><span class="op">,</span><span class="dv">0.2</span><span class="fu">)</span><span class="op">;</span></span>
+<span id="cb346-6"><a href="non-spatial-queries-1.html#cb346-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">border-radius</span>: <span class="dv">5</span><span class="dt">px</span><span class="op">;</span></span>
+<span id="cb346-7"><a href="non-spatial-queries-1.html#cb346-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Here is a short explanation of what each of the above styling rules does. You can go back to Chapter <a href="css.html#css">2</a> for more information on each of these properties.</p>
+<ul>
+<li><code>padding</code>—The padding clears an area around the contents (and inside the border) of an element. When two values are given, the first one (<code>6px</code>) refers to <code>padding-top</code> and <code>padding-bottom</code> and the second one (<code>8px</code>) refers to <code>padding-right</code> and <code>padding-left</code> (Section <a href="css.html#boxes">2.8.4</a>).</li>
+<li><code>font</code>—Specifies the font properties. When two sizes are given, the first one (<code>14px</code>) refers to <code>font-size</code>, and the second one (<code>16px</code>) refers to <code>line-height</code> (the total height of text plus the distance to the next line). The font specification first gives specific fonts (<code>Arial</code>, <code>Helvetica</code>), then a general font family (<code>sans-serif</code>) to fall back on if those fonts are not installed on the system (Section <a href="css.html#text">2.8.3</a>).</li>
+<li><code>background-color</code>—The box background color is given in the RGBA format: intensity of red, green, blue, and transparency (alpha). In this case, we have white at 80% opacity (<code>rgba(255,255,255,0.8)</code>) (Section <a href="css.html#color">2.8.2</a>).</li>
+<li><code>box-shadow</code>—Adds a shadow around the element’s box. The sizes refer to horizontal offset (<code>0</code>) and vertical offset (<code>0</code>), where zero means the shadow is symmetrical around all sides of the box. Blur distance (<code>15 px</code>) determines how far the shadow extends. Color specification comes next, in this case the shadow color is black at 20% opacity (<code>rgba(0,0,0,0.2)</code>).</li>
+<li><code>border-radius</code>—Adds rounded corners to an element, the size (<code>5px</code>) sets the radius (Section <a href="css.html#border">2.8.4.3</a>).</li>
+</ul>
+<p>The reason we do not need any styling rules for the entire control <code>&lt;div&gt;</code> (using the class selector <code>.dropdown</code>), just for the internal <code>&lt;select&gt;</code> element (using the ID selector <code>#species_sel</code>), is that the control contains nothing but the dropdown menu. The exercise at the end of this chapter (Section <a href="non-spatial-queries-1.html#exercise-10">10.7</a>) will require creating a more complex control, with two dropdown menus. In that case, styling the entire control <code>&lt;div&gt;</code> is necessary too—for example, setting its external border style and the style of text labels for the separate dropdown menus (Figure <a href="non-spatial-queries-1.html#fig:solution-10">10.8</a>).</p>
+<blockquote>
+<ul>
+<li>Open <code>example-10-02.html</code>.</li>
+<li>Uncheck each of the dropdown menu CSS styling rules in the developer tools, or delete them from the source code, to see their effect on dropdown menu appearance.</li>
+</ul>
+</blockquote>
+<p>The resulting map <code>example-10-02.html</code> is shown in Figure <a href="non-spatial-queries-1.html#fig:example-10-02">10.3</a>. Note the newly added dropdown menu in the top-left corner of the map.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-10-02"></span>
+<iframe src="examples/example-10-02.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.3: <code>example-10-02.html</code> <a href="examples/example-10-02.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<p>The dropdown menu with the three individual species—which we see in the top-right corner in Figure <a href="non-spatial-queries-1.html#fig:example-10-02">10.3</a>—is not yet functional. We can make a selection of a different species, but the map will still show <code>'Iris mariae'</code> nevertheless, since it is hard-coded into our SQL query <code>sqlQuery1</code> (open <code>example-10-02.html</code> and try it).</p>
+<p>Before making the necessary adjustments for linking our dropdown menu with the marker layer on the map, we would like to improve the way that we create the dropdown menu in the first place. Instead of using pre-defined HTML code with just three species (as in <code>example-10-02.html</code>), we would like to build the options dynamically, with JavaScript code. Remember <code>example-04-06.html</code> (Section <a href="javascript-interactivity.html#modifying-page-based-on-data">4.11</a>), where we used the <code>forEach</code> iteration (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>) for dynamically building a list of species names based on an array? This is exactly the technique we will use for dynamically populating our species dropdown menu with all of the unique species names.</p>
+</div>
+<div id="populating-dropdown-options" class="section level2" number="10.4">
+<h2><span class="header-section-number">10.4</span> Populating dropdown options</h2>
+<div id="how-many-species-do-we-have" class="section level3" number="10.4.1">
+<h3><span class="header-section-number">10.4.1</span> How many species do we have?</h3>
+<p>Before looking into the dropdown menu construction, let’s check how many different plant species we actually have in the <code>plants</code> table. The following SQL query can be used to do that:</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb347-1"><a href="non-spatial-queries-1.html#cb347-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="fu">COUNT</span>(<span class="kw">DISTINCT</span> name_lat) <span class="kw">AS</span> n</span>
+<span id="cb347-2"><a href="non-spatial-queries-1.html#cb347-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants;</span></code></pre></div>
+<p>We are using the <code>COUNT</code> function along with the <code>DISTINCT</code> keyword to get the number of unique values in the <code>name_lat</code> column, putting the result into a new column named <code>n</code>. The result is a small table with one column (<code>n</code>) and one row, as follows:</p>
+<pre class="text"><code>  n
+-----
+ 417
+(1 row)</code></pre>
+<p>We can get this result with the CARTO SQL API too, as follows: </p>
+<pre class="text"><code>https://michaeldorman.carto.com/api/v2/sql?q=
+SELECT COUNT(DISTINCT name_lat) AS n FROM plants</code></pre>
+<p>Here is the response: </p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb350-1"><a href="non-spatial-queries-1.html#cb350-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb350-2"><a href="non-spatial-queries-1.html#cb350-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;rows&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb350-3"><a href="non-spatial-queries-1.html#cb350-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;n&quot;</span><span class="fu">:</span> <span class="dv">417</span><span class="fu">}</span></span>
+<span id="cb350-4"><a href="non-spatial-queries-1.html#cb350-4" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb350-5"><a href="non-spatial-queries-1.html#cb350-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;time&quot;</span><span class="fu">:</span> <span class="fl">0.04</span><span class="fu">,</span></span>
+<span id="cb350-6"><a href="non-spatial-queries-1.html#cb350-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;fields&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb350-7"><a href="non-spatial-queries-1.html#cb350-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;n&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb350-8"><a href="non-spatial-queries-1.html#cb350-8" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;number&quot;</span></span>
+<span id="cb350-9"><a href="non-spatial-queries-1.html#cb350-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb350-10"><a href="non-spatial-queries-1.html#cb350-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb350-11"><a href="non-spatial-queries-1.html#cb350-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;total_rows&quot;</span><span class="fu">:</span> <span class="dv">1</span></span>
+<span id="cb350-12"><a href="non-spatial-queries-1.html#cb350-12" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Omitting the <code>format</code> parameter implies the default <code>format=JSON</code>, thus our result is a JSON object (Section <a href="databases.html#query-example">9.7.2</a>). In JSON results coming from the CARTO SQL API, the <code>"rows"</code> property has the actual tabular content. The other properties in the JSON object are <em>metadata</em>, with information regarding processing time (<code>"time"</code>), the column data types (<code>"fields"</code>), and the total number of rows (<code>"total_rows"</code>)<a href="#fn98" class="footnote-ref" id="fnref98"><sup>98</sup></a>. </p>
+<p>The <code>"rows"</code> property is structured as an array, with array elements representing table rows. Each element is an object, representing all of the column values for that table row. In this case, there is just one row and one column, which is why the array has just one element, and that element is an object with just one property: </p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb351-1"><a href="non-spatial-queries-1.html#cb351-1" aria-hidden="true" tabindex="-1"></a>[{<span class="st">&quot;n&quot;</span><span class="op">:</span> <span class="dv">417</span>}]</span></code></pre></div>
+<p>The response tells us that there are 417 species in the <code>plants</code> table, which we would like to include as dropdown menu options. Manually writing the <code>&lt;option&gt;</code> elements code for each and every one of the species is obviously not a good idea (Section <a href="javascript-interactivity.html#modifying-page-based-on-data">4.11</a>). Automating the construction of HTML code with 417 <code>&lt;option&gt;</code> element will be more convenient. What is more important, however, is the fact that our dynamically generated dropdown menu will be based on the exact species present in the database, in real-time. In other words, with the dynamic approach we no longer need to worry about updating the HTML code in case the database changes, since the HTML code is dynamically constructed based on the database itself and therefore always up-to-date. Remember that unlike a local file, the CARTO database, just like any other database, may be accessed and modified by different users on different platforms (Section <a href="databases.html#introduction-databases">9.1</a>). For example, a database with a list of rare and protected species may be periodically updated by the GIS department of the Nature and Parks authority, adding new observations, removing species that are no longer considered rare, and so on. If our web page connects to the database to dynamically generate its contents on page load, we do not need to worry about changing the code to reflect database modifications; the up-to-date version will be automatically loaded each time<a href="#fn99" class="footnote-ref" id="fnref99"><sup>99</sup></a>.</p>
+<blockquote>
+<ul>
+<li>Removing the <code>DISTINCT</code> keyword from the above query gives the overall number of values in the <code>name_lat</code> column, that is, the total number of records in the table.</li>
+<li>Execute the query through the CARTO SQL API to find out how many individual plant observations are there in the <code>plants</code> table<a href="#fn100" class="footnote-ref" id="fnref100"><sup>100</sup></a> (also see Section <a href="client-side-geoprocessing.html#heatmaps-with-leafletheat">12.6</a>).</li>
+</ul>
+</blockquote>
+</div>
+<div id="dropdown-menu-placeholder" class="section level3" number="10.4.2">
+<h3><span class="header-section-number">10.4.2</span> Dropdown menu placeholder</h3>
+<p>We now begin with populating the dropdown options. As a first step, it is convenient to create an empty placeholder, like we did in the species list example from Section <a href="javascript-interactivity.html#modifying-page-based-on-data">4.11</a>. That way, the placement of the contents on our page is easier to manage. To create the empty placeholder, instead of the HTML code for a <code>&lt;select&gt;</code> element with three pre-defined <code>&lt;option&gt;</code> elements (Section <a href="non-spatial-queries-1.html#creating-a-dropdown-menu">10.3</a>), we place the following HTML code which creates an <em>empty</em> <code>&lt;select&gt;</code> element, with no internal <code>&lt;option&gt;</code> elements at all:</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb352-1"><a href="non-spatial-queries-1.html#cb352-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> dropdown <span class="op">=</span> L<span class="op">.</span><span class="fu">control</span>({<span class="dt">position</span><span class="op">:</span> <span class="st">&quot;topright&quot;</span>})<span class="op">;</span></span>
+<span id="cb352-2"><a href="non-spatial-queries-1.html#cb352-2" aria-hidden="true" tabindex="-1"></a>dropdown<span class="op">.</span><span class="at">onAdd</span> <span class="op">=</span> <span class="kw">function</span>() {</span>
+<span id="cb352-3"><a href="non-spatial-queries-1.html#cb352-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> div <span class="op">=</span> L<span class="op">.</span><span class="at">DomUtil</span><span class="op">.</span><span class="fu">create</span>(<span class="st">&quot;div&quot;</span><span class="op">,</span> <span class="st">&quot;dropdown&quot;</span>)<span class="op">;</span></span>
+<span id="cb352-4"><a href="non-spatial-queries-1.html#cb352-4" aria-hidden="true" tabindex="-1"></a>    div<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> <span class="st">&#39;&lt;select id=&quot;species_sel&quot;&gt;&lt;/select&gt;&#39;</span><span class="op">;</span></span>
+<span id="cb352-5"><a href="non-spatial-queries-1.html#cb352-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> div<span class="op">;</span></span>
+<span id="cb352-6"><a href="non-spatial-queries-1.html#cb352-6" aria-hidden="true" tabindex="-1"></a>}<span class="op">;</span></span>
+<span id="cb352-7"><a href="non-spatial-queries-1.html#cb352-7" aria-hidden="true" tabindex="-1"></a>dropdown<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>Just like in <code>example-10-02.html</code> (Section <a href="non-spatial-queries-1.html#creating-a-dropdown-menu">10.3</a>), we hereby set an ID <code>"species_sel"</code> for the <code>&lt;select&gt;</code> element. We already used the ID for styling the dropdown menu with CSS (Section <a href="non-spatial-queries-1.html#creating-a-dropdown-menu">10.3</a>). Now, in <code>example-10-03.html</code> (Section <a href="non-spatial-queries-1.html#adding-options">10.4.4</a>), we will also use the ID in our <code>&lt;script&gt;</code> to dynamically populate the dropdown <code>&lt;option&gt;</code> elements. To do that, we need to:</p>
+<ul>
+<li>Get the list of all unique species in the database (Section <a href="non-spatial-queries-1.html#finding-unique-values">10.4.3</a>)</li>
+<li>Iterate over the species, adding an <code>&lt;option&gt;</code> element inside the <code>&lt;select&gt;</code> for each one of them (Section <a href="non-spatial-queries-1.html#adding-options">10.4.4</a>)</li>
+</ul>
+</div>
+<div id="finding-unique-values" class="section level3" number="10.4.3">
+<h3><span class="header-section-number">10.4.3</span> Finding unique values</h3>
+<p>The following SQL query—which we already mentioned in the last exercise (Section <a href="databases.html#exercise-09">9.9</a>)—can be used to get the list of all unique values in the <code>name_lat</code> column of the <code>plants</code> table:</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode sql"><code class="sourceCode sql"><span id="cb353-1"><a href="non-spatial-queries-1.html#cb353-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">DISTINCT</span> name_lat </span>
+<span id="cb353-2"><a href="non-spatial-queries-1.html#cb353-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">FROM</span> plants </span>
+<span id="cb353-3"><a href="non-spatial-queries-1.html#cb353-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">ORDER</span> <span class="kw">BY</span> name_lat;</span></code></pre></div>
+<p>The <code>SELECT DISTINCT</code> keyword combination before the <code>name_lat</code> column name ensures that we only get the unique values in that column. We are also using the <code>ORDER BY</code> keyword to have the resulting table of species names <strong>sorted</strong> by alphabetical order. It makes sense that the options in the dropdown menu are alphabetically ordered: that way the user can easily locate the species he/she is interested in, by scrolling towards that species and/or by typing its first letter with the keyboard. Also, all species of the same <em>genus</em> will be listed together, since they start with the same word.</p>
+<p>You can test the above query with the CARTO API:</p>
+<pre class="text"><code>https://michaeldorman.carto.com/api/v2/sql?q=
+SELECT DISTINCT name_lat FROM plants ORDER BY name_lat</code></pre>
+<p>The JSON response should look as follows<a href="#fn101" class="footnote-ref" id="fnref101"><sup>101</sup></a>:</p>
+<div class="sourceCode" id="cb355"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb355-1"><a href="non-spatial-queries-1.html#cb355-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb355-2"><a href="non-spatial-queries-1.html#cb355-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;rows&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb355-3"><a href="non-spatial-queries-1.html#cb355-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name_lat&quot;</span><span class="fu">:</span><span class="st">&quot;Abutilon indicum&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb355-4"><a href="non-spatial-queries-1.html#cb355-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name_lat&quot;</span><span class="fu">:</span><span class="st">&quot;Acinos rotundifolius&quot;</span><span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb355-5"><a href="non-spatial-queries-1.html#cb355-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span><span class="dt">&quot;name_lat&quot;</span><span class="fu">:</span><span class="st">&quot;Adonis aestivalis&quot;</span><span class="fu">}</span><span class="ot">,</span> </span>
+<span id="cb355-6"><a href="non-spatial-queries-1.html#cb355-6" aria-hidden="true" tabindex="-1"></a>    <span class="er">...</span></span>
+<span id="cb355-7"><a href="non-spatial-queries-1.html#cb355-7" aria-hidden="true" tabindex="-1"></a>  <span class="ot">]</span></span>
+<span id="cb355-8"><a href="non-spatial-queries-1.html#cb355-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;time&quot;</span><span class="er">:</span> <span class="fl">0.032</span><span class="fu">,</span></span>
+<span id="cb355-9"><a href="non-spatial-queries-1.html#cb355-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;fields&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb355-10"><a href="non-spatial-queries-1.html#cb355-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;name_lat&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb355-11"><a href="non-spatial-queries-1.html#cb355-11" aria-hidden="true" tabindex="-1"></a>      <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;string&quot;</span></span>
+<span id="cb355-12"><a href="non-spatial-queries-1.html#cb355-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">}</span></span>
+<span id="cb355-13"><a href="non-spatial-queries-1.html#cb355-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">},</span></span>
+<span id="cb355-14"><a href="non-spatial-queries-1.html#cb355-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;total_rows&quot;</span><span class="fu">:</span> <span class="dv">417</span></span>
+<span id="cb355-15"><a href="non-spatial-queries-1.html#cb355-15" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Next (Section <a href="non-spatial-queries-1.html#adding-options">10.4.4</a>), we will use this JSON response to fill up the dropdown menu where the user selects a species to display on the map.</p>
+</div>
+<div id="adding-options" class="section level3" number="10.4.4">
+<h3><span class="header-section-number">10.4.4</span> Adding the options</h3>
+<p>To populate the dropdown menu, we need to incorporate the above <code>SELECT DISTINCT</code> SQL query (Section <a href="non-spatial-queries-1.html#finding-unique-values">10.4.3</a>) into our script. First, we define a variable named <code>sqlQuery2</code> for the latter SQL query, listing the distinct species. At this point, we thus have two different SQL queries in our script: </p>
+<ul>
+<li><code>sqlQuery1</code> for loading observations of <em>one</em> species (Section <a href="non-spatial-queries-1.html#displaying-on-a-map">10.2.2</a>)</li>
+<li><code>sqlQuery2</code> for finding all <em>unique</em> species names</li>
+</ul>
+<p>For now, in <code>sqlQuery1</code> we manually set the first displayed species to <code>'Abutilon indicum'</code>, since it is the first species in terms of alphabetic ordering, as shown in the above SQL API response (Section <a href="non-spatial-queries-1.html#finding-unique-values">10.4.3</a>). The species named <code>'Abutilon indicum'</code> therefore comprises the first option in our dropdown menu. Later on, we will replace this <em>manual</em> way of selecting the first species with an automatic one, without hard-coding its name into the script (Section <a href="non-spatial-queries-1.html#rearranging-the-code">10.6</a>). </p>
+<p>Also note that we have two different URL prefixes: </p>
+<ul>
+<li><code>urlJSON</code> for getting <code>sqlQuery2</code> in JSON format, using the <code>format=JSON</code> option (unspecified, since it is the default)</li>
+<li><code>urlGeoJSON</code> for getting <code>sqlQuery1</code> in GeoJSON format, using the <code>format=GeoJSON</code> option</li>
+</ul>
+<p>Here are the definitions of both URL prefixes and queries: </p>
+<div class="sourceCode" id="cb356"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb356-1"><a href="non-spatial-queries-1.html#cb356-1" aria-hidden="true" tabindex="-1"></a><span class="co">// URL prefixes</span></span>
+<span id="cb356-2"><a href="non-spatial-queries-1.html#cb356-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> url <span class="op">=</span> <span class="st">&quot;https://michaeldorman.carto.com/api/v2/sql?&quot;</span><span class="op">;</span></span>
+<span id="cb356-3"><a href="non-spatial-queries-1.html#cb356-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> urlJSON <span class="op">=</span> url <span class="op">+</span> <span class="st">&quot;q=&quot;</span><span class="op">;</span></span>
+<span id="cb356-4"><a href="non-spatial-queries-1.html#cb356-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> urlGeoJSON <span class="op">=</span> url <span class="op">+</span> <span class="st">&quot;format=GeoJSON&amp;q=&quot;</span><span class="op">;</span></span>
+<span id="cb356-5"><a href="non-spatial-queries-1.html#cb356-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb356-6"><a href="non-spatial-queries-1.html#cb356-6" aria-hidden="true" tabindex="-1"></a><span class="co">// Queries</span></span>
+<span id="cb356-7"><a href="non-spatial-queries-1.html#cb356-7" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery1 <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom FROM plants &quot;</span> <span class="op">+</span> </span>
+<span id="cb356-8"><a href="non-spatial-queries-1.html#cb356-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;WHERE name_lat = &#39;Abutilon indicum&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb356-9"><a href="non-spatial-queries-1.html#cb356-9" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery2 <span class="op">=</span> <span class="st">&quot;SELECT DISTINCT name_lat FROM plants ORDER BY name_lat&quot;</span><span class="op">;</span></span></code></pre></div>
+<p>Then, the following expression fills the dropdown menu with all unique species names in the <code>plants</code> table, using <code>sqlQuery2</code>: </p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb357-1"><a href="non-spatial-queries-1.html#cb357-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlJSON <span class="op">+</span> sqlQuery2)</span>
+<span id="cb357-2"><a href="non-spatial-queries-1.html#cb357-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb357-3"><a href="non-spatial-queries-1.html#cb357-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb357-4"><a href="non-spatial-queries-1.html#cb357-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb357-5"><a href="non-spatial-queries-1.html#cb357-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb357-6"><a href="non-spatial-queries-1.html#cb357-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> html <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb357-7"><a href="non-spatial-queries-1.html#cb357-7" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="at">rows</span><span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb357-8"><a href="non-spatial-queries-1.html#cb357-8" aria-hidden="true" tabindex="-1"></a>            html <span class="op">+=</span> <span class="st">&quot;&lt;option&gt;&quot;</span> <span class="op">+</span> element<span class="op">.</span><span class="at">name_lat</span> <span class="op">+</span> <span class="st">&quot;&lt;/option&gt;&quot;</span><span class="op">;</span></span>
+<span id="cb357-9"><a href="non-spatial-queries-1.html#cb357-9" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb357-10"><a href="non-spatial-queries-1.html#cb357-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> html<span class="op">;</span></span>
+<span id="cb357-11"><a href="non-spatial-queries-1.html#cb357-11" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>This is an Ajax request using <code>fetch</code>. What does it do? Let’s go over the code step by step.</p>
+<ul>
+<li>The <code>fetch</code> function is used to load the JSON response with the unique species names from the database, using <code>urlJSON+sqlQuery2</code>, eventually passed as an object named <code>data</code>. The contents of <code>data</code> is the same as shown in the JSON printout from Section <a href="non-spatial-queries-1.html#finding-unique-values">10.4.3</a>.</li>
+<li>Then, the HTML code for all <code>&lt;option&gt;</code> elements is constructed using an iteration:
+<ul>
+<li>An empty string, named <code>html</code>, is initialized to hold the HTML code</li>
+<li>The <code>.forEach</code> method (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>) is used to iterate over each element in the <code>rows</code> property of <code>data</code> (i.e., the returned table rows), consecutively appending the <code>&lt;option&gt;</code> elements for all species</li>
+<li>The resulting HTML code in <code>html</code> is assigned to the <code>&lt;select&gt;</code> element (<code>id="species_sel"</code>), i.e., the dropdown menu is filled with the species options</li>
+</ul></li>
+</ul>
+<p>As a result of adding the last code section, we now have a map (<code>example-10-03.html</code>) with a dropdown menu listing all available species. The observations of the first species on the list are shown on the map on page load (Figure <a href="non-spatial-queries-1.html#fig:example-10-03">10.4</a>).</p>
+<div class="figure" style="text-align: center"><span id="fig:example-10-03"></span>
+<iframe src="examples/example-10-03.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.4: <code>example-10-03.html</code> <a href="examples/example-10-03.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Insert a <code>console.log</code> expression inside the <code>&lt;script&gt;</code> of <code>example-10-03.html</code> so that the name of each species is printed in the console as it is being added to the list of options.</li>
+<li>You should see a printout with species named (Figure <a href="non-spatial-queries-1.html#fig:species-console-log">10.5</a>).</li>
+</ul>
+</blockquote>
+<div class="figure" style="text-align: center"><span id="fig:species-console-log"></span>
+<img src="images/populate_list_console_log.png" alt="Species names printed with &lt;code&gt;console.log&lt;/code&gt;" width="100%" />
+<p class="caption">
+FIGURE 10.5: Species names printed with <code>console.log</code>
+</p>
+</div>
+</div>
+</div>
+<div id="updating-the-map" class="section level2" number="10.5">
+<h2><span class="header-section-number">10.5</span> Updating the map</h2>
+<div id="overview-updating-map" class="section level3" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Overview</h3>
+<p>In <code>example-10-03.html</code>, we now have a web map showing observations of the <em>first</em> species from the <code>plants</code> table, as well as a dropdown menu with <em>all</em> species that are present in the <code>plants</code> table (Figure <a href="non-spatial-queries-1.html#fig:example-10-03">10.4</a>). Try clicking on the dropdown menu in <code>example-10-03.html</code> and selecting a different species. Nothing happens! What is still missing is an event listener, triggering an update of the plant observations layer on selection change. In our case, whenever the species selection changes, the event listener function should do the following things:</p>
+<ul>
+<li><strong>Clear</strong> the map of all previously loaded observations</li>
+<li><strong>Define</strong> a new SQL query for getting the observations of the currently selected plant species</li>
+<li><strong>Send</strong> the SQL query to the database and get the GeoJSON with the new observations</li>
+<li><strong>Display</strong> the new observations on the map</li>
+</ul>
+</div>
+<div id="manual-example" class="section level3" number="10.5.2">
+<h3><span class="header-section-number">10.5.2</span> Manual example</h3>
+<p>Before setting up the event listener, it is often convenient to start with a manually defined, specific case. Let us suppose the user chose a different species instead of <code>'Abutilon indicum'</code>, say <code>'Iris mariae'</code>, in the dropdown menu. The code for adding <code>'Iris mariae'</code> observations on the map is exactly the same as the one we used for <code>'Abutilon indicum'</code>. The only thing that’s changed is the species name in the SQL query, hereby named <code>sqlQuery3</code>. Try entering the following code section into the console of <code>example-10-03.html</code> (Figure <a href="non-spatial-queries-1.html#fig:example-10-03">10.4</a>). This should load new observations, for <code>'Iris mariae'</code>, on top of the existing ones for <code>'Abutilon indicum'</code>:</p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb358-1"><a href="non-spatial-queries-1.html#cb358-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> valueSelected <span class="op">=</span> <span class="st">&quot;Iris mariae&quot;</span><span class="op">;</span></span>
+<span id="cb358-2"><a href="non-spatial-queries-1.html#cb358-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery3 <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom FROM plants &quot;</span> <span class="op">+</span> </span>
+<span id="cb358-3"><a href="non-spatial-queries-1.html#cb358-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;WHERE name_lat = &#39;&quot;</span> <span class="op">+</span> valueSelected <span class="op">+</span> <span class="st">&quot;&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb358-4"><a href="non-spatial-queries-1.html#cb358-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery3)</span>
+<span id="cb358-5"><a href="non-spatial-queries-1.html#cb358-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb358-6"><a href="non-spatial-queries-1.html#cb358-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb358-7"><a href="non-spatial-queries-1.html#cb358-7" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb358-8"><a href="non-spatial-queries-1.html#cb358-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb358-9"><a href="non-spatial-queries-1.html#cb358-9" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb358-10"><a href="non-spatial-queries-1.html#cb358-10" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Change the value of <code>valueSelected</code> in the above code section to a different species name, such as <code>"Iris atropurpurea"</code>, then execute the modified code section in the console of <code>example-10-03.html</code>.</li>
+<li>You should see observations of the species you chose added on the map.</li>
+</ul>
+</blockquote>
+</div>
+<div id="automatic-updating" class="section level3" number="10.5.3">
+<h3><span class="header-section-number">10.5.3</span> Automatic updating</h3>
+<p>In the last code section, we manually added new observations of another species from the database. What we now need is to associate this code section with dropdown menu <em>changes</em>. In other words, we want the selection of a new species in the menu to trigger the automatic removal of the old observations and loading the new ones. This is where the event listener comes into play.</p>
+<p>The first thing we do is define a <code>layerGroup</code> named <code>plantsLayer</code> and add it on the map:</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb359-1"><a href="non-spatial-queries-1.html#cb359-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> plantsLayer <span class="op">=</span> L<span class="op">.</span><span class="fu">layerGroup</span>()<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>The named layer group can be referenced later on, to clear it or add layers into it. This will make it easier for us to clear any previously loaded species and add markers for the currently selected one. Recall the GeoJSON viewer in <code>example-07-02.html</code> (Section <a href="geojson-1.html#geojson-viewer">7.6</a>), where we used a layer group for clearing old GeoJSON layers whenever a new one is submitted from the text area input.</p>
+<p>Accordingly, we replace the <code>.addTo(map)</code> part with <code>.addTo(plantsLayer)</code> when loading the initial species on the map. So, the following expression from <code>example-10-03.html</code>:</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb360-1"><a href="non-spatial-queries-1.html#cb360-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery1)</span>
+<span id="cb360-2"><a href="non-spatial-queries-1.html#cb360-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb360-3"><a href="non-spatial-queries-1.html#cb360-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb360-4"><a href="non-spatial-queries-1.html#cb360-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb360-5"><a href="non-spatial-queries-1.html#cb360-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb360-6"><a href="non-spatial-queries-1.html#cb360-6" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb360-7"><a href="non-spatial-queries-1.html#cb360-7" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>is replaced with this one in <code>example-10-04.html</code>:</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb361-1"><a href="non-spatial-queries-1.html#cb361-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery1)</span>
+<span id="cb361-2"><a href="non-spatial-queries-1.html#cb361-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb361-3"><a href="non-spatial-queries-1.html#cb361-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb361-4"><a href="non-spatial-queries-1.html#cb361-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb361-5"><a href="non-spatial-queries-1.html#cb361-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb361-6"><a href="non-spatial-queries-1.html#cb361-6" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb361-7"><a href="non-spatial-queries-1.html#cb361-7" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>The second thing we do is “wrap” the manual example from the previous section, which we used to load <code>"Iris mariae"</code> observations, so that:</p>
+<ul>
+<li>The code for loading observations on the map is contained inside an event listener function, responding to changes in the dropdown menu (<code>id="species_sel"</code>). The appropriate event type in this case is <code>"change"</code> (Section <a href="javascript-interactivity.html#event-listeners">4.4</a>), which means that any <em>change</em> in the input element triggers the event listener.</li>
+<li>The species to load from the database is determined based on the currently selected value in the dropdown menu, using <code>document.getElementById("species_sel").value</code>, rather than hard coded as <code>"Iris mariae"</code>.</li>
+<li>The old observations are cleared before adding new ones, using <code>.clearLayers()</code>.</li>
+</ul>
+<p>The following code section does all of those things:</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb362-1"><a href="non-spatial-queries-1.html#cb362-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb362-2"><a href="non-spatial-queries-1.html#cb362-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)</span>
+<span id="cb362-3"><a href="non-spatial-queries-1.html#cb362-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb362-4"><a href="non-spatial-queries-1.html#cb362-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> valueSelected <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb362-5"><a href="non-spatial-queries-1.html#cb362-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> sqlQuery3 <span class="op">=</span> </span>
+<span id="cb362-6"><a href="non-spatial-queries-1.html#cb362-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;SELECT name_lat, the_geom FROM plants WHERE name_lat = &#39;&quot;</span> <span class="op">+</span> </span>
+<span id="cb362-7"><a href="non-spatial-queries-1.html#cb362-7" aria-hidden="true" tabindex="-1"></a>            valueSelected <span class="op">+</span> <span class="st">&quot;&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb362-8"><a href="non-spatial-queries-1.html#cb362-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery3)</span>
+<span id="cb362-9"><a href="non-spatial-queries-1.html#cb362-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb362-10"><a href="non-spatial-queries-1.html#cb362-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb362-11"><a href="non-spatial-queries-1.html#cb362-11" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb362-12"><a href="non-spatial-queries-1.html#cb362-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb362-13"><a href="non-spatial-queries-1.html#cb362-13" aria-hidden="true" tabindex="-1"></a>                plantsLayer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span></span>
+<span id="cb362-14"><a href="non-spatial-queries-1.html#cb362-14" aria-hidden="true" tabindex="-1"></a>                L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb362-15"><a href="non-spatial-queries-1.html#cb362-15" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb362-16"><a href="non-spatial-queries-1.html#cb362-16" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>Let’s go over the code, step by step. In the outermost part of the expression, an event listener is being binded to a DOM selection:</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb363-1"><a href="non-spatial-queries-1.html#cb363-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb363-2"><a href="non-spatial-queries-1.html#cb363-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)</span>
+<span id="cb363-3"><a href="non-spatial-queries-1.html#cb363-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb363-4"><a href="non-spatial-queries-1.html#cb363-4" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span></span>
+<span id="cb363-5"><a href="non-spatial-queries-1.html#cb363-5" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>More specifically, an anonymous function is being set to execute every time the input element <code>"#species_sel"</code> changes. Let’s now review the body of that anonymous function. First thing, the function defines a local variable named <code>valueSelected</code>:</p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb364-1"><a href="non-spatial-queries-1.html#cb364-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> valueSelected <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span></code></pre></div>
+<p>The value of <code>valueSelected</code> is the name of the currently selected species in the dropdown menu. The current value is obtained through the <code>.value</code> property (Section <a href="javascript-interactivity.html#getting-and-setting-input-values">4.8</a>). This is conceptually similar to the calculator example <code>example-04-07.html</code> (Figure <a href="javascript-interactivity.html#fig:example-04-07">4.8</a>), where we used the <code>.value</code> property to get the currently entered numbers, for displaying their multiplication product (Section <a href="javascript-interactivity.html#working-with-user-input">4.12</a>).</p>
+<p>Then, <code>valueSelected</code> is being used to construct a new SQL query string <code>sqlQuery3</code>. This query will be used to request the observations of the newly selected species from the database:</p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb365-1"><a href="non-spatial-queries-1.html#cb365-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery3 <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom FROM plants &quot;</span> <span class="op">+</span> </span>
+<span id="cb365-2"><a href="non-spatial-queries-1.html#cb365-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;WHERE name_lat = &#39;&quot;</span> <span class="op">+</span> valueSelected <span class="op">+</span> <span class="st">&quot;&#39;&quot;</span><span class="op">;</span></span></code></pre></div>
+<p>Finally, the new GeoJSON content is being requested with <code>urlGeoJSON+sqlQuery3</code> using the <code>fetch</code>. Once the request finishes, the returned GeoJSON object is added on the map using <code>L.geoJSON</code> and <code>.addTo(plantsLayer)</code>, but not before the old observations are cleared with <code>plantsLayer.clearLayers()</code>:</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb366-1"><a href="non-spatial-queries-1.html#cb366-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery3)</span>
+<span id="cb366-2"><a href="non-spatial-queries-1.html#cb366-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb366-3"><a href="non-spatial-queries-1.html#cb366-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb366-4"><a href="non-spatial-queries-1.html#cb366-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb366-5"><a href="non-spatial-queries-1.html#cb366-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb366-6"><a href="non-spatial-queries-1.html#cb366-6" aria-hidden="true" tabindex="-1"></a>        plantsLayer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span></span>
+<span id="cb366-7"><a href="non-spatial-queries-1.html#cb366-7" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb366-8"><a href="non-spatial-queries-1.html#cb366-8" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>The resulting map (<code>example-10-04.html</code>) is shown in Figure <a href="non-spatial-queries-1.html#fig:example-10-04">10.6</a>. Thanks to the event listener, the dropdown menu is now functional, and the map is responsive to the current species selection.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-10-04"></span>
+<iframe src="examples/example-10-04.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.6: <code>example-10-04.html</code> <a href="examples/example-10-04.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+</div>
+<div id="rearranging-the-code" class="section level2" number="10.6">
+<h2><span class="header-section-number">10.6</span> Refactoring the code</h2>
+<p>Going over the complete code of <code>example-10-04.html</code> (Section <a href="non-spatial-queries-1.html#automatic-updating">10.5.3</a>), you may notice one important drawback: there are two code sections doing practically the same thing. Namely, we have the following code section for loading the initial query <code>sqlQuery1</code>, displaying the <em>initial</em> species <code>'Abutilon indicum'</code> on page load:</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb367-1"><a href="non-spatial-queries-1.html#cb367-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery1 <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom FROM plants&quot;</span> <span class="op">+</span> </span>
+<span id="cb367-2"><a href="non-spatial-queries-1.html#cb367-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;WHERE name_lat = &#39;Abutilon indicum&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb367-3"><a href="non-spatial-queries-1.html#cb367-3" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery1)</span>
+<span id="cb367-4"><a href="non-spatial-queries-1.html#cb367-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb367-5"><a href="non-spatial-queries-1.html#cb367-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb367-6"><a href="non-spatial-queries-1.html#cb367-6" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb367-7"><a href="non-spatial-queries-1.html#cb367-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb367-8"><a href="non-spatial-queries-1.html#cb367-8" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb367-9"><a href="non-spatial-queries-1.html#cb367-9" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>and we also have the event listener, which does the same thing for each <em>subsequently</em> selected species, using a dynamically generated query <code>sqlQuery3</code><a href="#fn102" class="footnote-ref" id="fnref102"><sup>102</sup></a>:</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb368-1"><a href="non-spatial-queries-1.html#cb368-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb368-2"><a href="non-spatial-queries-1.html#cb368-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)</span>
+<span id="cb368-3"><a href="non-spatial-queries-1.html#cb368-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb368-4"><a href="non-spatial-queries-1.html#cb368-4" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> valueSelected <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb368-5"><a href="non-spatial-queries-1.html#cb368-5" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> sqlQuery3 <span class="op">=</span> </span>
+<span id="cb368-6"><a href="non-spatial-queries-1.html#cb368-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;SELECT name_lat, the_geom FROM plants WHERE name_lat = &#39;&quot;</span> <span class="op">+</span> </span>
+<span id="cb368-7"><a href="non-spatial-queries-1.html#cb368-7" aria-hidden="true" tabindex="-1"></a>            valueSelected <span class="op">+</span> <span class="st">&quot;&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb368-8"><a href="non-spatial-queries-1.html#cb368-8" aria-hidden="true" tabindex="-1"></a>        <span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery3)</span>
+<span id="cb368-9"><a href="non-spatial-queries-1.html#cb368-9" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb368-10"><a href="non-spatial-queries-1.html#cb368-10" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb368-11"><a href="non-spatial-queries-1.html#cb368-11" aria-hidden="true" tabindex="-1"></a>            })</span>
+<span id="cb368-12"><a href="non-spatial-queries-1.html#cb368-12" aria-hidden="true" tabindex="-1"></a>            <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb368-13"><a href="non-spatial-queries-1.html#cb368-13" aria-hidden="true" tabindex="-1"></a>                plantsLayer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span></span>
+<span id="cb368-14"><a href="non-spatial-queries-1.html#cb368-14" aria-hidden="true" tabindex="-1"></a>                L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb368-15"><a href="non-spatial-queries-1.html#cb368-15" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb368-16"><a href="non-spatial-queries-1.html#cb368-16" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>This duplication contradicts the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself"><strong>Don’t Repeat Yourself</strong></a> (DRY) principle—an essential guideline in computer programming. Basically, unnecessary duplication makes our code more difficult to manage, since we need to keep track of all duplicated parts and make sure they are synchronized every time we make changes in our code. For example, suppose we decide to add popups for the plant observation markers, say, displaying the observation date as well as the species name. In the repeated code structure from <code>example-10-04.html</code>, we would have to change <code>L.geoJSON</code> options in two places: the <code>L.geoJSON</code> function call that loads the initial species and the <code>L.geoJSON</code> function call that loads any subsequently selected species. If we forget to change one of those places, then popup content will look different depending on whether we changed the initial dropdown menu selection, which is clearly undesired.</p>
+<p>A second issue in the present code configuration is that the initial species, the one displayed on map load, is hard-coded in <code>sqlQuery1</code> (it is set to <code>'Abutilon indicum'</code>). Like we said previously (Section <a href="non-spatial-queries-1.html#how-many-species-do-we-have">10.4.1</a>), the database may change in the future, so that <code>'Abutilon indicum'</code> may be removed or a new species with alphabetical precedence may be added. In such a case, the initial view will be incorrect: the species initially loaded on the map will no longer match the first species inside the dropdown menu. Therefore, it is beneficial to determine the first species to load according to the real-time version of the database, rather than based on a constant string.</p>
+<p>The solution to the duplication issue is to use a <strong>function</strong>, which also makes our code slightly shorter and more elegant. Instead of repeating the code section for loading plant observations in two places, we wrap the second code section—the one for loading the currently selected species—in a function called <code>displaySpecies</code>. The <code>displaySpecies</code> function loads the currently selected species on the map:</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb369-1"><a href="non-spatial-queries-1.html#cb369-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">displaySpecies</span>() {</span>
+<span id="cb369-2"><a href="non-spatial-queries-1.html#cb369-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> valueSelected <span class="op">=</span> <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">value</span><span class="op">;</span></span>
+<span id="cb369-3"><a href="non-spatial-queries-1.html#cb369-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> sqlQuery3 <span class="op">=</span> </span>
+<span id="cb369-4"><a href="non-spatial-queries-1.html#cb369-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;SELECT name_lat, the_geom FROM plants WHERE name_lat = &#39;&quot;</span> <span class="op">+</span> </span>
+<span id="cb369-5"><a href="non-spatial-queries-1.html#cb369-5" aria-hidden="true" tabindex="-1"></a>        valueSelected <span class="op">+</span> <span class="st">&quot;&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb369-6"><a href="non-spatial-queries-1.html#cb369-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">fetch</span>(urlGeoJSON <span class="op">+</span> sqlQuery3)</span>
+<span id="cb369-7"><a href="non-spatial-queries-1.html#cb369-7" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb369-8"><a href="non-spatial-queries-1.html#cb369-8" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb369-9"><a href="non-spatial-queries-1.html#cb369-9" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb369-10"><a href="non-spatial-queries-1.html#cb369-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb369-11"><a href="non-spatial-queries-1.html#cb369-11" aria-hidden="true" tabindex="-1"></a>            plantsLayer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span></span>
+<span id="cb369-12"><a href="non-spatial-queries-1.html#cb369-12" aria-hidden="true" tabindex="-1"></a>            L<span class="op">.</span><span class="fu">geoJSON</span>(data)<span class="op">.</span><span class="fu">addTo</span>(plantsLayer)<span class="op">;</span></span>
+<span id="cb369-13"><a href="non-spatial-queries-1.html#cb369-13" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb369-14"><a href="non-spatial-queries-1.html#cb369-14" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>The <code>displaySpecies</code> function can be used in the <code>.addEventListener("change", ...)</code> event listener, just like the anonymous function was in the previous version. The event listener definition from <code>example-10-04.html</code>:</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb370-1"><a href="non-spatial-queries-1.html#cb370-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb370-2"><a href="non-spatial-queries-1.html#cb370-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)</span>
+<span id="cb370-3"><a href="non-spatial-queries-1.html#cb370-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> <span class="kw">function</span>() {<span class="op">...</span>})<span class="op">;</span></span></code></pre></div>
+<p>is thus replaced with the following version in <code>example-10-05.html</code>:</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb371-1"><a href="non-spatial-queries-1.html#cb371-1" aria-hidden="true" tabindex="-1"></a><span class="bu">document</span></span>
+<span id="cb371-2"><a href="non-spatial-queries-1.html#cb371-2" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)</span>
+<span id="cb371-3"><a href="non-spatial-queries-1.html#cb371-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;change&quot;</span><span class="op">,</span> displaySpecies)<span class="op">;</span></span></code></pre></div>
+<p>This change takes care of clearing the map and loading a new species whenever the dropdown menu selection changes. However, how will the initial species be loaded and displayed on map load? To load the initial species, we simply need to call the function one more time in our script, <em>outside</em> of the event listener. The appropriate place to call the function is inside the Ajax request that populates the dropdown menu. That way, the first species is displayed right after the dropdown menu is filled with all of the unique species names:</p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb372-1"><a href="non-spatial-queries-1.html#cb372-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlJSON <span class="op">+</span> sqlQuery2)</span>
+<span id="cb372-2"><a href="non-spatial-queries-1.html#cb372-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb372-3"><a href="non-spatial-queries-1.html#cb372-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb372-4"><a href="non-spatial-queries-1.html#cb372-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb372-5"><a href="non-spatial-queries-1.html#cb372-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb372-6"><a href="non-spatial-queries-1.html#cb372-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> html <span class="op">=</span> <span class="st">&quot;&quot;</span><span class="op">;</span></span>
+<span id="cb372-7"><a href="non-spatial-queries-1.html#cb372-7" aria-hidden="true" tabindex="-1"></a>        data<span class="op">.</span><span class="at">rows</span><span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb372-8"><a href="non-spatial-queries-1.html#cb372-8" aria-hidden="true" tabindex="-1"></a>            html <span class="op">+=</span> <span class="st">&quot;&lt;option&gt;&quot;</span> <span class="op">+</span> element<span class="op">.</span><span class="at">name_lat</span> <span class="op">+</span> <span class="st">&quot;&lt;/option&gt;&quot;</span><span class="op">;</span></span>
+<span id="cb372-9"><a href="non-spatial-queries-1.html#cb372-9" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span>
+<span id="cb372-10"><a href="non-spatial-queries-1.html#cb372-10" aria-hidden="true" tabindex="-1"></a>        <span class="bu">document</span><span class="op">.</span><span class="fu">getElementById</span>(<span class="st">&quot;species_sel&quot;</span>)<span class="op">.</span><span class="at">innerHTML</span> <span class="op">=</span> html<span class="op">;</span></span>
+<span id="cb372-11"><a href="non-spatial-queries-1.html#cb372-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">displaySpecies</span>()<span class="op">;</span>  <span class="co">// Display initial species</span></span>
+<span id="cb372-12"><a href="non-spatial-queries-1.html#cb372-12" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>Since <code>displaySpecies</code> is being called after the dropdown menu was already populated, we can be sure that the initially loaded species corresponds to the first selected <code>&lt;option&gt;</code>, even if the database has changed. We no longer need to worry that a particular fixed species name in our code (<code>'Abutilon indicum'</code>) still matches the first one in the alphabetically ordered species list from the database.</p>
+<p>The resulting map <code>example-10-05.html</code> is shown in Figure <a href="non-spatial-queries-1.html#fig:example-10-05">10.7</a>. Visually and functionally it is exactly the same as <code>example-10-04.html</code>. However, the underlying code is rearranged and improved, which is also known as <a href="https://en.wikipedia.org/wiki/Code_refactoring"><strong>code refactoring</strong></a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-10-05"></span>
+<iframe src="examples/example-10-05.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.7: <code>example-10-05.html</code> <a href="examples/example-10-05.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="exercise-10" class="section level2" number="10.7">
+<h2><span class="header-section-number">10.7</span> Exercise</h2>
+<blockquote>
+<ul>
+<li>Extend <code>example-10-05.html</code> into a web map with two dropdown menus—one for choosing the <em>genus</em> and another one for choosing the <em>species</em> (Figure <a href="non-spatial-queries-1.html#fig:solution-10">10.8</a>).</li>
+<li>When the user selects a genus, the second dropdown should automatically update to list the species in that genus. The user then selects a species to show it on the map. If the user made no selection yet, the first species in each genus should be automatically displayed on the map.</li>
+<li>This is a challenging exercise, so here is a hint on how to start. Run the code section shown below in the console of <code>example-10-05.html</code>. This code constructs an object named <code>species</code>, whose properties are genus names and values are arrays with all species in that genus. Use the <code>species</code> object to populate the dropdown menus.</li>
+</ul>
+</blockquote>
+<div class="sourceCode" id="cb373"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb373-1"><a href="non-spatial-queries-1.html#cb373-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> url <span class="op">=</span> <span class="st">&quot;https://michaeldorman.carto.com/api/v2/sql?&quot;</span><span class="op">;</span></span>
+<span id="cb373-2"><a href="non-spatial-queries-1.html#cb373-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> urlJSON <span class="op">=</span> url <span class="op">+</span> <span class="st">&quot;q=&quot;</span><span class="op">;</span></span>
+<span id="cb373-3"><a href="non-spatial-queries-1.html#cb373-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery <span class="op">=</span> <span class="st">&quot;SELECT DISTINCT name_lat FROM plants ORDER BY name_lat&quot;</span><span class="op">;</span></span>
+<span id="cb373-4"><a href="non-spatial-queries-1.html#cb373-4" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> species <span class="op">=</span> {}<span class="op">;</span></span>
+<span id="cb373-5"><a href="non-spatial-queries-1.html#cb373-5" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(urlJSON <span class="op">+</span> sqlQuery)</span>
+<span id="cb373-6"><a href="non-spatial-queries-1.html#cb373-6" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb373-7"><a href="non-spatial-queries-1.html#cb373-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb373-8"><a href="non-spatial-queries-1.html#cb373-8" aria-hidden="true" tabindex="-1"></a>        })</span>
+<span id="cb373-9"><a href="non-spatial-queries-1.html#cb373-9" aria-hidden="true" tabindex="-1"></a>        <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb373-10"><a href="non-spatial-queries-1.html#cb373-10" aria-hidden="true" tabindex="-1"></a>            data<span class="op">.</span><span class="at">rows</span><span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb373-11"><a href="non-spatial-queries-1.html#cb373-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> tmp <span class="op">=</span> element<span class="op">.</span><span class="at">name_lat</span><span class="op">;</span></span>
+<span id="cb373-12"><a href="non-spatial-queries-1.html#cb373-12" aria-hidden="true" tabindex="-1"></a>                <span class="kw">let</span> tmp_split <span class="op">=</span> tmp<span class="op">.</span><span class="fu">split</span>(<span class="st">&quot; &quot;</span>)<span class="op">;</span></span>
+<span id="cb373-13"><a href="non-spatial-queries-1.html#cb373-13" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span>(species[tmp_split[<span class="dv">0</span>]] <span class="op">===</span> <span class="kw">undefined</span>) {</span>
+<span id="cb373-14"><a href="non-spatial-queries-1.html#cb373-14" aria-hidden="true" tabindex="-1"></a>                    species[tmp_split[<span class="dv">0</span>]] <span class="op">=</span> [tmp]<span class="op">;</span></span>
+<span id="cb373-15"><a href="non-spatial-queries-1.html#cb373-15" aria-hidden="true" tabindex="-1"></a>                    } <span class="cf">else</span> {</span>
+<span id="cb373-16"><a href="non-spatial-queries-1.html#cb373-16" aria-hidden="true" tabindex="-1"></a>                        species[tmp_split[<span class="dv">0</span>]]<span class="op">.</span><span class="fu">push</span>(tmp)<span class="op">;</span></span>
+<span id="cb373-17"><a href="non-spatial-queries-1.html#cb373-17" aria-hidden="true" tabindex="-1"></a>                    }</span>
+<span id="cb373-18"><a href="non-spatial-queries-1.html#cb373-18" aria-hidden="true" tabindex="-1"></a>            })<span class="op">;</span></span>
+<span id="cb373-19"><a href="non-spatial-queries-1.html#cb373-19" aria-hidden="true" tabindex="-1"></a>        })<span class="op">;</span></span></code></pre></div>
+<div class="figure" style="text-align: center"><span id="fig:solution-10"></span>
+<iframe src="examples/solution-10.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 10.8: <code>solution-10.html</code> <a href="examples/solution-10.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="96">
+<li id="fn96"><p>For simplicity, this code lacks the <code>onEachFeature</code> option for displaying popups (which was used in <code>example-09-01.html</code>).<a href="non-spatial-queries-1.html#fnref96" class="footnote-back">↩︎</a></p></li>
+<li id="fn97"><p>There are 417 species in the <code>plants</code> table, to be exact. See how to find that out in Section <a href="non-spatial-queries-1.html#how-many-species-do-we-have">10.4.1</a>.<a href="non-spatial-queries-1.html#fnref97" class="footnote-back">↩︎</a></p></li>
+<li id="fn98"><p>Remember that, as mentioned in Section <a href="databases.html#query-example">9.7.2</a>, applying a non-spatial query (such as the unique species count) combined with the <code>format=GeoJSON</code> option will result in an error, because in order to produce a GeoJSON response the query must include the geometry column.<a href="non-spatial-queries-1.html#fnref98" class="footnote-back">↩︎</a></p></li>
+<li id="fn99"><p>Note that the particular CARTO database used in this example is for demonstration, not directly related to the Nature and Parks authority, or any other users, and thus remains unchanged, but the principle still holds.<a href="non-spatial-queries-1.html#fnref99" class="footnote-back">↩︎</a></p></li>
+<li id="fn100"><p>The answer is 23,827.<a href="non-spatial-queries-1.html#fnref100" class="footnote-back">↩︎</a></p></li>
+<li id="fn101"><p>The <code>"rows"</code> property, which contains the returned table, is truncated here to save space, with the <code>...</code> symbol representing further objects for the other 414 species not shown.<a href="non-spatial-queries-1.html#fnref101" class="footnote-back">↩︎</a></p></li>
+<li id="fn102"><p>Again, note that the arguments passed to <code>L.geoJSON</code> were replaced with <code>...</code> to save space.<a href="non-spatial-queries-1.html#fnref102" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="databases.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="spatial-queries-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toc_depth": 2,
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "../../mathjax.rstudio.com/2.7.2/MathJaxb198.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+
+<!-- Mirrored from 132.72.155.230:3838/js/non-spatial-queries-1.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:43:40 GMT -->
+</html>

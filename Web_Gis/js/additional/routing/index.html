@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/routing/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:07 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Routing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.7.1/dist/leaflet.css"/>
+    <script src="../../../../unpkg.com/leaflet%401.7.1/dist/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+    
+let map = L.map("map").setView([32, 35], 8);
+
+L.tileLayer("../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+let points = L.layerGroup().addTo(map);
+let route = L.layerGroup().addTo(map);
+let layers = 0;
+
+// Listen to map click events
+map.addEventListener("click", mapClick);
+
+// Function that will run when user clicks on the map
+function mapClick(e) {
+
+    // Clear all markers if there are already two of them
+    if(layers.length >= 2) { 
+        points.clearLayers(); 
+        route.clearLayers(); 
+    }
+
+    // Add location marker
+    L.marker(e.latlng).addTo(points);
+    layers = points.getLayers();
+    
+    // If there are two layers...
+    if(layers.length === 2) {
+
+        // Construct Mapbox Directions API call
+        let url = 
+            "https://api.mapbox.com/directions/v5/mapbox/driving/" + 
+            layers[0]._latlng.lng + "," + 
+            layers[0]._latlng.lat + ";" + 
+            layers[1]._latlng.lng + "," + 
+            layers[1]._latlng.lat + 
+            "?geometries=geojson&overview=full&access_token=pk.eyJ1IjoibWljaGFlbGRvcm1hbiIsImEiOiJja25ubHdna20wNHhrMnFuenMzMDNlbzJxIn0.vZMOyyFdJpdFkGvBgL_dnw";
+
+        // Get route and display on the map
+        fetch(url)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                console.log(data);
+                L.geoJSON(data.routes[0].geometry, {style: {color: "red"}}).addTo(route);
+            });
+    }
+
+}
+   
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/routing/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:07 GMT -->
+</html>
+

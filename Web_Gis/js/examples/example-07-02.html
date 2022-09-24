@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-07-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>GeoJSON viewer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #map { 
+            width: 60%;
+            height: 100%;
+            float: left;
+        }
+        #text {
+            height: 100%;
+            width: 40%;
+            float: right;
+        }
+        #geojsontext {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            width: 90%;
+            height: 80%;
+        }
+        #submit {
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div id="text">
+        <textarea id="geojsontext"></textarea>
+        <input type="button" id="submit" value="Submit">
+    </div>
+    <script>
+    
+let map = L.map("map").setView([0, 0], 1);
+L.tileLayer("../../../cartodb-basemaps-%7bs%7d.global.ssl.fastly.net/light_nolabels/%7bz%7d/%7bx%7d/%7by%7d.png", {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attribution/">CartoDB</a>',
+    subdomains: "abcd",
+    maxZoom: 19
+}).addTo(map);
+
+// Add Layer Group
+let layers = L.layerGroup().addTo(map);
+
+// On submit - display layer from GeoJSON
+function showGeojson() {
+    layers.clearLayers();
+    let txt = document.getElementById("geojsontext").value;
+    txt = JSON.parse(txt);
+    L.geoJSON(txt).addTo(layers);
+}
+document.getElementById("submit").addEventListener("click", showGeojson);
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-07-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+</html>
+
+
+
+
+
+

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-10-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Creating dropdown menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+        #species_sel {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background-color: rgba(255,255,255,0.8);
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <script>
+
+let map = L.map("map").setView([32, 35], 8);
+
+L.tileLayer("../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// Define variables
+let urlGeoJSON = "https://michaeldorman.carto.com/api/v2/sql?format=GeoJSON&amp;q=";
+let sqlQuery1 = "SELECT name_lat, the_geom FROM plants WHERE name_lat = 'Iris mariae'";
+
+// Add dropdown menu
+let dropdown = L.control({position: "topleft"});
+dropdown.onAdd = function() {
+    let div = L.DomUtil.create("div", "dropdown");
+    div.innerHTML = 
+        '<select id="species_sel">' +
+        '<option>Abutilon indicum</option>' +
+        '<option>Acinos rotundifolius</option>' +
+        '<option>Adonis aestivalis</option>' +
+        '</select>';
+    return div;
+};
+dropdown.addTo(map);
+
+// Load points of individual species
+fetch(urlGeoJSON + sqlQuery1)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        L.geoJSON(data).addTo(map);
+    });
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-10-02.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+</html>
+
+

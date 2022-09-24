@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html >
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/osm_buildings/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:11 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+  <meta charset="UTF-8">
+  <title>OSM Buildings</title>
+  
+  <script src='../../../../cdn.leafletjs.com/leaflet-0.7.3/leaflet.js'></script>
+  <script src='../../../../cdn.osmbuildings.org/OSMBuildings-Leaflet.js'></script>  
+  <link rel='stylesheet prefetch' href='../../../../cdn.leafletjs.com/leaflet-0.7.3/leaflet.css'>
+
+  <style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+    html, body, #map {
+        height: 100%;
+        width: 100%;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="map"></div>
+  <script>
+
+    var map = new L.Map('map');
+    map.setView([52.52111, 13.40988], 16, false);
+
+    new L.TileLayer('../../../../%7bs%7d.tiles.mapbox.com/v3/osmbuildings.kbpalbpk/%7bz%7d/%7bx%7d/%7by%7d.png', {
+      attribution: 'Map tiles &copy; <a href="https://mapbox.com">MapBox</a>',
+      maxZoom: 18,
+      maxNativeZoom: 20
+    }).addTo(map);
+
+    var osmb = new OSMBuildings(map).load();
+
+  </script>
+
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/osm_buildings/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:58:15 GMT -->
+</html>

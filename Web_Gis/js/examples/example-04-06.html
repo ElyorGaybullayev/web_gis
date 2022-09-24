@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-04-06.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:02:24 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+        <title>Populating list</title>
+    </head>
+    <body>
+        <p>List of rare <i>Iris</i> species in Israel:</p>
+        <ul id="species"></ul>
+        <p>It was created dynamically using JavaScript.</p>
+        <script>
+            let data = [
+                "Iris atrofusca",
+                "Iris atropurpurea",
+                "Iris bismarckiana",
+                "Iris haynei",
+                "Iris hermona",
+                "Iris lortetii",
+                "Iris mariae",
+                "Iris petrana"
+            ];
+            let html = "";
+            data.forEach(function(element) {
+                html += "<li><i>" + element + "</i></li>";
+            });
+            document.getElementById("species").innerHTML = html;
+        </script>
+    </body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/example-04-06.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:02:24 GMT -->
+</html>

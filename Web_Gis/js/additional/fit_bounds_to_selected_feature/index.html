@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/fit_bounds_to_selected_feature/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>Fit Bounds to Selected Feature</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="../../../../unpkg.com/leaflet%401.4.0/dist/leaflet.css">
+    <script src="../../../../unpkg.com/leaflet%401.4.0/dist/leaflet.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+        }
+        .sel {
+			padding: 6px 8px;
+			font: 14px/16px Arial, Helvetica, sans-serif;
+			background-color: rgba(255,255,255,0.8);
+			box-shadow: 0 0 15px rgba(0,0,0,0.2);
+			border-radius: 5px;
+		}
+    </style>
+</head>
+<body>
+	<div id="map"></div>
+	<script>
+
+// Map
+var map = L.map("map").setView([0, 0], 1);
+
+// Tile layer
+L.tileLayer("../../../../%7bs%7d.tile.openstreetmap.org/%7bz%7d/%7bx%7d/%7by%7d.png", {
+	maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+// Lines GeoJSON
+var lines = {"type":"FeatureCollection","features":[{"type":"Feature","properties":{"id":1},"geometry":{"type":"LineString","coordinates":[[-113.90625,34.30714385628804],[-106.5234375,47.754097979680026],[-84.375,39.36827914916014]]}},{"type":"Feature","properties":{"id":2},"geometry":{"type":"LineString","coordinates":[[90.3515625,66.23145747862573],[121.28906250000001,61.77312286453146]]}},{"type":"Feature","properties":{"id":3},"geometry":{"type":"LineString","coordinates":[[8.0859375,15.284185114076433],[23.203125,28.613459424004414],[3.1640625,30.14512718337613],[27.7734375,21.289374355860424]]}}]};
+
+// Lines layer
+var line_layer = L.geoJSON(
+    lines, {
+        onEachFeature: function(feature, layer) {
+            layer._leaflet_id = feature.properties.id;
+            layer.bindPopup("<b>ID:</b> " + feature.properties.id, {closeOnClick: false, autoClose: false});
+        },
+        style: {
+            weight: 10
+        }
+    }
+).addTo(map);
+
+// Open popups
+line_layer.eachLayer(function(layer) {layer.openPopup()});
+
+// Selection menu
+var dropdown = L.control({position: "topright"});
+dropdown.onAdd = function(map) {
+    var div = L.DomUtil.create("div", "sel");
+    div.innerHTML = 
+        '<input type="radio" name="id" value="1"> 1<br>' +
+        '<input type="radio" name="id" value="2"> 2<br>' +
+        '<input type="radio" name="id" value="3"> 3';
+    return div;
+};
+dropdown.addTo(map);
+
+// Fit bounds on selection change
+document
+    .querySelector(".sel")
+    .addEventListener(
+        "change", 
+        function(e) {
+            var bounds = line_layer.getLayer(e.target.value).getBounds();
+            map.flyToBounds(bounds);
+        }
+    );
+
+	</script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/additional/fit_bounds_to_selected_feature/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:30 GMT -->
+</html>
+
+

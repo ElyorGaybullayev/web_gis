@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/solution-09.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <title>Species list</title>
+</head>
+<body>
+    <ul id="list"></ul>
+    <script>
+
+let url = "https://michaeldorman.carto.com/api/v2/sql?format=JSON&amp;q=";
+let sqlQuery = "SELECT DISTINCT name_lat FROM plants ORDER BY name_lat";
+
+fetch(url + sqlQuery)
+    .then(function(response) {
+        return response.json();
+    })
+    .then(function(data) {
+        let html = "";
+        data.rows.forEach(function(element) {
+            html += "<li>" + element.name_lat + "</li>";
+        });
+        document.getElementById("list").innerHTML = html;
+    });
+
+    </script>
+</body>
+
+<!-- Mirrored from 132.72.155.230:3838/js/examples/solution-09.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 07:57:04 GMT -->
+</html>

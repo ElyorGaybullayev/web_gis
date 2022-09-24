@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+
+<!-- Mirrored from 132.72.155.230:3838/js/client-side-geoprocessing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:44:49 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping</title>
+  <meta name="description" content="Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping" />
+  <meta name="generator" content="bookdown 0.22 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping" />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping" />
+  
+  <meta name="twitter:description" content="Chapter 12 Client-side Geoprocessing | Introduction to Web Mapping" />
+  
+
+<meta name="author" content="Michael Dorman" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+<link rel="prev" href="spatial-queries-1.html"/>
+<link rel="next" href="collaborative-mapping.html"/>
+<script src="libs/header-attrs/header-attrs.js"></script>
+<script src="libs/jquery/jquery.min.js"></script>
+<link href="libs/gitbook/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections/anchor-sections.js"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-134641614-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-134641614-1');
+</script>
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+<link rel="stylesheet" href="css/style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<a href="index.html"><img width="90%" style="margin: 5% 5% 0% 5%" src="images/BGUsig3E.svg"></a>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="index.html"><a href="index.html#what-is-web-mapping"><i class="fa fa-check"></i><b>0.1</b> What is web mapping?</a></li>
+<li class="chapter" data-level="0.2" data-path="index.html"><a href="index.html#what-is-javascript"><i class="fa fa-check"></i><b>0.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="0.3" data-path="index.html"><a href="index.html#why-use-javascript-for-web-mapping"><i class="fa fa-check"></i><b>0.3</b> Why use JavaScript for web mapping?</a></li>
+<li class="chapter" data-level="0.4" data-path="index.html"><a href="index.html#learning-objectives"><i class="fa fa-check"></i><b>0.4</b> Learning objectives</a></li>
+<li class="chapter" data-level="0.5" data-path="index.html"><a href="index.html#software"><i class="fa fa-check"></i><b>0.5</b> Software</a></li>
+<li class="chapter" data-level="0.6" data-path="index.html"><a href="index.html#background-knowledge"><i class="fa fa-check"></i><b>0.6</b> Background knowledge</a></li>
+<li class="chapter" data-level="0.7" data-path="index.html"><a href="index.html#online-version"><i class="fa fa-check"></i><b>0.7</b> Online version</a></li>
+<li class="chapter" data-level="0.8" data-path="index.html"><a href="index.html#acknowledgments"><i class="fa fa-check"></i><b>0.8</b> Acknowledgments</a></li>
+</ul></li>
+<li class="part"><span><b>I Introduction to Web Technologies</b></span></li>
+<li class="chapter" data-level="1" data-path="html.html"><a href="html.html"><i class="fa fa-check"></i><b>1</b> HTML</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="html.html"><a href="html.html#introduction"><i class="fa fa-check"></i><b>1.1</b> Introduction</a></li>
+<li class="chapter" data-level="1.2" data-path="html.html"><a href="html.html#how-do-people-access-the-web"><i class="fa fa-check"></i><b>1.2</b> How do people access the web?</a>
+<ul>
+<li class="chapter" data-level="1.2.1" data-path="html.html"><a href="html.html#web-browsers"><i class="fa fa-check"></i><b>1.2.1</b> Web browsers</a></li>
+<li class="chapter" data-level="1.2.2" data-path="html.html"><a href="html.html#web-servers"><i class="fa fa-check"></i><b>1.2.2</b> Web servers</a></li>
+</ul></li>
+<li class="chapter" data-level="1.3" data-path="html.html"><a href="html.html#web-pages"><i class="fa fa-check"></i><b>1.3</b> Web pages</a></li>
+<li class="chapter" data-level="1.4" data-path="html.html"><a href="html.html#text-editors"><i class="fa fa-check"></i><b>1.4</b> Text editors</a></li>
+<li class="chapter" data-level="1.5" data-path="html.html"><a href="html.html#what-is-html"><i class="fa fa-check"></i><b>1.5</b> What is HTML?</a>
+<ul>
+<li class="chapter" data-level="1.5.1" data-path="html.html"><a href="html.html#overview-html"><i class="fa fa-check"></i><b>1.5.1</b> Overview</a></li>
+<li class="chapter" data-level="1.5.2" data-path="html.html"><a href="html.html#html-comments"><i class="fa fa-check"></i><b>1.5.2</b> HTML comments</a></li>
+<li class="chapter" data-level="1.5.3" data-path="html.html"><a href="html.html#block-vs-inline"><i class="fa fa-check"></i><b>1.5.3</b> Block vs. inline</a></li>
+</ul></li>
+<li class="chapter" data-level="1.6" data-path="html.html"><a href="html.html#common-html-elements"><i class="fa fa-check"></i><b>1.6</b> Common HTML elements</a>
+<ul>
+<li class="chapter" data-level="1.6.1" data-path="html.html"><a href="html.html#html-element-types"><i class="fa fa-check"></i><b>1.6.1</b> HTML element types</a></li>
+<li class="chapter" data-level="1.6.2" data-path="html.html"><a href="html.html#html-structure"><i class="fa fa-check"></i><b>1.6.2</b> Structure</a></li>
+<li class="chapter" data-level="1.6.3" data-path="html.html"><a href="html.html#title-and-metadata"><i class="fa fa-check"></i><b>1.6.3</b> Title and metadata</a></li>
+<li class="chapter" data-level="1.6.4" data-path="html.html"><a href="html.html#styling-and-scripts"><i class="fa fa-check"></i><b>1.6.4</b> Styling and scripts</a></li>
+<li class="chapter" data-level="1.6.5" data-path="html.html"><a href="html.html#headings-and-paragraphs"><i class="fa fa-check"></i><b>1.6.5</b> Headings and paragraphs</a></li>
+<li class="chapter" data-level="1.6.6" data-path="html.html"><a href="html.html#font-formatting"><i class="fa fa-check"></i><b>1.6.6</b> Font formatting</a></li>
+<li class="chapter" data-level="1.6.7" data-path="html.html"><a href="html.html#spacing"><i class="fa fa-check"></i><b>1.6.7</b> Spacing</a></li>
+<li class="chapter" data-level="1.6.8" data-path="html.html"><a href="html.html#html-lists"><i class="fa fa-check"></i><b>1.6.8</b> Lists</a></li>
+<li class="chapter" data-level="1.6.9" data-path="html.html"><a href="html.html#html-links"><i class="fa fa-check"></i><b>1.6.9</b> Links</a></li>
+<li class="chapter" data-level="1.6.10" data-path="html.html"><a href="html.html#images"><i class="fa fa-check"></i><b>1.6.10</b> Images</a></li>
+<li class="chapter" data-level="1.6.11" data-path="html.html"><a href="html.html#tables"><i class="fa fa-check"></i><b>1.6.11</b> Tables</a></li>
+<li class="chapter" data-level="1.6.12" data-path="html.html"><a href="html.html#grouping"><i class="fa fa-check"></i><b>1.6.12</b> Grouping</a></li>
+<li class="chapter" data-level="1.6.13" data-path="html.html"><a href="html.html#input-elements"><i class="fa fa-check"></i><b>1.6.13</b> Input elements</a></li>
+</ul></li>
+<li class="chapter" data-level="1.7" data-path="html.html"><a href="html.html#id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7</b> <code>id</code>, <code>class</code>, and <code>style</code> attributes</a>
+<ul>
+<li class="chapter" data-level="1.7.1" data-path="html.html"><a href="html.html#overview-id-class-and-style-attributes"><i class="fa fa-check"></i><b>1.7.1</b> Overview</a></li>
+<li class="chapter" data-level="1.7.2" data-path="html.html"><a href="html.html#id"><i class="fa fa-check"></i><b>1.7.2</b> <code>id</code></a></li>
+<li class="chapter" data-level="1.7.3" data-path="html.html"><a href="html.html#html-class"><i class="fa fa-check"></i><b>1.7.3</b> <code>class</code></a></li>
+<li class="chapter" data-level="1.7.4" data-path="html.html"><a href="html.html#style-2"><i class="fa fa-check"></i><b>1.7.4</b> <code>style</code></a></li>
+</ul></li>
+<li class="chapter" data-level="1.8" data-path="html.html"><a href="html.html#code-layout"><i class="fa fa-check"></i><b>1.8</b> Code layout</a></li>
+<li class="chapter" data-level="1.9" data-path="html.html"><a href="html.html#inspecting-elements"><i class="fa fa-check"></i><b>1.9</b> Inspecting elements</a></li>
+<li class="chapter" data-level="1.10" data-path="html.html"><a href="html.html#exercise"><i class="fa fa-check"></i><b>1.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="css.html"><a href="css.html"><i class="fa fa-check"></i><b>2</b> CSS</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="css.html"><a href="css.html#introduction-1"><i class="fa fa-check"></i><b>2.1</b> Introduction</a></li>
+<li class="chapter" data-level="2.2" data-path="css.html"><a href="css.html#what-is-css"><i class="fa fa-check"></i><b>2.2</b> What is CSS?</a></li>
+<li class="chapter" data-level="2.3" data-path="css.html"><a href="css.html#css-rules"><i class="fa fa-check"></i><b>2.3</b> CSS rules</a></li>
+<li class="chapter" data-level="2.4" data-path="css.html"><a href="css.html#css-selectors"><i class="fa fa-check"></i><b>2.4</b> CSS selectors</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="css.html"><a href="css.html#overview-css-selectors"><i class="fa fa-check"></i><b>2.4.1</b> Overview</a></li>
+<li class="chapter" data-level="2.4.2" data-path="css.html"><a href="css.html#type-selector"><i class="fa fa-check"></i><b>2.4.2</b> Type selector</a></li>
+<li class="chapter" data-level="2.4.3" data-path="css.html"><a href="css.html#class-selector"><i class="fa fa-check"></i><b>2.4.3</b> Class selector</a></li>
+<li class="chapter" data-level="2.4.4" data-path="css.html"><a href="css.html#id-selector"><i class="fa fa-check"></i><b>2.4.4</b> ID selector</a></li>
+<li class="chapter" data-level="2.4.5" data-path="css.html"><a href="css.html#descendant-selector"><i class="fa fa-check"></i><b>2.4.5</b> Descendant selector</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="css.html"><a href="css.html#css-conflicts"><i class="fa fa-check"></i><b>2.5</b> CSS conflicts</a></li>
+<li class="chapter" data-level="2.6" data-path="css.html"><a href="css.html#css-inheritance"><i class="fa fa-check"></i><b>2.6</b> CSS inheritance</a></li>
+<li class="chapter" data-level="2.7" data-path="css.html"><a href="css.html#linking-css-to-html"><i class="fa fa-check"></i><b>2.7</b> Linking CSS to HTML</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="css.html"><a href="css.html#methods-for-linking-css"><i class="fa fa-check"></i><b>2.7.1</b> Methods for linking CSS</a></li>
+<li class="chapter" data-level="2.7.2" data-path="css.html"><a href="css.html#inline-css"><i class="fa fa-check"></i><b>2.7.2</b> Inline CSS</a></li>
+<li class="chapter" data-level="2.7.3" data-path="css.html"><a href="css.html#embedded-css"><i class="fa fa-check"></i><b>2.7.3</b> Embedded CSS</a></li>
+<li class="chapter" data-level="2.7.4" data-path="css.html"><a href="css.html#external-css"><i class="fa fa-check"></i><b>2.7.4</b> External CSS</a></li>
+</ul></li>
+<li class="chapter" data-level="2.8" data-path="css.html"><a href="css.html#css-properties"><i class="fa fa-check"></i><b>2.8</b> CSS properties</a>
+<ul>
+<li class="chapter" data-level="2.8.1" data-path="css.html"><a href="css.html#overview-css-properties"><i class="fa fa-check"></i><b>2.8.1</b> Overview</a></li>
+<li class="chapter" data-level="2.8.2" data-path="css.html"><a href="css.html#color"><i class="fa fa-check"></i><b>2.8.2</b> Color</a></li>
+<li class="chapter" data-level="2.8.3" data-path="css.html"><a href="css.html#text"><i class="fa fa-check"></i><b>2.8.3</b> Text</a></li>
+<li class="chapter" data-level="2.8.4" data-path="css.html"><a href="css.html#boxes"><i class="fa fa-check"></i><b>2.8.4</b> Boxes</a></li>
+</ul></li>
+<li class="chapter" data-level="2.9" data-path="css.html"><a href="css.html#hurricane-scale"><i class="fa fa-check"></i><b>2.9</b> Hurricane scale example</a>
+<ul>
+<li class="chapter" data-level="2.9.1" data-path="css.html"><a href="css.html#html-contents"><i class="fa fa-check"></i><b>2.9.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.9.2" data-path="css.html"><a href="css.html#css-styling"><i class="fa fa-check"></i><b>2.9.2</b> CSS styling</a></li>
+</ul></li>
+<li class="chapter" data-level="2.10" data-path="css.html"><a href="css.html#example-map-description"><i class="fa fa-check"></i><b>2.10</b> Map description example</a>
+<ul>
+<li class="chapter" data-level="2.10.1" data-path="css.html"><a href="css.html#html-contents-1"><i class="fa fa-check"></i><b>2.10.1</b> HTML contents</a></li>
+<li class="chapter" data-level="2.10.2" data-path="css.html"><a href="css.html#example-map-description-box-position"><i class="fa fa-check"></i><b>2.10.2</b> CSS styling: box position</a></li>
+<li class="chapter" data-level="2.10.3" data-path="css.html"><a href="css.html#css-styling-final-touches"><i class="fa fa-check"></i><b>2.10.3</b> CSS styling: final touches</a></li>
+<li class="chapter" data-level="2.10.4" data-path="css.html"><a href="css.html#adding-map-in-the-background"><i class="fa fa-check"></i><b>2.10.4</b> Adding map in the background</a></li>
+</ul></li>
+<li class="chapter" data-level="2.11" data-path="css.html"><a href="css.html#exercise-1"><i class="fa fa-check"></i><b>2.11</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="javascript-basics.html"><a href="javascript-basics.html"><i class="fa fa-check"></i><b>3</b> JavaScript Basics</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="javascript-basics.html"><a href="javascript-basics.html#introduction-2"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-javascript-1"><i class="fa fa-check"></i><b>3.2</b> What is JavaScript?</a></li>
+<li class="chapter" data-level="3.3" data-path="javascript-basics.html"><a href="javascript-basics.html#client-side-vs.-server-side"><i class="fa fa-check"></i><b>3.3</b> Client-side vs. server-side</a></li>
+<li class="chapter" data-level="3.4" data-path="javascript-basics.html"><a href="javascript-basics.html#the-javascript-console"><i class="fa fa-check"></i><b>3.4</b> The JavaScript console</a></li>
+<li class="chapter" data-level="3.5" data-path="javascript-basics.html"><a href="javascript-basics.html#assignment"><i class="fa fa-check"></i><b>3.5</b> Assignment</a></li>
+<li class="chapter" data-level="3.6" data-path="javascript-basics.html"><a href="javascript-basics.html#data-types"><i class="fa fa-check"></i><b>3.6</b> Data types</a>
+<ul>
+<li class="chapter" data-level="3.6.1" data-path="javascript-basics.html"><a href="javascript-basics.html#overview-data-types"><i class="fa fa-check"></i><b>3.6.1</b> Overview</a></li>
+<li class="chapter" data-level="3.6.2" data-path="javascript-basics.html"><a href="javascript-basics.html#primitive-data-types"><i class="fa fa-check"></i><b>3.6.2</b> Primitive data types</a></li>
+<li class="chapter" data-level="3.6.3" data-path="javascript-basics.html"><a href="javascript-basics.html#objects-data-type"><i class="fa fa-check"></i><b>3.6.3</b> Objects</a></li>
+<li class="chapter" data-level="3.6.4" data-path="javascript-basics.html"><a href="javascript-basics.html#checking-type-of-variables"><i class="fa fa-check"></i><b>3.6.4</b> Checking type of variables</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="javascript-basics.html"><a href="javascript-basics.html#functions"><i class="fa fa-check"></i><b>3.7</b> Functions</a></li>
+<li class="chapter" data-level="3.8" data-path="javascript-basics.html"><a href="javascript-basics.html#methods"><i class="fa fa-check"></i><b>3.8</b> Methods</a>
+<ul>
+<li class="chapter" data-level="3.8.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-are-methods"><i class="fa fa-check"></i><b>3.8.1</b> What are methods?</a></li>
+<li class="chapter" data-level="3.8.2" data-path="javascript-basics.html"><a href="javascript-basics.html#array-methods"><i class="fa fa-check"></i><b>3.8.2</b> Array methods</a></li>
+</ul></li>
+<li class="chapter" data-level="3.9" data-path="javascript-basics.html"><a href="javascript-basics.html#scope"><i class="fa fa-check"></i><b>3.9</b> Scope</a></li>
+<li class="chapter" data-level="3.10" data-path="javascript-basics.html"><a href="javascript-basics.html#flow-control"><i class="fa fa-check"></i><b>3.10</b> Flow control</a>
+<ul>
+<li class="chapter" data-level="3.10.1" data-path="javascript-basics.html"><a href="javascript-basics.html#what-is-flow-control"><i class="fa fa-check"></i><b>3.10.1</b> What is flow control?</a></li>
+<li class="chapter" data-level="3.10.2" data-path="javascript-basics.html"><a href="javascript-basics.html#conditionals"><i class="fa fa-check"></i><b>3.10.2</b> Conditionals</a></li>
+<li class="chapter" data-level="3.10.3" data-path="javascript-basics.html"><a href="javascript-basics.html#loops"><i class="fa fa-check"></i><b>3.10.3</b> Loops</a></li>
+</ul></li>
+<li class="chapter" data-level="3.11" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-object-notation-json"><i class="fa fa-check"></i><b>3.11</b> JavaScript Object Notation (JSON)</a>
+<ul>
+<li class="chapter" data-level="3.11.1" data-path="javascript-basics.html"><a href="javascript-basics.html#javascript-json"><i class="fa fa-check"></i><b>3.11.1</b> JSON</a></li>
+<li class="chapter" data-level="3.11.2" data-path="javascript-basics.html"><a href="javascript-basics.html#geojson"><i class="fa fa-check"></i><b>3.11.2</b> GeoJSON</a></li>
+</ul></li>
+<li class="chapter" data-level="3.12" data-path="javascript-basics.html"><a href="javascript-basics.html#exercise-2"><i class="fa fa-check"></i><b>3.12</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html"><i class="fa fa-check"></i><b>4</b> JavaScript Interactivity</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#introduction-3"><i class="fa fa-check"></i><b>4.1</b> Introduction</a></li>
+<li class="chapter" data-level="4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-document-object-model"><i class="fa fa-check"></i><b>4.2</b> The Document Object Model (DOM)</a></li>
+<li class="chapter" data-level="4.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-and-modifying-elements"><i class="fa fa-check"></i><b>4.3</b> Accessing and modifying elements</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#overview-accessing-and_modifying"><i class="fa fa-check"></i><b>4.3.1</b> Overview</a></li>
+<li class="chapter" data-level="4.3.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#accessing-elements"><i class="fa fa-check"></i><b>4.3.2</b> Accessing elements</a></li>
+<li class="chapter" data-level="4.3.3" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-element-properties"><i class="fa fa-check"></i><b>4.3.3</b> Getting element properties</a></li>
+<li class="chapter" data-level="4.3.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-elements"><i class="fa fa-check"></i><b>4.3.4</b> Modifying elements</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-listeners"><i class="fa fa-check"></i><b>4.4</b> Event listeners</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-types"><i class="fa fa-check"></i><b>4.4.1</b> Event types</a></li>
+<li class="chapter" data-level="4.4.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#binding-event-listeners"><i class="fa fa-check"></i><b>4.4.2</b> Binding event listeners</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#hello-example"><i class="fa fa-check"></i><b>4.5</b> Hello example</a></li>
+<li class="chapter" data-level="4.6" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#poles-example"><i class="fa fa-check"></i><b>4.6</b> Poles example</a></li>
+<li class="chapter" data-level="4.7" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#operating-on-selection"><i class="fa fa-check"></i><b>4.7</b> Operating on multiple selections</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#example-page"><i class="fa fa-check"></i><b>4.7.1</b> Example page</a></li>
+<li class="chapter" data-level="4.7.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#making-multiple-selections"><i class="fa fa-check"></i><b>4.7.2</b> Making multiple selections</a></li>
+</ul></li>
+<li class="chapter" data-level="4.8" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#getting-and-setting-input-values"><i class="fa fa-check"></i><b>4.8</b> Getting and setting input values</a></li>
+<li class="chapter" data-level="4.9" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#multiple-event-listeners"><i class="fa fa-check"></i><b>4.9</b> Multiple event listeners</a></li>
+<li class="chapter" data-level="4.10" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#the-event-object"><i class="fa fa-check"></i><b>4.10</b> The event object</a>
+<ul>
+<li class="chapter" data-level="4.10.1" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-object-properties"><i class="fa fa-check"></i><b>4.10.1</b> Event object properties</a></li>
+<li class="chapter" data-level="4.10.2" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#event-target"><i class="fa fa-check"></i><b>4.10.2</b> The <code>.target</code> property</a></li>
+</ul></li>
+<li class="chapter" data-level="4.11" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#modifying-page-based-on-data"><i class="fa fa-check"></i><b>4.11</b> Modifying page based on data</a></li>
+<li class="chapter" data-level="4.12" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#working-with-user-input"><i class="fa fa-check"></i><b>4.12</b> Calculator example</a></li>
+<li class="chapter" data-level="4.13" data-path="javascript-interactivity.html"><a href="javascript-interactivity.html#exercise-3"><i class="fa fa-check"></i><b>4.13</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="web-servers-1.html"><a href="web-servers-1.html"><i class="fa fa-check"></i><b>5</b> Web Servers</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#introduction-4"><i class="fa fa-check"></i><b>5.1</b> Introduction</a></li>
+<li class="chapter" data-level="5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#web-servers-2"><i class="fa fa-check"></i><b>5.2</b> Web servers</a></li>
+<li class="chapter" data-level="5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#communicating-through-http"><i class="fa fa-check"></i><b>5.3</b> Communicating through HTTP</a>
+<ul>
+<li class="chapter" data-level="5.3.1" data-path="web-servers-1.html"><a href="web-servers-1.html#web-protocols-and-http"><i class="fa fa-check"></i><b>5.3.1</b> Web protocols and HTTP</a></li>
+<li class="chapter" data-level="5.3.2" data-path="web-servers-1.html"><a href="web-servers-1.html#http-methods"><i class="fa fa-check"></i><b>5.3.2</b> HTTP methods</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#static-vs-dynamic-servers"><i class="fa fa-check"></i><b>5.4</b> Static vs. dynamic servers</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview"><i class="fa fa-check"></i><b>5.4.1</b> Overview</a></li>
+<li class="chapter" data-level="5.4.2" data-path="web-servers-1.html"><a href="web-servers-1.html#static-servers"><i class="fa fa-check"></i><b>5.4.2</b> Static servers</a></li>
+<li class="chapter" data-level="5.4.3" data-path="web-servers-1.html"><a href="web-servers-1.html#dynamic-servers"><i class="fa fa-check"></i><b>5.4.3</b> Dynamic servers</a></li>
+<li class="chapter" data-level="5.4.4" data-path="web-servers-1.html"><a href="web-servers-1.html#software-1"><i class="fa fa-check"></i><b>5.4.4</b> Software</a></li>
+<li class="chapter" data-level="5.4.5" data-path="web-servers-1.html"><a href="web-servers-1.html#practical-considerations"><i class="fa fa-check"></i><b>5.4.5</b> Practical considerations</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-file-structure"><i class="fa fa-check"></i><b>5.5</b> URLs and file structure</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="web-servers-1.html"><a href="web-servers-1.html#urls-and-index-html"><i class="fa fa-check"></i><b>5.5.1</b> URLs and <code>index.html</code></a></li>
+<li class="chapter" data-level="5.5.2" data-path="web-servers-1.html"><a href="web-servers-1.html#file-structure"><i class="fa fa-check"></i><b>5.5.2</b> File structure</a></li>
+<li class="chapter" data-level="5.5.3" data-path="web-servers-1.html"><a href="web-servers-1.html#relative-paths"><i class="fa fa-check"></i><b>5.5.3</b> Relative paths</a></li>
+<li class="chapter" data-level="5.5.4" data-path="web-servers-1.html"><a href="web-servers-1.html#css-and-javasccript"><i class="fa fa-check"></i><b>5.5.4</b> CSS and JavaScript</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="web-servers-1.html"><a href="web-servers-1.html#running-a-static-server"><i class="fa fa-check"></i><b>5.6</b> Running a static server</a>
+<ul>
+<li class="chapter" data-level="5.6.1" data-path="web-servers-1.html"><a href="web-servers-1.html#overview-running-static-server"><i class="fa fa-check"></i><b>5.6.1</b> Overview</a></li>
+<li class="chapter" data-level="5.6.2" data-path="web-servers-1.html"><a href="web-servers-1.html#local-with-python"><i class="fa fa-check"></i><b>5.6.2</b> Local with Python</a></li>
+<li class="chapter" data-level="5.6.3" data-path="web-servers-1.html"><a href="web-servers-1.html#remote-with-github-pages"><i class="fa fa-check"></i><b>5.6.3</b> Remote with GitHub Pages</a></li>
+</ul></li>
+</ul></li>
+<li class="part"><span><b>II Web Mapping with Leaflet</b></span></li>
+<li class="chapter" data-level="6" data-path="leaflet.html"><a href="leaflet.html"><i class="fa fa-check"></i><b>6</b> Leaflet</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="leaflet.html"><a href="leaflet.html#introduction-5"><i class="fa fa-check"></i><b>6.1</b> Introduction</a></li>
+<li class="chapter" data-level="6.2" data-path="leaflet.html"><a href="leaflet.html#what-is-web-map"><i class="fa fa-check"></i><b>6.2</b> What is a web map?</a></li>
+<li class="chapter" data-level="6.3" data-path="leaflet.html"><a href="leaflet.html#what-is-leaflet"><i class="fa fa-check"></i><b>6.3</b> What is Leaflet?</a></li>
+<li class="chapter" data-level="6.4" data-path="leaflet.html"><a href="leaflet.html#alternatives-to-leaflet"><i class="fa fa-check"></i><b>6.4</b> Alternatives to Leaflet</a></li>
+<li class="chapter" data-level="6.5" data-path="leaflet.html"><a href="leaflet.html#creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5</b> Creating a basic web map</a>
+<ul>
+<li class="chapter" data-level="6.5.1" data-path="leaflet.html"><a href="leaflet.html#overview-creating-a-basic-web-map"><i class="fa fa-check"></i><b>6.5.1</b> Overview</a></li>
+<li class="chapter" data-level="6.5.2" data-path="leaflet.html"><a href="leaflet.html#web-page-setup"><i class="fa fa-check"></i><b>6.5.2</b> Web page setup</a></li>
+<li class="chapter" data-level="6.5.3" data-path="leaflet.html"><a href="leaflet.html#javascript-libraries"><i class="fa fa-check"></i><b>6.5.3</b> JavaScript libraries</a></li>
+<li class="chapter" data-level="6.5.4" data-path="leaflet.html"><a href="leaflet.html#including-a-library"><i class="fa fa-check"></i><b>6.5.4</b> Including a library</a></li>
+<li class="chapter" data-level="6.5.5" data-path="leaflet.html"><a href="leaflet.html#loading-a-local-script"><i class="fa fa-check"></i><b>6.5.5</b> Loading a local script</a></li>
+<li class="chapter" data-level="6.5.6" data-path="leaflet.html"><a href="leaflet.html#loading-a-remote-script"><i class="fa fa-check"></i><b>6.5.6</b> Loading a remote script</a></li>
+<li class="chapter" data-level="6.5.7" data-path="leaflet.html"><a href="leaflet.html#including-leaflet-css-js"><i class="fa fa-check"></i><b>6.5.7</b> Including Leaflet CSS and JavaScript</a></li>
+<li class="chapter" data-level="6.5.8" data-path="leaflet.html"><a href="leaflet.html#adding-map-div"><i class="fa fa-check"></i><b>6.5.8</b> Adding map <code>&lt;div&gt;</code></a></li>
+<li class="chapter" data-level="6.5.9" data-path="leaflet.html"><a href="leaflet.html#creating-map-object"><i class="fa fa-check"></i><b>6.5.9</b> Creating a map object</a></li>
+<li class="chapter" data-level="6.5.10" data-path="leaflet.html"><a href="leaflet.html#what-are-tile-layers"><i class="fa fa-check"></i><b>6.5.10</b> What are tile layers?</a></li>
+<li class="chapter" data-level="6.5.11" data-path="leaflet.html"><a href="leaflet.html#adding-a-tile-layer"><i class="fa fa-check"></i><b>6.5.11</b> Adding a tile layer</a></li>
+<li class="chapter" data-level="6.5.12" data-path="leaflet.html"><a href="leaflet.html#tile-layer-providers"><i class="fa fa-check"></i><b>6.5.12</b> Tile layer providers</a></li>
+</ul></li>
+<li class="chapter" data-level="6.6" data-path="leaflet.html"><a href="leaflet.html#adding-vector-layers"><i class="fa fa-check"></i><b>6.6</b> Adding vector layers</a>
+<ul>
+<li class="chapter" data-level="6.6.1" data-path="leaflet.html"><a href="leaflet.html#overview-adding-vector-layers"><i class="fa fa-check"></i><b>6.6.1</b> Overview</a></li>
+<li class="chapter" data-level="6.6.2" data-path="leaflet.html"><a href="leaflet.html#adding-markers"><i class="fa fa-check"></i><b>6.6.2</b> Adding markers</a></li>
+<li class="chapter" data-level="6.6.3" data-path="leaflet.html"><a href="leaflet.html#adding-lines"><i class="fa fa-check"></i><b>6.6.3</b> Adding lines</a></li>
+<li class="chapter" data-level="6.6.4" data-path="leaflet.html"><a href="leaflet.html#adding-polygons"><i class="fa fa-check"></i><b>6.6.4</b> Adding polygons</a></li>
+<li class="chapter" data-level="6.6.5" data-path="leaflet.html"><a href="leaflet.html#other-layer-types"><i class="fa fa-check"></i><b>6.6.5</b> Other layer types</a></li>
+</ul></li>
+<li class="chapter" data-level="6.7" data-path="leaflet.html"><a href="leaflet.html#adding-popups"><i class="fa fa-check"></i><b>6.7</b> Adding popups</a></li>
+<li class="chapter" data-level="6.8" data-path="leaflet.html"><a href="leaflet.html#adding-a-description"><i class="fa fa-check"></i><b>6.8</b> Adding a description</a></li>
+<li class="chapter" data-level="6.9" data-path="leaflet.html"><a href="leaflet.html#introducing-map-events"><i class="fa fa-check"></i><b>6.9</b> Introducing map events</a></li>
+<li class="chapter" data-level="6.10" data-path="leaflet.html"><a href="leaflet.html#exercise-06"><i class="fa fa-check"></i><b>6.10</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="geojson-1.html"><a href="geojson-1.html"><i class="fa fa-check"></i><b>7</b> GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="geojson-1.html"><a href="geojson-1.html#introduction-6"><i class="fa fa-check"></i><b>7.1</b> Introduction</a></li>
+<li class="chapter" data-level="7.2" data-path="geojson-1.html"><a href="geojson-1.html#what-is-geojson"><i class="fa fa-check"></i><b>7.2</b> What is GeoJSON?</a></li>
+<li class="chapter" data-level="7.3" data-path="geojson-1.html"><a href="geojson-1.html#geojson-structure"><i class="fa fa-check"></i><b>7.3</b> GeoJSON structure</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-geojson"><i class="fa fa-check"></i><b>7.3.1</b> Overview</a></li>
+<li class="chapter" data-level="7.3.2" data-path="geojson-1.html"><a href="geojson-1.html#geometries"><i class="fa fa-check"></i><b>7.3.2</b> Geometries</a></li>
+<li class="chapter" data-level="7.3.3" data-path="geojson-1.html"><a href="geojson-1.html#features"><i class="fa fa-check"></i><b>7.3.3</b> Features</a></li>
+<li class="chapter" data-level="7.3.4" data-path="geojson-1.html"><a href="geojson-1.html#feature-collections"><i class="fa fa-check"></i><b>7.3.4</b> Feature collections</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="geojson-1.html"><a href="geojson-1.html#editing-geojson"><i class="fa fa-check"></i><b>7.4</b> Editing GeoJSON</a>
+<ul>
+<li class="chapter" data-level="7.4.1" data-path="geojson-1.html"><a href="geojson-1.html#geojson-io"><i class="fa fa-check"></i><b>7.4.1</b> geojson.io</a></li>
+<li class="chapter" data-level="7.4.2" data-path="geojson-1.html"><a href="geojson-1.html#mapshaper"><i class="fa fa-check"></i><b>7.4.2</b> mapshaper</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="geojson-1.html"><a href="geojson-1.html#adding-geojson-to-leaflet-map"><i class="fa fa-check"></i><b>7.5</b> Adding GeoJSON to Leaflet map</a></li>
+<li class="chapter" data-level="7.6" data-path="geojson-1.html"><a href="geojson-1.html#geojson-viewer"><i class="fa fa-check"></i><b>7.6</b> GeoJSON viewer example</a>
+<ul>
+<li class="chapter" data-level="7.6.1" data-path="geojson-1.html"><a href="geojson-1.html#viewer-structure"><i class="fa fa-check"></i><b>7.6.1</b> Viewer structure</a></li>
+<li class="chapter" data-level="7.6.2" data-path="geojson-1.html"><a href="geojson-1.html#viewer-html-and-css"><i class="fa fa-check"></i><b>7.6.2</b> HTML and CSS</a></li>
+<li class="chapter" data-level="7.6.3" data-path="geojson-1.html"><a href="geojson-1.html#base-map"><i class="fa fa-check"></i><b>7.6.3</b> Base map</a></li>
+<li class="chapter" data-level="7.6.4" data-path="geojson-1.html"><a href="geojson-1.html#adding-an-event-listener"><i class="fa fa-check"></i><b>7.6.4</b> Adding an event listener</a></li>
+<li class="chapter" data-level="7.6.5" data-path="geojson-1.html"><a href="geojson-1.html#using-layer-groups"><i class="fa fa-check"></i><b>7.6.5</b> Using layer groups</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="geojson-1.html"><a href="geojson-1.html#ajax"><i class="fa fa-check"></i><b>7.7</b> Ajax and the <code>fetch</code> API</a>
+<ul>
+<li class="chapter" data-level="7.7.1" data-path="geojson-1.html"><a href="geojson-1.html#overview-ajax"><i class="fa fa-check"></i><b>7.7.1</b> What is Ajax?</a></li>
+<li class="chapter" data-level="7.7.2" data-path="geojson-1.html"><a href="geojson-1.html#ajax-examples"><i class="fa fa-check"></i><b>7.7.2</b> Ajax examples</a></li>
+<li class="chapter" data-level="7.7.3" data-path="geojson-1.html"><a href="geojson-1.html#making-ajax-requests-with-fetch"><i class="fa fa-check"></i><b>7.7.3</b> The <code>fetch</code> API</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="geojson-1.html"><a href="geojson-1.html#loading-geojson-files"><i class="fa fa-check"></i><b>7.8</b> Loading GeoJSON files</a>
+<ul>
+<li class="chapter" data-level="7.8.1" data-path="geojson-1.html"><a href="geojson-1.html#loading-local-files"><i class="fa fa-check"></i><b>7.8.1</b> Loading local files</a></li>
+<li class="chapter" data-level="7.8.2" data-path="geojson-1.html"><a href="geojson-1.html#loading-remote-files"><i class="fa fa-check"></i><b>7.8.2</b> Loading remote files</a></li>
+</ul></li>
+<li class="chapter" data-level="7.9" data-path="geojson-1.html"><a href="geojson-1.html#exercise-4"><i class="fa fa-check"></i><b>7.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html"><i class="fa fa-check"></i><b>8</b> Symbology and Interactivity</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#introduction-7"><i class="fa fa-check"></i><b>8.1</b> Introduction</a></li>
+<li class="chapter" data-level="8.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#l-geojson-options"><i class="fa fa-check"></i><b>8.2</b> <code>L.geoJSON</code> options</a></li>
+<li class="chapter" data-level="8.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constant-style"><i class="fa fa-check"></i><b>8.3</b> Constant style</a></li>
+<li class="chapter" data-level="8.4" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#varying-style"><i class="fa fa-check"></i><b>8.4</b> Varying style</a>
+<ul>
+<li class="chapter" data-level="8.4.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-varying-style"><i class="fa fa-check"></i><b>8.4.1</b> Setting varying style</a></li>
+<li class="chapter" data-level="8.4.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#states-example"><i class="fa fa-check"></i><b>8.4.2</b> States example</a></li>
+<li class="chapter" data-level="8.4.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#towns-example"><i class="fa fa-check"></i><b>8.4.3</b> Towns example</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#constructing-popups-from-data"><i class="fa fa-check"></i><b>8.5</b> Constructing popups from data</a></li>
+<li class="chapter" data-level="8.6" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#adding-a-legend"><i class="fa fa-check"></i><b>8.6</b> Adding a legend</a>
+<ul>
+<li class="chapter" data-level="8.6.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#setting-legend-contents-with-l.control"><i class="fa fa-check"></i><b>8.6.1</b> Setting legend contents with <code>L.control</code></a></li>
+<li class="chapter" data-level="8.6.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#using-css-to-style-the-legend"><i class="fa fa-check"></i><b>8.6.2</b> Using CSS to style the legend</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-style"><i class="fa fa-check"></i><b>8.7</b> Dynamic style</a>
+<ul>
+<li class="chapter" data-level="8.7.1" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#styling-in-response-to-events"><i class="fa fa-check"></i><b>8.7.1</b> Styling in response to events</a></li>
+<li class="chapter" data-level="8.7.2" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#dynamic-control-contents"><i class="fa fa-check"></i><b>8.7.2</b> Dynamic control contents</a></li>
+<li class="chapter" data-level="8.7.3" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#linked-views"><i class="fa fa-check"></i><b>8.7.3</b> Linked views</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="symbology-and-interactivity.html"><a href="symbology-and-interactivity.html#exercise-08"><i class="fa fa-check"></i><b>8.8</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>III Databases</b></span></li>
+<li class="chapter" data-level="9" data-path="databases.html"><a href="databases.html"><i class="fa fa-check"></i><b>9</b> Databases</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="databases.html"><a href="databases.html#introduction-databases"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="databases.html"><a href="databases.html#what-is-carto"><i class="fa fa-check"></i><b>9.2</b> What is CARTO?</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="databases.html"><a href="databases.html#the-carto-platform"><i class="fa fa-check"></i><b>9.2.1</b> The CARTO platform</a></li>
+<li class="chapter" data-level="9.2.2" data-path="databases.html"><a href="databases.html#alternatives-to-carto"><i class="fa fa-check"></i><b>9.2.2</b> Alternatives to CARTO</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="databases.html"><a href="databases.html#databases-1"><i class="fa fa-check"></i><b>9.3</b> Databases</a></li>
+<li class="chapter" data-level="9.4" data-path="databases.html"><a href="databases.html#spatial-databases"><i class="fa fa-check"></i><b>9.4</b> Spatial databases</a></li>
+<li class="chapter" data-level="9.5" data-path="databases.html"><a href="databases.html#what-is-postgis"><i class="fa fa-check"></i><b>9.5</b> What is PostGIS?</a></li>
+<li class="chapter" data-level="9.6" data-path="databases.html"><a href="databases.html#what-is-sql"><i class="fa fa-check"></i><b>9.6</b> What is SQL?</a>
+<ul>
+<li class="chapter" data-level="9.6.1" data-path="databases.html"><a href="databases.html#overview-sql"><i class="fa fa-check"></i><b>9.6.1</b> Overview</a></li>
+<li class="chapter" data-level="9.6.2" data-path="databases.html"><a href="databases.html#non-spatial-queries"><i class="fa fa-check"></i><b>9.6.2</b> Non-spatial queries</a></li>
+<li class="chapter" data-level="9.6.3" data-path="databases.html"><a href="databases.html#the-geometry-column"><i class="fa fa-check"></i><b>9.6.3</b> The geometry column</a></li>
+<li class="chapter" data-level="9.6.4" data-path="databases.html"><a href="databases.html#spatial-queries"><i class="fa fa-check"></i><b>9.6.4</b> Spatial queries</a></li>
+</ul></li>
+<li class="chapter" data-level="9.7" data-path="databases.html"><a href="databases.html#the-carto-sql-api"><i class="fa fa-check"></i><b>9.7</b> The CARTO SQL API</a>
+<ul>
+<li class="chapter" data-level="9.7.1" data-path="databases.html"><a href="databases.html#api-usage"><i class="fa fa-check"></i><b>9.7.1</b> API usage</a></li>
+<li class="chapter" data-level="9.7.2" data-path="databases.html"><a href="databases.html#query-example"><i class="fa fa-check"></i><b>9.7.2</b> Query example</a></li>
+<li class="chapter" data-level="9.7.3" data-path="databases.html"><a href="databases.html#uploading-your-data"><i class="fa fa-check"></i><b>9.7.3</b> Uploading your data</a></li>
+</ul></li>
+<li class="chapter" data-level="9.8" data-path="databases.html"><a href="databases.html#carto-and-leaflet"><i class="fa fa-check"></i><b>9.8</b> CARTO and Leaflet</a></li>
+<li class="chapter" data-level="9.9" data-path="databases.html"><a href="databases.html#exercise-09"><i class="fa fa-check"></i><b>9.9</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html"><i class="fa fa-check"></i><b>10</b> Non-spatial Queries</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#introduction-8"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#subsetting-with-sql"><i class="fa fa-check"></i><b>10.2</b> Subsetting with SQL</a>
+<ul>
+<li class="chapter" data-level="10.2.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#filtering-based-on-attributes"><i class="fa fa-check"></i><b>10.2.1</b> Filtering based on attributes</a></li>
+<li class="chapter" data-level="10.2.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#displaying-on-a-map"><i class="fa fa-check"></i><b>10.2.2</b> Displaying on a map</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#creating-a-dropdown-menu"><i class="fa fa-check"></i><b>10.3</b> Creating a dropdown menu</a></li>
+<li class="chapter" data-level="10.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#populating-dropdown-options"><i class="fa fa-check"></i><b>10.4</b> Populating dropdown options</a>
+<ul>
+<li class="chapter" data-level="10.4.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#how-many-species-do-we-have"><i class="fa fa-check"></i><b>10.4.1</b> How many species do we have?</a></li>
+<li class="chapter" data-level="10.4.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#dropdown-menu-placeholder"><i class="fa fa-check"></i><b>10.4.2</b> Dropdown menu placeholder</a></li>
+<li class="chapter" data-level="10.4.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#finding-unique-values"><i class="fa fa-check"></i><b>10.4.3</b> Finding unique values</a></li>
+<li class="chapter" data-level="10.4.4" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#adding-options"><i class="fa fa-check"></i><b>10.4.4</b> Adding the options</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#updating-the-map"><i class="fa fa-check"></i><b>10.5</b> Updating the map</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#overview-updating-map"><i class="fa fa-check"></i><b>10.5.1</b> Overview</a></li>
+<li class="chapter" data-level="10.5.2" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#manual-example"><i class="fa fa-check"></i><b>10.5.2</b> Manual example</a></li>
+<li class="chapter" data-level="10.5.3" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#automatic-updating"><i class="fa fa-check"></i><b>10.5.3</b> Automatic updating</a></li>
+</ul></li>
+<li class="chapter" data-level="10.6" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#rearranging-the-code"><i class="fa fa-check"></i><b>10.6</b> Refactoring the code</a></li>
+<li class="chapter" data-level="10.7" data-path="non-spatial-queries-1.html"><a href="non-spatial-queries-1.html#exercise-10"><i class="fa fa-check"></i><b>10.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html"><i class="fa fa-check"></i><b>11</b> Spatial Queries</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#introduction-9"><i class="fa fa-check"></i><b>11.1</b> Introduction</a></li>
+<li class="chapter" data-level="11.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-marker-on-click"><i class="fa fa-check"></i><b>11.2</b> Adding markers on click</a>
+<ul>
+<li class="chapter" data-level="11.2.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#getting-click-coordinates"><i class="fa fa-check"></i><b>11.2.1</b> Getting click coordinates</a></li>
+<li class="chapter" data-level="11.2.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-custom-marker"><i class="fa fa-check"></i><b>11.2.2</b> Adding a custom marker</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#spatial-postgis-operators"><i class="fa fa-check"></i><b>11.3</b> Spatial PostGIS operators</a>
+<ul>
+<li class="chapter" data-level="11.3.1" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#overview-postgis-operators"><i class="fa fa-check"></i><b>11.3.1</b> Overview</a></li>
+<li class="chapter" data-level="11.3.2" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#geographical-distance"><i class="fa fa-check"></i><b>11.3.2</b> Geographical distance</a></li>
+<li class="chapter" data-level="11.3.3" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#sphere-vs-spheroid"><i class="fa fa-check"></i><b>11.3.3</b> Sphere vs. spheroid</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#adding-nearest-points-to-map"><i class="fa fa-check"></i><b>11.4</b> Adding nearest points to map</a></li>
+<li class="chapter" data-level="11.5" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#drawing-line-connectors"><i class="fa fa-check"></i><b>11.5</b> Drawing line connectors</a></li>
+<li class="chapter" data-level="11.6" data-path="spatial-queries-1.html"><a href="spatial-queries-1.html#exercise-5"><i class="fa fa-check"></i><b>11.6</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>IV Advanced Topics</b></span></li>
+<li class="chapter" data-level="12" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html"><i class="fa fa-check"></i><b>12</b> Client-side Geoprocessing</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#introduction-10"><i class="fa fa-check"></i><b>12.1</b> Introduction</a></li>
+<li class="chapter" data-level="12.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#geoprocessing-with-turfjs"><i class="fa fa-check"></i><b>12.2</b> Geoprocessing with Turf.js</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-turfjs"><i class="fa fa-check"></i><b>12.2.1</b> Overview</a></li>
+<li class="chapter" data-level="12.2.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#including-the-turf-js-library"><i class="fa fa-check"></i><b>12.2.2</b> Including the Turf.js library</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#great-circle-line"><i class="fa fa-check"></i><b>12.3</b> Great Circle line</a></li>
+<li class="chapter" data-level="12.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuously-updated-tin"><i class="fa fa-check"></i><b>12.4</b> Continuously updated TIN</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-continuous-tin"><i class="fa fa-check"></i><b>12.4.1</b> Overview</a></li>
+<li class="chapter" data-level="12.4.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#generating-random-points"><i class="fa fa-check"></i><b>12.4.2</b> Generating random points</a></li>
+<li class="chapter" data-level="12.4.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-tin-layer"><i class="fa fa-check"></i><b>12.4.3</b> Adding a TIN layer</a></li>
+<li class="chapter" data-level="12.4.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#draggable-circle-markers"><i class="fa fa-check"></i><b>12.4.4</b> Draggable circle markers</a></li>
+<li class="chapter" data-level="12.4.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#continuous-updating"><i class="fa fa-check"></i><b>12.4.5</b> Continuous updating</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#clustering"><i class="fa fa-check"></i><b>12.5</b> Clustering</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#overview-clustering"><i class="fa fa-check"></i><b>12.5.1</b> Overview</a></li>
+<li class="chapter" data-level="12.5.2" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#processing-sets-of-features"><i class="fa fa-check"></i><b>12.5.2</b> Processing sets of features</a></li>
+<li class="chapter" data-level="12.5.3" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#adding-a-convex-hull"><i class="fa fa-check"></i><b>12.5.3</b> Adding a Convex Hull</a></li>
+<li class="chapter" data-level="12.5.4" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#dbscan-clustering"><i class="fa fa-check"></i><b>12.5.4</b> DBSCAN clustering</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#heatmaps-with-leafletheat"><i class="fa fa-check"></i><b>12.6</b> Heatmaps with Leaflet.heat</a></li>
+<li class="chapter" data-level="12.7" data-path="client-side-geoprocessing.html"><a href="client-side-geoprocessing.html#exercise-6"><i class="fa fa-check"></i><b>12.7</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html"><i class="fa fa-check"></i><b>13</b> Collaborative Mapping</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#introduction-11"><i class="fa fa-check"></i><b>13.1</b> Introduction</a></li>
+<li class="chapter" data-level="13.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#crowdsourcing"><i class="fa fa-check"></i><b>13.2</b> Crowdsourcing</a></li>
+<li class="chapter" data-level="13.3" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#the-drawing-control"><i class="fa fa-check"></i><b>13.3</b> The drawing control</a></li>
+<li class="chapter" data-level="13.4" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#working-with-drawn-items"><i class="fa fa-check"></i><b>13.4</b> Working with drawn items</a>
+<ul>
+<li class="chapter" data-level="13.4.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#printing-drawn-items-geojson"><i class="fa fa-check"></i><b>13.4.1</b> Printing drawn items GeoJSON</a></li>
+<li class="chapter" data-level="13.4.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#expanded-geojson-viewer"><i class="fa fa-check"></i><b>13.4.2</b> Expanded GeoJSON viewer</a></li>
+</ul></li>
+<li class="chapter" data-level="13.5" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#submission-form"><i class="fa fa-check"></i><b>13.5</b> Submission form</a></li>
+<li class="chapter" data-level="13.6" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#sending-features-to-the-database"><i class="fa fa-check"></i><b>13.6</b> Sending features to the database</a>
+<ul>
+<li class="chapter" data-level="13.6.1" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#setting-database-permissions"><i class="fa fa-check"></i><b>13.6.1</b> Setting database permissions</a></li>
+<li class="chapter" data-level="13.6.2" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#adding-draw-control"><i class="fa fa-check"></i><b>13.6.2</b> Adding the drawing control</a></li>
+</ul></li>
+<li class="chapter" data-level="13.7" data-path="collaborative-mapping.html"><a href="collaborative-mapping.html#exercise-7"><i class="fa fa-check"></i><b>13.7</b> Exercise</a></li>
+</ul></li>
+<li class="part"><span><b>V Appendices</b></span></li>
+<li class="appendix"><span><b>Appendix</b></span></li>
+<li class="chapter" data-level="A" data-path="associated-files.html"><a href="associated-files.html"><i class="fa fa-check"></i><b>A</b> Associated Files</a></li>
+<li class="chapter" data-level="B" data-path="list-of-examples.html"><a href="list-of-examples.html"><i class="fa fa-check"></i><b>B</b> List of Examples</a>
+<ul>
+<li class="chapter" data-level="B.1" data-path="list-of-examples.html"><a href="list-of-examples.html#main"><i class="fa fa-check"></i><b>B.1</b> Main</a></li>
+<li class="chapter" data-level="B.2" data-path="list-of-examples.html"><a href="list-of-examples.html#additional"><i class="fa fa-check"></i><b>B.2</b> Additional</a>
+<ul>
+<li class="chapter" data-level="B.2.1" data-path="list-of-examples.html"><a href="list-of-examples.html#html-and-css"><i class="fa fa-check"></i><b>B.2.1</b> HTML and CSS</a></li>
+<li class="chapter" data-level="B.2.2" data-path="list-of-examples.html"><a href="list-of-examples.html#javascript"><i class="fa fa-check"></i><b>B.2.2</b> JavaScript</a></li>
+<li class="chapter" data-level="B.2.3" data-path="list-of-examples.html"><a href="list-of-examples.html#leaflet-1"><i class="fa fa-check"></i><b>B.2.3</b> Leaflet</a></li>
+<li class="chapter" data-level="B.2.4" data-path="list-of-examples.html"><a href="list-of-examples.html#geo-processing"><i class="fa fa-check"></i><b>B.2.4</b> Geo-processing</a></li>
+<li class="chapter" data-level="B.2.5" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps"><i class="fa fa-check"></i><b>B.2.5</b> 2.5D Maps</a></li>
+<li class="chapter" data-level="B.2.6" data-path="list-of-examples.html"><a href="list-of-examples.html#d-maps-1"><i class="fa fa-check"></i><b>B.2.6</b> 3D maps</a></li>
+<li class="chapter" data-level="B.2.7" data-path="list-of-examples.html"><a href="list-of-examples.html#animation"><i class="fa fa-check"></i><b>B.2.7</b> Animation</a></li>
+<li class="chapter" data-level="B.2.8" data-path="list-of-examples.html"><a href="list-of-examples.html#real-time-data"><i class="fa fa-check"></i><b>B.2.8</b> Real-time data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="C" data-path="list-of-exercise-solutions.html"><a href="list-of-exercise-solutions.html"><i class="fa fa-check"></i><b>C</b> List of Exercise Solutions</a></li>
+<li class="chapter" data-level="D" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html"><i class="fa fa-check"></i><b>D</b> BGU course 2021</a>
+<ul>
+<li class="chapter" data-level="D.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#place-and-time"><i class="fa fa-check"></i><b>D.1</b> Place and Time</a></li>
+<li class="chapter" data-level="D.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#lecture-plan"><i class="fa fa-check"></i><b>D.2</b> Lecture plan</a></li>
+<li class="chapter" data-level="D.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#project-submission-dates"><i class="fa fa-check"></i><b>D.3</b> Project submission dates</a></li>
+<li class="chapter" data-level="D.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#additional-resources"><i class="fa fa-check"></i><b>D.4</b> Additional resources</a>
+<ul>
+<li class="chapter" data-level="D.4.1" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#html-css"><i class="fa fa-check"></i><b>D.4.1</b> HTML &amp; CSS</a></li>
+<li class="chapter" data-level="D.4.2" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#javascript-1"><i class="fa fa-check"></i><b>D.4.2</b> JavaScript</a></li>
+<li class="chapter" data-level="D.4.3" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#web-mapping"><i class="fa fa-check"></i><b>D.4.3</b> Web mapping</a></li>
+<li class="chapter" data-level="D.4.4" data-path="bgu-course-2021.html"><a href="bgu-course-2021.html#postgis"><i class="fa fa-check"></i><b>D.4.4</b> PostGIS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="E" data-path="projects.html"><a href="projects.html"><i class="fa fa-check"></i><b>E</b> Projects</a>
+<ul>
+<li class="chapter" data-level="E.1" data-path="projects.html"><a href="projects.html#overview-3"><i class="fa fa-check"></i><b>E.1</b> Overview</a></li>
+<li class="chapter" data-level="E.2" data-path="projects.html"><a href="projects.html#carto-account"><i class="fa fa-check"></i><b>E.2</b> CARTO Account</a></li>
+<li class="chapter" data-level="E.3" data-path="projects.html"><a href="projects.html#data"><i class="fa fa-check"></i><b>E.3</b> Data</a></li>
+<li class="chapter" data-level="E.4" data-path="projects.html"><a href="projects.html#project-requirements"><i class="fa fa-check"></i><b>E.4</b> Project requirements</a>
+<ul>
+<li class="chapter" data-level="E.4.1" data-path="projects.html"><a href="projects.html#project-01"><i class="fa fa-check"></i><b>E.4.1</b> Project 01</a></li>
+<li class="chapter" data-level="E.4.2" data-path="projects.html"><a href="projects.html#project-02"><i class="fa fa-check"></i><b>E.4.2</b> Project 02</a></li>
+<li class="chapter" data-level="E.4.3" data-path="projects.html"><a href="projects.html#project-03"><i class="fa fa-check"></i><b>E.4.3</b> Project 03</a></li>
+</ul></li>
+<li class="chapter" data-level="E.5" data-path="projects.html"><a href="projects.html#submission"><i class="fa fa-check"></i><b>E.5</b> Submission</a></li>
+<li class="chapter" data-level="E.6" data-path="projects.html"><a href="projects.html#grading"><i class="fa fa-check"></i><b>E.6</b> Grading</a></li>
+</ul></li>
+<li class="chapter" data-level="F" data-path="exam.html"><a href="exam.html"><i class="fa fa-check"></i><b>F</b> Exam</a>
+<ul>
+<li class="chapter" data-level="F.1" data-path="exam.html"><a href="exam.html#topics"><i class="fa fa-check"></i><b>F.1</b> Topics</a></li>
+<li class="chapter" data-level="F.2" data-path="exam.html"><a href="exam.html#sample-questions"><i class="fa fa-check"></i><b>F.2</b> Sample questions</a>
+<ul>
+<li class="chapter" data-level="F.2.1" data-path="exam.html"><a href="exam.html#question-1"><i class="fa fa-check"></i><b>F.2.1</b> Question 1</a></li>
+<li class="chapter" data-level="F.2.3" data-path="exam.html"><a href="exam.html#question-3"><i class="fa fa-check"></i><b>F.2.3</b> Question 3</a></li>
+<li class="chapter" data-level="F.2.4" data-path="exam.html"><a href="exam.html#question-4"><i class="fa fa-check"></i><b>F.2.4</b> Question 4</a></li>
+<li class="chapter" data-level="F.2.5" data-path="exam.html"><a href="exam.html#question-5"><i class="fa fa-check"></i><b>F.2.5</b> Question 5</a></li>
+<li class="chapter" data-level="F.2.6" data-path="exam.html"><a href="exam.html#question-6"><i class="fa fa-check"></i><b>F.2.6</b> Question 6</a></li>
+<li class="chapter" data-level="F.2.7" data-path="exam.html"><a href="exam.html#question-7"><i class="fa fa-check"></i><b>F.2.7</b> Question 7</a></li>
+<li class="chapter" data-level="F.2.8" data-path="exam.html"><a href="exam.html#question-8"><i class="fa fa-check"></i><b>F.2.8</b> Question 8</a></li>
+<li class="chapter" data-level="F.2.9" data-path="exam.html"><a href="exam.html#question-9"><i class="fa fa-check"></i><b>F.2.9</b> Question 9</a></li>
+<li class="chapter" data-level="F.2.10" data-path="exam.html"><a href="exam.html#question-10"><i class="fa fa-check"></i><b>F.2.10</b> Question 10</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="G" data-path="additional-questions.html"><a href="additional-questions.html"><i class="fa fa-check"></i><b>G</b> Additional Questions</a>
+<ul>
+<li class="chapter" data-level="G.1" data-path="additional-questions.html"><a href="additional-questions.html#chapter-3"><i class="fa fa-check"></i><b>G.1</b> Chapter 3</a>
+<ul>
+<li class="chapter" data-level="G.1.1" data-path="additional-questions.html"><a href="additional-questions.html#modifying-global-variable"><i class="fa fa-check"></i><b>G.1.1</b> Modifying global variable</a></li>
+<li class="chapter" data-level="G.1.2" data-path="additional-questions.html"><a href="additional-questions.html#insertingremoving-array-element"><i class="fa fa-check"></i><b>G.1.2</b> Inserting/removing array element</a></li>
+<li class="chapter" data-level="G.1.3" data-path="additional-questions.html"><a href="additional-questions.html#object-oriented-language"><i class="fa fa-check"></i><b>G.1.3</b> Object Oriented language</a></li>
+</ul></li>
+<li class="chapter" data-level="G.2" data-path="additional-questions.html"><a href="additional-questions.html#chapter-4"><i class="fa fa-check"></i><b>G.2</b> Chapter 4</a>
+<ul>
+<li class="chapter" data-level="G.2.1" data-path="additional-questions.html"><a href="additional-questions.html#removing-collection-of-html-elements"><i class="fa fa-check"></i><b>G.2.1</b> Removing collection of HTML elements</a></li>
+<li class="chapter" data-level="G.2.2" data-path="additional-questions.html"><a href="additional-questions.html#constraining-event-listener-frequency"><i class="fa fa-check"></i><b>G.2.2</b> Constraining event listener frequency</a></li>
+<li class="chapter" data-level="G.2.3" data-path="additional-questions.html"><a href="additional-questions.html#saving-.getelementbyid-method-in-variable"><i class="fa fa-check"></i><b>G.2.3</b> Saving <code>.getElementById</code> method in variable</a></li>
+</ul></li>
+<li class="chapter" data-level="G.3" data-path="additional-questions.html"><a href="additional-questions.html#chapter-6"><i class="fa fa-check"></i><b>G.3</b> Chapter 6</a>
+<ul>
+<li class="chapter" data-level="G.3.1" data-path="additional-questions.html"><a href="additional-questions.html#routing"><i class="fa fa-check"></i><b>G.3.1</b> Routing</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="H" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html"><i class="fa fa-check"></i><b>H</b> Setting up an SQL API</a>
+<ul>
+<li class="chapter" data-level="H.1" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#introduction-12"><i class="fa fa-check"></i><b>H.1</b> Introduction</a></li>
+<li class="chapter" data-level="H.2" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#computer-with-fixed-ip-address"><i class="fa fa-check"></i><b>H.2</b> Computer with fixed IP address</a></li>
+<li class="chapter" data-level="H.3" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-postgresql-postgis"><i class="fa fa-check"></i><b>H.3</b> Installing PostgreSQL and PostGIS</a></li>
+<li class="chapter" data-level="H.4" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#loading-data-into-the-database"><i class="fa fa-check"></i><b>H.4</b> Loading data into the database</a></li>
+<li class="chapter" data-level="H.5" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#adding-read-only-database-user"><i class="fa fa-check"></i><b>H.5</b> Adding a read-only database user</a></li>
+<li class="chapter" data-level="H.6" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#installing-nodejs-and-required-modules"><i class="fa fa-check"></i><b>H.6</b> Installing Node.js and required modules</a></li>
+<li class="chapter" data-level="H.7" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#creating-a-service"><i class="fa fa-check"></i><b>H.7</b> Creating a service</a></li>
+<li class="chapter" data-level="H.8" data-path="setting-up-an-sql-api.html"><a href="setting-up-an-sql-api.html#testing-the-sql-api"><i class="fa fa-check"></i><b>H.8</b> Testing the SQL API</a></li>
+</ul></li>
+<li class="chapter" data-level="I" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html"><i class="fa fa-check"></i><b>I</b> Setting up a static server using R</a>
+<ul>
+<li class="chapter" data-level="I.1" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#introduction-13"><i class="fa fa-check"></i><b>I.1</b> Introduction</a></li>
+<li class="chapter" data-level="I.2" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-r"><i class="fa fa-check"></i><b>I.2</b> Installing R</a></li>
+<li class="chapter" data-level="I.3" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#installing-the-servr-package"><i class="fa fa-check"></i><b>I.3</b> Installing the <code>servr</code> package</a></li>
+<li class="chapter" data-level="I.4" data-path="setting-up-a-static-server-using-r.html"><a href="setting-up-a-static-server-using-r.html#starting-the-server"><i class="fa fa-check"></i><b>I.4</b> Starting the server</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://bookdown.org/" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="index-2.html">Introduction to Web Mapping</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="client-side-geoprocessing" class="section level1" number="12">
+<h1><span class="header-section-number">Chapter 12</span> Client-side Geoprocessing</h1>
+<p><i>Last updated: 2021-08-24 14:54:59 </i></p>
+<div id="introduction-10" class="section level2" number="12.1">
+<h2><span class="header-section-number">12.1</span> Introduction</h2>
+<p>In Chapter <a href="spatial-queries-1.html#spatial-queries-1">11</a>, we used spatial SQL queries to load a subset of features from a PostGIS database on a web map. In other words, we performed a geoprocessing operation—finding the <em>n</em>-nearest points—using SQL. Notably, the operation was performed on the <strong>server</strong> (the CARTO platform), and the result was returned to us via HTTP. Sometimes, it is more convenient to perform geoprocessing operations on the <strong>client</strong>, rather than on the server, for various reasons.</p>
+<p>One reason to prefer client-side geoprocessing is that we may need the web page to be <em>instantaneously</em> responsive, such as a web map that is continuously updated in response to user input (Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>). This is very difficult to achieve when communicating with a server: even if the internet connection is very fast, there is usually going to be a noticeable lag due the time interval between sending the request and receiving the response. Another reason may be the relative simplicity and flexibility of using various algorithms and methods through JavaScript libraries, compared to the cost of setting up and managing a server with the same functionality.</p>
+<p>The main disadvantage of client-side geoprocessing is that we are limited by the hardware constraints of the client. While the hardware of the server is (potentially) very powerful, and in any case it is under our control, the different clients that connect to our web page may have widely varying hardware. To make our website responsive, we should therefore limit client-side geoprocessing to relatively light-weight operations. Another constraint in client-side geoprocessing is that we are limited to JavaScript libraries and cannot rely on any other software or programming language (such as a PostGIS database).</p>
+<p>In this chapter we will see several examples of <strong>client-side geoprocessing</strong>:</p>
+<ul>
+<li>Calculating Great Circle lines (Section <a href="client-side-geoprocessing.html#great-circle-line">12.3</a>)</li>
+<li>Drawing a continuously-updated TIN (Section <a href="client-side-geoprocessing.html#continuously-updated-tin">12.4</a>)</li>
+<li>Detecting spatial clusters (Section <a href="client-side-geoprocessing.html#clustering">12.5</a>)</li>
+<li>Drawing heatmaps (Section <a href="client-side-geoprocessing.html#heatmaps-with-leafletheat">12.6</a>)</li>
+</ul>
+<p>All of these will be done in the browser, using JavaScript code, without requiring a dedicated server. In the examples, we will use two different JavaScript libraries:</p>
+<ul>
+<li><strong>Turf.js</strong> (Sections <a href="client-side-geoprocessing.html#geoprocessing-with-turfjs">12.2</a>–<a href="client-side-geoprocessing.html#clustering">12.5</a>)—A general-purpose geoprocessing library, with a comprehensive set of functions for various geoprocessing tasks</li>
+<li><strong>Leaflet.heat</strong> (Section <a href="client-side-geoprocessing.html#heatmaps-with-leafletheat">12.6</a>)—A single-purpose plugin for Leaflet, dedicated to generating point-density heatmaps</li>
+</ul>
+</div>
+<div id="geoprocessing-with-turfjs" class="section level2" number="12.2">
+<h2><span class="header-section-number">12.2</span> Geoprocessing with Turf.js</h2>
+<div id="overview-turfjs" class="section level3" number="12.2.1">
+<h3><span class="header-section-number">12.2.1</span> Overview</h3>
+<p><a href="http://turfjs.org/"><strong>Turf.js</strong></a> is a JavaScript library for client-side geoprocessing. It includes a comprehensive set of functions, covering a wide range of geoprocessing tasks. The Turf.js library also has excellent <a href="http://turfjs.org/docs/">documentation</a>, including a small visual example for each of its functions. </p>
+<p>As we will see shortly, the basic data type that Turf.js works with is GeoJSON. This is very convenient, because it means that any geoprocessing product can be immediately loaded on a Leaflet map with the <code>L.geoJSON</code> function, which we have been using in Chapters <a href="geojson-1.html#geojson-1">7</a>–<a href="spatial-queries-1.html#spatial-queries-1">11</a>. As for the other way around, we will also see that any existing Leaflet layer can be converted back to GeoJSON using the <code>.toGeoJSON</code> method, so that it can passed to a Turf.js function for processing. Therefore, when working with Turf.js we typically have to go back and forth between Leaflet layer objects, which the Leaflet library understands, and GeoJSON objects, which the Turf.js library understands (Section <a href="client-side-geoprocessing.html#continuous-updating">12.4.5</a>). </p>
+<p>In this chapter, we will use seven different functions from the Turf.js library (Table <a href="client-side-geoprocessing.html#tab:turf-functions">12.1</a>). There are dozens of other functions which we will not use; you are invited to browse through the documentation to explore what kind of other tasks can be done with Turf.js.</p>
+<table>
+<caption><span id="tab:turf-functions">TABLE 12.1: </span> Turf.js functions used in Chapter <a href="client-side-geoprocessing.html#client-side-geoprocessing">12</a></caption>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>turf.point</code></td>
+<td>Convert point coordinates to GeoJSON of type <code>"Point"</code></td>
+</tr>
+<tr class="even">
+<td><code>turf.greatCircle</code></td>
+<td>Calculate a Great Circle line</td>
+</tr>
+<tr class="odd">
+<td><code>turf.randomPoint</code></td>
+<td>Calculate random points</td>
+</tr>
+<tr class="even">
+<td><code>turf.tin</code></td>
+<td>Calculate a Triangulated Irregular Network (TIN)</td>
+</tr>
+<tr class="odd">
+<td><code>turf.clusterEach</code></td>
+<td>Apply function on each subset of GeoJSON features</td>
+</tr>
+<tr class="even">
+<td><code>turf.convex</code></td>
+<td>Calculate a Convex Hull polygon</td>
+</tr>
+<tr class="odd">
+<td><code>turf.clustersDbscan</code></td>
+<td>Detect clusters using the DBSCAN method</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="including-the-turf-js-library" class="section level3" number="12.2.2">
+<h3><span class="header-section-number">12.2.2</span> Including the Turf.js library</h3>
+<p>To use Turf.js in our web page, we first need to include it, using a <code>&lt;script&gt;</code> element. As always, the JavaScript file can be included from a local copy, or from a CDN (Section <a href="leaflet.html#loading-a-remote-script">6.5.6</a>) such as the following one: </p>
+<p><a href="../../npmcdn.com/%40turf/turf%406.5.0/turf.min.js" class="uri">https://npmcdn.com/@turf/turf/turf.min.js</a></p>
+<p>We will use a local copy stored in the <code>js</code> folder on our server. Therefore, we add the following <code>&lt;script&gt;</code> element inside the <code>&lt;head&gt;</code>: </p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb412-1"><a href="client-side-geoprocessing.html#cb412-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/turf.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
+<p>You can download the Turf.js file from the URL specified at the beginning of this section, or from the online version of the book (Section <a href="index.html#online-version">0.7</a>), and place it in a local folder if you want to include a local copy in your web page.</p>
+</div>
+</div>
+<div id="great-circle-line" class="section level2" number="12.3">
+<h2><span class="header-section-number">12.3</span> Great Circle line</h2>
+<p>As a first experiment with Turf.js, we will use the library to calculate a <strong>Great Circle</strong> line, then display it on a Leaflet web map. A Great Circle line is the shortest path between two points on the earth surface, taking the curvature of the earth into account (Figure <a href="client-side-geoprocessing.html#fig:solution-12">12.10</a>). Through the Great Circle example, we will demonstrate the way that Turf.js functions operate on GeoJSON objects.</p>
+<p>All functions from the Turf.js package are loaded as methods of a global object named <code>turf</code>, thus sharing the <code>turf.</code> prefix. This is much like Leaflet functions start with <code>L</code> (Section <a href="leaflet.html#creating-map-object">6.5.9</a>).</p>
+<p>As an example, let’s open the documentation of the <code>turf.greatCircle</code> <a href="http://turfjs.org/docs/#greatCircle">function</a>. Here is a slightly modified code of the example given for the <code>turf.greatCircle</code> function in the documentation:</p>
+<div class="sourceCode" id="cb413"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb413-1"><a href="client-side-geoprocessing.html#cb413-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> start <span class="op">=</span> turf<span class="op">.</span><span class="fu">point</span>([<span class="op">-</span><span class="dv">122</span><span class="op">,</span> <span class="dv">48</span>])<span class="op">;</span></span>
+<span id="cb413-2"><a href="client-side-geoprocessing.html#cb413-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> end <span class="op">=</span> turf<span class="op">.</span><span class="fu">point</span>([<span class="op">-</span><span class="dv">77</span><span class="op">,</span> <span class="dv">39</span>])<span class="op">;</span></span>
+<span id="cb413-3"><a href="client-side-geoprocessing.html#cb413-3" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> greatCircle <span class="op">=</span> turf<span class="op">.</span><span class="fu">greatCircle</span>(start<span class="op">,</span> end)<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Open the HTML document of the basic map <code>example-06-02.html</code> from Section <a href="leaflet.html#adding-a-tile-layer">6.5.11</a>.</li>
+<li>Add a <code>&lt;script&gt;</code> element in the <code>&lt;head&gt;</code> for including the Turf.js library.</li>
+<li>Open the console and execute the above three expressions, then examine the resulting objects as described below.</li>
+</ul>
+</blockquote>
+<p>What does this code do? The first two expressions are using a convenience function named <a href="http://turfjs.org/docs/#point"><code>turf.point</code></a> to convert pairs of coordinates into a GeoJSON object of type <code>"Feature"</code>, comprising one feature of type <code>"Point"</code> (Section <a href="geojson-1.html#single-part-geometries">7.3.2.2</a>). The coordinates passed to <code>turf.point</code> are assumed to be of the <code>[lon, lat]</code> form, same as in GeoJSON. Typing <code>JSON.stringify(start)</code> reveals the resulting GeoJSON: </p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb414-1"><a href="client-side-geoprocessing.html#cb414-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb414-2"><a href="client-side-geoprocessing.html#cb414-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Feature&quot;</span><span class="fu">,</span></span>
+<span id="cb414-3"><a href="client-side-geoprocessing.html#cb414-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;properties&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb414-4"><a href="client-side-geoprocessing.html#cb414-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;geometry&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb414-5"><a href="client-side-geoprocessing.html#cb414-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Point&quot;</span><span class="fu">,</span></span>
+<span id="cb414-6"><a href="client-side-geoprocessing.html#cb414-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;coordinates&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">-122</span><span class="ot">,</span> <span class="dv">48</span><span class="ot">]</span></span>
+<span id="cb414-7"><a href="client-side-geoprocessing.html#cb414-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb414-8"><a href="client-side-geoprocessing.html#cb414-8" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>Note that the <code>[-122, 48]</code> coordinates passed to <code>turf.point</code> are now in the <code>coordinates</code> property of the GeoJSON. The output of typing <code>JSON.stringify(end)</code> would be identical, except for the coordinates, which will be <code>[-77, 39]</code> instead of <code>[-122, 48]</code>. (Type <code>JSON.stringify(end)</code> in the console to see for yourself.) </p>
+<p>The third expression uses the geoprocessing function <code>turf.greatCircle</code> to calculate the Great Circle line between the two points. The result is assigned to a variable named <code>greatCircle</code>. Here is the printout of <code>JSON.stringify(greatCircle)</code><a href="#fn106" class="footnote-ref" id="fnref106"><sup>106</sup></a>: </p>
+<div class="sourceCode" id="cb415"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb415-1"><a href="client-side-geoprocessing.html#cb415-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb415-2"><a href="client-side-geoprocessing.html#cb415-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;Feature&quot;</span><span class="fu">,</span></span>
+<span id="cb415-3"><a href="client-side-geoprocessing.html#cb415-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;properties&quot;</span><span class="fu">:</span> <span class="fu">{},</span></span>
+<span id="cb415-4"><a href="client-side-geoprocessing.html#cb415-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&quot;geometry&quot;</span><span class="fu">:</span> <span class="fu">{</span></span>
+<span id="cb415-5"><a href="client-side-geoprocessing.html#cb415-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;type&quot;</span><span class="fu">:</span> <span class="st">&quot;LineString&quot;</span><span class="fu">,</span></span>
+<span id="cb415-6"><a href="client-side-geoprocessing.html#cb415-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;coordinates&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb415-7"><a href="client-side-geoprocessing.html#cb415-7" aria-hidden="true" tabindex="-1"></a>        <span class="ot">[</span><span class="dv">-122</span><span class="ot">,</span> <span class="dv">48</span><span class="ot">],</span></span>
+<span id="cb415-8"><a href="client-side-geoprocessing.html#cb415-8" aria-hidden="true" tabindex="-1"></a>        <span class="ot">[</span><span class="fl">-121.49670597260395</span><span class="ot">,</span> <span class="fl">48.006695584053034</span><span class="ot">],</span></span>
+<span id="cb415-9"><a href="client-side-geoprocessing.html#cb415-9" aria-hidden="true" tabindex="-1"></a>        <span class="ot">[</span><span class="fl">-120.9933027193627</span><span class="ot">,</span> <span class="fl">48.011192319649155</span><span class="ot">],</span></span>
+<span id="cb415-10"><a href="client-side-geoprocessing.html#cb415-10" aria-hidden="true" tabindex="-1"></a>        <span class="er">...</span><span class="ot">,</span></span>
+<span id="cb415-11"><a href="client-side-geoprocessing.html#cb415-11" aria-hidden="true" tabindex="-1"></a>        <span class="ot">[</span><span class="dv">-77</span><span class="ot">,</span> <span class="fl">38.99999999999999</span><span class="ot">]</span></span>
+<span id="cb415-12"><a href="client-side-geoprocessing.html#cb415-12" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
+<span id="cb415-13"><a href="client-side-geoprocessing.html#cb415-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">}</span></span>
+<span id="cb415-14"><a href="client-side-geoprocessing.html#cb415-14" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<p>This is a GeoJSON Feature of type <code>"LineString"</code> (Section <a href="geojson-1.html#single-part-geometries">7.3.2.2</a>) representing a Great Circle line. </p>
+<blockquote>
+<ul>
+<li>How many <code>[lon, lat]</code> coordinate pairs is the <code>greatCircle</code> line composed of?</li>
+<li>Type the appropriate expression in the console to find out<a href="#fn107" class="footnote-ref" id="fnref107"><sup>107</sup></a>.</li>
+</ul>
+</blockquote>
+<p>When the above code section is executed in a web page with a Leaflet map object named <code>map</code>, the following expression can be used to draw the Great Circle line we just calculated on the map. We are using <code>L.geoJSON</code> to go from a GeoJSON object to a Leaflet layer, then adding the layer on the map. Note that you need to zoom-in on the U.S. to see the line, since the line goes from Seattle to Washington, D.C. </p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb416-1"><a href="client-side-geoprocessing.html#cb416-1" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(greatCircle)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>Similarly, we can draw markers at the start and end points, as follows:</p>
+<div class="sourceCode" id="cb417"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb417-1"><a href="client-side-geoprocessing.html#cb417-1" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(start)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb417-2"><a href="client-side-geoprocessing.html#cb417-2" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(end)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Type these expressions in the console, in a Leaflet web map where Turf.js was loaded and <code>start</code>, <code>end</code> and <code>greatCircle</code> were calculated.</li>
+<li>You should see the Great Circle line and the markers on the map.</li>
+</ul>
+</blockquote>
+<p>This is the general principle of working with most functions in Turf.js, in a nutshell: reshaping our data with Turf.js convenience functions (such as <code>turf.point</code>), then passing GeoJSON objects to Turf.js geoprocessing functions (such as <code>turf.greatCircle</code>) and getting new GeoJSON objects in return. We are now ready for two extended examples demonstrating the workflow of using Turf.js with Leaflet: </p>
+<ul>
+<li>In the first example (Section <a href="client-side-geoprocessing.html#continuously-updated-tin">12.4</a>), we build a web map where a continuously updated <strong>TIN</strong> layer is generated, while the user can drag any of the underlying points (Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>).</li>
+<li>In the second example (Section <a href="client-side-geoprocessing.html#clustering">12.5</a>), we perform spatial <strong>clustering</strong> to detect and display distinct groups of rare species observations (Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>).</li>
+</ul>
+</div>
+<div id="continuously-updated-tin" class="section level2" number="12.4">
+<h2><span class="header-section-number">12.4</span> Continuously updated TIN</h2>
+<div id="overview-continuous-tin" class="section level3" number="12.4.1">
+<h3><span class="header-section-number">12.4.1</span> Overview</h3>
+<p>As our first extended use case of Turf.js, we are going to build a web map with a dynamic demonstration of TIN layers. The map will display a TIN layer generated from a set of randomly placed points. The user will be able to drag any of the points, observing how the TIN layer is being updated in real time (Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>). We will go through four steps to accomplish this task: </p>
+<ul>
+<li>In <code>example-12-01.html</code>, we are to going to generate <strong>random points</strong> and add them on a Leaflet map (Section <a href="client-side-geoprocessing.html#generating-random-points">12.4.2</a>).</li>
+<li>In <code>example-12-02.html</code>, we will generate a <strong>TIN</strong> layer on top of the points (Section <a href="client-side-geoprocessing.html#adding-a-tin-layer">12.4.3</a>).</li>
+<li>In <code>example-12-03.html</code>, we will learn how to make a Leaflet marker <strong>draggable</strong> (Section <a href="client-side-geoprocessing.html#draggable-circle-markers">12.4.4</a>).</li>
+<li>In <code>example-12-04.html</code>, we will make all of our random points draggable and binded to an event listener that <strong>updates</strong> the TIN layer in response to any of the points being dragged (Section <a href="client-side-geoprocessing.html#continuous-updating">12.4.5</a>).</li>
+</ul>
+</div>
+<div id="generating-random-points" class="section level3" number="12.4.2">
+<h3><span class="header-section-number">12.4.2</span> Generating random points</h3>
+<p>The <code>turf.randomPoint</code> <a href="http://turfjs.org/docs/#randomPoint">function</a> from the Turf.js library can be used to generate GeoJSON with randomly placed points. When using the <code>turf.randomPoint</code> function, we need to specify:</p>
+<ul>
+<li>The <strong>number</strong> of points to generate</li>
+<li>A <strong>bounding box</strong>, defined using an array of the form <code>[lon0, lat0, lon1, lat1]</code></li>
+</ul>
+<p>Given these two arguments, the <code>turf.randomPoint</code> function randomly places the specified number of points within the given bounding box, and returns the resulting point layer as GeoJSON. For example, in the following code section, the <em>first</em> expression defines a bounding box array named <code>bounds</code>, using the <code>[lon0, lat0, lon1, lat1]</code> structure that <code>turf.randomPoint</code> expects. In this case, we are using the coordinates of the bounding box of Israel (Figure <a href="client-side-geoprocessing.html#fig:example-12-01">12.1</a>). The <em>second</em> expression then generates 20 random points placed within the bounding box, and returns a GeoJSON object which we assign to a variable named <code>points</code>. Note that the bounding box array needs to be passed as the <code>bbox</code> property inside the options object in <code>turf.randomPoint</code>. If we omit the <code>bbox</code> option, the random points will be generated in the default global extent, i.e., <code>[-180, -90, 180, 90]</code>. The <em>third</em> expression transforms the returned GeoJSON <code>points</code> to a Leaflet layer, then adds the layer on the map: </p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb418-1"><a href="client-side-geoprocessing.html#cb418-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> bounds <span class="op">=</span> [<span class="fl">34.26801</span><span class="op">,</span> <span class="fl">29.49708</span><span class="op">,</span> <span class="fl">35.90094</span><span class="op">,</span> <span class="fl">33.36403</span>]<span class="op">;</span></span>
+<span id="cb418-2"><a href="client-side-geoprocessing.html#cb418-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> points <span class="op">=</span> turf<span class="op">.</span><span class="fu">randomPoint</span>(<span class="dv">20</span><span class="op">,</span> {<span class="dt">bbox</span><span class="op">:</span> bounds})<span class="op">;</span></span>
+<span id="cb418-3"><a href="client-side-geoprocessing.html#cb418-3" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(points)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>To view the points, it is convenient to set the initial map extent to the same bounding box where the points were generated. In the following expression, we initialize the Leaflet map using a view-setting method called <code>.fitBounds</code>. The <code>.fitBounds</code> method automatically detects the appropriate map center and zoom level so that the given extent fits the map bounds. The <code>.fitBounds</code> method is sometimes more convenient than <code>.setView</code>, which was introduced in Section <a href="geojson-1.html#adding-geojson-to-leaflet-map">7.5</a>, where the extent is set based on map center and zoom level.</p>
+<p>Confusingly, the <code>.fitBounds</code> method from Leaflet and the <code>turf.randomPoint</code> function from Turf.js require two different forms of bounding box specifications. Specifically, like all other Leaflet functions, <code>.fitBounds</code> uses the <code>[lat, lon]</code> ordering instead of <code>[lon, lat]</code>. Also, <code>.fitBounds</code> needs the two bounding box “corners” to be separated in two internal arrays. Therefore:</p>
+<ul>
+<li><strong>Leaflet</strong> needs a <code>[[lat0, lon0], [lat1, lon1]]</code> bounding box</li>
+<li><strong>Turf.js</strong> needs a <code>[lon0, lat0, lon1, lat1]</code> bounding box</li>
+</ul>
+<p>This is the reason that the <code>bounds</code> array is “rearranged” in the following call to <code>.fitBounds</code>, when initializing our Leaflet map to the same extent where the random points are<a href="#fn108" class="footnote-ref" id="fnref108"><sup>108</sup></a>: </p>
+<div class="sourceCode" id="cb419"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb419-1"><a href="client-side-geoprocessing.html#cb419-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> map <span class="op">=</span> L<span class="op">.</span><span class="fu">map</span>(<span class="st">&quot;map&quot;</span>)</span>
+<span id="cb419-2"><a href="client-side-geoprocessing.html#cb419-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">fitBounds</span>([[bounds[<span class="dv">1</span>]<span class="op">,</span> bounds[<span class="dv">0</span>]]<span class="op">,</span> [bounds[<span class="dv">3</span>]<span class="op">,</span> bounds[<span class="dv">2</span>]]])<span class="op">;</span></span>
+<span id="cb419-3"><a href="client-side-geoprocessing.html#cb419-3" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">tileLayer</span>(</span>
+<span id="cb419-4"><a href="client-side-geoprocessing.html#cb419-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png&quot;</span><span class="op">,</span> </span>
+<span id="cb419-5"><a href="client-side-geoprocessing.html#cb419-5" aria-hidden="true" tabindex="-1"></a>    {<span class="dt">attribution</span><span class="op">:</span> <span class="st">&#39;&amp;copy; &lt;a href=&quot;https://www.openstreetmap.org/[...]&lt;/a&gt;&#39;</span>}</span>
+<span id="cb419-6"><a href="client-side-geoprocessing.html#cb419-6" aria-hidden="true" tabindex="-1"></a>)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>Including the latter five expressions in our script displays 20 randomly placed point markers (<code>example-12-01.html</code>), as shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-01">12.1</a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-01"></span>
+<iframe src="examples/example-12-01.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.1: <code>example-12-01.html</code> <a href="examples/example-12-01.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Open <code>example-12-01.html</code> in the browser.</li>
+<li>Refresh the page several times—you should see the 20 points being randomly placed in different locations each time.</li>
+</ul>
+</blockquote>
+</div>
+<div id="adding-a-tin-layer" class="section level3" number="12.4.3">
+<h3><span class="header-section-number">12.4.3</span> Adding a TIN layer</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Triangulated_irregular_network"><strong>Triangulated Irregular Network</strong> (<strong>TIN</strong>)</a> is a geometrical method of connecting a set of points in such a way that the entire surface is covered with triangles. TIN is frequently used in 3D modeling, as this method can be used to construct a continuous surface out of a set of 3D points. In Turf.js, the <code>turf.tin</code> <a href="http://turfjs.org/docs/#tin">function</a> can be used to calculate a TIN layer given a set of points. </p>
+<p>Like with the <code>turf.greatCircle</code> function shown previously (Section <a href="client-side-geoprocessing.html#great-circle-line">12.3</a>), both input and output of <code>turf.tin</code> are GeoJSON objects. In the case of <code>turf.tin</code>, the input should be a point layer, and the output is a polygonal layer with the resulting TIN. </p>
+<p>To draw a TIN layer based on the GeoJSON object named <code>points</code>, we can add the following expressions at the bottom of the <code>&lt;script&gt;</code> in <code>example-12-01.html</code>. You can also run the expressions in the console of <code>example-12-01.html</code> to see the TIN layer being added in “real-time”: </p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb420-1"><a href="client-side-geoprocessing.html#cb420-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tin <span class="op">=</span> turf<span class="op">.</span><span class="fu">tin</span>(points)<span class="op">;</span></span>
+<span id="cb420-2"><a href="client-side-geoprocessing.html#cb420-2" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(tin)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>As shown in Section <a href="client-side-geoprocessing.html#generating-random-points">12.4.2</a>, <code>points</code> is a GeoJSON object representing a set of 20 random points. In the first expression, we calculate the TIN layer GeoJSON with <code>turf.tin(points)</code> and assign it to a variable named <code>tin</code>. In the second expression, <code>tin</code> is added on the map with <code>L.geoJSON</code>, the same way we added the points.</p>
+<p>The resulting map <code>example-12-02.html</code>, now with the calculated TIN, is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-02">12.2</a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-02"></span>
+<iframe src="examples/example-12-02.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.2: <code>example-12-02.html</code> <a href="examples/example-12-02.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Open <code>example-12-02.html</code> in the browser and refresh the page several times.</li>
+<li>You should see a different TIN layer each time, according to the random placement of the markers.</li>
+</ul>
+</blockquote>
+</div>
+<div id="draggable-circle-markers" class="section level3" number="12.4.4">
+<h3><span class="header-section-number">12.4.4</span> Draggable circle markers</h3>
+<p>So far, in <code>example-12-02.html</code> (Figure <a href="client-side-geoprocessing.html#fig:example-12-02">12.2</a>), we created a web map with randomly generated points and their associated TIN layer. Refreshing the web page in this example gives a nice demonstration of the TIN algorithm—each time the page is refreshed, the points are randomly rearranged and the TIN layer is updated accordingly. An even nicer demonstration, though, would be if we could <em>drag</em> any of the points wherever we want, and watch the TIN layer being updated in <em>real-time</em>. Perhaps you are already familiar with this type of behavior from <a href="https://www.google.com/maps/"><strong>Google Maps</strong></a>, or other web applications for routing, where the user can drag the marker denoting an origin or a destination, and the calculated route is continuously updated in response (Figure <a href="client-side-geoprocessing.html#fig:google-maps-directions-drag-marker">12.3</a>). </p>
+<div class="figure" style="text-align: center"><span id="fig:google-maps-directions-drag-marker"></span>
+<img src="images/google_maps_directions_drag_marker.png" alt="Draggable marker in the Google Maps Directions web application" width="100%" />
+<p class="caption">
+FIGURE 12.3: Draggable marker in the Google Maps Directions web application
+</p>
+</div>
+<p>The first thing missing to make our continuously-updated TIN is to make the 20 random markers actually <em>draggable</em>. This is exactly what we learn how to do in this section. Going back to the basic map <code>example-06-02.html</code> from Section <a href="leaflet.html#adding-a-tile-layer">6.5.11</a>, adding the following code displays a draggable marker on the map. Note that the marker is placed in a manually defined location <code>[31.262218, 34.801472]</code> (of the form <code>[lat, lon]</code>), and has a popup message. Making the marker draggable requires setting its styling option <code>draggable</code> to <code>true</code> when creating it with <code>L.marker</code>: </p>
+<div class="sourceCode" id="cb421"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb421-1"><a href="client-side-geoprocessing.html#cb421-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> marker <span class="op">=</span> </span>
+<span id="cb421-2"><a href="client-side-geoprocessing.html#cb421-2" aria-hidden="true" tabindex="-1"></a>    L<span class="op">.</span><span class="fu">marker</span>([<span class="fl">31.262218</span><span class="op">,</span> <span class="fl">34.801472</span>]<span class="op">,</span> {<span class="dt">draggable</span><span class="op">:</span> <span class="kw">true</span>})</span>
+<span id="cb421-3"><a href="client-side-geoprocessing.html#cb421-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">bindPopup</span>(<span class="st">&quot;This marker is draggable! Move it around...&quot;</span>)</span>
+<span id="cb421-4"><a href="client-side-geoprocessing.html#cb421-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">addTo</span>(map)</span>
+<span id="cb421-5"><a href="client-side-geoprocessing.html#cb421-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">openPopup</span>()<span class="op">;</span></span></code></pre></div>
+<p>On its own, the draggable marker is not very useful, because the TIN layer will not follow it once dragged. What we would like to do is make the TIN layer respond to every change in marker locations, by continuously updating itself. To do that, we can add an event listener of type <code>"drag"</code> on each and every one of our 20 random markers. The event listener function we define will be executed each time any of the markers is moved around. </p>
+<p>For now, we have just one draggable marker. To experiment with the <code>"drag"</code> event listener we can use a function that simply prints the current marker position. The latter can be accessed through a property named <code>._latlng</code> that the marker has. The <code>._latlng</code> property is an object with properties <code>.lat</code> and <code>.lng</code>, similar to the <code>.latlng</code> event object property (Sections <a href="leaflet.html#introducing-map-events">6.9</a> and <a href="spatial-queries-1.html#getting-click-coordinates">11.2.1</a>): </p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb422-1"><a href="client-side-geoprocessing.html#cb422-1" aria-hidden="true" tabindex="-1"></a>marker<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;drag&quot;</span><span class="op">,</span> <span class="kw">function</span>() {</span>
+<span id="cb422-2"><a href="client-side-geoprocessing.html#cb422-2" aria-hidden="true" tabindex="-1"></a>     <span class="bu">console</span><span class="op">.</span><span class="fu">log</span>(marker<span class="op">.</span><span class="at">_latlng</span>)<span class="op">;</span></span>
+<span id="cb422-3"><a href="client-side-geoprocessing.html#cb422-3" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span> </span></code></pre></div>
+<p>The resulting map <code>example-12-03.html</code>, displaying one draggable marker, is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-03">12.4</a>. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-03"></span>
+<iframe src="examples/example-12-03.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.4: <code>example-12-03.html</code> <a href="examples/example-12-03.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Open <code>example-12-03.html</code> and try dragging the marker around.</li>
+<li>Open the console to see the current location being printed each time the marker is dragged.</li>
+</ul>
+</blockquote>
+</div>
+<div id="continuous-updating" class="section level3" number="12.4.5">
+<h3><span class="header-section-number">12.4.5</span> Continuous updating</h3>
+<p>Now, let’s combine the TIN example (Figure <a href="client-side-geoprocessing.html#fig:example-12-02">12.2</a>) with the draggable marker event listener example (Figure <a href="client-side-geoprocessing.html#fig:example-12-03">12.4</a>) to create a continuously-updated TIN. Basically, we are going to set <code>{draggable: true}</code> for all of the 20 randomly generated markers, then make the TIN layer <em>update</em> in response to any of those markers being dragged. The final result <code>example-12-04</code> is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>. </p>
+<p>To achieve this result, we will use a slightly modified approach for adding the points as well as the TIN layer. Instead of simply adding the <code>points</code> and the <code>tin</code> GeoJSON objects on the map right away, like we did in <code>example-12-02.html</code>: </p>
+<div class="sourceCode" id="cb423"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb423-1"><a href="client-side-geoprocessing.html#cb423-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> points <span class="op">=</span> turf<span class="op">.</span><span class="fu">randomPoint</span>(<span class="dv">20</span><span class="op">,</span> {<span class="dt">bbox</span><span class="op">:</span> bounds})<span class="op">;</span></span>
+<span id="cb423-2"><a href="client-side-geoprocessing.html#cb423-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tin <span class="op">=</span> turf<span class="op">.</span><span class="fu">tin</span>(points)<span class="op">;</span></span>
+<span id="cb423-3"><a href="client-side-geoprocessing.html#cb423-3" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(points)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb423-4"><a href="client-side-geoprocessing.html#cb423-4" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(tin)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>we will set up two empty layer groups for the points and TIN layers, named <code>pnt_layer</code> and <code>tin_layer</code>, respectively. These layer groups will be referred to later on in the code. We are using <code>L.layerGroup</code> (Section <a href="geojson-1.html#using-layer-groups">7.6.5</a>) to create the layer groups: </p>
+<div class="sourceCode" id="cb424"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb424-1"><a href="client-side-geoprocessing.html#cb424-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> pnt_layer <span class="op">=</span> L<span class="op">.</span><span class="fu">layerGroup</span>()<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb424-2"><a href="client-side-geoprocessing.html#cb424-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> tin_layer <span class="op">=</span> L<span class="op">.</span><span class="fu">layerGroup</span>()<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>Next, we calculate the 20 random points: </p>
+<div class="sourceCode" id="cb425"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb425-1"><a href="client-side-geoprocessing.html#cb425-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> points <span class="op">=</span> turf<span class="op">.</span><span class="fu">randomPoint</span>(<span class="dv">20</span><span class="op">,</span> {<span class="dt">bbox</span><span class="op">:</span> bounds})<span class="op">;</span></span></code></pre></div>
+<p>This time, we do not want to convert all points to a GeoJSON Leaflet layer with the default settings of <code>L.geoJSON</code>. Instead, we want use <code>L.geoJSON</code> options to set the following: </p>
+<ul>
+<li>Make each of the markers draggable</li>
+<li>Add a <code>"drag"</code> event listener to each marker, triggering the update of the TIN layer whenever the marker is dragged</li>
+</ul>
+<p>This is why instead of using <code>L.geoJSON</code> with the default options, like we did in <code>example-12-02.html</code>:</p>
+<div class="sourceCode" id="cb426"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb426-1"><a href="client-side-geoprocessing.html#cb426-1" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(points)<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>we are now setting both the <code>onEachFeature</code> and <code>pointToLayer</code> options of <code>L.geoJSON</code>:</p>
+<div class="sourceCode" id="cb427"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb427-1"><a href="client-side-geoprocessing.html#cb427-1" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(points<span class="op">,</span> {</span>
+<span id="cb427-2"><a href="client-side-geoprocessing.html#cb427-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">onEachFeature</span><span class="op">:</span> <span class="kw">function</span>(feature<span class="op">,</span> layer) {</span>
+<span id="cb427-3"><a href="client-side-geoprocessing.html#cb427-3" aria-hidden="true" tabindex="-1"></a>        layer<span class="op">.</span><span class="fu">addEventListener</span>(<span class="st">&quot;drag&quot;</span><span class="op">,</span> drawTIN)<span class="op">;</span></span>
+<span id="cb427-4"><a href="client-side-geoprocessing.html#cb427-4" aria-hidden="true" tabindex="-1"></a>    }<span class="op">,</span></span>
+<span id="cb427-5"><a href="client-side-geoprocessing.html#cb427-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">pointToLayer</span><span class="op">:</span> <span class="kw">function</span>(geoJsonPoint<span class="op">,</span> latlng) {</span>
+<span id="cb427-6"><a href="client-side-geoprocessing.html#cb427-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> L<span class="op">.</span><span class="fu">marker</span>(latlng<span class="op">,</span> {<span class="dt">draggable</span><span class="op">:</span> <span class="kw">true</span>})<span class="op">;</span></span>
+<span id="cb427-7"><a href="client-side-geoprocessing.html#cb427-7" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb427-8"><a href="client-side-geoprocessing.html#cb427-8" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">addTo</span>(pnt_layer)<span class="op">;</span></span></code></pre></div>
+<p>We are already well familiar with using the <code>onEachFeature</code> option for adding event listeners to each GeoJSON feature. For example, in Chapter <a href="symbology-and-interactivity.html#symbology-and-interactivity">8</a> we used this option to add <code>"mouseover"</code> and <code>"mouseout"</code> event listeners to highlight the town polygons on mouse hover (Section <a href="symbology-and-interactivity.html#styling-in-response-to-events">8.7.1</a>). Here, we are adding a <code>"drag"</code> event listener. The function named <code>drawTIN</code>, which will be executed on marker drag, is yet to be defined.</p>
+<p>The other option, <code>pointToLayer</code>, was only briefly mentioned in Chapter <a href="symbology-and-interactivity.html#symbology-and-interactivity">8</a> (Section <a href="symbology-and-interactivity.html#l-geojson-options">8.2</a>). The <code>pointToLayer</code> option is used to specify the way that GeoJSON points are to be translated to Leaflet layers, in case we want to override the default <code>L.marker</code>. In this case, we just want to draw a marker with the <code>{draggable: true}</code> option, rather than the default marker. </p>
+<p>Moving on, we now need to define the <code>drawTIN</code> function, which is being passed to the event listener. Each time a marker is <em>dragged</em>, the <code>drawTIN</code> function will be executed to calculate the new GeoJSON of the TIN layer, and replace the old TIN with the new one. Importantly, the new TIN layer is calculated based on the up-to-date <code>pnt_layer</code> to keep the points and the TIN <em>in sync</em>. Here is the <code>drawTIN</code> function definition: </p>
+<div class="sourceCode" id="cb428"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb428-1"><a href="client-side-geoprocessing.html#cb428-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">drawTIN</span>() {</span>
+<span id="cb428-2"><a href="client-side-geoprocessing.html#cb428-2" aria-hidden="true" tabindex="-1"></a>    tin_layer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span></span>
+<span id="cb428-3"><a href="client-side-geoprocessing.html#cb428-3" aria-hidden="true" tabindex="-1"></a>    points <span class="op">=</span> pnt_layer<span class="op">.</span><span class="fu">toGeoJSON</span>()<span class="op">;</span></span>
+<span id="cb428-4"><a href="client-side-geoprocessing.html#cb428-4" aria-hidden="true" tabindex="-1"></a>    tin <span class="op">=</span> turf<span class="op">.</span><span class="fu">tin</span>(points)<span class="op">;</span></span>
+<span id="cb428-5"><a href="client-side-geoprocessing.html#cb428-5" aria-hidden="true" tabindex="-1"></a>    tin <span class="op">=</span> L<span class="op">.</span><span class="fu">geoJSON</span>(tin)<span class="op">;</span></span>
+<span id="cb428-6"><a href="client-side-geoprocessing.html#cb428-6" aria-hidden="true" tabindex="-1"></a>    tin<span class="op">.</span><span class="fu">addTo</span>(tin_layer)<span class="op">;</span></span>
+<span id="cb428-7"><a href="client-side-geoprocessing.html#cb428-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Essentially, each time a marker is dragged, the <code>drawTIN</code> function does the following things: </p>
+<ul>
+<li><strong>Clears</strong> the <code>tin_layer</code> layer group, to remove the old TIN layer</li>
+<li><strong>Calculates</strong> the new TIN layer based on the current points in <code>pnt_layer</code></li>
+<li><strong>Adds</strong> the new TIN layer to the <code>tin_layer</code> layer group, thus drawing it on the map</li>
+</ul>
+<p>These three things are accomplished in the 1<sup>st</sup>, 3<sup>rd</sup>, and 5<sup>th</sup> expressions in the <code>drawTIN</code> code body, respectively. What are the 2<sup>nd</sup> and 4<sup>th</sup> expressions for, then? The latter are necessary because of the above-mentioned fact (Section <a href="client-side-geoprocessing.html#great-circle-line">12.3</a>) that Turf.js functions only accept GeoJSON, and thus cannot directly operate on Leaflet layers. Therefore, we need to translate the Leaflet marker layer to GeoJSON in the 2<sup>nd</sup> expression, then translate the TIN GeoJSON back to a Leaflet layer in the 4<sup>th</sup> expression. The following code section repeats the internal code of <code>drawTIN</code>, this time with comments specifying the purpose of each expression:</p>
+<div class="sourceCode" id="cb429"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb429-1"><a href="client-side-geoprocessing.html#cb429-1" aria-hidden="true" tabindex="-1"></a>tin_layer<span class="op">.</span><span class="fu">clearLayers</span>()<span class="op">;</span>         <span class="co">// (1) Clear old TIN</span></span>
+<span id="cb429-2"><a href="client-side-geoprocessing.html#cb429-2" aria-hidden="true" tabindex="-1"></a>points <span class="op">=</span> pnt_layer<span class="op">.</span><span class="fu">toGeoJSON</span>()<span class="op">;</span>  <span class="co">// (2) Layer -&gt; GeoJSON</span></span>
+<span id="cb429-3"><a href="client-side-geoprocessing.html#cb429-3" aria-hidden="true" tabindex="-1"></a>tin <span class="op">=</span> turf<span class="op">.</span><span class="fu">tin</span>(points)<span class="op">;</span>          <span class="co">// (3) Calculate new TIN</span></span>
+<span id="cb429-4"><a href="client-side-geoprocessing.html#cb429-4" aria-hidden="true" tabindex="-1"></a>tin <span class="op">=</span> L<span class="op">.</span><span class="fu">geoJSON</span>(tin)<span class="op">;</span>            <span class="co">// (4) GeoJSON -&gt; Layer</span></span>
+<span id="cb429-5"><a href="client-side-geoprocessing.html#cb429-5" aria-hidden="true" tabindex="-1"></a>tin<span class="op">.</span><span class="fu">addTo</span>(tin_layer)<span class="op">;</span>            <span class="co">// (5) Display new TIN</span></span></code></pre></div>
+<p>Finally, we need to execute the <code>drawTIN</code> function one time outside of the event listener. That way, the <em>initial</em> TIN layer will be displayed on page load<a href="#fn109" class="footnote-ref" id="fnref109"><sup>109</sup></a>, even if the user has not dragged any of the markers yet. Without this initial function call, the TIN layer will only appear after any of the markers is dragged, but not on initial page load:</p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb430-1"><a href="client-side-geoprocessing.html#cb430-1" aria-hidden="true" tabindex="-1"></a><span class="fu">drawTIN</span>()<span class="op">;</span></span></code></pre></div>
+<p>The resulting map <code>example-12-04.html</code> is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>. The screenshot shows how one of the points was dragged to the left, i.e., towards the west, and the TIN layer was extended accordingly. </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-04"></span>
+<iframe src="examples/example-12-04.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.5: <code>example-12-04.html</code> <a href="examples/example-12-04.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+</div>
+<div id="clustering" class="section level2" number="12.5">
+<h2><span class="header-section-number">12.5</span> Clustering</h2>
+<div id="overview-clustering" class="section level3" number="12.5.1">
+<h3><span class="header-section-number">12.5.1</span> Overview</h3>
+<p><a href="https://en.wikipedia.org/wiki/Cluster_analysis"><strong>Clustering</strong></a> is the process of classifying a set of observations into groups, so that objects within the same group (called a cluster) are more similar to each other than to objects in other groups. With spatial clustering, similarity usually means geographical proximity, so that the aim of clustering is to group mutually proximate observations. In our second example with Turf.js, the final goal is to create a web map where clusters of nearby plant observations per species (i.e., populations) are detected using a clustering method called DBSCAN (Section <a href="client-side-geoprocessing.html#dbscan-clustering">12.5.4</a>) and displayed on a web map (Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>). We will approach this task in three steps:</p>
+<ul>
+<li>In <code>example-12-05.html</code>, we will learn to automatically apply the same function on <strong>subsets</strong> of GeoJSON features sharing the same value of a given property, such as observations of the same species (Section <a href="client-side-geoprocessing.html#processing-sets-of-features">12.5.2</a>).</li>
+<li>In <code>example-12-06.html</code>, we will learn to emphasize the spatial extent that a group of points occupies, by drawing <strong>Convex Hull</strong> polygons around the group (Section <a href="client-side-geoprocessing.html#adding-a-convex-hull">12.5.3</a>).</li>
+<li>In <code>example-12-07.html</code>, we will apply the <strong>DBSCAN</strong> clustering algorithm to detect spatial clusters in the observation points per species, and draw a Convex Hull polygon around each cluster (Section <a href="client-side-geoprocessing.html#dbscan-clustering">12.5.4</a>).</li>
+</ul>
+</div>
+<div id="processing-sets-of-features" class="section level3" number="12.5.2">
+<h3><span class="header-section-number">12.5.2</span> Processing sets of features</h3>
+<p>In the first step of our clustering example, we are going to load observations of four <em>Iris</em> species from the <code>plants</code> table on CARTO, which we are familiar with from Chapters <a href="databases.html#databases">9</a>–<a href="spatial-queries-1.html#spatial-queries-1">11</a>. We are not doing any clustering just yet. The purpose of this example is to get familiar with the <code>turf.clusterEach</code> <a href="http://turfjs.org/docs/#clusterEach">function</a>. The <code>turf.clusterEach</code> function is used to apply a function on each group of GeoJSON features, whereas a group is defined through common values in one of the GeoJSON properties. </p>
+<p>The script starts with constructing the URL for the SQL API, then defining a color selection function <code>iris_color</code> and styling function <code>iris_style</code> (Section <a href="symbology-and-interactivity.html#varying-style">8.4</a>), for loading and setting the color of four <em>Iris</em> species observations, respectively: </p>
+<div class="sourceCode" id="cb431"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb431-1"><a href="client-side-geoprocessing.html#cb431-1" aria-hidden="true" tabindex="-1"></a><span class="co">// Set base URL</span></span>
+<span id="cb431-2"><a href="client-side-geoprocessing.html#cb431-2" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> url <span class="op">=</span> <span class="st">&quot;https://michaeldorman.carto.com/api/v2/sql?format=GeoJSON&amp;q=&quot;</span><span class="op">;</span></span>
+<span id="cb431-3"><a href="client-side-geoprocessing.html#cb431-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-4"><a href="client-side-geoprocessing.html#cb431-4" aria-hidden="true" tabindex="-1"></a><span class="co">// Set SQL Query</span></span>
+<span id="cb431-5"><a href="client-side-geoprocessing.html#cb431-5" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> sqlQuery <span class="op">=</span> <span class="st">&quot;SELECT name_lat, the_geom &quot;</span> <span class="op">+</span> </span>
+<span id="cb431-6"><a href="client-side-geoprocessing.html#cb431-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;FROM plants WHERE &quot;</span> <span class="op">+</span> </span>
+<span id="cb431-7"><a href="client-side-geoprocessing.html#cb431-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name_lat=&#39;Iris atrofusca&#39; OR &quot;</span> <span class="op">+</span> </span>
+<span id="cb431-8"><a href="client-side-geoprocessing.html#cb431-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name_lat=&#39;Iris atropurpurea&#39; OR &quot;</span> <span class="op">+</span></span>
+<span id="cb431-9"><a href="client-side-geoprocessing.html#cb431-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name_lat=&#39;Iris mariae&#39; OR &quot;</span> <span class="op">+</span></span>
+<span id="cb431-10"><a href="client-side-geoprocessing.html#cb431-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name_lat=&#39;Iris petrana&#39;&quot;</span><span class="op">;</span></span>
+<span id="cb431-11"><a href="client-side-geoprocessing.html#cb431-11" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb431-12"><a href="client-side-geoprocessing.html#cb431-12" aria-hidden="true" tabindex="-1"></a><span class="co">// Color function</span></span>
+<span id="cb431-13"><a href="client-side-geoprocessing.html#cb431-13" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">iris_color</span>(species) {</span>
+<span id="cb431-14"><a href="client-side-geoprocessing.html#cb431-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(species <span class="op">===</span> <span class="st">&quot;Iris mariae&quot;</span>) <span class="cf">return</span> <span class="st">&quot;yellow&quot;</span><span class="op">;</span></span>
+<span id="cb431-15"><a href="client-side-geoprocessing.html#cb431-15" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(species <span class="op">===</span> <span class="st">&quot;Iris petrana&quot;</span>) <span class="cf">return</span> <span class="st">&quot;brown&quot;</span><span class="op">;</span></span>
+<span id="cb431-16"><a href="client-side-geoprocessing.html#cb431-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(species <span class="op">===</span> <span class="st">&quot;Iris atrofusca&quot;</span>) <span class="cf">return</span> <span class="st">&quot;black&quot;</span><span class="op">;</span> </span>
+<span id="cb431-17"><a href="client-side-geoprocessing.html#cb431-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span>(species <span class="op">===</span> <span class="st">&quot;Iris atropurpurea&quot;</span>) <span class="cf">return</span> <span class="st">&quot;orange&quot;</span><span class="op">;</span> </span>
+<span id="cb431-18"><a href="client-side-geoprocessing.html#cb431-18" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb431-19"><a href="client-side-geoprocessing.html#cb431-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb431-20"><a href="client-side-geoprocessing.html#cb431-20" aria-hidden="true" tabindex="-1"></a><span class="co">// Style function</span></span>
+<span id="cb431-21"><a href="client-side-geoprocessing.html#cb431-21" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">iris_style</span>(feature) {</span>
+<span id="cb431-22"><a href="client-side-geoprocessing.html#cb431-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> {</span>
+<span id="cb431-23"><a href="client-side-geoprocessing.html#cb431-23" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fillColor</span><span class="op">:</span> <span class="fu">iris_color</span>(feature<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name_lat</span>)<span class="op">,</span></span>
+<span id="cb431-24"><a href="client-side-geoprocessing.html#cb431-24" aria-hidden="true" tabindex="-1"></a>        <span class="dt">weight</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb431-25"><a href="client-side-geoprocessing.html#cb431-25" aria-hidden="true" tabindex="-1"></a>        <span class="dt">opacity</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span></span>
+<span id="cb431-26"><a href="client-side-geoprocessing.html#cb431-26" aria-hidden="true" tabindex="-1"></a>        <span class="dt">color</span><span class="op">:</span> <span class="st">&quot;black&quot;</span><span class="op">,</span></span>
+<span id="cb431-27"><a href="client-side-geoprocessing.html#cb431-27" aria-hidden="true" tabindex="-1"></a>        <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.5</span></span>
+<span id="cb431-28"><a href="client-side-geoprocessing.html#cb431-28" aria-hidden="true" tabindex="-1"></a>    }<span class="op">;</span></span>
+<span id="cb431-29"><a href="client-side-geoprocessing.html#cb431-29" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>What comes next is the important part of the script, where our GeoJSON is loaded and added on the map: </p>
+<div class="sourceCode" id="cb432"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb432-1"><a href="client-side-geoprocessing.html#cb432-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(url <span class="op">+</span> sqlQuery)</span>
+<span id="cb432-2"><a href="client-side-geoprocessing.html#cb432-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb432-3"><a href="client-side-geoprocessing.html#cb432-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb432-4"><a href="client-side-geoprocessing.html#cb432-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb432-5"><a href="client-side-geoprocessing.html#cb432-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb432-6"><a href="client-side-geoprocessing.html#cb432-6" aria-hidden="true" tabindex="-1"></a>        turf<span class="op">.</span><span class="fu">clusterEach</span>(</span>
+<span id="cb432-7"><a href="client-side-geoprocessing.html#cb432-7" aria-hidden="true" tabindex="-1"></a>            data<span class="op">,</span> </span>
+<span id="cb432-8"><a href="client-side-geoprocessing.html#cb432-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;name_lat&quot;</span><span class="op">,</span> </span>
+<span id="cb432-9"><a href="client-side-geoprocessing.html#cb432-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">function</span>(cluster<span class="op">,</span> clusterValue<span class="op">,</span> currentIndex) {</span>
+<span id="cb432-10"><a href="client-side-geoprocessing.html#cb432-10" aria-hidden="true" tabindex="-1"></a>                L<span class="op">.</span><span class="fu">geoJSON</span>(cluster<span class="op">,</span> {</span>
+<span id="cb432-11"><a href="client-side-geoprocessing.html#cb432-11" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">onEachFeature</span><span class="op">:</span> <span class="kw">function</span>(feature<span class="op">,</span> layer) {</span>
+<span id="cb432-12"><a href="client-side-geoprocessing.html#cb432-12" aria-hidden="true" tabindex="-1"></a>                        layer<span class="op">.</span><span class="fu">bindPopup</span>(<span class="st">&quot;&lt;i&gt;&quot;</span> <span class="op">+</span> clusterValue <span class="op">+</span> <span class="st">&quot;&lt;/i&gt;&quot;</span>)<span class="op">;</span></span>
+<span id="cb432-13"><a href="client-side-geoprocessing.html#cb432-13" aria-hidden="true" tabindex="-1"></a>                    }<span class="op">,</span></span>
+<span id="cb432-14"><a href="client-side-geoprocessing.html#cb432-14" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">pointToLayer</span><span class="op">:</span> <span class="kw">function</span>(geoJsonPoint<span class="op">,</span> latlng) {</span>
+<span id="cb432-15"><a href="client-side-geoprocessing.html#cb432-15" aria-hidden="true" tabindex="-1"></a>                        <span class="cf">return</span> L<span class="op">.</span><span class="fu">circleMarker</span>(latlng)<span class="op">;</span></span>
+<span id="cb432-16"><a href="client-side-geoprocessing.html#cb432-16" aria-hidden="true" tabindex="-1"></a>                    }<span class="op">,</span></span>
+<span id="cb432-17"><a href="client-side-geoprocessing.html#cb432-17" aria-hidden="true" tabindex="-1"></a>                    <span class="dt">style</span><span class="op">:</span> iris_style</span>
+<span id="cb432-18"><a href="client-side-geoprocessing.html#cb432-18" aria-hidden="true" tabindex="-1"></a>                })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb432-19"><a href="client-side-geoprocessing.html#cb432-19" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb432-20"><a href="client-side-geoprocessing.html#cb432-20" aria-hidden="true" tabindex="-1"></a>        )<span class="op">;</span></span>
+<span id="cb432-21"><a href="client-side-geoprocessing.html#cb432-21" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>This is quite a long and complicated expression, which we will now explain in detail. First, note that the function passed to the second <code>.then</code> is not using <code>L.geoJSON</code> right away, like we did before. Instead, it contains an internal function call of the <code>turf.clusterEach</code> function, of the following form: </p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb433-1"><a href="client-side-geoprocessing.html#cb433-1" aria-hidden="true" tabindex="-1"></a>turf<span class="op">.</span><span class="fu">clusterEach</span>(</span>
+<span id="cb433-2"><a href="client-side-geoprocessing.html#cb433-2" aria-hidden="true" tabindex="-1"></a>    data<span class="op">,</span> </span>
+<span id="cb433-3"><a href="client-side-geoprocessing.html#cb433-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;name_lat&quot;</span><span class="op">,</span> </span>
+<span id="cb433-4"><a href="client-side-geoprocessing.html#cb433-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span>(cluster<span class="op">,</span> clusterValue<span class="op">,</span> currentIndex) {</span>
+<span id="cb433-5"><a href="client-side-geoprocessing.html#cb433-5" aria-hidden="true" tabindex="-1"></a>        <span class="op">...</span></span>
+<span id="cb433-6"><a href="client-side-geoprocessing.html#cb433-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb433-7"><a href="client-side-geoprocessing.html#cb433-7" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<p>The <code>turf.clusterEach</code> function is a convenience function from Turf.js. It is used for iterating over groups of GeoJSON features sharing the same property values. The <code>turf.clusterEach</code> function accepts three arguments: </p>
+<ul>
+<li>The <strong>GeoJSON</strong> to iterate on, in our case it is the <code>data</code> object passed from <code>fetch</code>, i.e., the GeoJSON with the observations of four <em>Iris</em> species</li>
+<li>The <strong>property</strong> name used for grouping, in our case it is <code>"name_lat"</code>, i.e., the Latin species name</li>
+<li>A <strong>function</strong> to be applied on each set of features, with function parameters being: the current set of features (<code>cluster</code>), the current property value (<code>clusterValue</code>) and the current cluster index (<code>currentIndex</code>)</li>
+</ul>
+<p>In our case, the internal function passed to <code>turf.clusterEach</code> creates and draws a GeoJSON layer, using <code>L.geoJSON</code>. The function code uses the <code>cluster</code> and <code>clusterValue</code> parameters, which refer to the current set of GeoJSON <em>features</em> sharing the same value in the <code>name_lat</code> property, and the current <em>value</em> of the <code>name_lat</code> property, respectively: </p>
+<div class="sourceCode" id="cb434"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb434-1"><a href="client-side-geoprocessing.html#cb434-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(url <span class="op">+</span> sqlQuery)</span>
+<span id="cb434-2"><a href="client-side-geoprocessing.html#cb434-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb434-3"><a href="client-side-geoprocessing.html#cb434-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb434-4"><a href="client-side-geoprocessing.html#cb434-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb434-5"><a href="client-side-geoprocessing.html#cb434-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb434-6"><a href="client-side-geoprocessing.html#cb434-6" aria-hidden="true" tabindex="-1"></a>        turf<span class="op">.</span><span class="fu">clusterEach</span>(</span>
+<span id="cb434-7"><a href="client-side-geoprocessing.html#cb434-7" aria-hidden="true" tabindex="-1"></a>            data<span class="op">,</span> </span>
+<span id="cb434-8"><a href="client-side-geoprocessing.html#cb434-8" aria-hidden="true" tabindex="-1"></a>            <span class="st">&quot;name_lat&quot;</span><span class="op">,</span> </span>
+<span id="cb434-9"><a href="client-side-geoprocessing.html#cb434-9" aria-hidden="true" tabindex="-1"></a>            <span class="kw">function</span>(cluster<span class="op">,</span> clusterValue<span class="op">,</span> currentIndex) {</span>
+<span id="cb434-10"><a href="client-side-geoprocessing.html#cb434-10" aria-hidden="true" tabindex="-1"></a>                L<span class="op">.</span><span class="fu">geoJSON</span>(cluster<span class="op">,</span> {</span>
+<span id="cb434-11"><a href="client-side-geoprocessing.html#cb434-11" aria-hidden="true" tabindex="-1"></a>                    <span class="op">...</span>  <span class="co">// What to do with each set of features</span></span>
+<span id="cb434-12"><a href="client-side-geoprocessing.html#cb434-12" aria-hidden="true" tabindex="-1"></a>                })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb434-13"><a href="client-side-geoprocessing.html#cb434-13" aria-hidden="true" tabindex="-1"></a>            }</span>
+<span id="cb434-14"><a href="client-side-geoprocessing.html#cb434-14" aria-hidden="true" tabindex="-1"></a>        )<span class="op">;</span></span>
+<span id="cb434-15"><a href="client-side-geoprocessing.html#cb434-15" aria-hidden="true" tabindex="-1"></a>    })<span class="op">;</span></span></code></pre></div>
+<p>Eventually, the code loads all observations of four <em>Iris</em> species (see SQL query above), then iterates over the four groups sharing the same species name. The iteration sequentially adds the observations of each species on the map. For example, note that when adding popups we are referring to the <code>clusterValue</code>, which refers to the <code>name_lat</code> of the current group of features in each step of the iteration: </p>
+<div class="sourceCode" id="cb435"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb435-1"><a href="client-side-geoprocessing.html#cb435-1" aria-hidden="true" tabindex="-1"></a>layer<span class="op">.</span><span class="fu">bindPopup</span>(<span class="st">&quot;&lt;i&gt;&quot;</span> <span class="op">+</span> clusterValue <span class="op">+</span> <span class="st">&quot;&lt;/i&gt;&quot;</span>)<span class="op">;</span></span></code></pre></div>
+<p>You may wonder why do we need to split the GeoJSON with <code>turf.clusterEach</code> in the first place, rather than just add the entire GeoJSON with all four species at once, like we used to do in previous Chapters: </p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb436-1"><a href="client-side-geoprocessing.html#cb436-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fetch</span>(url <span class="op">+</span> sqlQuery)</span>
+<span id="cb436-2"><a href="client-side-geoprocessing.html#cb436-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(response) {</span>
+<span id="cb436-3"><a href="client-side-geoprocessing.html#cb436-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> response<span class="op">.</span><span class="fu">json</span>()<span class="op">;</span></span>
+<span id="cb436-4"><a href="client-side-geoprocessing.html#cb436-4" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb436-5"><a href="client-side-geoprocessing.html#cb436-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">.</span><span class="fu">then</span>(<span class="kw">function</span>(data) {</span>
+<span id="cb436-6"><a href="client-side-geoprocessing.html#cb436-6" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(data<span class="op">,</span> {</span>
+<span id="cb436-7"><a href="client-side-geoprocessing.html#cb436-7" aria-hidden="true" tabindex="-1"></a>            <span class="op">...</span>  <span class="co">// What to do with the entire GeoJSON</span></span>
+<span id="cb436-8"><a href="client-side-geoprocessing.html#cb436-8" aria-hidden="true" tabindex="-1"></a>        })<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb436-9"><a href="client-side-geoprocessing.html#cb436-9" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>In this example, the latter approach is indeed preferable since it is shorter and simpler, while giving the same result. For example, it does not matter whether we apply the styling function <code>iris_style</code>, which sets the marker color, on GeoJSON subsets or on the entire object at once: the styling of a given species observation depends on its <code>name_lat</code> value either way (see Chapter <a href="symbology-and-interactivity.html#symbology-and-interactivity">8</a>). However, the <code>turf.clusterEach</code> approach is just a preparation for what we do in the next two sections, where it is indeed required to treat each species separately, since we will be drawing a <strong>Convex Hull</strong> polygon around each species (Figure <a href="client-side-geoprocessing.html#fig:example-12-06">12.7</a>) or detecting populations within each species using the <strong>DBSCAN</strong> clustering algorithm (Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>). </p>
+<p>Additionally, note that when loading the GeoJSON, we are using the <code>pointToLayer</code> option. As shown in Section <a href="client-side-geoprocessing.html#continuous-updating">12.4.5</a>, the <code>pointToLayer</code> option controls the way that GeoJSON points are translated to Leaflet layers. Recall that in the previous example (<code>example-12-04.html</code>), we used <code>pointToLayer</code> to make our markers draggable (Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>). In the present example, the purpose of using <code>pointToLayer</code> is to override the default marker display, using <em>circle markers</em> (Sections <a href="leaflet.html#adding-markers">6.6.2</a> and <a href="symbology-and-interactivity.html#exercise-08">8.8</a>) instead of ordinary markers. The advantage of circle markers is that they can be colored according the <code>clusterValue</code>, which refers to the <code>name_lat</code> property of the current group, so that observations of the different species are distinguished by their color: </p>
+<div class="sourceCode" id="cb437"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb437-1"><a href="client-side-geoprocessing.html#cb437-1" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span>
+<span id="cb437-2"><a href="client-side-geoprocessing.html#cb437-2" aria-hidden="true" tabindex="-1"></a>pointToLayer<span class="op">:</span> <span class="kw">function</span>(geoJsonPoint<span class="op">,</span> latlng) {</span>
+<span id="cb437-3"><a href="client-side-geoprocessing.html#cb437-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> L<span class="op">.</span><span class="fu">circleMarker</span>(latlng)<span class="op">;</span></span>
+<span id="cb437-4"><a href="client-side-geoprocessing.html#cb437-4" aria-hidden="true" tabindex="-1"></a>}<span class="op">,</span></span>
+<span id="cb437-5"><a href="client-side-geoprocessing.html#cb437-5" aria-hidden="true" tabindex="-1"></a><span class="op">...</span></span></code></pre></div>
+<p>The resulting map <code>example-12-05.html</code> shows the observations of four <em>Iris</em> species. Each species is displayed with differently colored circle markers (Figure <a href="client-side-geoprocessing.html#fig:example-12-05">12.6</a>). </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-05"></span>
+<iframe src="examples/example-12-05.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.6: <code>example-12-05.html</code> <a href="examples/example-12-05.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="adding-a-convex-hull" class="section level3" number="12.5.3">
+<h3><span class="header-section-number">12.5.3</span> Adding a Convex Hull</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Convex_hull"><strong>Convex Hull</strong></a> is the smallest convex geometrical shape, typically a polygon, enclosing a given set of points. One of the uses of a Convex Hull in data visualization, in general, and in geographical mapping, in particular, is to highlight the geographical extent that a group of observations occupies, usually to distinguish between extents occupied by several groups. In other words, Convex Hull polygons are a useful and convenient way of highlighting the division of individual observations into <em>groups</em>. </p>
+<p>In our second step of the clustering example (this section), we will experiment with drawing Convex Hull polygons to highlight the extent that each <em>Iris</em> species occupies in space (Figure <a href="client-side-geoprocessing.html#fig:example-12-06">12.7</a>). In the third and final step (Section <a href="client-side-geoprocessing.html#dbscan-clustering">12.5.4</a>, below), we are going to delineate internal clusters <em>within</em> each species, and draw Convex Hull polygons around each cluster within each species (Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>). </p>
+<p>To draw a Convex Hull polygon around all observations of each species, all we need to do is add the following code within the <code>turf.clusterEach</code> iteration from <code>example-12-05.html</code>:</p>
+<div class="sourceCode" id="cb438"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb438-1"><a href="client-side-geoprocessing.html#cb438-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> ch <span class="op">=</span> turf<span class="op">.</span><span class="fu">convex</span>(cluster)<span class="op">;</span></span>
+<span id="cb438-2"><a href="client-side-geoprocessing.html#cb438-2" aria-hidden="true" tabindex="-1"></a>ch<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name_lat</span> <span class="op">=</span> clusterValue<span class="op">;</span></span>
+<span id="cb438-3"><a href="client-side-geoprocessing.html#cb438-3" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">geoJSON</span>(ch<span class="op">,</span> {<span class="dt">style</span><span class="op">:</span> iris_style})<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span></code></pre></div>
+<p>In the first expression we are taking the current set of points (<code>cluster</code>) and calculating their Convex Hull polygon GeoJSON using the <code>turf.convex</code> <a href="http://turfjs.org/docs/#convex">function</a>. The second expression sets the <code>name_lat</code> property of the Convex Hull according to the currently processed <code>clusterValue</code>. This step is necessary because <code>turf.convex</code> does not “carry over” the point properties from <code>cluster</code> to the resulting polygon <code>ch</code>. The <code>name_lat</code> property is needed, though, for setting the Convex Hull polygon color with <code>iris_style</code>. That way, the convex hull polygons are colored the same way as the underlying circle markers (Figure <a href="client-side-geoprocessing.html#fig:example-12-06">12.7</a>). Finally, in the third expression, we add the polygon on the map using <code>L.geoJSON</code> and <code>.addTo</code>.</p>
+<p>Remember that <code>cluster</code> is consecutively assigned with a different set of features for each species, as part of the <code>turf.clusterEach</code> iteration. Since the code for calculating the Convex Hull and drawing it on the map is placed <em>inside</em> the iteration, a separate Convex Hull polygon is calculated per species, highlighting the separation in species distribution ranges (Figure <a href="client-side-geoprocessing.html#fig:example-12-06">12.7</a>). </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-06"></span>
+<iframe src="examples/example-12-06.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.7: <code>example-12-06.html</code> <a href="examples/example-12-06.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="dbscan-clustering" class="section level3" number="12.5.4">
+<h3><span class="header-section-number">12.5.4</span> DBSCAN clustering</h3>
+<p>In spatial clustering, we aim to detect groups of nearby observations, which are close to each other but further away from other observations. In the previous <em>Iris</em> example, we may wish to detect spatial clusters representing separate populations <em>within</em> each species. To do that, we will experiment with a clustering technique called <strong>Density-Based Spatial Clustering of Applications with Noise</strong> or <a href="https://en.wikipedia.org/wiki/DBSCAN"><strong>DBSCAN</strong></a>. </p>
+<p>DBSCAN is a density-based clustering method, which means that points that are closely packed together are assigned into the same cluster and given the same <em>ID</em>. The DBSCAN algorithm has two parameters, which the user needs to specify: </p>
+<ul>
+<li><span class="math inline">\(\varepsilon\)</span>—The maximal <strong>distance</strong> between points to be considered within the same cluster</li>
+<li><span class="math inline">\(minPts\)</span>—The <strong>minimal number</strong> of points required to form a cluster</li>
+</ul>
+<p>In short, all groups of at least <span class="math inline">\(minPts\)</span> points, where each point is within <span class="math inline">\(\varepsilon\)</span> or less from at least one other point in the group, are considered to be separate clusters and assigned with unique IDs. All other points are considered “noise” and are not assigned with an ID. </p>
+<p>The <code>turf.clustersDbscan</code> <a href="http://turfjs.org/docs/#clustersDbscan">function</a> is an implementation of the DBSCAN algorithm in Turf.js. The function accepts an input point layer and returns the same layer with a new property named <code>cluster</code>. The <code>cluster</code> property contains the cluster ID assigned using DBSCAN. Noise points are not assigned with an ID and thus are not given a <code>cluster</code> property. The first parameter of the <code>turf.clustersDbscan</code> function is <code>maxDistance</code> (<span class="math inline">\(\varepsilon\)</span>), which determines what is the maximal distance between two points to be considered within the same cluster, in kilometers. In our example (see below), we will use a maximal distance of 10 kilometers. The <code>minPoints</code> (<span class="math inline">\(minPts\)</span>) parameter has a default value of <code>3</code>, which we will not override. </p>
+<p>To experiment with <code>turf.clustersDbscan</code>, you can execute the following expression in the console of <code>example-12-01.html</code> (Figure <a href="client-side-geoprocessing.html#fig:example-12-01">12.1</a>). This will apply DBSCAN with a <code>maxDistance</code> value of 50 kilometers on the 20 randomly generated points: </p>
+<div class="sourceCode" id="cb439"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb439-1"><a href="client-side-geoprocessing.html#cb439-1" aria-hidden="true" tabindex="-1"></a>turf<span class="op">.</span><span class="fu">clustersDbscan</span>(points<span class="op">,</span> <span class="dv">50</span>)<span class="op">;</span></span></code></pre></div>
+<blockquote>
+<ul>
+<li>Examine the result of the above expression to see which of the 20 random points were assigned to a cluster and given a <code>cluster</code> property with a numeric value (i.e., the ID).</li>
+<li>Try increasing or decreasing the <code>maxDistance</code> value of <code>50</code> and executing the expression again.</li>
+<li>As <code>maxDistance</code> gets larger, all points will tend to aggregate into the same single cluster. Conversely, as <code>maxDistance</code> gets smaller, it will be more “difficult” for clusters to be formed, which means that more and more points will be classified as noise.</li>
+</ul>
+</blockquote>
+<p>Back to our <em>Iris</em> species example. When applying the DBSCAN algorithm on the observations of a given species, the non-noise observations are going to be given a <code>cluster</code> property with a unique ID per cluster. We can then iterate over the clusters, to draw a Convex Hull polygon around each population. Practically, this can be accomplished by adding another, <em>internal</em>, <code>turf.clusterEach</code> iteration through all of the features sharing the same <code>cluster</code> attribute value <em>within</em> a given species. </p>
+<p>To achieve the latter, we replace the three expressions we used for adding Convex Hull polygons <em>per species</em> in <code>example-12-06.html</code> (Section <a href="client-side-geoprocessing.html#adding-a-convex-hull">12.5.3</a>), with the following code section which adds Convex Hull polygons based on <em>DBSCAN clustering</em> per species: </p>
+<div class="sourceCode" id="cb440"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb440-1"><a href="client-side-geoprocessing.html#cb440-1" aria-hidden="true" tabindex="-1"></a>clustered <span class="op">=</span> turf<span class="op">.</span><span class="fu">clustersDbscan</span>(cluster<span class="op">,</span> <span class="dv">10</span>)<span class="op">;</span></span>
+<span id="cb440-2"><a href="client-side-geoprocessing.html#cb440-2" aria-hidden="true" tabindex="-1"></a>turf<span class="op">.</span><span class="fu">clusterEach</span>(</span>
+<span id="cb440-3"><a href="client-side-geoprocessing.html#cb440-3" aria-hidden="true" tabindex="-1"></a>    clustered<span class="op">,</span> </span>
+<span id="cb440-4"><a href="client-side-geoprocessing.html#cb440-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;cluster&quot;</span><span class="op">,</span> </span>
+<span id="cb440-5"><a href="client-side-geoprocessing.html#cb440-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">function</span>(cluster2<span class="op">,</span> clusterValue2<span class="op">,</span> currentIndex2) {</span>
+<span id="cb440-6"><a href="client-side-geoprocessing.html#cb440-6" aria-hidden="true" tabindex="-1"></a>        <span class="kw">let</span> ch <span class="op">=</span> turf<span class="op">.</span><span class="fu">convex</span>(cluster2)<span class="op">;</span></span>
+<span id="cb440-7"><a href="client-side-geoprocessing.html#cb440-7" aria-hidden="true" tabindex="-1"></a>        ch<span class="op">.</span><span class="at">properties</span><span class="op">.</span><span class="at">name_lat</span> <span class="op">=</span> clusterValue<span class="op">;</span></span>
+<span id="cb440-8"><a href="client-side-geoprocessing.html#cb440-8" aria-hidden="true" tabindex="-1"></a>        L<span class="op">.</span><span class="fu">geoJSON</span>(ch<span class="op">,</span> {<span class="dt">style</span><span class="op">:</span> iris_style})<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span></span>
+<span id="cb440-9"><a href="client-side-geoprocessing.html#cb440-9" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb440-10"><a href="client-side-geoprocessing.html#cb440-10" aria-hidden="true" tabindex="-1"></a>)<span class="op">;</span></span></code></pre></div>
+<p>We leave it as an exercise for the reader to go over the code, as we are essentially combining the methods already covered in the previous two examples. The final result (<code>example-12-07.html</code>) is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>. It is now evident, for instance, how <em>Iris petrana</em> (the south-eastern species shown in brown) observations are all clustered in one place, while the distribution ranges of the other three species are divided into two or three distinct populations, separated by at least 10 kilometers from each other (Figure <a href="client-side-geoprocessing.html#fig:example-12-07">12.8</a>). </p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-07"></span>
+<iframe src="examples/example-12-07.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.8: <code>example-12-07.html</code> <a href="examples/example-12-07.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+<blockquote>
+<ul>
+<li>Expand <code>example-12-07.html</code>, adding popups for the Convex Hull polygons to display the species name and the cluster ID when clicked.</li>
+<li>Modify the maximal distance parameter in <code>turf.clustersDbscan</code> (currently set to <code>10</code>) and check out how the clustering result changes. What is the reason for the console error when <code>maxDistance</code> is very small? How can we address the problem?</li>
+</ul>
+</blockquote>
+</div>
+</div>
+<div id="heatmaps-with-leafletheat" class="section level2" number="12.6">
+<h2><span class="header-section-number">12.6</span> Heatmaps with Leaflet.heat</h2>
+<p>Turf.js is one of the most comprehensive client-side geoprocessing JavaScript libraries, but it is not the only one. The <a href="https://github.com/Leaflet/Leaflet.heat"><strong>Leaflet.heat</strong></a> library, for example, is a geoprocessing plugin for the Leaflet library. The term “plugin,” in this context, means that Leaflet.heat is an extension of the Leaflet library and thus cannot be used without Leaflet, unlike Turf.js, which is an independent library that can be used with Leaflet or with any other library, or even on its own. Also, unlike Turf.js, which is a general-purpose geoprocessing library, Leaflet.heat does just one thing—drawing a heatmap to display the density of point data. The Leaflet.heat plugin is one of many created to extend the core functionality of Leaflet<a href="#fn110" class="footnote-ref" id="fnref110"><sup>110</sup></a>.</p>
+<p>Drawing individual points can be visually overwhelming, slow, and hard to comprehend when there are too many of them. <strong>Heatmaps</strong> are a convenient alternative way of conveying the distribution of large amounts of point data. A heatmap is basically a way to summarize and display point density, instead of showing each and every individual point. Technically speaking, a heatmap uses two-dimensional <a href="https://en.wikipedia.org/wiki/Kernel_density_estimation"><strong>Kernel Density Estimation (KDE)</strong></a> to calculate a smooth surface representing point density. </p>
+<p>The following example (<code>example-12-08.html</code>) draws a heatmap of all rare plant observations from the <code>plants</code> table on CARTO. Overall, there are 23,827 points in the <code>plants</code> table (Section <a href="non-spatial-queries-1.html#how-many-species-do-we-have">10.4.1</a>). Drawing markers, or even the simpler circle markers, for such a large amount of points is usually not a good idea. First, it may cause the browser to become unresponsive due to computational intensity. Second, it is usually difficult to pick the right styling (size, opacity, etc.) for each point so that dense locations are clearly distinguished on the various map zoom levels the user may choose. This is where the density-based heatmaps become very useful. Particularly, the Leaflet.heat library automatically re-calculates the heatmap for each zoom level, allowing the user to conveniently explore point density on both large and small scales. </p>
+<p>To use the Leaflet.heat library we first need to load it. Again, we will use a local copy: </p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode html"><code class="sourceCode html"><span id="cb441-1"><a href="client-side-geoprocessing.html#cb441-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;script</span><span class="ot"> src=</span><span class="st">&quot;js/leaflet.heat.js&quot;</span><span class="kw">&gt;&lt;/script&gt;</span></span></code></pre></div>
+<p>which can be downloaded, or directly referenced, using the following URL: </p>
+<p><a href="../../leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js" class="uri">https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js</a></p>
+<p>Next, when loading the plant observations GeoJSON we need to convert it to an array of <code>[lat, lon, intensity]</code> arrays, which is the data structure that the Leaflet.heat library expects. The <code>intensity</code> value can be used to give different <em>weights</em> to each point: </p>
+<div class="sourceCode" id="cb442"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb442-1"><a href="client-side-geoprocessing.html#cb442-1" aria-hidden="true" tabindex="-1"></a>[</span>
+<span id="cb442-2"><a href="client-side-geoprocessing.html#cb442-2" aria-hidden="true" tabindex="-1"></a>    [lat<span class="op">,</span> lon<span class="op">,</span> intensity]<span class="op">,</span></span>
+<span id="cb442-3"><a href="client-side-geoprocessing.html#cb442-3" aria-hidden="true" tabindex="-1"></a>    [lat<span class="op">,</span> lon<span class="op">,</span> intensity]<span class="op">,</span></span>
+<span id="cb442-4"><a href="client-side-geoprocessing.html#cb442-4" aria-hidden="true" tabindex="-1"></a>    [lat<span class="op">,</span> lon<span class="op">,</span> intensity]<span class="op">,</span></span>
+<span id="cb442-5"><a href="client-side-geoprocessing.html#cb442-5" aria-hidden="true" tabindex="-1"></a>    <span class="op">...</span></span>
+<span id="cb442-6"><a href="client-side-geoprocessing.html#cb442-6" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div>
+<p>There are many possible ways to go from a GeoJSON of type <code>"FeatureCollection"</code>, composed of <code>"Point"</code> features, to the array structure shown above. The code section below shows one way to do it, using the <code>.forEach</code> array iteration method (Section <a href="javascript-basics.html#the-foreach-array-method">3.10.3.3</a>). The <code>.forEach</code> iteration goes over the features of a GeoJSON object named <code>data</code>, such as the result of a CARTO SQL API request obtained with <code>fetch</code>. For each of the features, the latitude and longitude are extracted into an array of the form <code>[lat, lon]</code>, along with the constant intensity value of <code>0.5</code> which gives all points equal weights when calculating density. When the iteration ends, we have an array named <code>locations</code>, containing 23,827 triplets of the form <code>[lat, lon, intensity]</code>.</p>
+<div class="sourceCode" id="cb443"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb443-1"><a href="client-side-geoprocessing.html#cb443-1" aria-hidden="true" tabindex="-1"></a><span class="kw">let</span> locations <span class="op">=</span> []<span class="op">;</span></span>
+<span id="cb443-2"><a href="client-side-geoprocessing.html#cb443-2" aria-hidden="true" tabindex="-1"></a>data<span class="op">.</span><span class="at">features</span><span class="op">.</span><span class="fu">forEach</span>(<span class="kw">function</span>(element) {</span>
+<span id="cb443-3"><a href="client-side-geoprocessing.html#cb443-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> coords <span class="op">=</span> element<span class="op">.</span><span class="at">geometry</span><span class="op">.</span><span class="at">coordinates</span><span class="op">;</span></span>
+<span id="cb443-4"><a href="client-side-geoprocessing.html#cb443-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">let</span> location <span class="op">=</span> [coords[<span class="dv">1</span>]<span class="op">,</span> coords[<span class="dv">0</span>]<span class="op">,</span> <span class="fl">0.5</span>]<span class="op">;</span></span>
+<span id="cb443-5"><a href="client-side-geoprocessing.html#cb443-5" aria-hidden="true" tabindex="-1"></a>    locations<span class="op">.</span><span class="fu">push</span>(location)<span class="op">;</span></span>
+<span id="cb443-6"><a href="client-side-geoprocessing.html#cb443-6" aria-hidden="true" tabindex="-1"></a>})<span class="op">;</span></span></code></pre></div>
+<p>Once the <code>locations</code> array is ready, we can run the <code>L.heatLayer</code> function on the array to create the heatmap layer, then add it on our map. The additional parameters define the radius of each point on the map (i.e., the smoothing kernel width) and the minimal heatmap opacity: </p>
+<div class="sourceCode" id="cb444"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb444-1"><a href="client-side-geoprocessing.html#cb444-1" aria-hidden="true" tabindex="-1"></a>L<span class="op">.</span><span class="fu">heatLayer</span>(locations<span class="op">,</span> {<span class="dt">radius</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">minOpacity</span><span class="op">:</span> <span class="fl">0.5</span>})<span class="op">.</span><span class="fu">addTo</span>(map)<span class="op">;</span> </span></code></pre></div>
+<p>The resulting map <code>example-12-08.html</code>, with the heatmap, is shown in Figure <a href="client-side-geoprocessing.html#fig:example-12-08">12.9</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:example-12-08"></span>
+<iframe src="examples/example-12-08.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.9: <code>example-12-08.html</code> <a href="examples/example-12-08.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+</div>
+<div id="exercise-6" class="section level2" number="12.7">
+<h2><span class="header-section-number">12.7</span> Exercise</h2>
+<ul>
+<li>Create a web map with two markers and a Great Circle line between them, where the Great Circle line is continuously updated whenever the markers are dragged (Figure <a href="client-side-geoprocessing.html#fig:solution-12">12.10</a>).</li>
+<li>Use <code>example-12-04.html</code> (Figure <a href="client-side-geoprocessing.html#fig:example-12-04">12.5</a>) for guidance on how to make the Great Circle line continuously updated.</li>
+</ul>
+<div class="figure" style="text-align: center"><span id="fig:solution-12"></span>
+<iframe src="examples/solution-12.html" width="100%" height="400px">
+</iframe>
+<p class="caption">
+FIGURE 12.10: <code>solution-12.html</code> <a href="examples/solution-12.html" title="View the Example" target="_blank">(Click to view this example on its own)</a>
+</p>
+</div>
+
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="106">
+<li id="fn106"><p>The line coordinates in the <code>greatCircle</code> object, except for the first three and last one, were replaced with <code>...</code> to save space.<a href="client-side-geoprocessing.html#fnref106" class="footnote-back">↩︎</a></p></li>
+<li id="fn107"><p>The answer is 100.<a href="client-side-geoprocessing.html#fnref107" class="footnote-back">↩︎</a></p></li>
+<li id="fn108"><p>Note that part of the attribution was replaced with <code>[...]</code> to save space.<a href="client-side-geoprocessing.html#fnref108" class="footnote-back">↩︎</a></p></li>
+<li id="fn109"><p>We used the same technique to display the initially selected species on the map in example <code>example-10-05.html</code> (Section <a href="non-spatial-queries-1.html#rearranging-the-code">10.6</a>).<a href="client-side-geoprocessing.html#fnref109" class="footnote-back">↩︎</a></p></li>
+<li id="fn110"><p>In Chapter <a href="collaborative-mapping.html#collaborative-mapping">13</a>, we are going to work with another Leaflet plugin, called <strong>Leaflet.draw</strong>. See the <em>Leaflet Plugins</em> section in the Leaflet documentation (<a href="https://leafletjs.com/plugins.html" class="uri">https://leafletjs.com/plugins.html</a>) for the complete list of Leaflet plugins.<a href="client-side-geoprocessing.html#fnref110" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="spatial-queries-1.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="collaborative-mapping.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook/js/app.min.js"></script>
+<script src="libs/gitbook/js/lunr.js"></script>
+<script src="libs/gitbook/js/clipboard.min.js"></script>
+<script src="libs/gitbook/js/plugin-search.js"></script>
+<script src="libs/gitbook/js/plugin-sharing.js"></script>
+<script src="libs/gitbook/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook/js/jquery.highlight.js"></script>
+<script src="libs/gitbook/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": null,
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "section",
+"scroll_highlight": true
+},
+"toc_depth": 2,
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "../../mathjax.rstudio.com/2.7.2/MathJaxb198.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+
+<!-- Mirrored from 132.72.155.230:3838/js/client-side-geoprocessing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 10 Jan 2022 06:45:29 GMT -->
+</html>
